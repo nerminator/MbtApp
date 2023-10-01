@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+inhibit_all_warnings!
+use_frameworks!
+
+def shared_pods
+    # Pods for TurkcellSaha
+    pod 'PureLayout'
+    pod 'EZSwiftExtensions'
+    pod 'Moya', '~> 10.0'
+    pod 'Marshal'
+    pod 'AlamofireImage', '~> 3.3'
+    pod 'AnyFormatKit'
+end
+
+target 'MBTBiziz' do
+  shared_pods
+end
+
+target 'MBTBiziz-Prod' do
+    shared_pods
+end
