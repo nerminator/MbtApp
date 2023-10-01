@@ -1,0 +1,388 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Abdullah
+ * Date: 3.05.2018
+ * Time: 21:54
+ */
+
+namespace App\Http\Controllers;
+
+use Carbon\Carbon;
+use Faker\Factory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
+class LoginController extends Controller
+{
+    public function captcha()
+    {
+        $width = 600;
+        $height = 150;
+
+        try {
+            $image = imagecreatetruecolor($width, $height);
+
+            $background_color = imagecolorallocate($image, 255, 255, 255);
+            $text_color = imagecolorallocate($image, 0, 255, 255);
+            $line_color = imagecolorallocate($image, 64, 64, 64);
+            $pixel_color = imagecolorallocate($image, 0, 0, 255);
+
+            imagefilledrectangle($image, 0, 0, $width, $height, $background_color);
+
+            $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            $len = strlen($letters);
+            $letter = $letters[rand(0, $len - 1)];
+
+            $text_color = imagecolorallocate($image, 0, 0, 0);
+            $text = "";
+            for ($i = 0; $i < 6; $i++) {
+                $letter = $letters[rand(0, $len - 1)];
+                $font = '/var/www/html/bizizFiles/Roboto-Regular.ttf';
+//                imagestring($image, 7, 5 + ($i * 30), 20, $letter, $text_color);
+                imagettftext($image, 50, 0, 90 + ($i * 75), 100, $text_color, $font, $letter);
+                $text .= $letter;
+            }
+
+            for ($i = 0; $i < 10; $i++) {
+                imageline($image, 0, rand() % $height, $width, rand() % $height, $line_color);
+            }
+
+            for ($i = 0; $i < 3000; $i++) {
+                imagesetpixel($image, rand() % $width, rand() % $height, $pixel_color);
+            }
+
+            $uuid = Factory::create('tr_TR')->uuid;
+            $imageName = $uuid . ".png";
+            $imagePath = dirname(dirname(dirname(dirname(__FILE__)))) . "/storage/app/public/contents/captcha/$imageName";
+            imagepng($image, $imagePath);
+            $storageImagePath = "contents/captcha/" . $imageName;
+            $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizBackend/public" : "http://mbtbiziz:8888";
+            $imageUrl = $projectUrl . "/storage/$storageImagePath";
+
+            DB::table('captcha')->insert([
+                'text' => $text,
+                'image' => $imageUrl,
+                'token' => $uuid,
+                'created_at' => Carbon::now()
+            ]);
+
+            imagedestroy($image);
+
+            return response()->json([
+                'statusCode' => 200,
+                'responseData' => [
+                    'token' => $uuid,
+                    'image' => $imageUrl,
+                ],
+                'errorMessage' => null
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'statusCode' => 401,
+                'responseData' => null,
+                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_CANNOT_CREATE_CAPTCHA') . " " . $exception->getMessage()
+            ]);
+        }
+    }
+
+    public function checkPhoneWithCaptcha(Request $request)
+    {
+        //region Controls
+        $validator = Validator::make($request->all(), [
+            'phoneNumber' => 'required|string|min:10|max:10',
+            'captchaToken' => 'string|min:36|max:36',
+            'captchaText' => 'string|min:6',
+            'appVersion'  => 'string|min:3'
+        ]);
+        if ($validator->fails()) // missing parameters
+        {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => "Eksik/hatalı parametre(ler) var!"
+            ]);
+        }
+        //endregion
+
+        $phoneNumber = Input::get('phoneNumber');
+        if (!is_numeric($phoneNumber)) {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => "Eksik/hatalı parametre(ler) var!"
+            ]);
+        }
+
+        $appVersion = Input::get('appVersion');
+
+        $now = Carbon::now();
+        $previousTime = $now->copy()->subMinute();
+
+        if ($appVersion != "1.2.0"){
+            $captchaResult = $this->getFirstItemFromDb("select id
+                                                                from captcha
+                                                                where text = ? and token = ? and
+                                                                        is_used = 0 and created_at >= ?
+                                                                order by id desc
+                                                                limit 1", [Input::get('captchaText'), Input::get('captchaToken'), $previousTime]);
+            if ($captchaResult == null) {
+                return response()->json([
+                    'statusCode' => 401,
+                    'responseData' => null,
+                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_CAPTCHA_NOT_VALID')
+                ]);
+            }
+            DB::update("update captcha set is_used = 1, updated_at = ? where id = ?", [$now, $captchaResult->id]);
+        }
+            $userResult = $this->getFirstItemFromDb("select id from users where mobile_phone = ? and status = 1", [$phoneNumber]);
+            if ($userResult == null) {
+    //            return response()->json([
+    //                'statusCode' => 401,
+    //                'responseData' => null,
+    //                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_PHONE_NUMBER_NOT_FOUND')
+    //            ]);
+                return response()->json([
+                    'statusCode' => 200,
+                    'responseData' => null,
+                    'errorMessage' => null
+                ]);
+            }
+
+        /*$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result
+                                                                  from user_pin_codes
+                                                                  where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);*/
+        $checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result
+                                                                  from user_pin_codes
+                                                                  where user_id = ? and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
+        if ($checkPinCodeResult != null && $checkPinCodeResult->result >= 10) {
+            return response()->json([
+                'statusCode' => 401,
+                'responseData' => null,
+                'hello'=> 1,
+                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_CHECK_PHONE_WAIT')
+            ]);
+        }
+
+        $isTestPhone = in_array($phoneNumber, ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566"]);
+        $pinCode = random_int(1000, 9999);
+        DB::table('user_pin_codes')->insert([
+            'user_id' => $userResult->id,
+            'pin_code' => !$isTestPhone ? $pinCode : 1234,
+            'created_at' => $now
+        ]);
+
+        if (!$isTestPhone) {
+            try {
+                $sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
+                if (!$this->_contains("errno=0", $sendSMSResponse)) {
+                    Log::error("Couldn't send SMS to $phoneNumber\nResponse: $sendSMSResponse");
+                }
+            } catch (\Exception $exception) {
+                Log::error("Couldn't send SMS to $phoneNumber\nException: " . $exception->getMessage());
+                return response()->json([
+                    'statusCode' => 401,
+                    'responseData' => null,
+                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_SEND_SMS')
+                ]);
+            }
+        }
+
+        return response()->json([
+            'statusCode' => 200,
+            'responseData' => null,
+            'errorMessage' => null
+        ]);
+    }
+
+    // will be removed
+    public function checkPhone(Request $request)
+    {
+        //region Controls
+        $validator = Validator::make($request->all(), [
+            'phoneNumber' => 'required|string|min:10|max:10'
+        ]);
+        if ($validator->fails()) // missing parameters
+        {   
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => "Eksik/hatalı parametre(ler) var!"
+            ]);
+        }
+        //endregion
+
+
+        $phoneNumber = Input::get('phoneNumber');
+        if (!is_numeric($phoneNumber)) {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => "Eksik/hatalı parametre(ler) var!"
+            ]);
+        }
+
+
+
+        $userResult = $this->getFirstItemFromDb("select id from users where mobile_phone = ? and status = 1", [$phoneNumber]);
+        if ($userResult == null) {
+//            return response()->json([
+//                'statusCode' => 401,
+//                'responseData' => null,
+//                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_PHONE_NUMBER_NOT_FOUND')
+//            ]);
+            return response()->json([
+                'statusCode' => 200,
+                'responseData' => null,
+                'errorMessage' => "test11"
+            ]);
+        }
+
+        $now = Carbon::now();
+        $previousTime = $now->copy()->subMinute();
+
+
+
+        /*$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);*/
+        $checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
+        if ($checkPinCodeResult != null && $checkPinCodeResult->result >= 10) {
+            return response()->json([
+                'statusCode' => 401,
+                'responseData' => null,
+                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_CHECK_PHONE_WAIT')
+            ]);
+        }
+
+        $isTestPhone = in_array(Input::get('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566"]);
+
+        $pinCode = random_int(1000, 9999);
+        DB::table('user_pin_codes')->insert([
+            'user_id' => $userResult->id,
+            'pin_code' => !$isTestPhone ? $pinCode : 1234,
+            'created_at' => $now
+        ]);
+
+        if (!$isTestPhone) {
+            try {
+                $sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
+                if (!$this->_contains("errno=0", $sendSMSResponse)) {
+                    Log::error("Couldn't send SMS to $phoneNumber\nResponse: $sendSMSResponse");
+                }
+            } catch (\Exception $exception) {
+                Log::error("Couldn't send SMS to $phoneNumber\nException: " . $exception->getMessage());
+                return response()->json([
+                    'statusCode' => 401,
+                    'responseData' => null,
+                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_SEND_SMS')
+                ]);
+            }
+        }
+
+        return response()->json([
+            'statusCode' => 200,
+            'responseData' => null,
+            'errorMessage' => null
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        //region Controls
+        $validator = Validator::make($request->all(), [
+            'phoneNumber' => 'required|string|min:10|max:10',
+            'pin' => 'required|integer|min:1000|max:9999'
+        ]);
+        if ($validator->fails()) // missing parameters
+        {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => "Eksik/hatalı parametre(ler) var!"
+            ]);
+        }
+        //endregion
+
+        //region Test Phone
+        /*if (in_array(Input::get('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566",
+            "5332158020", "53586979$height", "5367967265", "5356621663", "5325079351"])) {
+            $user = DB::table("users")->where('mobile_phone', Input::get('phoneNumber'))->where('status', 1)->select('token')->first();
+            if ($user == null || Input::get('pin') != env('TEST_PIN')) {
+                return response()->json([
+                    'statusCode' => 401,
+                    'responseData' => null,
+                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_WRONG_PIN_CODE')
+                ]);
+            } else {
+                return response()->json([
+                    'statusCode' => 200,
+                    'responseData' => ['token' => $user->token],
+                    'errorMessage' => null
+                ]);
+            }
+        }*/
+        //endregion
+
+        /*$checkPinCodeResult = $this->getFirstItemFromDb("select upc.id as id, u.token as token
+                                                                  from user_pin_codes upc, users u
+                                                                  where upc.user_id = u.id and u.mobile_phone = ? and u.status = 1 and
+                                                                        upc.pin_code = ? and upc.is_used = 0 and upc.try_count < 5 and upc.created_at > ?
+                                                                  order by upc.id desc limit 1", [Input::get('phoneNumber'), $pin, Carbon::now()->subMinutes(2)]);*/
+        $checkPinCodeResult = $this->getFirstItemFromDb("select upc.id, upc.pin_code, upc.is_used, upc.try_count, u.token
+                                                                  from user_pin_codes upc, users u
+                                                                  where upc.user_id = u.id and u.mobile_phone = ? and u.status = 1
+                                                                  order by upc.id desc
+                                                                  limit 1", [Input::get('phoneNumber'), Carbon::now()->subMinutes(2)]);
+        if ($checkPinCodeResult == null || $checkPinCodeResult->is_used) {
+            return response()->json([
+                'statusCode' => 402,
+                'responseData' => null,
+                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_REQUEST_PIN_CODE_AGAIN')
+            ]);
+        } elseif ($checkPinCodeResult->try_count >= 5) {
+            return response()->json([
+                'statusCode' => 402,
+                'responseData' => null,
+                'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_TOO_MUCH_PIN_CODE_TRY')
+            ]);
+        } else {
+            if ($checkPinCodeResult->pin_code == Input::get('pin')) {
+                DB::update("update user_pin_codes set is_used = 1, updated_at = ? where id = ?", [Carbon::now(), $checkPinCodeResult->id]);
+
+                return response()->json([
+                    'statusCode' => 200,
+                    'responseData' => ['token' => $checkPinCodeResult->token],
+                    'errorMessage' => null
+                ]);
+            } else {
+                DB::update("update user_pin_codes set try_count = ?, updated_at = ? where id = ?", [$checkPinCodeResult->try_count + 1, Carbon::now(), $checkPinCodeResult->id]);
+
+                return response()->json([
+                    'statusCode' => ($checkPinCodeResult->try_count + 1) == 5 ? 402 : 401,
+                    'responseData' => null,
+                    'errorMessage' => ($checkPinCodeResult->try_count + 1) == 5 ? Lang::get('lang.TXT_SERVER_ERROR_TOO_MUCH_PIN_CODE_TRY') : Lang::get('lang.TXT_SERVER_ERROR_WRONG_PIN_CODE')
+                ]);
+            }
+        }
+    }
+
+    public function signOut()
+    {
+        DB::update("update users set token = ?, updated_at = ? where id = ?", [Factory::create('tr_TR')->uuid, Carbon::now(), Auth::id()]);
+
+        return response()->json([
+            'statusCode' => 200,
+            'responseData' => null,
+            'errorMessage' => null
+        ]);
+    }
+
+    private function _contains($needle, $haystack)
+    {
+        return strpos($haystack, $needle) !== false;
+    }
+}
