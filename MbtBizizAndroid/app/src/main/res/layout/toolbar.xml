@@ -1,0 +1,123 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.daimler.biziz.android.ui.toolbar.VMToolbar" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        >
+        <!-- android:paddingTop="24dp"-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarrrr"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:contentInsetStart="0dp"
+                >
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imgIconToolbar"
+                        android:onClick="@{vm::performBack}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginStart="11.7dp"
+                        android:padding="5dp"
+                        android:src="@drawable/btn_back"
+                        />
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.title}"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"
+                        android:layout_toEndOf="@+id/imgIconToolbar"
+                        android:textSize="@dimen/page_title_text_size"
+                        android:textColor="@android:color/white"
+                        android:visibility="@{TextUtils.isEmpty(vm.title)?View.GONE:View.VISIBLE,default=visible}"
+                        tools:text="Title" />
+
+                    <ImageView
+                        android:onClick="@{vm::performNotification}"
+
+                        android:id="@+id/imgvInfoToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginEnd="11.7dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/icn_info"
+                        />
+
+                </RelativeLayout>
+                <!--deneme-->
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:onClick="@{vm::performBack}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:padding="16dp"
+                        android:src="@drawable/icon_btn_back" />
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.title}"
+                        android:textSize="@dimen/page_title_text_size"
+                        android:textColor="@android:color/white"
+                        android:visibility="@{TextUtils.isEmpty(vm.title)?View.GONE:View.VISIBLE,default=visible}"
+                        tools:text="Title" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:onClick="@{vm::performNotification}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:padding="16dp"
+                        android:visibility="@{vm.isVisible ? View.VISIBLE : View.GONE}"
+                        android:src="@drawable/icn_info" />
+
+                </LinearLayout>-->
+            </android.support.v7.widget.Toolbar>
+        </FrameLayout>
+    </android.support.design.widget.AppBarLayout>
+</layout>

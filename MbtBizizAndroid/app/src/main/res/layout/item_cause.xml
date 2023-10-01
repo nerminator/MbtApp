@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="type"
+            type="com.daimler.biziz.android.network.entity.workCalendar.TypeEntity" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="18dp">
+
+        <View
+            android:id="@+id/viewDot"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textCause"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textCause" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/textCause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="@{type.typeName}"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@+id/viewDot"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@{type.dayText}"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/fiftyPercentOpacityTextColor"
+            app:layout_constraintStart_toEndOf="@+id/viewDot"
+            app:layout_constraintTop_toBottomOf="@+id/textCause" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/textToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/TXT_PROFILE_CALENDAR_TODAY"
+            android:textColor="@color/btnActiveButtonBgColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/textCause" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

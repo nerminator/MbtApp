@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.model.ShuttleAdapterModel" />
+
+        <variable
+            name="stopcallback"
+            type="com.daimler.biziz.android.adapters.ShuttleSearchAdapter.ShuttleCallback" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:onClick="@{() -> stopcallback.onItemClick(data)}">
+
+        <ImageView
+            android:id="@+id/imageBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.03"
+            android:background="#f4f4f4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@id/tvBuildName"
+            android:gravity="center_vertical"
+            android:text="@{data.stopListEntity.name}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:text="Kurfalı Taksi Durağı" />
+
+        <TextView
+            android:id="@+id/tvBuildName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:drawableEnd="@drawable/ic_arrow_right_gray"
+            android:drawablePadding="22dp"
+            android:gravity="center"
+            android:paddingEnd="20dp"
+            android:text="@{data.shuttleListEntity.name}"
+            android:textColor="#a2a2a2"
+            android:textSize="18sp"
+            tools:text="Kadıköy" />
+    </RelativeLayout>
+</layout>

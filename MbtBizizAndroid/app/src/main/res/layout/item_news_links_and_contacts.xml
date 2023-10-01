@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.network.entity.news.News" />
+
+        <variable
+            name="callback"
+            type="com.daimler.biziz.android.adapters.NewsAdapter.NewsItemCallback" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> callback.onNewsClick(data)}"
+        tools:background="#1e2536">
+
+        <ImageView
+            android:id="@+id/ivNewImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="h,780:172"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:loadImage="@{data.image}" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvNewsDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+
+            android:lineSpacingExtra="6sp"
+            android:text="@{data.listText}"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivNewImage"
+            tools:text="Maecenasmollis Interdum VivamusSagittis Lacus " />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.1"
+            android:background="#e7e7e7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsDesc" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

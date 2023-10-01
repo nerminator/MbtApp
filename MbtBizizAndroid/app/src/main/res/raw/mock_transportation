@@ -1,0 +1,413 @@
+{
+    "statusCode": 200,
+    "responseData": {
+        "type": 1,
+        "companyLocationId": 1,
+        "toCompanyList": [
+            {
+                "name": "Sabah",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Öğle",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Akşam",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Gece",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "fromCompanyList": [
+            {
+                "name": "SabahSatisfaction",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler",
+                        "departureTime": "05:40",
+                        "arrivalTime": "18:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Öğle",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Akşam",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler2",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Gece",
+                "shuttleList": [
+                    {
+                        "id": 1,
+                        "name": "Pendik - İçmeler3",
+                        "departureTime": "05:40",
+                        "arrivalTime": "07:30",
+                        "driverInfo": {
+                            "licensePlate": "34 JL 2522",
+                            "name": "MUSTAFA ÇAM",
+                            "telephone": "5332557320"
+                        },
+                        "stopList": [
+                            {
+                                "id": 1,
+                                "name": "AYDINLI KÖYÜ MUAYNE İSTASYONU"
+                            },
+                            {
+                                "id": 2,
+                                "name": "MANZARA KONUTLARI"
+                            },
+                            {
+                                "id": 3,
+                                "name": "KAVAKPINAR ÜST GECİDİ"
+                            },
+                            {
+                                "id": 4,
+                                "name": "KAYNARCA OTOBÜS DURAĞI"
+                            },
+                            {
+                                "id": 5,
+                                "name": "PENDİK"
+                            },
+                            {
+                                "id": 6,
+                                "name": "KURFALI TAKSİ DURAĞI"
+                            },
+                            {
+                                "id": 7,
+                                "name": "TEM"
+                            },
+                            {
+                                "id": 8,
+                                "name": "PAZARLAMA"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "errorMessage": null
+}
+

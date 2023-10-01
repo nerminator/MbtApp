@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.daimler.biziz.android.ui.main.notification.VMNotification" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".ui.main.notification.NotificationFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+       <RelativeLayout
+           android:id="@+id/toolbar"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+
+           <ImageView
+               android:layout_centerVertical="true"
+               android:layout_alignParentRight="true"
+               android:id="@+id/imgInfo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="8dp"
+               android:padding="5dp"
+               android:layout_marginEnd="14dp"
+               app:srcCompat="@drawable/icn_info"
+               app:layout_constraintBottom_toBottomOf="@+id/tvLogo"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toTopOf="@+id/tvLogo" />
+
+           <com.daimler.biziz.android.uiControls.TextViewRegularCS
+               android:layout_centerInParent="true"
+               android:id="@+id/tvLogo"
+               android:layout_width="wrap_content"
+               android:layout_height="?attr/actionBarSize"
+               android:gravity="center"
+               android:text="@string/TXT_LOGIN_HOME_TAB2"
+               android:textColor="@android:color/white"
+               android:textSize="21.3sp"
+               app:layout_constraintEnd_toStartOf="@+id/imgInfo"
+               app:layout_constraintStart_toEndOf="@+id/imgCallCenter"
+               app:layout_constraintTop_toTopOf="parent" />
+       </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerNotification"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:listitem="@layout/item_notification" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

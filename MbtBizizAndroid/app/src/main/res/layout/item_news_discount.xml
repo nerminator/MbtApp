@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.network.entity.news.News" />
+
+        <variable
+            name="callback"
+            type="com.daimler.biziz.android.adapters.NewsAdapter.NewsItemCallback" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> callback.onNewsClick(data)}"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        tools:background="#1e2536">
+
+
+        <ImageView
+            android:id="@+id/ivDiscountPhoto"
+            android:layout_width="90dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{data.image}" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvNewsTypeName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:loadTextFromDiscountType="@{data.discountType}"
+            android:textAllCaps="true"
+            android:textColor="@color/buttonBackgroundColor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivRightArrow"
+            app:layout_constraintStart_toEndOf="@+id/ivDiscountPhoto"
+            app:layout_constraintTop_toTopOf="@+id/ivDiscountPhoto"
+            tools:text="VEDA" />
+
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvNewsDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="6sp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{data.listText}"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivRightArrow"
+            app:layout_constraintStart_toEndOf="@+id/ivDiscountPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsTypeName"
+            tools:text="Maecenasmollis Interdum VivamusSagittis Lacus " />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:alpha="0.1"
+            android:background="#e7e7e7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDiscountPhoto" />
+
+        <ImageView
+            android:id="@+id/ivRightArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_arrow_right_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

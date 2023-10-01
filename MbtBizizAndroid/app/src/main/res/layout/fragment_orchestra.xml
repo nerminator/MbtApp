@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.daimler.biziz.android.ui.main.orchestra.VmOrchestra" />
+
+        <import type="com.daimler.biziz.android.ui.main.orchestra.flexibleWorkingInfo.FlexibleWorkingActivity"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.orchestra.OrchestraFragment"
+        android:background="@drawable/gradient_background"
+        android:padding="13dp">
+
+        <ImageView
+            android:id="@+id/imgSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_btn_logout" android:padding="2dp"/>
+
+        <ImageView
+            android:id="@+id/imgInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSetting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgSetting"
+            android:src="@drawable/icn_info"
+            android:padding="2dp"/>
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvProfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/TXT_LOGIN_HOME_TAB3"
+            android:textSize="@dimen/page_title_text_size"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSetting"
+            app:layout_constraintEnd_toStartOf="@+id/imgInfo"
+            app:layout_constraintStart_toEndOf="@+id/imgSetting"
+            app:layout_constraintTop_toTopOf="@+id/imgSetting" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@android:color/white"
+            android:text="@{viewmodel.profileEntity.registerNumber}"
+            android:textSize="13.3sp"
+            app:layout_constraintStart_toEndOf="@+id/viewVerticalLine"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfil"
+            tools:text="109XXX" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewmodel.profileEntity.nameSurname}"
+            android:textColor="@android:color/white"
+            android:textSize="27.3sp"
+            app:layout_constraintStart_toStartOf="@+id/tvCode"
+            app:layout_constraintTop_toBottomOf="@+id/tvCode"
+            tools:text="Atakan kersit" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewmodel.profileEntity.title}"
+            android:textColor="@color/tabSelectedColor"
+            android:textSize="15.3sp"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="Android Developer" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvOfficeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/TXT_PROFILE_PROFILE_1ST_SUBTITLE"
+            android:textSize="13.3sp"
+            android:textColor="@color/btnDeActiveTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvOfficeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:textColor="@android:color/white"
+            android:textSize="15.3sp"
+            tools:text="Akasya/Akasya AVM"
+            android:text="@{viewmodel.profileEntity.officeLocation}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOfficeTitle" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvUnitTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="13.3sp"
+            android:textColor="@color/btnDeActiveTextColor"
+            android:text="@string/TXT_PROFILE_PROFILE_2ND_SUBTITLE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOfficeValue" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvUnitValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:textColor="@android:color/white"
+            android:textSize="15.3sp"
+            tools:text="1234-SAP Servis Hizmet Zart Zurt"
+            android:text="@{viewmodel.profileEntity.organizationUnit}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnitTitle" />
+
+      <!--  <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvManagerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/TXT_PROFILE_PROFILE_3RD_SUBTITLE"
+            android:textSize="13.3sp"
+            android:textColor="@color/btnDeActiveTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnitValue" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvManagerValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Mustafa Gun"
+            android:text="@{viewmodel.profileEntity.manager}"
+            android:layout_marginTop="9dp"
+            android:textColor="@android:color/white"
+            android:textSize="15.3sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvManagerTitle" />-->
+
+        <View
+            android:id="@+id/viewLine"
+            android:background="#E7E7E7"
+            android:alpha="0.1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnitValue"
+            />
+
+        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            android:id="@+id/btnWorkInfo"
+            android:background="@color/sixPercentWhite"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="14dp"
+            android:textSize="17.3sp"
+            android:text="@{viewmodel.profileEntity.workHoursText}"
+            android:visibility="@{viewmodel.profileEntity.workHoursAvailable ? View.VISIBLE : View.GONE}"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:drawableStart="@drawable/ic_esnek"
+            android:drawableEnd="@drawable/ic_arrow_right_gray"
+            android:paddingStart="20dp"
+            android:paddingEnd="16dp"
+            android:textAllCaps="false"
+            android:drawablePadding="20dp"
+            android:textAlignment="textStart"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            android:id="@+id/btnWorkCalender"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@color/sixPercentWhite"
+            android:layout_marginTop="15dp"
+            android:text="@string/TXT_PROFILE_PROFILE_2ND_BUTTON"
+            android:textSize="17.3sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWorkInfo"
+            android:textAllCaps="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="16dp"
+            android:drawablePadding="20dp"
+            android:textAlignment="textStart"
+            android:drawableEnd="@drawable/ic_arrow_right_gray"
+            android:drawableStart="@drawable/ic_takvim"/>
+
+        <View
+            android:id="@+id/viewVerticalLine"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="-2dp"
+            android:layout_marginTop="-2dp"
+            android:background="@color/tabSelectedColor"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvCode" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

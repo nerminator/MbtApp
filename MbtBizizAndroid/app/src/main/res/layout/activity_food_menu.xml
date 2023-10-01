@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.daimler.biziz.android.ui.foodMenu.VMFoodMenu"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/food_gradient_bg"
+        tools:context=".ui.foodMenu.FoodMenuActivity"
+        >
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabFood"
+            style="@style/customTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:tabTextAppearance="@style/tabTextAppearance"
+            app:tabTextColor="@color/tabUnSelectedColor"
+            app:tabSelectedTextColor="@android:color/white"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpFood"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/constDensity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabFood" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constDensity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/density_bg_radius"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/imgFirst"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDestinyText"
+                app:layout_constraintEnd_toStartOf="@+id/imgSecond"
+                app:layout_constraintTop_toTopOf="@+id/tvDestinyText"
+                android:src="@drawable/ic_busy_states"
+
+
+
+                />
+
+            <ImageView
+                android:id="@+id/imgThird"
+                android:clickable="false"
+                android:enabled="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDestinyText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvDestinyText"
+                android:src="@drawable/ic_busy_states"
+                />
+
+            <ImageView
+                android:id="@+id/imgSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/tvDestinyText"
+                app:layout_constraintEnd_toStartOf="@+id/imgThird"
+                app:layout_constraintTop_toTopOf="@+id/tvDestinyText"
+                android:src="@drawable/ic_busy_states" />
+
+            <ImageView
+                android:id="@+id/imgArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_arrow_down_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                android:id="@+id/tvDestinyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="@{vm.selectedDensityInfo.LocationName}"
+                app:layout_constraintBottom_toBottomOf="@+id/imgArrow"
+                app:layout_constraintStart_toEndOf="@+id/imgArrow"
+                app:layout_constraintTop_toTopOf="@+id/imgArrow"
+                tools:text="Hoşdere" />
+
+            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                android:id="@+id/tvDestinyText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="2dp"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#80ffffff"
+                android:textSize="16sp"
+                android:text="@{vm.selectedDensityInfo.Text}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgFirst"
+                app:layout_constraintStart_toStartOf="@+id/tvDestinyName"
+                app:layout_constraintTop_toBottomOf="@+id/tvDestinyName"
+                tools:text="Anlık Yemekhane Yoğunluğu" />
+        </android.support.constraint.ConstraintLayout>
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

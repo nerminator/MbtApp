@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        android:padding="14dp"
+        tools:context=".ui.login.LoginFragment">
+
+        <ImageButton
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMainTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvMainTitle"
+            app:srcCompat="@drawable/icn_info" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="32dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:hint="@string/phone_hint"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:text="@={vm.phone}"
+            android:typeface="monospace"
+            app:allowed_chars="@string/allowed_chars"
+            app:char_representation="@string/char_representation"
+            app:keep_hint="false"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            app:mask="@string/phone_mask" />
+
+        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="19dp"
+            android:background="@drawable/button_bg_active_deactive"
+            android:enabled="@{vm.isButtonEnabled}"
+            android:onClick="@{vm::performClick}"
+            android:text="@string/TXT_LOGIN_WELCOME_BUTTON"
+            android:textAllCaps="false"
+            android:textColor="@drawable/button_text_color_state"
+            android:textSize="17.3sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:lineSpacingExtra="7sp"
+            android:text="@string/TXT_LOGIN_WELCOME_DESCRIPTION"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/white"
+            android:textSize="17.3sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="Description" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvMainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="19dp"
+            android:gravity="center"
+            android:text="@string/TXT_MB"
+            android:textColor="@android:color/white"
+            android:textSize="21.3sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/TXT_LOGIN_WELCOME_HEADER"
+            android:textAlignment="textStart"
+            android:textColor="@color/fiftyPercentOpacityTextColor"
+            android:textSize="27.3sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMainTitle"
+            tools:text="@string/TXT_LOGIN_WELCOME_HEADER" />
+    </android.support.constraint.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.daimler.biziz.android.ui.login.VMLogin" />
+    </data>
+</layout>

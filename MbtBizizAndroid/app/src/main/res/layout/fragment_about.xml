@@ -1,0 +1,277 @@
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context="com.daimler.biziz.android.ui.about.AboutFragment">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="7dp">
+
+                <!--Verifier-->
+                <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    android:id="@+id/tvVerifier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="21.7dp"
+                    android:layout_marginStart="21.7dp"
+                    android:text="@string/TXT_ABOUT_HEADER"
+                    android:textColor="@color/fiftyPercentOpacityTextColor"
+                    android:textSize="17.3sp" />
+
+                <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    android:id="@+id/tvMainDescAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="21.7dp"
+                    android:layout_marginStart="21.7dp"
+                    android:text="@string/TXT_ABOUT_MAIN_PROVIDER_INFO"
+                    android:textColor="@color/fiftyPercentOpacityTextColor"
+                    android:textSize="13.3sp" />
+
+
+                <!--App Description-->
+                <RelativeLayout
+                    android:id="@+id/relAppDescriptionAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_APP_DESCRIPTION"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+
+                <!--Terms Of Use-->
+                <RelativeLayout
+                    android:id="@+id/relTermsOfUseAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_TERMS_OF_USE"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+
+                <!--Data Protection-->
+                <RelativeLayout
+                    android:id="@+id/relDataProtectionAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_DATA_PROTECTION"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+
+                <!--Free & Open Source Software-->
+                <RelativeLayout
+                    android:id="@+id/relOpenSourceAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_FOSS"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+
+                <!--Third Party Content-->
+                <RelativeLayout
+                    android:id="@+id/relThirdPartContentAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_3RD_PARTY_CONTENT"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+
+                <!--Legal Notices-->
+                <RelativeLayout
+                    android:id="@+id/relLegalNoticesAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_LEGAL_NOTICES"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+
+                <!--App Support-->
+                <RelativeLayout
+                    android:id="@+id/relAppSupportAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp"
+                    android:paddingEnd="21.7dp"
+                    android:paddingStart="21.7dp">
+
+                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/TXT_ABOUT_MAIN_APP_SUPPORT"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icn_arrow" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="44dp"
+                    android:alpha="0.2"
+                    android:background="@android:color/white" />
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

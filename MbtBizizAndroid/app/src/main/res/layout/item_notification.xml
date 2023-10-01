@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.network.entity.notifications.Notification" />
+        <variable
+            name="callback"
+            type="com.daimler.biziz.android.adapters.NotificationAdapter.NotificationItemCallback" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dp"
+        android:onClick="@{() -> callback.onNotificationItemClick(data)}"
+
+        android:paddingRight="14dp"
+        tools:background="#1e2536">
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/ivReadDot"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/bg_place_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNewsTypeName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvNewsTypeName" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvNewsTypeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:loadTextFromId="@{data.typeName()}"
+            android:textAllCaps="true"
+            android:textColor="@color/buttonBackgroundColor"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/ivReadDot"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="VEDA" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvNewsDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.listText}"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="6sp"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivRightArrow"
+            app:layout_constraintStart_toStartOf="@+id/tvNewsTypeName"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsTypeName"
+            tools:text="Maecenasmollis Interdum VivamusSagittis Lacus " />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="26dp"
+            android:alpha="0.1"
+            android:background="#e7e7e7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewsDesc"/>
+
+        <ImageView
+            android:id="@+id/ivRightArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_arrow_right_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

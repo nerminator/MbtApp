@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="callback"
+            type="com.daimler.biziz.android.adapters.RecentSearchsAdapter.RecentSearchCallback" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> callback.onItemClick(name)}"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@{name}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

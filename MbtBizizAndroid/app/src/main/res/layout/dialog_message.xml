@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_dark"
+            android:padding="22dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title Alani" />
+       <!-- android:background="@color/dialog_top_bar_color"
+        android:fontFamily="@font/turkcellsatura_demi"-->
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-medium"
+            tools:text="Aciklama Alani"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        <!--android:textColor="@color/gray"-->
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            tools:text="Tamam"
+            android:text="@android:string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
+        <!--android:text="@string/ok"
+        style="@style/btn_action_yellow"
+        -->
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

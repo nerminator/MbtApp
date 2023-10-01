@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#15171b</color>
+    <color name="colorPrimaryDark">#15171b</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="appBackground">#20273A</color>
+
+
+    <color name="mainBg1">#181a1d</color>
+    <color name="mainBg2">#1f2531</color>
+    <color name="mainBg3">#2a344b</color>
+
+
+    <color name="fiftyPercentOpacityTextColor">#80ffffff</color>
+    <color name="sixPercentOpacityTextColor">#06ffffff</color>
+
+    <color name="thirtyPercentOpacityTextColor">#4cffffff</color>
+    <color name="buttonBackgroundColor">#00adef</color>
+    <color name="noSeatLeftBg">#999999</color>
+    <color name="twentyPercentWhiteColor">#33ffffff</color>
+    <color name="speakerBackgroundColor">#373a40</color>
+    <color name="sixtyPercentBlack">#99000000</color>
+
+
+    <!--Commmon-->
+
+    <!--Tabs text colors-->
+    <color name="tabUnSelectedColor">#ABADB1</color>
+    <color name="tabSelectedColor">#3BADEF</color>
+    <color name="tablayoutBgColor">#15171b</color>
+
+
+    <!--Button Active && DeActive BackGround-->
+    <color name="btnActiveButtonBgColor">#00adef</color>
+    <color name="btnDeActiveButtonBgColor">#999999</color>
+
+    <!--Button Active && DeActive BackGround-->
+    <color name="btnActiveTextColor">#FFFFFF</color>
+    <color name="btnDeActiveTextColor">#7fffffff</color>
+
+
+    <!--Terms And Cond-->
+    <color name="gradientWhite">#f1f1f1</color>
+
+    <!--Portal-->
+    <color name="portal_menu_item_bg">#3D44506c</color>
+
+    <!--Profile-->
+    <color name="sixPercentWhite">#0fffffff</color>
+
+    <!--Flexible -->
+    <color name="flexible_first_item">#1F2328</color>
+    <color name="flexible_second_item">#181a1d</color>
+    <color name="flexible_year_picker_divider">#ffffff</color>
+
+    <color name="food_menu_gradient_first_item">#1e2536</color>
+    <color name="food_menu_gradient_second_item">#181a1d</color>
+
+    <!--DENSITY -->
+    <color name="density_dialog_bgc">#2E3542</color>
+
+    <!--Calendar-->
+    <color name="dw_home_office">#9013fe</color>
+    <color name="dw_annual_permit">#7ed321</color>
+    <color name="dw_free_permit">#f5a623</color>
+
+    <color name="divider_stoplist">#e7e7e7</color>
+    <color name="item_cause_bg">#03f4f4f4</color>
+
+    <!--settings-->
+    <color name="descriptionColor">#7fffffff</color>
+
+    <color name="alertDialogBg">#424242</color>
+
+    <color name="actionBg1">#181a1d</color>
+    <color name="actionBg2">#181a1d</color>
+    <color name="actionBg3">#181a1e</color>
+
+    <color name="stop_text_color">#4cd3d3d3</color>
+
+    <color name="calendar_header_view">#414141</color>
+
+</resources>

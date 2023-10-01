@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.model.Day" />
+
+        <variable
+            name="callback"
+            type="com.daimler.biziz.android.ui.main.orchestra.schedule.WorkingScheduleFragment.IWorkCalendar" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.daimler.biziz.android.uiControls.SquareCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:onClick="@{()->callback.onItemClicked(data)}">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@{data.today ? @drawable/bg_rounded_today_calendar : null}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@{data.selected ? @drawable/bg_rounded_selected_calendar : null}"/>
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvDayNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="@{data.dayNumber}"
+            android:textColor="@{data.fromCurrentMonth ? @android:color/white : @color/fiftyPercentOpacityTextColor, default=@android:color/white}"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/linearWorkingTypes"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/tvDayNumber"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" />
+    </com.daimler.biziz.android.uiControls.SquareCoordinatorLayout>
+</layout>

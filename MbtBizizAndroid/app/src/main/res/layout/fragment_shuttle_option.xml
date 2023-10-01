@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.daimler.biziz.android.ui.transportation.VMShuttleOption" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.transportation.ShuttleOptionFragment">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvCompanyLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:letterSpacing="0.2"
+            android:lineSpacingExtra="5.3sp"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION"
+            android:textColor="@color/descriptionColor"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/txtChooseLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_nav"
+            android:hint="@string/TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION_PLACEHOLDER"
+            android:includeFontPadding="false"
+            android:paddingBottom="11dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="7dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/fiftyPercentOpacityTextColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCompanyLocation" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvShuttleType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:letterSpacing="0.2"
+            android:lineSpacingExtra="5.3sp"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_TYPE"
+            android:textColor="@color/descriptionColor"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseLocation" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/txtChooseShuttleType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_nav"
+            android:hint="@string/TXT_SHUTTLE_SHUTTLE_TYPE_PLACEHOLDER"
+            android:includeFontPadding="false"
+            android:paddingBottom="11dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="7dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/fiftyPercentOpacityTextColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvShuttleType" />
+
+        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/btnActiveButtonBgColor"
+            android:layout_marginTop="36dp"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:includeFontPadding="false"
+            android:paddingTop="13dp"
+            android:paddingBottom="17dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@android:color/white"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_GO_ON"
+            app:layout_constraintTop_toBottomOf="@+id/txtChooseShuttleType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

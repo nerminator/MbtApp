@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.network.entity.transportation.ShuttleListEntity" />
+
+        <variable
+            name="click"
+            type="com.daimler.biziz.android.ui.transportation.TransportationFragment.IDriverInfo"/>
+
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingEnd="14dp"
+        android:animateLayoutChanges="false"
+        android:paddingStart="20dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/imageMarker"
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/icn_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/textTransportationPoint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:includeFontPadding="false"
+            android:minHeight="0dp"
+            android:text="@{data.name}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/textTransportationTime"
+            app:layout_constraintStart_toEndOf="@id/imageMarker"
+            app:layout_constraintTop_toTopOf="@id/imageMarker" />
+
+        <com.daimler.biziz.android.uiControls.TextViewLightCS
+            android:id="@+id/textTransportationTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:includeFontPadding="false"
+            android:minHeight="0dp"
+            android:text="@{data.departureTime}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/btnTransporationInfo"
+            app:layout_constraintTop_toTopOf="@id/imageMarker" />
+
+        <ImageView
+            android:id="@+id/btnTransporationInfo"
+            android:layout_width="12dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:onClick="@{() -> click.infoClicked(data)}"
+            app:srcCompat="@drawable/ic_callcenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            android:id="@+id/btnRoute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_PATH"
+            android:textColor="@color/buttonBackgroundColor"
+            android:textSize="15sp"
+            android:paddingEnd="10.3dp"
+            app:layout_constraintStart_toStartOf="@id/textTransportationPoint"
+            app:layout_constraintTop_toBottomOf="@+id/textTransportationPoint" />
+
+        <ImageView
+            android:id="@+id/imgArrow"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_arrow_down_blue"
+            app:layout_constraintTop_toTopOf="@+id/btnRoute"
+            app:layout_constraintStart_toEndOf="@+id/btnRoute"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRoute"
+            android:layout_height="0dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerRoute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRoute" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

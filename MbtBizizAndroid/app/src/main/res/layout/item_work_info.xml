@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="data"
+            type="com.daimler.biziz.android.network.entity.flexibleWorkHours.FlexibleItemEntity"/>
+
+        <variable
+            name="textdata"
+            type="com.daimler.biziz.android.network.entity.flexibleWorkHours.FlexibleWorkEntity"/>
+
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@android:color/transparent">
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:textWorkHours="@{data}"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Ocak" />
+
+        <ImageView
+            android:id="@+id/imgArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="13dp"
+            android:src="@drawable/icn_arrow"
+            android:visibility="@{data.month == null ? View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRightValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitle" />
+
+        <com.daimler.biziz.android.uiControls.TextViewLightCS
+            android:id="@+id/tvRightValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="end"
+            android:text="@{data.totalHours}"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/imgArrow"
+            app:layout_constraintTop_toTopOf="@+id/tvTitle"
+            tools:text="2.61" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvTimeList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="#00adef"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="[07:13 - 17:14]"
+            android:text="@{data.hoursText}"
+            android:visibility="@{TextUtils.isEmpty(data.hoursText) ? View.GONE:View.VISIBLE}"
+            />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvPlusTimeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{textdata.plusHoursText +`:`}"
+            android:textColor="#80ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimeList"
+            tools:text="ARTI SAAT:" />
+
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvPlusTimeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPlusTimeTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvPlusTimeTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvPlusTimeTitle"
+            tools:text="2.71"
+            android:text="@{data.plusHours}" />
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvMinusTimeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="#80ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPlusTimeTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvPlusTimeValue"
+            app:layout_constraintTop_toTopOf="@+id/tvPlusTimeTitle"
+            tools:text="EKSİ SAAT:"
+            android:text="@{textdata.minusHoursText +`:`}"/>
+
+
+        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            android:id="@+id/tvMinusTimeValie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPlusTimeTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvMinusTimeTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvPlusTimeTitle"
+            tools:text="0.10"
+            android:text="@{data.minusHours}"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

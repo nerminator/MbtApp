@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.daimler.biziz.android.ui.transportation.VMTransportation" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.transportation.TransportationFragment">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cConstraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/density_dialog_bgc"
+            android:paddingBottom="20dp">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <ImageView
+                android:id="@+id/imageMarker"
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="@+id/txtFromNav"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtFromNav"
+                app:srcCompat="@drawable/icn_location" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtToNav"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtFromNav"
+                app:srcCompat="@drawable/ic_icn_dots" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="@+id/txtToNav"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtToNav"
+                app:srcCompat="@drawable/ic_icn_destination" />
+
+            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                android:id="@+id/txtFromNav"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_nav"
+                android:ellipsize="end"
+                android:hint="@string/TXT_SHUTTLE_SHUTTLE_DEST_PLCH"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:onClick="@{viewmodel::performClickFrom}"
+                android:paddingBottom="11dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="7dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/fiftyPercentOpacityTextColor"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnSwitch"
+                app:layout_constraintStart_toEndOf="@+id/imageMarker"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <ImageView
+                android:id="@+id/imgCloseTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:visibility="gone"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:layout_constraintBottom_toBottomOf="@+id/txtFromNav"
+                app:layout_constraintEnd_toEndOf="@+id/txtFromNav"
+                app:layout_constraintTop_toTopOf="@+id/txtFromNav" />
+
+
+            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                android:id="@+id/txtToNav"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_nav"
+                android:ellipsize="end"
+                android:hint="@string/TXT_SHUTTLE_SHUTTLE_ARRIVAL_PLCH"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:onClick="@{viewmodel::performClickTo}"
+                android:paddingBottom="11dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="7dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/fiftyPercentOpacityTextColor"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnSwitch"
+                app:layout_constraintStart_toEndOf="@+id/imageMarker"
+                app:layout_constraintTop_toBottomOf="@id/txtFromNav" />
+
+            <ImageView
+                android:id="@+id/imgCloseBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:visibility="gone"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:layout_constraintBottom_toBottomOf="@+id/txtToNav"
+                app:layout_constraintEnd_toEndOf="@+id/txtToNav"
+                app:layout_constraintTop_toTopOf="@+id/txtToNav" />
+
+            <ImageView
+                android:id="@+id/btnSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:onClick="@{viewmodel::performClickSwitch}"
+                app:layout_constraintBottom_toBottomOf="@+id/txtToNav"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtFromNav"
+                app:srcCompat="@drawable/ic_btn_switch" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvShuttleDestination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="0sp"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_DESTINATION"
+            android:textColor="@color/fiftyPercentOpacityTextColor"
+            android:visibility="@{viewmodel.viewPagerModeEnabled ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cConstraint" />
+
+        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            android:id="@+id/tvShuttleTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="64dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="0sp"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_TIME"
+            android:textColor="@color/fiftyPercentOpacityTextColor"
+            android:visibility="@{viewmodel.viewPagerModeEnabled ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cConstraint" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabShuttle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/MyMaterialTabTheme"
+            android:visibility="@{viewmodel.viewPagerModeEnabled ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cConstraint" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpShuttle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{viewmodel.viewPagerModeEnabled ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabShuttle" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerShuttle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:visibility="@{viewmodel.viewPagerModeEnabled ? View.GONE : View.VISIBLE}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShuttleDestination" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

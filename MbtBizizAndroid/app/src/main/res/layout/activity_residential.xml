@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2e3542"
+            android:paddingBottom="0dp"
+            tools:context=".ui.residential.ResidentialActivity">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <LinearLayout
+                android:id="@+id/linearPlace"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/bg_place_top"
+                android:orientation="horizontal"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                    android:id="@+id/tvTabFirst"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_place_tab_selector"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:textColor="@drawable/text_color_state_active_place"
+                    android:textSize="15sp"
+                    tools:text="Hoşdere" />
+
+                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                    android:id="@+id/tvTabSecond"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_place_tab_selector"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:textColor="@drawable/text_color_state_active_place"
+                    android:textSize="15sp"
+                    tools:text="Genel Müdürlük" />
+
+                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                    android:id="@+id/tvTabThird"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_place_tab_selector"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:textColor="@drawable/text_color_state_active_place"
+                    android:textSize="15sp"
+                    tools:text="Aksaray" />
+            </LinearLayout>
+
+            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                android:id="@+id/edtSearch"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/bg_nav"
+                android:drawableStart="@drawable/ic_icn_search"
+                android:drawablePadding="12dp"
+                android:gravity="center"
+                android:hint="@string/TXT_LOCATIONS_LOCATIONS_PLACEHOLDER"
+                android:lineSpacingExtra="4sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="#80ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearPlace" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="50dp"
+                android:background="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/split" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/bottom_sheet"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_place_bottom"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="90dp"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                    android:id="@+id/tvBuildNumber"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_place_circle"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    android:id="@+id/tvBuildName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="6dp"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBuildNumber"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/tvBuildNumber"
+                    app:layout_constraintTop_toTopOf="@+id/tvBuildNumber"
+                    tools:text="Bina-1" />
+
+                <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    android:id="@+id/tvBuildRoomCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:paddingBottom="18sp"
+                    android:textColor="@color/fiftyPercentOpacityTextColor"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/tvBuildNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBuildName"
+                    tools:text="6 Toplantı Odası" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="10dp"
+                    android:rotation="180"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBuildRoomCount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_down_gray" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerRooms"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvBuildName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBuildRoomCount" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
