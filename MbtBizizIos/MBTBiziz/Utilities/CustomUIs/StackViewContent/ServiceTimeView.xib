@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ServiceTimeView" customModule="MBTBiziz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="49"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Öğle Yemeği" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJB-B6-6QX" customClass="BaseUILabel" customModule="MBTBiziz" customModuleProvider="target">
+                    <rect key="frame" x="20" y="1" width="102" height="47"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00 - 14:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-Jq-0ty" customClass="BaseUILabel" customModule="MBTBiziz" customModuleProvider="target">
+                    <rect key="frame" x="221" y="1" width="106" height="47"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xJB-B6-6QX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="0bF-Pf-hef"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="K2H-Jq-0ty" secondAttribute="bottom" constant="1" id="Kvf-5t-Yas"/>
+                <constraint firstItem="xJB-B6-6QX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="1" id="MPj-IP-e8b"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="K2H-Jq-0ty" secondAttribute="trailing" constant="20" id="R4G-0x-9tD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xJB-B6-6QX" secondAttribute="bottom" constant="1" id="gdW-Zo-gcK"/>
+                <constraint firstItem="K2H-Jq-0ty" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="1" id="xq1-B2-bZ8"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lblTimeKey" destination="xJB-B6-6QX" id="CdQ-zY-Yxl"/>
+                <outlet property="lblTimeValue" destination="K2H-Jq-0ty" id="x66-g4-ZWr"/>
+            </connections>
+            <point key="canvasLocation" x="-49.5" y="-307.5"/>
+        </view>
+    </objects>
+</document>

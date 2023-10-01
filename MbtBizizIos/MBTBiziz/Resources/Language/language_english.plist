@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>language</key>
+	<dict>
+		<key>TXT_LOGIN_TERMS_WELCOME_ACCEPT</key>
+		<string>Accept</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_REJECT</key>
+		<string>Reject</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TITLE</key>
+		<string>EULA</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TEXT</key>
+		<string>You should accept the terms of use in order to continue otherwise you can close the app if you do not want to accept.</string>
+		<key>TXT_LOGIN_WELCOME_HEADER</key>
+		<string>Welcome</string>
+		<key>TXT_LOGIN_WELCOME_DESCRIPTION</key>
+		<string>Please enter your mobile phone number to sign in the app.</string>
+		<key>TXT_LOGIN_WELCOME_BUTTON</key>
+		<string>Sign in</string>
+		<key>TXT_LOGIN_PIN_TITLE</key>
+		<string>PIN Code</string>
+		<key>TXT_LOGIN_PIN_DESCRIPTION</key>
+		<string>Enter 4 digit PIN code that you received via SMS</string>
+		<key>TXT_LOGIN_PIN_RESEND</key>
+		<string>Resend</string>
+		<key>TXT_LOGIN_PIN_BUTTON</key>
+		<string>Verify</string>
+		<key>TXT_LOGIN_HOME_NEWS</key>
+		<string>Mercedes News</string>
+		<key>TXT_LOGIN_HOME_MAP</key>
+		<string>Location</string>
+		<key>TXT_LOGIN_HOME_SHUTTLE</key>
+		<string>Shuttle</string>
+		<key>TXT_LOGIN_HOME_MENU</key>
+		<string>Meal Menu</string>
+		<key>TXT_LOGIN_HOME_TAB1</key>
+		<string>Portal</string>
+		<key>TXT_LOGIN_HOME_TAB2</key>
+		<string>Notifications</string>
+		<key>TXT_LOGIN_HOME_TAB3</key>
+		<string>My Profile</string>
+		<key>TXT_LOGIN_SUPPORT_TITLE</key>
+		<string>Technical Support</string>
+		<key>TXT_LOGIN_SUPPORT_DESCRIPTION</key>
+		<string>For system problems</string>
+		<key>TXT_LOGIN_SUPPORT_LABEL1</key>
+		<string>Phone</string>
+		<key>TXT_LOGIN_SUPPORT_LABEL2</key>
+		<string>Int</string>
+		<key>TXT_LOGIN_SUPPORT_LABEL3</key>
+		<string></string>
+		<key>TXT_LOGIN_SUPPORT_PHONE1</key>
+		<string>0 212 400 20 44</string>
+		<key>TXT_LOGIN_SUPPORT_PHONE2</key>
+		<string>-</string>
+		<key>TXT_LOGIN_SUPPORT_BUTTON</key>
+		<string>Call</string>
+		<key>TXT_LOGIN_SUPPORT_CLOSE</key>
+		<string>Close</string>
+		<key>TXT_LOGIN_NEWS_TITLE</key>
+		<string>Mercedes News</string>
+		<key>TXT_LOGIN_NEWS_TYPE1</key>
+		<string>All</string>
+		<key>TXT_LOGIN_NEWS_TYPE2</key>
+		<string>Events</string>
+		<key>TXT_LOGIN_NEWS_TYPE3</key>
+		<string>Discounts</string>
+		<key>TXT_LOGIN_NEWS_TYPE4</key>
+		<string>Farewell</string>
+		<key>TXT_LOGIN_NEWS_TYPE5</key>
+		<string>Decease</string>
+		<key>TXT_LOGIN_NEWS_TYPE6</key>
+		<string>Other</string>
+		<key>TXT_LOGIN_NEWS_TYPE7</key>
+		<string>News</string>
+		<key>TXT_LOGIN_NEWS_TYPE8</key>
+		<string>Links</string>
+		<key>TXT_LOGIN_NEWS_TYPE9</key>
+		<string>Contacts</string>
+		<key>TXT_LOGIN_NEWS_BIRTHDAY</key>
+		<string>Born Today</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE1</key>
+		<string>Categories</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE2</key>
+		<string>Education and Personel Development</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE3</key>
+		<string>Event and Entertainment</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE4</key>
+		<string>Home and Life</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE5</key>
+		<string>Gastronomy and Food</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE6</key>
+		<string>Real Estate</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE7</key>
+		<string>Clothing and Fashion</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE8</key>
+		<string>Automotive</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE9</key>
+		<string>Health and Sports</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE10</key>
+		<string>Sport and Life Centers</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE11</key>
+		<string>Cleaning and Care Services</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE14</key>
+		<string>Technology and Telecom</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE12</key>
+		<string>Tourism and Car Rental</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE13</key>
+		<string>Other</string>
+		<key>TXT_MENU_MENU_TITLE</key>
+		<string>Meal Menu</string>
+		<key>TXT_MENU_MENU_CALORIE</key>
+		<string>CALORIE</string>
+		<key>TXT_MENU_MENU_OK</key>
+		<string>Ok</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TITLE</key>
+		<string>Shuttle</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TAB1</key>
+		<string>Staff</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TAB2</key>
+		<string>Ring</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TAB3</key>
+		<string>Other</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DEST_PLCH</key>
+		<string>Departure...</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DESTINATION</key>
+		<string>DEPARTURE</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TIME</key>
+		<string>D.TIME</string>
+		<key>TXT_SHUTTLE_SHUTTLE_PATH</key>
+		<string>ROUTE</string>
+		<key>TXT_SHUTTLE_SHUTTLE_ARRIVAL_PLCH</key>
+		<string>Arrival...</string>
+		<key>TXT_SHUTTLE_SHUTTLE_ARRIVAL</key>
+		<string>ARRIVAL</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DRIVER_INFO</key>
+		<string>Driver Info</string>
+		<key>TXT_SHUTTLE_SHUTTLE_CALL</key>
+		<string>Call</string>
+		<key>TXT_SHUTTLE_SHUTTLE_CLOSE</key>
+		<string>Close</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DRIVER</key>
+		<string>Driver</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TEL</key>
+		<string>Phone</string>
+		<key>TXT_NOTIFICATIONS_NOTIFICATIONS_TITLE</key>
+		<string>Notifications</string>
+		<key>TXT_LOCATIONS_LOCATIONS_TITLE</key>
+		<string>Location</string>
+		<key>TXT_LOCATIONS_LOCATIONS_PLACEHOLDER</key>
+		<string>Search Location...</string>
+		<key>TXT_LOCATIONS_SEARCH_TITLE</key>
+		<string>SEARCH RESULT</string>
+		<key>TXT_LOCATIONS_SEARCH_RESULTS_TITLE</key>
+		<string>Search Result</string>
+		<key>TXT_PROFILE_PROFILE_TITLE</key>
+		<string>My Profile</string>
+		<key>TXT_PROFILE_PROFILE_1ST_SUBTITLE</key>
+		<string>LOCATION / BRANCH</string>
+		<key>TXT_PROFILE_PROFILE_2ND_SUBTITLE</key>
+		<string>COST CENTER / ORG. UNIT / COMPANY CODE</string>
+		<key>TXT_PROFILE_PROFILE_3RD_SUBTITLE</key>
+		<string>MANAGER</string>
+		<key>TXT_PROFILE_PROFILE_1ST_BUTTON_WHITE</key>
+		<string>Flexible Working Hours</string>
+		<key>TXT_PROFILE_PROFILE_1ST_BUTTON_BLUE</key>
+		<string>Additional Work</string>
+		<key>TXT_PROFILE_PROFILE_2ND_BUTTON</key>
+		<string>Work Calendar</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_WHITE</key>
+		<string>Flexible Working Hours</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_BLUE</key>
+		<string>Additional Work</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_YEAR</key>
+		<string>Year</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_OK</key>
+		<string>Ok</string>
+		<key>TXT_PROFILE_SETTINGS_TITLE</key>
+		<string>Settings</string>
+		<key>TXT_PROFILE_SETTINGS_SUBTITLE</key>
+		<string>NOTIFICATION SETTINGS</string>
+		<key>TXT_PROFILE_SETTINGS_BUTTON</key>
+		<string>Sign out</string>
+		<key>TXT_PROFILE_CALENDAR_TITLE</key>
+		<string>Work Calendar</string>
+		<key>TXT_PROFILE_CALENDAR_DAY1</key>
+		<string>MO</string>
+		<key>TXT_PROFILE_CALENDAR_DAY2</key>
+		<string>TU</string>
+		<key>TXT_PROFILE_CALENDAR_DAY3</key>
+		<string>WE</string>
+		<key>TXT_PROFILE_CALENDAR_DAY4</key>
+		<string>TH</string>
+		<key>TXT_PROFILE_CALENDAR_DAY5</key>
+		<string>FR</string>
+		<key>TXT_PROFILE_CALENDAR_DAY6</key>
+		<string>SA</string>
+		<key>TXT_PROFILE_CALENDAR_DAY7</key>
+		<string>SU</string>
+		<key>TXT_NO_INTERNET</key>
+		<string>Please check your internet connection and try again.</string>
+		<key>TXT_COMMON_WARNING</key>
+		<string>Warning</string>
+		<key>TXT_COMMON_JAILBREAK</key>
+		<string>The app cannot be used on jailbroken devices.</string>
+		<key>TXT_COMMON_MARCH</key>
+		<string>March</string>
+		<key>TXT_COMMON_INFO</key>
+		<string>Information</string>
+		<key>TXT_LOCATIONS_LOCATIONS_MEETING_ROOM</key>
+		<string>Meeting Room</string>
+		<key>TXT_COMMON_APRIL</key>
+		<string>April</string>
+		<key>TXT_SHUTTLE_SHUTTLE_GO_ON</key>
+		<string>Continue</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_TITLE</key>
+		<string>Terms Of Use</string>
+		<key>TXT_SHUTTLE_SEARCH_RESULT</key>
+		<string>SEARCH RESULT</string>
+		<key>TXT_ABOUT_MAIN_DATA_PROTECTION</key>
+		<string>Data Protection</string>
+		<key>TXT_COMMON_OCTOBER</key>
+		<string>October</string>
+		<key>TXT_COMMON_CANCEL2</key>
+		<string>Cancel</string>
+		<key>TXT_COMMON_DONE</key>
+		<string>Ok</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DESTINATION_SMALL</key>
+		<string>Destination</string>
+		<key>TXT_COMMON_ANNOUNCEMENT</key>
+		<string>News</string>
+		<key>TXT_SETTINGS_NAV</key>
+		<string>Settings</string>
+		<key>TXT_SHUTTLE_SEARCH_LATEST_SEARCH</key>
+		<string>LATEST SEARCHS</string>
+		<key>TXT_COMMON_AUGUST</key>
+		<string>August</string>
+		<key>TXT_COMMON_ERROR</key>
+		<string>Error</string>
+		<key>TXT_ABOUT_MAIN_APP_SUPPORT</key>
+		<string>App Support</string>
+		<key>TXT_COMMON_FEBRUARY</key>
+		<string>February</string>
+		<key>TXT_COMMON_NO</key>
+		<string>No</string>
+		<key>TXT_PROFILE_SETTINGS_QUIT_WARNING</key>
+		<string>Are you sure you want to sign out?</string>
+		<key>TXT_ABOUT_MAIN_3RD_PARTY_CONTENT</key>
+		<string>Third Party Content</string>
+		<key>TXT_COMMON_CLOSE</key>
+		<string>Close</string>
+		<key>TXT_COMMON_JULY</key>
+		<string>July</string>
+		<key>TXT_COMMON_MAY</key>
+		<string>May</string>
+		<key>TXT_COMMON_YES</key>
+		<string>Yes</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TYPE</key>
+		<string>SHUTTLE TYPE</string>
+		<key>TXT_COMMON_JUNE</key>
+		<string>June</string>
+		<key>TXT_COMMON_DELETE</key>
+		<string>Delete</string>
+		<key>TXT_SETTINGS_HEADER</key>
+		<string>NOTIFICATION SETTINGS</string>
+		<key>TXT_COMMON_CANCEL</key>
+		<string>Cancel</string>
+		<key>TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION</key>
+		<string>COMPANY LOCATION</string>
+		<key>TXT_ABOUT_MAIN_APP_DESCRIPTION</key>
+		<string>App Description</string>
+		<key>TXT_SHUTTLE_SHUTTLE_ARRIVAL_SMALL</key>
+		<string>Arrival</string>
+		<key>TXT_COMMON_DECEMBER</key>
+		<string>December</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TYPE_PLACEHOLDER</key>
+		<string>Select Shuttle Type</string>
+		<key>TXT_COMMON_JANUARY</key>
+		<string>January</string>
+		<key>TXT_ABOUT_MAIN_TERMS_OF_USE</key>
+		<string>Terms Of Use</string>
+		<key>TXT_ABOUT_MAIN_LEGAL_NOTICES</key>
+		<string>Legal Notices</string>
+		<key>TXT_ABOUT_MAIN_FOSS</key>
+		<string>Free &amp; Open Source Software</string>
+		<key>TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION_PLACEHOLDER</key>
+		<string>Select Company Location</string>
+		<key>TXT_COMMON_UPDATING</key>
+		<string>Updating...</string>
+		<key>TXT_COMMON_SEPTEMBER</key>
+		<string>September</string>
+		<key>TXT_PROFILE_CALENDAR_TODAY</key>
+		<string>Today</string>
+		<key>TXT_MENU_MENU_DENSITY</key>
+		<string>Real time cafeteria density</string>
+		<key>TXT_ABOUT_HEADER</key>
+		<string>PROVIDER</string>
+		<key>TXT_ABOUT_NAV</key>
+		<string>About</string>
+		<key>TXT_MENU_MENU_TIMES</key>
+		<string>Cafeteria Times</string>
+		<key>TXT_COMMON_NOVEMBER</key>
+		<string>November</string>
+		<key>TXT_ABOUT_MAIN_PROVIDER_INFO</key>
+		<string>Mercedes-Benz Türk A.Ş.
+Akçaburgaz Mahallesi,
+Süleyman Şah Caddesi, No:2
+34522 Esenyurt, İstanbul
+
+Telephone:0212 867 30 00 pbx
+mbt_app@daimlertruck.com
+
+
+Mercedes-Benz Türk Board of Management
+
+Süer Sülün - Mercedes-Benz Türk Chief Executive Officer (CEO)
+Bülent Acicbe - Mercedes-Benz Türk Executive Vice President Production Bus
+Tülin Mede Esmer - Mercedes-Benz Türk Chief Financial Officer (CFO)
+Ulf Raese – Mercedes-Benz Türk Aksaray Plant Head of Operations &amp; Member of the Board     
+
+Commercial Register Number: 94468
+VAT Identification Number: 7-9159-7212-1615130
+
+Copyright 2018-2023 Mercedes-Benz Türk A.Ş. 
+All Rights Reserved.</string>
+		<key>TXT_INFO_NOTIFICATION</key>
+		<string>Do you want this app to send push messages informing you about company news (such as events, discounts)? 
+You can deactivate or reactivate these push notifications at any time by:
+  BizİZ App-&gt; My Profile-&gt; Settings-&gt;Event Notifications or 
+  BizİZ App-&gt; My Profile-&gt; Settings-&gt;Discount Notifications.
+You can also activate/deactivate push notifications at any time by IOS Settings-&gt;Notifications-&gt;BizİZ</string>
+		<key>TXT_SETTINGS_DEVICE_BUTTON</key>
+		<string>Go To Device Settings</string>
+		<key>TXT_SETTINGS_NOT_GRANTED_NOTIFICATIONS</key>
+		<string>Notifications are disabled in device&apos;s settings page. You can enable notifications from IOS Settings-&gt;BizİZ-&gt;Notifications page.</string>
+		<key>TXT_COMMON_TODAY</key>
+		<string>TODAY</string>
+		<key>TXT_QR_CODE_TITLE</key>
+		<string>Scan QR Code</string>
+		<key>TXT_QR_CODE_DESC</key>
+		<string>Scan QR Code for reservation
+of meeting room</string>
+		<key>TXT_QR_CODE_POPUP_TITLE_SUCCESS</key>
+		<string>Success!</string>
+		<key>TXT_QR_CODE_POPUP_TITLE_FAIL</key>
+		<string>Failure!</string>
+		<key>TXT_QR_CODE_POPUP_DESC_SUCCESS</key>
+		<string>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</string>
+		<key>TXT_QR_CODE_POPUP_DESC_FAIL</key>
+		<string>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</string>
+		<key>TXT_QR_CODE_POPUP_BUTTON_RETRY</key>
+		<string>Try Again</string>
+		<key>TXT_QR_CODE_POPUP_BUTTON_RETURN</key>
+		<string>Return to Portal</string>
+	</dict>
+</dict>
+</plist>
