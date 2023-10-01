@@ -13,3 +13,15 @@ yarn-error.log
 .env
 app/Http/Controllers/Auth/RegisterController.php
 resources/views/auth/register.blade.php
+/bootstrap/compiled.php
+/vendor
+/build/logs
+/build/coverage
+/app/tests/_log
+composer.phar
+.DS_Store
+/.idea
+/_ide_helper.php
+/app/config/packages
+/public/packages
+/node_modules
