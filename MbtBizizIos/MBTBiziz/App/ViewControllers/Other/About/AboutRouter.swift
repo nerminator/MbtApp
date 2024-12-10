@@ -11,6 +11,7 @@ import UIKit
 protocol AboutRoutingLogic
 {
     func routeToTermOfUse(_ htmlType: HtmlType)
+    func routeToAppDescription()
 }
 
 protocol AboutDataPassing
@@ -25,11 +26,14 @@ class AboutRouter: NSObject, AboutRoutingLogic, AboutDataPassing
     
     //MARK : Routing
     
+    func routeToAppDescription() {
+        let appDescVc = AppDescriptionViewController.fromStoryboard(.appDescription)
+        viewController?.navigationController?.pushViewController(appDescVc, animated: true)
+    }
     func routeToTermOfUse(_ htmlType: HtmlType) {
         let termsOfUse = TermOfUseViewController.fromStoryboard(.termsOfUse)
         termsOfUse.termsOfUseType = .info
         termsOfUse.htmlType = htmlType
         viewController?.navigationController?.pushViewController(termsOfUse, animated: true)
     }
-    
 }

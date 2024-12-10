@@ -19,7 +19,10 @@ protocol NewsDetailBusinessLogic
     func validateInputs(request : NewsDetail.Validate.Request)
     func reloadPage(request : NewsDetail.Reload.Request)
     func sendData(request : NewsDetail.SendData.Request)
+    func getUserDiscountCode(request : NewsDetail.GetUserDiscountCode.Request)
+    
     var newsDetail : MBTNewsDetailResponse? { get set }
+    var userDiscoutCode : MBTGetDiscountCodeResponse? { get set }
     var newsDetailContent : [NewsDetailItem] { get set }
     
     var hasImage : Bool { get }
@@ -36,10 +39,11 @@ class NewsDetailInteractor: NewsDetailBusinessLogic, NewsDetailDataStore
     var worker = NewsDetailWorker()
     var listItem: NewsProtocol?
     var newsDetail: MBTNewsDetailResponse?
+    var userDiscoutCode: MBTGetDiscountCodeResponse?
     var newsDetailContent: [NewsDetailItem] = []
     
     var hasImage: Bool {
-        return newsDetail?.image != nil && !(newsDetail?.image)!.isEmpty
+        return newsDetail?.images != nil && newsDetail!.images!.count > 0
     }
     
     func initializeView(request : NewsDetail.Initialize.Request) {
@@ -67,7 +71,20 @@ class NewsDetailInteractor: NewsDetailBusinessLogic, NewsDetailDataStore
             if let title = response?.subTitle, let content = response?.subText, !title.isEmpty, !content.isEmpty {
                 self?.newsDetailContent.append(NewsDetailItem.init(title: title, content: content))
             }
+            
             self?.presenter?.presentSendDataResult(response : NewsDetail.SendData.Response())
         }
     }
+    
+    func getUserDiscountCode(request : NewsDetail.GetUserDiscountCode.Request) {
+        guard let identifier = listItem?.identifier else { return }
+        worker.getDiscountCode(identifier) { [weak self] (response) in
+            if let res = response {
+                self?.presenter?.presentGetUserDiscountResult(response : res)
+            } else {
+                self?.presenter?.presentNoDiscountResult()
+            }
+        }
+    }
+    
 }

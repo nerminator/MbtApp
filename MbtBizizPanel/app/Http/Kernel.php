@@ -20,6 +20,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\FrameHeadersMiddleware::class,
+        \App\Http\Middleware\HttpRedirect::class,
+        \App\Http\Middleware\HSTS::class,
+        \Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class
     ];
 
     /**
@@ -32,14 +35,14 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
         'api' => [
-            'throttle:60,1',
+            'throttle:60,5',
             'bindings',
         ],
     ];
@@ -60,6 +63,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'password_expired' => \App\Http\Middleware\PasswordExpired::class
+        'password_expired' => \App\Http\Middleware\PasswordExpired::class,
+        'azure' => \App\Http\Middleware\AppAzure::class
     ];
 }

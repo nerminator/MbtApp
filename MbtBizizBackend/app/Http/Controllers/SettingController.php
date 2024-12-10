@@ -89,8 +89,8 @@ class SettingController extends Controller
         }
         //endregion
 
-        $type = Input::get('type');
-        $value = Input::get('value');
+        $type = $request->input('type');
+        $value = $request->input('value');
 
         switch ($type)
         {

@@ -33,6 +33,7 @@ class DeleteUsersJob extends Job
      */
     public function handle()
     {
+	Log::info("Delete users started!");
         DB::beginTransaction();
         try {
             $userList = DB::table('users')->where('status', 0)->select(['id', 'register_number'])->get()->toArray();
@@ -53,6 +54,8 @@ class DeleteUsersJob extends Job
                     $userList
                 );
                 Log::info("Deleted user register number list: " . implode(",", $registerNumberList));
+            } else {
+                Log::info("No users deleted today");
             }
 
             DB::commit();

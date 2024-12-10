@@ -31,6 +31,9 @@ enum Storyboard : String {
         case termsOfUse = "termsOfUseVC"
         case webview = "webviewVC"
         case about = "aboutVC"
+        case aboutUs = "aboutUsVC"
+        case socialmedia = "socialmediaVC"
+        case appfeedback = "appfeedbackVC"
         case settings = "settingsVC"
         case activationCode = "activationCodeVC"
         case home = "homeVC"
@@ -54,17 +57,23 @@ enum Storyboard : String {
         case location = "locationVC"
         case locationSearch = "locationSearchVC"
         case locationResult = "locationResultVC"
+        case links = "linksVC"
+        case clubsLoc = "clubsLocVC"
+        case clubs = "clubsVC"
+        case phonesLoc = "phonesLocVC"
+        case phones = "phonesVC"
+        case appDescription = "appDescriptionVC"
         
         //Storyboards owning viewcontrollers
         var storyboardName : Storyboard {
             switch self {
-            case .tabbar:
+            case .tabbar, .aboutUs, .socialmedia, .appfeedback, .appDescription:
                 return .main
             case .welcomeNav, .activationCode:
                 return .login
             case .notif:
                 return notifications
-            case .home, .news, .newsDetail, .birthdayList:
+            case .home, .news, .newsDetail, .birthdayList, .links, .clubsLoc, .clubs, .phones, .phonesLoc:
                 return .portalNews
             case .popupContainer, .technicalSupport, .driverInfo:
                 return .popups

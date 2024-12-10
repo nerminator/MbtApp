@@ -21,9 +21,9 @@ class ExpiredPasswordController
     public function postExpired(PasswordExpiredRequest $request)
     {
         // Checking current password
-        if (!Hash::check($request->current_password, $request->user()->password)) {
-            return redirect()->back()->withErrors(['current_password' => 'Mevcut şifre hatalı.']);
-        }
+        //if (!Hash::check($request->current_password, $request->user()->password)) {
+        //    return redirect()->back()->withErrors(['current_password' => 'Mevcut şifre hatalı.']);
+        //}
 
         $request->user()->update([
             'password' => bcrypt($request->password),

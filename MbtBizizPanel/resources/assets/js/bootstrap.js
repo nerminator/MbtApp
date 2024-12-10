@@ -1,7 +1,7 @@
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
-
+window.select2 = require('select2');
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

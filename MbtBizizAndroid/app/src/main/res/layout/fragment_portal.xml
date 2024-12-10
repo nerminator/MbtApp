@@ -5,14 +5,10 @@
 
     <data>
 
-        <variable
-            name="viewmodel"
-            type="com.daimler.biziz.android.ui.main.portal.VMPortal" />
-
         <import type="android.view.View" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +16,7 @@
         android:paddingStart="14dp"
         android:paddingEnd="14dp"
         android:paddingBottom="14dp"
-        tools:context=".ui.main.portal.PortalFragment">
+        tools:context=".ui.main.portal.MenuFragment">
 
 
         <ImageView
@@ -30,10 +26,10 @@
             android:layout_marginBottom="8dp"
             android:padding="5dp"
 
-            app:srcCompat="@drawable/ic_callcenter"
             app:layout_constraintBottom_toBottomOf="@+id/tvLogo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvLogo" />
+            app:layout_constraintTop_toTopOf="@+id/tvLogo"
+            app:srcCompat="@drawable/ic_callcenter" />
 
         <ImageView
             android:id="@+id/imgInfo"
@@ -41,16 +37,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/icn_info"
             app:layout_constraintBottom_toBottomOf="@+id/tvLogo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvLogo" />
+            app:layout_constraintTop_toTopOf="@+id/tvLogo"
+            app:srcCompat="@drawable/icn_info" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
             android:id="@+id/tvLogo"
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize"
-
             android:gravity="center"
             android:text="@string/TXT_MB"
             android:textColor="@android:color/white"
@@ -59,268 +54,22 @@
             app:layout_constraintStart_toEndOf="@+id/imgCallCenter"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cardNews"
-            android:layout_width="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPortal"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/menu_radius_bg"
-
-            app:layout_constraintBottom_toTopOf="@+id/cardTransportation"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLogo" >
-
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/img_haberler"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                 />
-
-
-                <ImageView
-                    android:id="@+id/idIconNews"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:src="@drawable/ic_icn_haberler"
-                    app:layout_constraintBottom_toTopOf="@+id/guidelineNews"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    tools:src="@drawable/ic_icn_haberler" />
-
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
-                    android:id="@+id/tvNameNews"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/TXT_LOGIN_HOME_NEWS"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintTop_toBottomOf="@id/guidelineNews"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="@string/TXT_LOGIN_HOME_NEWS" />
-
-                <android.support.constraint.Guideline
-                    android:id="@+id/guidelineNews"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent=".66" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cardPlace"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/menu_radius_bg"
-
-            app:layout_constraintBottom_toTopOf="@+id/cardEatingMenu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-            app:layout_constraintTop_toTopOf="@+id/cardNews">
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/img_yerlesim"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-                <ImageView
-                    android:id="@+id/idIconPlace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="15dp"
-                    android:src="@drawable/ic_icn_yerlesim"
-                    app:layout_constraintBottom_toTopOf="@+id/guidelinePlace"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/ic_icn_yerlesim" />
-
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
-                    android:id="@+id/tvNamePlace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-
-                    android:text="@string/TXT_LOGIN_HOME_MAP"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintTop_toBottomOf="@id/guidelinePlace"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="@string/TXT_LOGIN_HOME_MAP" />
-
-                <android.support.constraint.Guideline
-                    android:id="@+id/guidelinePlace"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent=".66" />
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cardTransportation"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/menu_radius_bg"
-            app:cardCornerRadius="2dp"
-
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cardNews"
-            app:layout_constraintStart_toStartOf="@+id/cardNews"
-            app:layout_constraintTop_toBottomOf="@+id/cardNews" >
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/img_ulasim"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-                <ImageView
-                    android:id="@+id/idIconTransportation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+            tools:listitem="@layout/item_portal_menu"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="9"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogo"/>
 
-                    android:src="@drawable/ic_icn_ulasim"
-                    app:layout_constraintBottom_toTopOf="@+id/guidelineTransportation"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    tools:src="@drawable/ic_icn_ulasim" />
-
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
-                    android:id="@+id/tvNameTransportation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-
-                    android:text="@string/TXT_LOGIN_HOME_SHUTTLE"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintTop_toBottomOf="@id/guidelineTransportation"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="@string/TXT_LOGIN_HOME_SHUTTLE" />
-
-                <android.support.constraint.Guideline
-                    android:id="@+id/guidelineTransportation"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent=".66" />
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cardEatingMenu"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/menu_radius_bg"
-            app:cardCornerRadius="2dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cardPlace"
-            app:layout_constraintStart_toStartOf="@+id/cardPlace"
-            app:layout_constraintTop_toBottomOf="@+id/cardPlace" >
-            <ImageView
-                android:scaleType="centerCrop"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/img_yemek"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-                <ImageView
-                    android:id="@+id/idIconEatingMenu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-
-                    android:src="@drawable/ic_icn_yemek"
-                    app:layout_constraintBottom_toTopOf="@+id/guidelineEatingMenu"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    tools:src="@drawable/ic_icn_yemek" />
-
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
-                    android:id="@+id/tvNameEatingMenu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-
-                    android:text="@string/TXT_LOGIN_HOME_MENU"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintTop_toBottomOf="@+id/guidelineEatingMenu"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <android.support.constraint.Guideline
-                    android:id="@+id/guidelineEatingMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent=".66" />
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineVertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

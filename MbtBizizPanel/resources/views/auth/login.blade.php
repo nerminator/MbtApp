@@ -11,7 +11,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default" style="background-color: #000000; border-color: #000000">
                     <div class="panel-heading" style="background-color: #000000; border-color: #000000; color:#ffffff; text-align: center; padding-bottom: 50px;">
-                        <img src="{{ URL::asset('img/logo.png') }}" style="margin-left: 50px;">
+                        <img src="{{ URL::asset('img/logo4.png" style="margin-left: -42px;') }}" style="margin-left: 50px;">
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">

@@ -25,4 +25,9 @@ class NewsDetailWorker
     func getNewsDetail(_ identifier:Int, completion:@escaping (_ response : MBTNewsDetailResponse?)->()) {
         WSProvider.shared.wsRequest(.getNewsDetail(identifier: identifier), map: completion)
     }
+    
+    func getDiscountCode(_ identifier:Int, completion:@escaping (_ response :
+                                            MBTGetDiscountCodeResponse?)->()) {
+        WSProvider.shared.wsRequest(.getDiscountCode(identifier: identifier), map: completion)
+    }
 }

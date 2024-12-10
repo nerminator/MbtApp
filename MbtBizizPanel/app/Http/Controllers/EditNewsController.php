@@ -23,11 +23,16 @@ class EditNewsController extends Controller
      */
     public function index($id)
     {
+        $newsData = NewsController::getNews($id); 
         $emp = NewsController::getEmployeeTypeList();
         $compL = NewsController::getLocationList();
         $compC = NewsController::getCompanyList();
 
-        return view('editnews', ['id' => $id])->with('emp', json_decode($emp, true))->with('compL', json_decode($compL, true))->with('compC', json_decode($compC, true));
+        return view('editnews', ['id' => $id])
+                    ->with('newsData', $newsData)
+                    ->with('emp', json_decode($emp, true))
+                    ->with('compL', json_decode($compL, true))
+                    ->with('compC', json_decode($compC, true));
     }
 
 }

@@ -52,6 +52,10 @@ class AboutViewController: MBTBaseViewController, AboutDisplayLogic
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
     }
+    @IBAction func appFeedbackClicked(_ sender: Any) {
+        let af = AppFeedbackViewController.fromStoryboard(.appfeedback)
+        self.navigationController?.pushViewController(af, animated: true)
+    }
 }
 
 extension AboutViewController {
@@ -75,6 +79,8 @@ extension AboutViewController {
     func displayReloadPageResult(viewModel : About.Reload.ViewModel) { }
     
     func displaySendDataResult(viewModel : About.SendData.ViewModel) { }
+    
+    
 }
 
 extension AboutViewController : UITableViewDelegate, UITableViewDataSource {
@@ -93,6 +99,7 @@ extension AboutViewController : UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 {
             if descriptionCell == nil {
                 descriptionCell = tableView.dequeueReusableCell(withIdentifier: AboutDescriptionCell.className, for: indexPath) as? AboutDescriptionCell
+                descriptionCell?.aboutTextView.text = MBTConstants.aboutText
             }
             return descriptionCell!
         } else if indexPath.row == arrVerifiers.count + 2 {
@@ -107,7 +114,12 @@ extension AboutViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if tableView.cellForRow(at: indexPath) is AboutVerifierCell {
-            router?.routeToTermOfUse(arrVerifiers[indexPath.row - 2])
+            let cellType = arrVerifiers[indexPath.row - 2]
+            if cellType == .appDescription {
+                router?.routeToAppDescription()
+            }else {
+                router?.routeToTermOfUse(cellType)
+            }
         }
     }
     

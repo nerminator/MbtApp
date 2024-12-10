@@ -3,9 +3,9 @@
 <data>
     <variable
         name="data"
-        type="com.daimler.biziz.android.network.entity.food.DetailList"/>
+        type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.DetailList"/>
 </data>
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,11 +13,11 @@
         app:cardBackgroundColor="#282C38"
         app:cardCornerRadius="12dp">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="96dp"
             android:layout_height="match_parent">
 
-            <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/tvValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,9 +49,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </layout>

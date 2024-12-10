@@ -12,7 +12,7 @@ protocol SettingsBusinessLogic
 {
     func initializeView(request : Settings.Initialize.Request)
     func validateInputs(request : Settings.Validate.Request)
-    func reloadPage(request : Settings.Reload.Request)
+    func reloadPage(parentVC:UIViewController, request : Settings.Reload.Request)
     func sendData(request : Settings.SendData.Request)
     
     var settingList : [MBTSettingsNotificationSettingList] { get }
@@ -40,10 +40,10 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
         presenter?.presentValidateInputs(response: Settings.Validate.Response())
     }
     
-    func reloadPage(request : Settings.Reload.Request) {
-        worker.signout { [weak self] in
+    func reloadPage(parentVC:UIViewController, request : Settings.Reload.Request) {
+        worker.signout(parentVC, { [weak self] in
             self?.presenter?.presentReloadPageResult(response : Settings.Reload.Response())
-        }
+        })
     }
     
     func sendData(request : Settings.SendData.Request) {

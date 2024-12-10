@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,6 +105,15 @@
                                     <constraint firstItem="nrw-UD-A4G" firstAttribute="top" secondItem="Trs-L5-pCK" secondAttribute="top" id="zlW-EI-3OD"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MlG-7y-Y73">
+                                <rect key="frame" x="132" y="337" width="111" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="OIDC Login"/>
+                                <connections>
+                                    <segue destination="QNB-IK-91y" kind="show" id="b7I-fV-Nmb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kwP-iP-9K8"/>
                         <color key="backgroundColor" red="0.16862745100000001" green="0.21176470589999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -290,10 +299,10 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
-                                        <include reference="aSI-ZH-SUX"/>
-                                        <include reference="jJy-sJ-SHB"/>
                                         <exclude reference="kX9-nP-mgm"/>
                                         <exclude reference="uv4-14-oQ4"/>
+                                        <include reference="aSI-ZH-SUX"/>
+                                        <include reference="jJy-sJ-SHB"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -349,16 +358,81 @@
             <objects>
                 <navigationController storyboardIdentifier="welcomeNav" id="u3K-nC-knZ" customClass="SignInNavCon" customModule="MBTBiziz" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXj-zp-Zj9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="e0t-qu-cAR" kind="relationship" relationship="rootViewController" id="FGG-cX-qXK"/>
+                        <segue destination="QNB-IK-91y" kind="relationship" relationship="rootViewController" id="XCt-jw-uPA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9i-1Q-Omy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-492" y="43"/>
+            <point key="canvasLocation" x="-607" y="-480"/>
+        </scene>
+        <!--Mercedes-Benz Türk-->
+        <scene sceneID="1AA-iH-kiB">
+            <objects>
+                <viewController storyboardIdentifier="oidcVC" id="QNB-IK-91y" customClass="OidcViewController" customModule="MBTBiziz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NOB-Hi-tmm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_LOGIN_WELCOME_HEADER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djb-R7-reT" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
+                                <rect key="frame" x="20" y="110.5" width="256" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="hSt-97-Ntf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGF-FU-j5n" customClass="BaseUIButtonDemi" customModule="MBTBiziz" customModuleProvider="target">
+                                <rect key="frame" x="20" y="293.5" width="335" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="mGp-uV-gAL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="TXT_LOGIN_WELCOME_BUTTON">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInClicked:" destination="QNB-IK-91y" eventType="touchUpInside" id="cBV-3D-Ks2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_LOGIN_WELCOME_DESCRIPTION" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RM7-Ub-zzH" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
+                                <rect key="frame" x="20" y="206.5" width="335" height="17"/>
+                                <fontDescription key="fontDescription" name="DaimlerCS-Regular" family="Daimler CS" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I3I-8l-NHO"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="I3I-8l-NHO" firstAttribute="trailing" secondItem="RM7-Ub-zzH" secondAttribute="trailing" constant="20" id="2iZ-Ed-4Zb"/>
+                            <constraint firstItem="RM7-Ub-zzH" firstAttribute="firstBaseline" secondItem="djb-R7-reT" secondAttribute="baseline" constant="80" id="4Ln-Xc-hG1"/>
+                            <constraint firstItem="RM7-Ub-zzH" firstAttribute="leading" secondItem="I3I-8l-NHO" secondAttribute="leading" constant="20" id="CjF-HP-6bg"/>
+                            <constraint firstItem="I3I-8l-NHO" firstAttribute="trailing" secondItem="AGF-FU-j5n" secondAttribute="trailing" constant="20" id="Gcf-LL-TQf"/>
+                            <constraint firstItem="djb-R7-reT" firstAttribute="leading" secondItem="I3I-8l-NHO" secondAttribute="leading" constant="20" id="HiW-60-mdv"/>
+                            <constraint firstItem="AGF-FU-j5n" firstAttribute="top" secondItem="RM7-Ub-zzH" secondAttribute="bottom" constant="70" id="N6o-7g-ZNC"/>
+                            <constraint firstItem="AGF-FU-j5n" firstAttribute="centerY" secondItem="I3I-8l-NHO" secondAttribute="centerY" id="dnd-6t-gAe"/>
+                            <constraint firstItem="I3I-8l-NHO" firstAttribute="trailing" secondItem="djb-R7-reT" secondAttribute="trailing" constant="99" id="s0q-4i-1cY"/>
+                            <constraint firstItem="AGF-FU-j5n" firstAttribute="leading" secondItem="I3I-8l-NHO" secondAttribute="leading" constant="20" id="ubK-SQ-gKm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mercedes-Benz Türk" id="kg8-XM-wba"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KpG-Wh-YQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311" y="-640"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="b7I-fV-Nmb"/>
+    </inferredMetricsTieBreakers>
 </document>

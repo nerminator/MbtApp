@@ -5,11 +5,11 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.place.MeetingRoom" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.MeetingRoom" />
 
         <variable
             name="callback"
-            type="com.daimler.biziz.android.adapters.MeetingRoomSearchAdapter.RoomCalback" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.adapters.MeetingRoomSearchAdapter.RoomCalback" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

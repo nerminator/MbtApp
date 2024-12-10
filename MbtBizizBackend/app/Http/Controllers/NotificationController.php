@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Redis;
 
 class NotificationController extends Controller
 {
@@ -33,7 +35,7 @@ class NotificationController extends Controller
         }
         //endregion
 
-        $notificationListResult = DB::select('call getNotificationList(?, ?, ?, ?)', [Auth::id(), Input::get('firstDate'), Input::get('lastDate'), app('translator')->getLocale()]);
+        $notificationListResult = DB::select('call getNotificationList(?, ?, ?, ?)', [Auth::id(), $request->input('firstDate'), $request->input('lastDate'), app('translator')->getLocale()]);
 
         return response()->json([
             'statusCode' => 200,
@@ -52,7 +54,7 @@ class NotificationController extends Controller
                 'newsId' => $item->news_id,
                 'seen' => $item->seen,
                 'type' => $item->type,
-                'listText' => $item->list_text,
+                'listText' => $item->title,
                 'discountType' => $item->discount_type,
                 'image' => $item->image,
                 'notificationTime' => $item->created_at
@@ -78,7 +80,7 @@ class NotificationController extends Controller
         }
         //endregion
 
-        $notificationId = Input::get('notificationId');
+        $notificationId = $request->input('notificationId');
         try {
             $affectedRowCount = DB::update("update user_notifications set deleted = 1 where id = ?", [$notificationId]);
             if ($affectedRowCount == null || $affectedRowCount == 0) {
@@ -111,6 +113,17 @@ class NotificationController extends Controller
                                                                 where user_id = ? and seen = 0 and deleted = 0", [Auth::id()]);
         if ($badgeCountResult != null && $badgeCountResult->count != null) {
             $badgeCount = $badgeCountResult->count;
+        }
+
+
+        $user = Auth::user();
+        $key = "user_todayLoggedIn_".$user->id;
+
+        if(!Redis::exists($key)) {
+            Redis::set($key , 1, 'EX', 3600); //expire the key after 60 seconds
+            $user->update([
+                'last_login_at' => Carbon::now()->toDateTimeString(),
+            ]);
         }
 
         return response()->json([

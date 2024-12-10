@@ -10,10 +10,10 @@
 
         <variable
             name="callback"
-            type="com.daimler.biziz.android.adapters.NewsAdapter.NewsItemCallback" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.adapters.NewsAdapter.NewsItemCallback" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14dp"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/textViewRegularCS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,5 +76,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

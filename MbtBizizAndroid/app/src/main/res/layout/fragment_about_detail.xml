@@ -34,9 +34,20 @@
                 android:paddingTop="10dp" />
         </ScrollView>-->
         <WebView
+            android:visibility="gone"
             android:id="@+id/webViewAbout"
             android:layout_below="@id/toolbarAboutDetail"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+            android:visibility="gone"
+            android:id="@+id/textViewAbout"
+            android:paddingHorizontal="20dp"
+            android:textColor="@android:color/white"
+            android:layout_below="@id/toolbarAboutDetail"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
             android:layout_height="match_parent"/>
 
     </RelativeLayout>

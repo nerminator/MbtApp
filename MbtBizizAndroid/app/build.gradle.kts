@@ -1,0 +1,122 @@
+import com.android.build.api.dsl.Packaging
+
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
+}
+
+android {
+
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("signKey")
+            storePassword = "Mercedes2018"
+            keyAlias = "keyMbt"
+            keyPassword = "Mercedes2018"
+        }
+        create("enterprise") {
+            storePassword = "Mercedes2018"
+            keyAlias = "keyMbt"
+            keyPassword = "Mercedes2018"
+            storeFile = file("signKey")
+        }
+    }
+    namespace = "com.daimlertruck.dtag.internal.android.mbt.test"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
+        minSdk = 24
+        targetSdk = 33
+        versionCode = 21
+        versionName = "1.0.0"
+        dataBinding.enable = true
+        multiDexEnabled = false
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("enterprise")
+    }
+
+    packaging {
+        resources.excludes.add("META-INF/*")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            signingConfig = signingConfigs.getByName("enterprise")
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    //Support libraries
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+
+    //Network
+    implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+    implementation("com.squareup.okhttp3:okhttp:3.9.0")
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:3.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.3.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.3.0")
+    implementation("com.google.code.gson:gson:2.7")
+    implementation("com.fatboyindustrial.gson-jodatime-serialisers:gson-jodatime-serialisers:1.2.0")
+
+    //Dagger
+    implementation("com.google.dagger:dagger-android:2.14.1")
+    implementation("com.google.dagger:dagger-android-support:2.14.1")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    annotationProcessor("com.google.dagger:dagger-android-processor:2.14.1")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.14.1")
+
+    // ViewModel and LiveData
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    annotationProcessor("androidx.lifecycle:lifecycle-compiler:2.6.2")
+
+    //Gradle
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+
+    //Google
+    implementation("com.google.firebase:firebase-core:21.1.1")
+    implementation("com.google.firebase:firebase-messaging:24.0.1")
+    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+
+    annotationProcessor("androidx.databinding:databinding-compiler:8.2.0")
+
+    //Slider
+    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation("com.github.chrisbanes:PhotoView:2.0.0")
+
+    implementation("com.microsoft.identity.client:msal:5.6.0") { exclude(group = "com.microsoft.device.display") }
+    implementation("com.android.volley:volley:1.2.1")
+}
+
+apply(plugin = "com.google.gms.google-services")
+

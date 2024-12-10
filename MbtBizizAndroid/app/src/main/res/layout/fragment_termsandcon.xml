@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="61.4dp">
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCA
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -24,14 +24,14 @@
                 android:textSize="19.3sp" />
         </RelativeLayout>
 
-        <com.daimler.biziz.android.uiControls.CustomScrollView.ScrollViewCustom
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.CustomScrollView
             android:id="@+id/scrollViewTerms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/answerContainerTerms"
             android:layout_below="@+id/containerTermsTitle">
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/tvDescTerms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,7 +42,7 @@
                 android:text="@string/TXT_LOGIN_SIGNIN_TERMS_DESC"
                 android:textColor="@color/fiftyPercentOpacityTextColor"
                 android:textSize="15.3sp" />
-        </com.daimler.biziz.android.uiControls.CustomScrollView.ScrollViewCustom>
+        </com.daimlertruck.dtag.internal.android.mbt.test.uiControls.CustomScrollView>
 
         <!--  <WebView
               android:id="@+id/webViewAbout"
@@ -67,7 +67,7 @@
             android:weightSum="2">
 
 
-            <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
                 android:id="@+id/btnAgreeTerms"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                 android:textAllCaps="false"
                 android:textColor="@drawable/button_text_color_state" />
 
-            <com.daimler.biziz.android.uiControls.ButtonDemiCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
                 android:id="@+id/btnRejectTerms"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

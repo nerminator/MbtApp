@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 class InitController
 {
@@ -41,7 +40,7 @@ class InitController
         //endregion
 
         try {
-            $userVersion = explode('.', Input::get('version'));
+            $userVersion = explode('.', $request->input('version'));
             if (count($userVersion) < 2) {
                 return response()->json([
                     'statusCode' => 200,
@@ -55,7 +54,7 @@ class InitController
             }
 
             $versionPopup = [];
-            $currentVersion = Input::get('osType') == self::ANDROID ? explode('.', env('ANDROID_VERSION')) : explode('.', env('IOS_VERSION'));
+            $currentVersion = $request->input('osType') == self::ANDROID ? explode('.', env('ANDROID_VERSION')) : explode('.', env('IOS_VERSION'));
             if ($currentVersion[0] > $userVersion[0]) {
                 $versionPopup = [
                     'title' => Lang::get("lang.TXT_VERSION_POPUP_MAJOR_UPDATE_TITLE"),
@@ -103,11 +102,11 @@ class InitController
                     'phoneList' => [ 
                         [
                             'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_1"),
-                            'phone' => "00800 142030248"
+                            'phone' => "0212 8673399"
                         ],
                         [
                             'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_2"),
-                            'phone' => "0212 8673399"
+                            'phone' => ""
                         ],
                         [
                             'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_3"),
@@ -132,14 +131,14 @@ class InitController
     }
 
     public function userConfig() {
-        $shouldShowQrCode = in_array(Auth::user()->email, ["SINEM.SASMAZEL@DAIMLER.COM", "NIL.ICKIN@DAIMLER.COM", "SECIL.ACAR@DAIMLER.COM",
-                                                            "BILGEADAM.BOZKURT@DAIMLER.COM", "SEMIH_ALPEREN.KAYAALTI@DAIMLER.COM", "MBT.SARISALTIK@DAIMLER.COM",
-                                                            "TEST@TEST.COM"]);
+        //$shouldShowQrCode = in_array(Auth::user()->email, ["SINEM.SASMAZEL@DAIMLER.COM", "NIL.ICKIN@DAIMLER.COM", "SECIL.ACAR@DAIMLER.COM",
+        //                                                    "BILGEADAM.BOZKURT@DAIMLER.COM", "SEMIH_ALPEREN.KAYAALTI@DAIMLER.COM", "MBT.SARISALTIK@DAIMLER.COM",
+        //                                                    "TEST@TEST.COM"]);
 
         return response()->json([
             'statusCode' => 200,
             'responseData' => [
-                'shouldShowQrCode' => $shouldShowQrCode
+                'shouldShowQrCode' => false //$shouldShowQrCode
             ],
             'errorMessage' => null
         ]);

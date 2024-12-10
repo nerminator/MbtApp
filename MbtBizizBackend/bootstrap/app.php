@@ -2,11 +2,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-try {
-    (new Dotenv\Dotenv(__DIR__.'/../'))->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
-    //
-}
+(new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
+    dirname(__DIR__)
+))->bootstrap();
+
+date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ try {
 */
 
 $app = new Laravel\Lumen\Application(
-    realpath(__DIR__.'/../')
+    dirname(__DIR__)
 );
 
 $app->withFacades();
@@ -68,7 +68,8 @@ $app->middleware([
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
     'throttle' => App\Http\Middleware\ThrottleRequests::class,
-    'securityHeaders' => App\Http\Middleware\SecurityHeaders::class
+    'securityHeaders' => App\Http\Middleware\SecurityHeaders::class,
+    'web' => \Spatie\Csp\AddCspHeaders::class   
 ]);
 
 /*
@@ -83,11 +84,11 @@ $app->routeMiddleware([
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
-$app->register(\Rap2hpoutre\FastExcel\FastExcel::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
 
+$app->configure('services');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
@@ -111,8 +112,21 @@ setlocale(LC_TIME, 'tr_TR.utf8');
 
 \Carbon\Carbon::setLocale('tr');
 
+
 $app->singleton('filesystem', function ($app) {
     return $app->loadComponent('filesystems', 'Illuminate\Filesystem\FilesystemServiceProvider', 'filesystem');
 });
+
+$app->register(Irazasyed\Larasupport\Providers\ArtisanServiceProvider::class);
+$app->register(\Illuminate\Mail\MailServiceProvider::class);
+
+$app->configure('mail');
+
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class);
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class);
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 return $app;

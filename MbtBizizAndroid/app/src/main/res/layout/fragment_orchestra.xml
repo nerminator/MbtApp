@@ -5,14 +5,14 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.daimler.biziz.android.ui.main.orchestra.VmOrchestra" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.VmOrchestra" />
 
-        <import type="com.daimler.biziz.android.ui.main.orchestra.flexibleWorkingInfo.FlexibleWorkingActivity"/>
+        <import type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.flexibleWorkingInfo.FlexibleWorkingActivity"/>
 
         <import type="android.view.View"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.orchestra.OrchestraFragment"
@@ -37,7 +37,7 @@
             android:src="@drawable/icn_info"
             android:padding="2dp"/>
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             app:layout_constraintStart_toEndOf="@+id/imgSetting"
             app:layout_constraintTop_toTopOf="@+id/imgSetting" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvProfil"
             tools:text="109XXX" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvCode"
             tools:text="Atakan kersit" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvName"
             tools:text="Android Developer" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvOfficeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvOfficeValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvOfficeTitle" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvUnitTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvOfficeValue" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvUnitValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUnitTitle" />
 
-      <!--  <com.daimler.biziz.android.uiControls.TextViewDemiCS
+      <!--  <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvManagerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUnitValue" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvManagerValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvUnitValue"
             />
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnWorkInfo"
             android:background="@color/sixPercentWhite"
             android:layout_width="0dp"
@@ -190,7 +190,7 @@
             android:textAlignment="textStart"
             app:layout_constraintTop_toBottomOf="@+id/viewLine" />
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnWorkCalender"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -222,5 +222,5 @@
             app:layout_constraintTop_toTopOf="@+id/tvCode" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

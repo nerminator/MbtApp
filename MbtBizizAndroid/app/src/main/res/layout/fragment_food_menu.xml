@@ -6,14 +6,14 @@
     <data>
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.food.FoodInfo"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodInfo"/>
 
         <variable
             name="dataShuttle"
-            type="com.daimler.biziz.android.network.entity.food.ShuttleInfo"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.ShuttleInfo"/>
     </data>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants"
@@ -26,19 +26,19 @@
             android:animateLayoutChanges="true"
             tools:context=".ui.foodMenu.FoodMenuFragment">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcyclerFoodMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDate"
                 tools:listitem="@layout/item_food_menu" />
 
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCA
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
                 android:id="@+id/tvTitleShuttle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,13 +55,13 @@
 
 
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcyclerShuttle"
                 android:nestedScrollingEnabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitleShuttle"
@@ -70,6 +70,6 @@
 
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

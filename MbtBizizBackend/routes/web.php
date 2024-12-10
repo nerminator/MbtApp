@@ -18,10 +18,14 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], function () use ($router) {
     $router->post('init', 'InitController@init');
-    $router->get('captcha', ['middleware' => 'throttle:60,1', 'uses' => 'LoginController@captcha']);
+  //  $router->get('captcha', ['middleware' => 'throttle:60,1', 'uses' => 'LoginController@captcha']);
     $router->post('checkPhone', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhone']);
-    $router->post('checkPhoneWithCaptcha', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhoneWithCaptcha']);
+  //  $router->post('checkPhoneWithCaptcha', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhoneWithCaptcha']);
     $router->post('login', 'LoginController@login');
+
+    // Add the OIDC callback route
+    //$router->post('oidc_callback.html', 'LoginController@oidcLogin');
+    $router->post('appStartup', 'LoginController@appStartup');
 
     $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->post('newsList', 'NewsController@newsList');
@@ -52,9 +56,18 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
 
         $router->get('signOut', 'LoginController@signOut');
 
-        $router->post('sendQRCode', 'QRCodeController@sendQRCode');
-
         $router->get('userConfig', 'InitController@userConfig');
+
+        $router->get('getDiscountCode/{newsId}', 'NewsController@getDiscountCode');
+
+        $router->get('socialClubLocs', 'SocialClubsController@getSocialClubLocs');
+        $router->get('phoneLocs', 'PhonesController@getPhoneLocs');
+
+        $router->get('socialClubs/{loc_id}', 'SocialClubsController@getSocialClubs');
+        $router->get('phones/{loc_id}', 'PhonesController@getPhones');
+
+        $router->get('medias', 'MediasController@getMedias');
+        $router->post('submitFeedback', 'AppFeedbackController@submitFeedback');
     });
 });
 

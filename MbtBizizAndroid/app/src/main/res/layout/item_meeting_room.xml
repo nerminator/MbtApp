@@ -5,10 +5,10 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.place.MeetingRoom" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.MeetingRoom" />
     </data>
 
-    <com.daimler.biziz.android.uiControls.TextViewRegularCS xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="20sp"
@@ -18,5 +18,5 @@
         android:textColor="@{data.selected ? @color/buttonBackgroundColor : @android:color/white}"
         android:textSize="16sp">
 
-    </com.daimler.biziz.android.uiControls.TextViewRegularCS>
+    </com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS>
 </layout>

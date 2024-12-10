@@ -68,8 +68,8 @@ class ShuttleController extends Controller
         }
         //endregion
 
-        $type = intval(Input::get('type'));
-        $companyLocationId = intval(Input::get('companyLocationId'));
+        $type = intval($request->input('type'));
+        $companyLocationId = intval($request->input('companyLocationId'));
 
         return response()->json([
             'statusCode' => 200,

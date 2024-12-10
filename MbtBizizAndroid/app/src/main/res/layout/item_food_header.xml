@@ -3,7 +3,7 @@
     <data>
         <variable
             name="datainfo"
-            type="com.daimler.biziz.android.network.entity.food.FoodInfo"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodInfo"/>
     </data>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
@@ -13,19 +13,19 @@
     android:paddingTop="20dp"
     android:paddingBottom="20dp">
 
-    <com.daimler.biziz.android.uiControls.TextViewDemiCS
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="@{datainfo.isToday ?datainfo.dateText + ` (BUGÜN)` :datainfo.dateText}"
+        android:text="@{datainfo.isToday ? datainfo.dateText + ` (BUGÜN)` :datainfo.dateText}"
         android:textColor="#b2b2b2"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="16.04.2018 (BUGÜN)" />
 
-    <com.daimler.biziz.android.uiControls.TextViewDemiCS
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"

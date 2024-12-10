@@ -5,15 +5,14 @@
     <data>
         <variable
             name="vm"
-            type="com.daimler.biziz.android.ui.foodMenu.VMFoodMenu"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.foodMenu.VMFoodMenu"/>
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/food_gradient_bg"
-        tools:context=".ui.foodMenu.FoodMenuActivity"
-        >
+        tools:context=".ui.foodMenu.FoodMenuActivity">
 
         <include
             android:id="@+id/toolbar"
@@ -22,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabFood"
             style="@style/customTabLayout"
             android:layout_width="match_parent"
@@ -34,7 +33,7 @@
             app:tabTextColor="@color/tabUnSelectedColor"
             app:tabSelectedTextColor="@android:color/white"/>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vpFood"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -43,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tabFood" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constDensity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +101,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/tvDestinyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,7 +114,7 @@
                 app:layout_constraintTop_toTopOf="@+id/imgArrow"
                 tools:text="Hoşdere" />
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/tvDestinyText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -131,10 +130,10 @@
                 app:layout_constraintStart_toStartOf="@+id/tvDestinyName"
                 app:layout_constraintTop_toBottomOf="@+id/tvDestinyName"
                 tools:text="Anlık Yemekhane Yoğunluğu" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

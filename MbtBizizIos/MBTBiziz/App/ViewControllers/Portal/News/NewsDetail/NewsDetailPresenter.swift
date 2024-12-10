@@ -14,6 +14,8 @@ protocol NewsDetailPresentationLogic
     func presentValidateInputs(response : NewsDetail.Validate.Response)
     func presentReloadPageResult(response : NewsDetail.Reload.Response)
     func presentSendDataResult(response : NewsDetail.SendData.Response)
+    func presentGetUserDiscountResult(response : MBTGetDiscountCodeResponse)
+    func presentNoDiscountResult()
 }
 
 class NewsDetailPresenter: NewsDetailPresentationLogic
@@ -34,5 +36,13 @@ class NewsDetailPresenter: NewsDetailPresentationLogic
     
     func presentSendDataResult(response : NewsDetail.SendData.Response) {
         viewController?.displaySendDataResult(viewModel : NewsDetail.SendData.ViewModel())
+    }
+    
+    func presentGetUserDiscountResult(response : MBTGetDiscountCodeResponse) {
+        viewController?.displayGetUserCodeResult(response : response)
+    }
+    
+    func presentNoDiscountResult(){
+        viewController?.displayNoDiscountCodeResult()
     }
 }

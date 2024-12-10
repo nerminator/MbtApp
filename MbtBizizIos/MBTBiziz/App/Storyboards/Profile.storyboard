@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +14,7 @@
                 <navigationController storyboardIdentifier="ProfileNavigationController" id="bVs-Od-Raz" customClass="BaseNavCon" customModule="MBTBiziz" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="TXT_LOGIN_HOME_TAB3" image="icnProfile" selectedImage="icnProfileActive" id="JJ8-IM-M4e"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k4U-bq-Mf3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -63,7 +63,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QoY-ut-evp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QoY-ut-evp">
                                         <rect key="frame" x="0.0" y="0.0" width="347" height="60"/>
                                         <connections>
                                             <action selector="btnFlexibleWorkTapped:" destination="FeH-28-NQ0" eventType="touchUpInside" id="8aq-9c-K2V"/>
@@ -97,7 +97,7 @@
                                             <constraint firstAttribute="width" constant="8" id="cjF-o7-Fe2"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icnTakvim" translatesAutoresizingMaskIntoConstraints="NO" id="nQ8-mK-iWG">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="m_icn3" translatesAutoresizingMaskIntoConstraints="NO" id="nQ8-mK-iWG">
                                         <rect key="frame" x="20" y="20.5" width="16" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="rZK-aD-EUE"/>
@@ -110,7 +110,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ti6-1F-jEq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ti6-1F-jEq">
                                         <rect key="frame" x="0.0" y="0.0" width="347" height="60"/>
                                         <connections>
                                             <action selector="btnWorkCalendarTapped:" destination="FeH-28-NQ0" eventType="touchUpInside" id="3R9-PB-Xpn"/>
@@ -135,7 +135,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCB-us-pW7">
-                                <rect key="frame" x="0.0" y="58" width="375" height="88"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="88"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8y-DQ-tzd">
                                         <rect key="frame" x="20" y="0.0" width="4" height="88"/>
@@ -190,19 +190,19 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="m2h-4k-Set">
-                                <rect key="frame" x="0.0" y="166" width="375" height="246"/>
+                                <rect key="frame" x="0.0" y="186" width="375" height="226"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oof-B3-NC5">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_PROFILE_PROFILE_1ST_SUBTITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnh-PV-OTW" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="41" width="335" height="17"/>
+                                                <rect key="frame" x="20" y="36" width="335" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERQ-wq-aHS" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="73.5" width="335" height="0.0"/>
+                                                <rect key="frame" x="20" y="68.5" width="335" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -219,16 +219,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2b6-20-hwZ">
-                                        <rect key="frame" x="0.0" y="123" width="375" height="123"/>
+                                        <rect key="frame" x="0.0" y="113" width="375" height="113"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_PROFILE_PROFILE_2ND_SUBTITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0W-WS-AoX" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="41" width="335" height="17"/>
+                                                <rect key="frame" x="20" y="36" width="335" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx2-5u-FII" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="73.5" width="335" height="0.0"/>
+                                                <rect key="frame" x="20" y="68.5" width="335" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -247,6 +247,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="36H-yE-SB0"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XN5-DG-cly" firstAttribute="top" secondItem="KTJ-x5-AR4" secondAttribute="bottom" constant="14" id="114-yG-9kw"/>
@@ -266,7 +267,6 @@
                             <constraint firstItem="mCB-us-pW7" firstAttribute="leading" secondItem="36H-yE-SB0" secondAttribute="leading" id="wL8-gc-JaH"/>
                             <constraint firstItem="XN5-DG-cly" firstAttribute="leading" secondItem="36H-yE-SB0" secondAttribute="leading" constant="14" id="xLX-Dn-vL7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="36H-yE-SB0"/>
                     </view>
                     <navigationItem key="navigationItem" title="TXT_PROFILE_PROFILE_TITLE" id="K3R-hc-qN1">
                         <barButtonItem key="backBarButtonItem" title=" " id="SHK-ds-1cJ"/>
@@ -302,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzk-j1-2v3">
-                                <rect key="frame" x="0.0" y="44" width="375" height="98.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="98.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_SETTINGS_NOT_GRANTED_NOTIFICATIONS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh9-Ng-Tb9" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
                                         <rect key="frame" x="20" y="10" width="335" height="38.5"/>
@@ -310,8 +310,8 @@
                                         <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-5f-0IA" customClass="BaseUIButtonRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="71.5" y="58.5" width="232" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-5f-0IA" customClass="BaseUIButtonRegular" customModule="MBTBiziz" customModuleProvider="target">
+                                        <rect key="frame" x="68.5" y="58.5" width="238" height="30"/>
                                         <state key="normal" title="TXT_SETTINGS_DEVICE_BUTTON">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -332,13 +332,13 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MS2-Af-wr8">
-                                <rect key="frame" x="0.0" y="142.5" width="375" height="469.5"/>
+                                <rect key="frame" x="0.0" y="162.5" width="375" height="449.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsTableCell" rowHeight="115" id="t92-QV-n2a" customClass="SettingsTableCell" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="115"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t92-QV-n2a" id="7d4-Jl-i6x">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
@@ -401,7 +401,7 @@
                                     <outlet property="delegate" destination="odB-WW-tf6" id="kDZ-J6-nDk"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSZ-19-g0M" customClass="BaseUIButton" customModule="MBTBiziz" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSZ-19-g0M" customClass="BaseUIButton" customModule="MBTBiziz" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="0.059999999999999998" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -415,6 +415,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="zCu-6j-hGr"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zCu-6j-hGr" firstAttribute="trailing" secondItem="xzk-j1-2v3" secondAttribute="trailing" id="1e1-rN-rVV"/>
@@ -428,7 +429,6 @@
                             <constraint firstItem="MS2-Af-wr8" firstAttribute="leading" secondItem="zCu-6j-hGr" secondAttribute="leading" id="quC-89-cf1"/>
                             <constraint firstItem="zCu-6j-hGr" firstAttribute="bottom" secondItem="OSZ-19-g0M" secondAttribute="bottom" id="wz5-YR-Uow"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zCu-6j-hGr"/>
                     </view>
                     <navigationItem key="navigationItem" title="TXT_PROFILE_SETTINGS_TITLE" id="ltw-If-kjC">
                         <barButtonItem key="backBarButtonItem" title=" " id="rXy-Gy-H0L"/>
@@ -451,7 +451,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ox6-eU-OEJ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="54"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="54"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-Ic-jYO">
                                         <rect key="frame" x="0.0" y="53" width="375" height="1"/>
@@ -508,11 +508,11 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="400" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Umf-FH-UK7">
-                                <rect key="frame" x="0.0" y="98" width="375" height="569"/>
+                                <rect key="frame" x="0.0" y="118" width="375" height="549"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CalendarTableCell" rowHeight="400" id="R73-1D-3Be" customClass="CalendarTableCell" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R73-1D-3Be" id="TcD-wX-gXz">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
@@ -582,7 +582,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WorkTableCell" rowHeight="88" id="gRe-Ij-KoY" customClass="WorkTableCell" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="428" width="375" height="88"/>
+                                        <rect key="frame" x="0.0" y="450" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gRe-Ij-KoY" id="QLx-8c-vhA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
@@ -608,13 +608,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Nisan 2018 , Salı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTk-TZ-ZmV" customClass="BaseUILabel" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="44" y="50.5" width="53.5" height="19.5"/>
+                                                    <rect key="frame" x="44" y="50.5" width="47.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="TXT_PROFILE_CALENDAR_TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufJ-zL-QSB" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="109.5" y="50.5" width="245.5" height="19.5"/>
+                                                    <rect key="frame" x="103.5" y="50.5" width="251.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -649,6 +649,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bd7-c2-Jlc"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bd7-c2-Jlc" firstAttribute="trailing" secondItem="Umf-FH-UK7" secondAttribute="trailing" id="2y2-8b-hOI"/>
@@ -659,7 +660,6 @@
                             <constraint firstItem="bd7-c2-Jlc" firstAttribute="trailing" secondItem="Ox6-eU-OEJ" secondAttribute="trailing" id="tm6-4r-Dvw"/>
                             <constraint firstItem="Ox6-eU-OEJ" firstAttribute="top" secondItem="bd7-c2-Jlc" secondAttribute="top" id="twF-oM-4uu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bd7-c2-Jlc"/>
                     </view>
                     <navigationItem key="navigationItem" title="TXT_PROFILE_CALENDAR_TITLE" id="TXT-b0-XYv">
                         <barButtonItem key="backBarButtonItem" title=" " id="h6z-lt-D4Z"/>
@@ -684,11 +684,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-0n-ipq">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="522"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlexibleTableCell" rowHeight="80" id="VO9-r2-Pn8" customClass="FlexibleTableCell" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VO9-r2-Pn8" id="1x9-G0-gdX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -720,19 +720,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EKSİ SAAT:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajv-hH-NdO" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="140" y="49" width="71.5" height="17"/>
+                                                    <rect key="frame" x="131" y="49" width="71.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.71" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaE-lk-4dv" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="213.5" y="49" width="26.5" height="17"/>
+                                                    <rect key="frame" x="204.5" y="49" width="26" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.71" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-do-Qgj" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="95" y="49" width="26.5" height="17"/>
+                                                    <rect key="frame" x="95" y="49" width="26" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -741,7 +741,6 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="aGY-L5-Yek" firstAttribute="leading" secondItem="Slk-31-TTJ" secondAttribute="trailing" constant="20" id="3Xc-PG-0e0"/>
-                                                <constraint firstItem="ajv-hH-NdO" firstAttribute="leading" secondItem="1x9-G0-gdX" secondAttribute="leading" constant="140" id="6lx-Hs-kiq"/>
                                                 <constraint firstItem="wnf-do-Qgj" firstAttribute="leading" secondItem="PyJ-Az-A7N" secondAttribute="trailing" constant="2" id="DhG-O1-zS2"/>
                                                 <constraint firstItem="PyJ-Az-A7N" firstAttribute="leading" secondItem="1x9-G0-gdX" secondAttribute="leading" constant="20" id="GxS-hq-h2l"/>
                                                 <constraint firstItem="BaE-lk-4dv" firstAttribute="centerY" secondItem="ajv-hH-NdO" secondAttribute="centerY" id="Iir-Ze-dfb"/>
@@ -751,6 +750,7 @@
                                                 <constraint firstItem="aGY-L5-Yek" firstAttribute="centerY" secondItem="VX4-qB-ONs" secondAttribute="centerY" id="R9c-EI-5VY"/>
                                                 <constraint firstItem="ajv-hH-NdO" firstAttribute="centerY" secondItem="PyJ-Az-A7N" secondAttribute="centerY" id="YkE-c5-nBn"/>
                                                 <constraint firstItem="wnf-do-Qgj" firstAttribute="centerY" secondItem="PyJ-Az-A7N" secondAttribute="centerY" id="cPV-8p-bfd"/>
+                                                <constraint firstItem="ajv-hH-NdO" firstAttribute="leading" secondItem="wnf-do-Qgj" secondAttribute="trailing" constant="10" id="eeB-aB-riD"/>
                                                 <constraint firstAttribute="trailing" secondItem="aGY-L5-Yek" secondAttribute="trailing" constant="30" id="ifl-ip-mPo"/>
                                                 <constraint firstItem="BaE-lk-4dv" firstAttribute="leading" secondItem="ajv-hH-NdO" secondAttribute="trailing" constant="2" id="myi-EB-wRt"/>
                                                 <constraint firstItem="VX4-qB-ONs" firstAttribute="top" secondItem="1x9-G0-gdX" secondAttribute="top" constant="16" id="s5O-ov-lQ2"/>
@@ -830,18 +830,18 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="zJI-i3-sVW"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="E5U-o7-gia" firstAttribute="top" secondItem="t4M-0n-ipq" secondAttribute="bottom" constant="5" id="3GZ-0c-bz7"/>
                             <constraint firstItem="t4M-0n-ipq" firstAttribute="leading" secondItem="zJI-i3-sVW" secondAttribute="leading" id="6Qg-hj-ivl"/>
                             <constraint firstItem="zJI-i3-sVW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="E5U-o7-gia" secondAttribute="trailing" constant="20" id="7v1-z0-IA0"/>
                             <constraint firstItem="zJI-i3-sVW" firstAttribute="bottom" secondItem="E5U-o7-gia" secondAttribute="bottom" constant="24" id="BlS-Hw-eWp"/>
                             <constraint firstItem="E5U-o7-gia" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zJI-i3-sVW" secondAttribute="leading" constant="20" id="E7L-pr-hA9"/>
                             <constraint firstItem="t4M-0n-ipq" firstAttribute="top" secondItem="zJI-i3-sVW" secondAttribute="top" id="JYT-vg-5p5"/>
-                            <constraint firstItem="zJI-i3-sVW" firstAttribute="bottom" secondItem="t4M-0n-ipq" secondAttribute="bottom" id="dL0-XL-oHA"/>
                             <constraint firstItem="t4M-0n-ipq" firstAttribute="trailing" secondItem="zJI-i3-sVW" secondAttribute="trailing" id="lot-Kt-rrT"/>
                             <constraint firstItem="E5U-o7-gia" firstAttribute="centerX" secondItem="rw0-dc-sOB" secondAttribute="centerX" id="nzb-PJ-W8p"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zJI-i3-sVW"/>
                     </view>
                     <navigationItem key="navigationItem" title="TXT_PROFILE_FLEXIBLE_WORK_TITLE_WHITE" id="Pun-Ju-bgn">
                         <barButtonItem key="backBarButtonItem" title=" " id="GYw-Bd-YIx"/>
@@ -866,18 +866,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TU1-N1-lbU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlexibleDetailCell" rowHeight="150" id="uly-H4-q8I" customClass="FlexibleDetailCell" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uly-H4-q8I" id="67F-ov-cZV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="01.01.2018 Per" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2t8-23-DGF" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="27" width="118" height="21"/>
+                                                    <rect key="frame" x="20" y="27" width="117" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -901,7 +901,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.71" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UY8-BT-LVe" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="95" y="121" width="26.5" height="17"/>
+                                                    <rect key="frame" x="95" y="121" width="26" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -913,7 +913,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.71" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exd-R4-C3U" customClass="BaseUILabelRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                                    <rect key="frame" x="213.5" y="121" width="26.5" height="17"/>
+                                                    <rect key="frame" x="213.5" y="121" width="26" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -957,6 +957,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="pb3-iP-bVA"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TU1-N1-lbU" firstAttribute="top" secondItem="pb3-iP-bVA" secondAttribute="top" id="6C3-SA-Ity"/>
@@ -964,7 +965,6 @@
                             <constraint firstItem="TU1-N1-lbU" firstAttribute="leading" secondItem="pb3-iP-bVA" secondAttribute="leading" id="fDt-Bz-QuX"/>
                             <constraint firstItem="pb3-iP-bVA" firstAttribute="trailing" secondItem="TU1-N1-lbU" secondAttribute="trailing" id="qs7-Xy-pR6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="pb3-iP-bVA"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hh8-92-fTP">
                         <barButtonItem key="backBarButtonItem" title=" " id="QOB-Qz-pI1"/>
@@ -987,6 +987,6 @@
         <image name="icnEsnek" width="16" height="14.5"/>
         <image name="icnProfile" width="21" height="24.5"/>
         <image name="icnProfileActive" width="21" height="24.5"/>
-        <image name="icnTakvim" width="17" height="13.5"/>
+        <image name="m_icn3" width="36" height="29"/>
     </resources>
 </document>

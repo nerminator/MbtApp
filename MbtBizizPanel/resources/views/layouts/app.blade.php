@@ -20,6 +20,10 @@
     <link href="{{ asset('/css/jquery.loader.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link href="{{ asset('/css/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/slick-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/splide.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/social-clubs.css') }}" rel="stylesheet">
 
     <style>
         #password {
@@ -117,27 +121,32 @@
             color: #2580db;
         }
     </style>
+
+    @livewireStyles
 </head>
 <body>
 <div id="app">
     @yield('content')
+    @if( isset($slot) ) 
+        {{ $slot }}
+    @endif
 </div>
-
+@livewireScripts
 <!-- Scripts -->
-<script type="text/javascript"
-        src="//maps.googleapis.com/maps/api/js?key=AIzaSyCrMlOqT-AuG8n_8_2oduW1XRw-OIs-DCU&libraries=places"></script>
-<script src="{{ asset('/js/app.js') }}"></script>
-<script src="{{ asset('/js/jquery-ui.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
-<script src="{{ asset('/js/jquery.simplewizard.js') }}"></script>
-<script src="{{ asset('/js/jquery.cropit.js') }}"></script>
-<script src="{{ asset('js/moment.js') }}"></script>
-<script src="{{ asset('/js/mbt-biziz.js') }}"></script>
-<script src="{{ asset('js/jquery.visible.js') }}"></script>
-<script src="{{ asset('js/jquery.loader.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script type="text/javascript" src="{{ asset('/js/jquery.simplewizard.js') }}"></script>
+<script type="text/javascript"  src="{{ asset('/js/jquery.cropit.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/moment.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/livewire-sortable.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="{{ asset('/js/mbt-biziz.js') }}?114"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.visible.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.loader.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+<script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript" src="{{ asset('/js/splide.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

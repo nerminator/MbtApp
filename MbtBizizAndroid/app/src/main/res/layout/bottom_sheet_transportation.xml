@@ -6,17 +6,17 @@
     <data>
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.transportation.ShuttleListEntity"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.ShuttleListEntity"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2e3542"
         >
 
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvShuttleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             app:srcCompat="@drawable/icn_bus"
             />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
             tools:text="SubTitle" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvunderIconText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 android:orientation="horizontal"
                 >
 
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvFirstDescTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                     android:textSize="18sp"
                     />
 
-                <com.daimler.biziz.android.uiControls.TextViewLightCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewLightCS
                     android:id="@+id/tvFirstDescValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvSecondDescTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                     android:textSize="18sp"
                     />
 
-                <com.daimler.biziz.android.uiControls.TextViewLightCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewLightCS
                     android:id="@+id/tvSecondDescValie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,14 +153,14 @@
 
         </LinearLayout>
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/leftGuideLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.07" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/rightGuideLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
 
 
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnAra"
             android:layout_width="160dp"
             android:layout_height="52dp"
@@ -190,7 +190,7 @@
             app:layout_constraintTop_toBottomOf="@+id/middleContainer"
             />
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/button2"
             android:layout_width="160dp"
             android:layout_height="52dp"
@@ -209,5 +209,5 @@
             />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.orchestra.flexibleWorkingInfo.flexibleHours.FlexibleHourFragment">
 
-  <android.support.v7.widget.RecyclerView
+  <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rcyclerFlexibleHours"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       tools:listitem="@layout/item_work_info"
-      app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       />
 
 </FrameLayout>

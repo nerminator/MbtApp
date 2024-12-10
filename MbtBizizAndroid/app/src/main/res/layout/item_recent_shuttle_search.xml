@@ -9,10 +9,10 @@
 
         <variable
             name="callback"
-            type="com.daimler.biziz.android.adapters.RecentSearchsAdapter.RecentSearchCallback" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.adapters.RecentSearchsAdapter.RecentSearchCallback" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -27,5 +27,5 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

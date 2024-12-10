@@ -2,13 +2,13 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#2e3542"
@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
 
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvTabFirst"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -51,7 +51,7 @@
                     android:textSize="15sp"
                     tools:text="Hoşdere" />
 
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvTabSecond"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -64,7 +64,7 @@
                     android:textSize="15sp"
                     tools:text="Genel Müdürlük" />
 
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvTabThird"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -78,7 +78,7 @@
                     tools:text="Aksaray" />
             </LinearLayout>
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/edtSearch"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -121,9 +121,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/split" />
 
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/bottom_sheet"
 
             android:layout_width="match_parent"
@@ -133,12 +133,12 @@
             app:behavior_peekHeight="90dp"
             app:layout_behavior="@string/bottom_sheet_behavior">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
-                <com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvBuildNumber"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -152,7 +152,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-                <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                     android:id="@+id/tvBuildName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tvBuildNumber"
                     tools:text="Bina-1" />
 
-                <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                     android:id="@+id/tvBuildRoomCount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -198,22 +198,22 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_arrow_down_gray" />
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerRooms"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="8dp"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tvBuildName"
                     app:layout_constraintTop_toBottomOf="@+id/tvBuildRoomCount" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </android.support.v4.widget.NestedScrollView>
-    </android.support.design.widget.CoordinatorLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

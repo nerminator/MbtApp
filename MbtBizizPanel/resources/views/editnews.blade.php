@@ -4,9 +4,14 @@
     <div class="container-fluid" style="margin-top: 25px;">
         <div class="row content">
             <div class="col-md-3 sidenav" style="padding: 0px; padding-left:50px;">
-                <h4 style="text-align: left"><img src="../img/logo.png"></h4>
+                <h4 style="text-align: left"><img src="../img/logo4.png" style="margin-left: -42px;"></h4>
                 <ul class="nav nav-pills nav-stacked" style="margin-top:20px;">
                     <li class="active"><a href="home" style="padding-left: 0px;">News</a></li>
+                    <li><a href="socialclubs" style="padding-left: 0px;">Social Clubs</a></li>
+                    <li><a href="phones" style="padding-left: 0px;">Phone Numbers</a></li>
+                    <li><a href="medias" style="padding-left: 0px;">Social Media</a></li>
+                    <li><a href="feedback" style="padding-left: 0px;">App Feedback</a></li>
+                    <li><a href="aboutus" style="padding-left: 0px;">About Us</a></li>
                 </ul>
                 <br>
                 <div class="logout">
@@ -16,12 +21,12 @@
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="fa fa-sign-out"
                                 aria-hidden="true"></i> Logout</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
                         {{ csrf_field() }}
                     </form>
                 </div>
             </div>
-            <form method="post" action="{{url('editnews')}}">
+            <form id="newsForm" method="post" onsubmit="onClickSubmitForm();return false;">
                 {{ csrf_field() }}
                 <div class="col-md-9" style="margin-top: 15px;">
                     <div class="col-md-9"><h3 style="margin-top: 10px;">News <i class="fa fa-caret-right"
@@ -43,132 +48,194 @@
                             </div>
                         @endif
                         <input type="hidden" id="news_id" value="{{$id}}" name="id">
+                        <input type="hidden" id="newsData" value="{{json_encode($newsData)}}" name="newsData">
+
                         <div id="news_detail">
                             <div class="col-md-12" style="padding: 0px">
                                 <div class="col-md-6">
-                                    <label class="col-md-12 translation_title" for="type">TYPE</label>
-                                    <select name="type" class="col-md-12 form-control" style="height: 45px;"
-                                            onchange="showDiscType()">
-                                        <option value="2">Event</option>
-                                        <option value="3">Discounts</option>
-                                        {{--<option value="4">Farewell</option>--}}
-                                        {{--<option value="5">Death</option>--}}
-                                        <option value="7">News</option>
-                                        <option value="8">Useful Links</option>
-                                        <option value="9">Contacts</option>
-                                        <option value="6">Other</option>
-                                    </select>
-                                    <div name="discountTypeDiv">
+                                    <div id="typeDiv">
+                                        <label class="col-md-12 translation_title" for="type">TYPE</label>
+                                
+                                        <select name="type" class="col-md-12 form-control" style="height: 45px;"
+                                                onchange="showDiscType()">
+                                            <option value="7">News</option>
+                                            <option value="2">Event</option>
+                                            <option value="3">Discounts</option>
+                                            {{--<option value="4">Farewell</option>--}}
+                                            {{--<option value="5">Death</option>--}}
+                                            <option value="8">Useful Links</option>
+                                            <option value="9">Contacts</option>
+                                            <option value="10">Social Club</option>
+                                            <option value="6">Other</option>
+                                        </select>
                                     </div>
-                                    <label class="col-md-12 translation_title" for="listText">LIST TEXT -
-                                        TURKISH</label>
-                                    <input type="text" class="col-md-12 form-control"
-                                           placeholder="Add List Text" name="listText" required
-                                           oninvalid="this.setCustomValidity('Please enter a list text')"
-                                           oninput="setCustomValidity('')" maxlength="100">
-                                    <label class="col-md-12 translation_title" for="listTextEn">LIST TEXT -
-                                        ENGLISH</label>
-                                    <input type="text" class="col-md-12 form-control"
-                                           placeholder="Add List Text" name="listTextEn" required
-                                           oninvalid="this.setCustomValidity('Please enter a list text')"
-                                           oninput="setCustomValidity('')" maxlength="100">
+                                    <div name="discountTypeDiv"></div>
+                                    
                                     <div id="textDiv">
                                         <label class="col-md-12 translation_title" for="title">TITLE - TURKISH</label>
                                         <input type="text" class="col-md-12 form-control"
-                                               placeholder="Add Title" name="title" maxlength="100">
+                                            value="{{$newsData->title}}" placeholder="Add Title" name="title" maxlength="150">
                                         <label class="col-md-12 translation_title" for="titleEn">TITLE - ENGLISH</label>
                                         <input type="text" class="col-md-12 form-control"
-                                               placeholder="Add Title" name="titleEn" maxlength="100">
+                                            value="{{$newsData->title_en}}" placeholder="Add Title" name="titleEn" maxlength="150">
                                         <label class="col-md-12 translation_title" for="text">TEXT - TURKISH</label>
                                         <textarea class="col-md-12 form-control" rows="5"
-                                                  placeholder="Add Text"
-                                                  name="text" maxlength="10000"></textarea>
+                                            placeholder="Add Text"
+                                            name="text" maxlength="10000">{{$newsData->text}}</textarea>
                                         <label class="col-md-12 translation_title" for="textEn">TEXT - ENGLISH</label>
                                         <textarea class="col-md-12 form-control" rows="5"
-                                                  placeholder="Add Text"
-                                                  name="textEn" maxlength="10000"></textarea>
-                                        <label class="col-md-12 translation_title" for="subTitle">SUBTITLE -
-                                            TURKISH</label>
-                                        <input type="text" class="col-md-12 form-control"
-                                               placeholder="Add Subtitle" name="subTitle" maxlength="100">
-                                        <label class="col-md-12 translation_title" for="subTitleEn">SUBTITLE -
-                                            ENGLISH</label>
-                                        <input type="text" class="col-md-12 form-control"
-                                               placeholder="Add Subtitle" name="subTitleEn" maxlength="100">
-                                        <label class="col-md-12 translation_title" for="subText">SUBTEXT -
-                                            TURKISH</label>
-                                        <textarea class="col-md-12 form-control" rows="5"
-                                                  placeholder="Add Subtext"
-                                                  name="subText" maxlength="10000"></textarea>
-                                        <label class="col-md-12 translation_title" for="subTextEn">SUBTEXT -
-                                            ENGLISH</label>
-                                        <textarea class="col-md-12 form-control" rows="5"
-                                                  placeholder="Add Subtext"
-                                                  name="subTextEn" maxlength="10000"></textarea>
+                                            placeholder="Add Text"
+                                            name="textEn" maxlength="10000">{{$newsData->text_en}}</textarea>
                                     </div>
                                     <label class="col-md-12 translation_title" for="url">URL</label>
                                     <input type="url" class="col-md-12 form-control"
-                                           placeholder="Add URL" name="url"
+                                           value="{{$newsData->url}}" placeholder="Add URL" name="url"
                                            oninvalid="this.setCustomValidity('Please enter a valid URL. Protocol is required. (http:// or https://)')"
                                            oninput="setCustomValidity('')">
                                     <div id="phoneNumber">
                                         <label class="col-md-12 translation_title" for="phone">PHONE</label>
                                         <input type="number" class="col-md-12 form-control"
-                                               placeholder="Add Phone Number" name="phone"
-                                               oninput="setCustomValidity('')">
+                                            value="{{$newsData->phone}}" placeholder="Add Phone Number" name="phone"
+                                            oninput="setCustomValidity('')">
                                     </div>
-                                    <label class="col-md-12 translation_title" for="employeeType">EMPLOYEE TYPE</label>
-                                    <select name="employeeType" class="col-md-12 form-control" style="height: 45px;">
-                                        <option value="">-</option>
-                                        @foreach($emp as $item)
-                                            <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label class="col-md-12 translation_title" for="locationIdList">COMPANY
-                                        LOCATION</label>
-                                    <select name="locationIdList[]" class="col-md-12 form-control"
-                                            style="height: 45px;" multiple>
-                                        @foreach($compL as $item)
-                                            <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label class="col-md-12 translation_title" for="companyIdList">COMPANY CODE</label>
-                                    <select name="companyIdList[]" class="col-md-12 form-control"
-                                            style="height: 45px;" multiple>
-                                        @foreach($compC as $item)
-                                            <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
-                                        @endforeach
-                                    </select>
+                                    @if ($newsData->type != 10) 
+                                        <label class="col-md-12 translation_title" for="employeeType">EMPLOYEE TYPE</label>
+                                        <select name="employeeType" 
+                                            value="{{$newsData->employee_type}}" class="col-md-12 form-control" style="height: 45px;">
+                                            <option value="">-</option>
+                                            @foreach($emp as $item)
+                                                <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label class="col-md-12 translation_title" for="locationIdList">COMPANY LOCATION</label>
+                                        <select name="locationIdList[]" class="col-md-12 form-control"
+                                                style="height: 45px;" multiple>
+                                            @foreach($compL as $item)
+                                                <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label class="col-md-12 translation_title" for="companyIdList">COMPANY CODE</label>
+                                        <select name="companyIdList[]" class="col-md-12 form-control"
+                                                style="height: 45px;" multiple>
+                                            @foreach($compC as $item)
+                                                <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    @endif
                                 </div>
-                                <a style="color: #636b6f;" name="add_cover">
-                                    <div id="AddCoverPhotoDiv" class="col-md-3"
-                                         style="text-align:center; border: 1px solid gray; min-height: 180px; margin-top: 40px; background-color: lightgray; padding-top: 18px;"
-                                         data-toggle="modal" data-target="#coverphoto_modal">
-                                        <br>
-                                        <label style="font-size: 40px; height: 40px;">+</label> <br>
-                                        <label>Add Cover Photo</label>
+                                <div class="col-md-6">
+                                <label class="col-md-12 translation_title" for="documents">IMAGES </label>
+
+                                <div class="row">
+                                    <a class="btn btn-default" data-toggle="modal" data-target="#coverphoto_modal"
+                                    style="height: 43px; margin-left:16px; margin-top: -2px; padding-top: 10px;"
+                                    name="addImage">Add Image</a>   
+                                    
+                                    <a id="DeleteImageButton" class="btn btn-default"
+                                    style="display:none; height: 43px; width:140px; margin-top: -2px; padding-top: 10px;"
+                                    name="deleteimageinedit">Delete Image</a>        
+                                </div>
+                                <div class="row" id="SliderDiv" hidden>                              
+                                <section id="SliderSection" class="splide"  aria-label="Splide Basic HTML Example" style="float:left; margin-top:5px; width:380px">
+                                    <div class="splide__track">
+                                            <ul id="EditNewsImages"class="splide__list">
+                                            </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
                                     </div>
-                                    <div id="CoverPhotoDiv" hidden class="col-md-3"
-                                         style="padding:0px; text-align:center; border: 1px solid gray; margin-top: 40px;">
-                                        <img src="" id="CoverPhoto" class="col-md-12" style="padding: 0px;"
-                                             data-toggle="modal" data-target="#coverphoto_modal">
-                                        <a class="col-md-12 btn btn-default"
-                                           style="height: 43px; margin-top: -2px; padding-top: 10px;"
-                                           name="deleteimageinedit">Delete Image</a>
-                                        <input type="hidden" name="imageString">
+                                </section>                              
+                                </div>
+
+                                <div  class="row">
+                                    <div id="documents">
+                                        <div class="col-md-12" style="padding: 0px">
+                                            <div class="col-md-6">
+                                                <label class="col-md-12 translation_title" for="documents">PDF DOCUMENTS</label>
+                                                <div class="col-md-6" style="padding-left: 0px;">
+                                                    <div hidden name="pdf_inputfile">
+                                                    </div>
+                                                    <a class="col-md-12 btn btn-default"
+                                                    style="height: 43px; width:140px; padding-top: 10px;" name="upload_document">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i> Dosya Yükle</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" name="pdf_list" hidden>
+                                            <div class="col-md-12" style="margin-top: 20px;">
+                                                <div class="col-md-10 col-md-offset-1"></div>
+                                            </div>
+                                        </div>                                   
                                     </div>
-                                </a>
+                                </div>
+
+                                <div  class="row" style="margin-top: 50px;">
+                                    <div id="discounts_code_div" class="discounts_code_div" hidden>
+                                        <div>
+                                            <label class="col-md-12 translation_title" for="type">DISCOUNT CODE TYPE</label>
+                                            <select name="discountCodeType" class="col-md-6 form-control" style="height: 45px;"
+                                                    onchange="showDiscCodeType()">
+                                                <option value="0">No Code</option>
+                                                <option value="1">One code for all</option>
+                                                <option value="2">One code for each person</option>
+
+                                            </select>
+                                        </div>
+                                        <div id="one_for_all_div"  class="col-md-12" style="padding: 0px" hidden>
+                                        
+                                            <label class="col-md-12 translation_title" for="subTitle">DISCOUNT CODE</label>
+                                            <input type="text" class="col-md-12 form-control"
+                                                placeholder="Add Discount Code" name="oneForAllCodeInput" maxlength="120">
+                                        </div>
+
+                                        <div id="one_for_each_div"  class="col-md-12" style="padding: 0px" hidden>
+                                            
+                                            <div class="col-md-10" style="padding-left: 0px;">
+                                                <div hidden name="discount_inputfile">
+                                                    <input type='file' id='discountCodeFile' name='discountCodeFile' accept='application/txt' onchange='discountCodeFileSelected(this);' hidden>
+                                                </div>
+                                                <a class="col-md-12 btn btn-default"
+                                                style="height: 43px; width:240px; padding-top: 10px; margin-top : 12px;" name="upload_discountcodes_button">
+                                                    <i class="fa fa-upload" aria-hidden="true"></i> Upload File with Discount Codes</a>
+                                            </div>
+                                            
+                                            <div class="col-md-12" id="discount_code_metrics" hidden>
+                                                <div class="row">
+                                                    <label class="col-md-6 translation_title" for="subTitle">Number of Discount Codes:</label>
+                                                    <label id="discount_code_count" class="col-md-6 translation_title" for="subTitle">0</label>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-6 translation_title" for="subTitle">Used Discount Codes:</label>
+                                                    <label id="discount_code_used" class="col-md-6 translation_title" for="subTitle">0</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                 
+                                    </div>
+                                </div>
+
+                                
+                                </div>
+                                <input type="hidden" name="imageString" value="">
+                                <input type="hidden" name="imageString1" value="">
+                                <input type="hidden" name="imageString2" value="">
+                                <input type="hidden" name="imageString3" value="">
+                                <input type="hidden" name="imageString4" value="">
+                                <input type="hidden" name="imageString5" value="">
+                                <input type="hidden" name="imageString6" value="">
+                                <input type="hidden" name="imageString7" value="">
+                                <input type="hidden" name="imageString8" value="">   
+                                <input type="hidden" name="imageString9" value="">
                             </div>
-                            <div class="col-md-12" style="padding: 0px;">
+
+                            <div class="col-md-12" style="padding: 0px;" id="dateDiv">
                                 <div class="col-md-6">
                                     <div class="col-md-6" style="padding: 0px;">
                                         <label class="col-md-12 translation_title" for="startTime">START DATE</label>
                                         <div class="col-md-12" style="padding-left: 0px;">
                                             <input type="datetime-local" class="col-md-12 form-control"
-                                                   name="startTime" required
+                                                   name="startTime" 
                                                    oninvalid="this.setCustomValidity('Please enter a date')"
                                                    oninput="setCustomValidity('')"
-                                                   style="padding-left:5px; padding-right: 5px">
+                                                   style="padding-left:5px; padding-right: 5px" id="startTime_">
                                         </div>
                                     </div>
                                     <div class="col-md-6" style="padding: 0px;">
@@ -190,7 +257,7 @@
                         </div>
                         <div class="col-md-3">
                             <br>
-                            <button type="submit" class="col-md-12 btn btn-primary">Save</button>
+                            <button id="submitForm" type="submit" class="col-md-12 btn btn-primary">Save</button>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ import Marshal
 
 enum NewsType : Int {
     case hepsi = 1
-    case etkinlik, indirim, veda, vefat, diger, duyurular,linkler,baglantilar
+    case etkinlik, indirim, veda, vefat, diger, duyurular,linkler,baglantilar,clubs
     
     var title : String {
         switch self {
@@ -23,6 +23,7 @@ enum NewsType : Int {
         case .duyurular: return "TXT_LOGIN_NEWS_TYPE7".localized()
         case .linkler: return "TXT_LOGIN_NEWS_TYPE8".localized()
         case .baglantilar: return "TXT_LOGIN_NEWS_TYPE9".localized()
+        case .clubs: return "TXT_LOGIN_NEWS_TYPE10".localized()
         }
     }
     

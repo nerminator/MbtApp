@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 
 class NewsController extends Controller
 {
@@ -23,7 +24,7 @@ class NewsController extends Controller
     {
         //region Controls
         $validator = Validator::make($request->all(), [
-            'type' => 'required|integer|min:1|max:9',
+            'type' => 'required|integer|min:1|max:10',
             'discountType' => 'required_if:type,==,3|integer|min:1|max:14',
             'pageNumber' => 'required|integer|min:0'
         ]);
@@ -36,21 +37,31 @@ class NewsController extends Controller
             ]);
         }
         //endregion
-
-        $type = Input::get('type');
-        $discountType = Input::get('discountType');
-        $rowOffset = 10 * Input::get('pageNumber');
+        
+        $type = $request->input('type');
+        $discountType = $request->input('discountType');
+        $rowOffset = 10 * $request->input('pageNumber');
 
         $userType = Auth::user()->type;
         $userCompanyLocationId = Auth::user()->company_location_id;
         $userEmployeeLocationId = Auth::user()->employee_location_id;
+        $userTypeStr = "";
+        if ($userType!= null){
+            $userTypeStr = "and (n.employee_type is null or n.employee_type = $userType)";
+        }
 
         //region Setting SQL Query
         if ($this->isLangEn()) {
-            $sqlQuery = "select n.id, n.list_text_en as list_text, n.image, n.type, n.discount_type, n.start_time, n.url, n.phone
+            $sqlQuery = "select n.id, n.title_en as title, n.type, n.discount_type, n.start_time, n.url, n.phone,
+                                (
+                                    select ni.image
+                                    from news_images ni
+                                    where ni.news_id = n.id
+                                    LIMIT 1
+                                ) as image  
                           from news n
                           where n.status = 1 and (n.end_time is null or n.end_time > now())
-                                and (n.employee_type is null or n.employee_type = $userType)
+                                $userTypeStr
                                 and (
                                       (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
                                       or
@@ -63,10 +74,16 @@ class NewsController extends Controller
                                     )
                                 ";
         } else {
-            $sqlQuery = "select n.id, n.list_text, n.image, n.type, n.discount_type, n.start_time, n.url, n.phone
+            $sqlQuery = "select n.id, n.title, n.type, n.discount_type, n.start_time, n.url, n.phone,
+                                (
+                                    select ni.image
+                                    from news_images ni
+                                    where ni.news_id = n.id
+                                    LIMIT 1
+                                ) as image  
                           from news n
                           where n.status = 1 and (n.end_time is null or n.end_time > now())
-                                and (n.employee_type is null or n.employee_type = $userType)
+                                $userTypeStr
                                 and (
                                       (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
                                       or
@@ -81,17 +98,22 @@ class NewsController extends Controller
         }
 
         if ($type != 1) {
-            $sqlQuery .= "and n.type = $type ";
+            $sqlQuery .= " and n.type = $type ";
         } else {
-            $sqlQuery .= "and n.type != 8 and n.type != 9 ";
+            $sqlQuery .= " and n.type != 8 and n.type != 9 and n.type != 10 ";
         }
 
         if ($discountType != null && $discountType != 1) {
-            $sqlQuery .= "and n.discount_type = $discountType ";
+            $sqlQuery .= " and n.discount_type = $discountType ";
         }
 
-        $sqlQuery .= "order by n.start_time desc
-                    limit 10 offset $rowOffset";
+        if ($type == 10) {
+            $loc = $request->input('locId');
+            $sqlQuery .= " and loc_id = $loc order by n.order limit 10 offset $rowOffset ";
+        } else {
+            $sqlQuery .= " order by n.start_time desc limit 10 offset $rowOffset";
+        }
+
         //endregion
 
         $newsListResult = DB::select($sqlQuery);
@@ -129,8 +151,18 @@ class NewsController extends Controller
 
         $params = [$id, Auth::user()->type, Auth::user()->company_location_id, Auth::user()->employee_location_id];
         if ($this->isLangEn()) {
-            $newsObjectResult = $this->getFirstItemFromDb("select n.title_en as title, n.text_en as text, n.sub_title_en as sub_title, n.sub_text_en as sub_text,
-                                                                            n.image, n.url, n.phone, n.type, n.discount_type, n.start_time, n.end_time
+            $newsObjectResult = $this->getFirstItemFromDb("select n.title_en as title, n.text_en as text, n.sub_title_en as sub_title, n.discount_code_type, n.discount_code_all,
+                                                                            n.image, n.url, n.phone, n.type, n.discount_type, n.start_time, n.end_time,
+                                                                            (
+                                                                                select group_concat(ni.image)
+                                                                                from news_images ni
+                                                                                where ni.news_id = n.id
+                                                                              ) as images,
+                                                                              (
+                                                                                select concat( '[', group_concat('{\"id\":',np.id,',\"pdf\":\"',np.pdf_file,'\",\"name\":\"',np.pdf_name,'\"}'), ']')
+                                                                                from news_pdf_files np
+                                                                                where np.news_id = n.id
+                                                                              ) as pdfs
                                                                     from news n
                                                                     where n.id = ? and (n.end_time is null or n.end_time > now())
                                                                           and (n.employee_type is null or n.employee_type = ?)
@@ -145,7 +177,17 @@ class NewsController extends Controller
                                                                                   (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
                                                                               )", $params);
         } else {
-            $newsObjectResult = $this->getFirstItemFromDb("select n.title, n.text, n.sub_title, n.sub_text, n.image, n.url, n.phone, n.type, n.discount_type, n.start_time, n.end_time
+            $newsObjectResult = $this->getFirstItemFromDb("select n.title, n.text, n.image, n.url, n.phone, n.type, n.discount_type, n.start_time, n.end_time, n.discount_code_type, n.discount_code_all,
+                                                                    (
+                                                                        select group_concat(ni.image)
+                                                                        from news_images ni
+                                                                        where ni.news_id = n.id
+                                                                    ) as images,
+                                                                    (
+                                                                        select concat( '[', group_concat('{\"id\":',np.id,',\"pdf\":\"',np.pdf_file,'\",\"name\":\"',np.pdf_name,'\"}'), ']')
+                                                                        from news_pdf_files np
+                                                                        where np.news_id = n.id
+                                                                      ) as pdfs
                                                                     from news n
                                                                     where n.id = ? and (n.end_time is null or n.end_time > now())
                                                                           and (n.employee_type is null or n.employee_type = ?)
@@ -155,8 +197,8 @@ class NewsController extends Controller
                                                                                 (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
                                                                               )
                                                                           and (
-                                                                                  (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
-                                                                                  or
+                                                                          (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
+                                                                        or
                                                                                   (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
                                                                               )", $params);
         }
@@ -171,20 +213,58 @@ class NewsController extends Controller
         if ($newsObjectResult->end_time != null) {
             $dateInfo = Carbon::parse($newsObjectResult->start_time)->format('d.m.Y') . " - " . Carbon::parse($newsObjectResult->end_time)->format('d.m.Y');
         } else {
-            $dateInfo = Carbon::parse($newsObjectResult->start_time)->formatLocalized('%d %B %Y, %A');
+            $dateInfo = Carbon::parse($newsObjectResult->start_time)->format('d.m.Y');
+        }
+
+        $imageList = [];
+        if($newsObjectResult->images){
+            $imageList = explode(",", $newsObjectResult->images);
+        }
+
+        $userId = Auth::id();
+        if ($newsObjectResult->discount_code_type == 2 ){
+            // check is there is already one assigned for this user
+            $discountCodeAssigned = $this->getFirstItemFromDb("select code from news_discount_codes where news_id =? and user_id = ?", [$id, $userId]);
+            if ($discountCodeAssigned != null) {
+                $newsObjectResult->discount_code_type = 1;
+                $newsObjectResult->discount_code_all = $discountCodeAssigned->code;
+            } else {
+                $freeDiscountCode = $this->getFirstItemFromDb("select code from news_discount_codes where news_id =? and user_id = 0 limit 1", [$id]);
+                if ($freeDiscountCode == null) { // no code left  
+                    $newsObjectResult->discount_code_type =  1;
+                    $newsObjectResult->discount_code_all = null;
+                } else { //code left, user will click on getDiscountCode
+                    $newsObjectResult->discount_code_all = null;
+                }   
+            }
+        }
+
+        $imageUrl = $newsObjectResult->image;
+        if (count($imageList) > 0){
+            $imageUrl = $imageList[0];
         }
 
         $newsObject = [
             'type' => $newsObjectResult->type,
             'discountType' => $newsObjectResult->discount_type,
-            'image' => $newsObjectResult->image,
+            'image' =>  $imageUrl,
+            'images' => $imageList, 
+            'pdfs' => $newsObjectResult->pdfs ? json_decode($newsObjectResult->pdfs) : null,            
             'dateInfo' => $dateInfo,
             'title' => $newsObjectResult->title,
             'text' => $newsObjectResult->text,
-            'subTitle' => $newsObjectResult->sub_title,
-            'subText' => $newsObjectResult->sub_text,
-            'url' => $newsObjectResult->url
+            'url' => $newsObjectResult->url,
+            "discountCodeType" => $newsObjectResult->discount_code_type,
+            "discountCodeAll" => $newsObjectResult->discount_code_all,
         ];
+
+        if(Redis::exists('viewCountForNews').$id){
+            $viewCount = Redis::get('viewCountForNews'.$id);
+            Redis::set('viewCountForNews'.$id, $viewCount +1);
+        } else {
+            Redis::set('viewCountForNews'.$id, 1);
+        }
+
 
         return response()->json([
             'statusCode' => 200,
@@ -198,7 +278,7 @@ class NewsController extends Controller
         return response()->json([
             'statusCode' => 200,
             'responseData' => [
-                'dateInfo' => Carbon::now()->formatLocalized('%d %B %Y, %A'),
+                'dateInfo' => Carbon::now()->format('d.m.Y'),
                 'birthdayList' => $this->_getBirthdayListFromCache()
             ],
             'errorMessage' => null
@@ -224,10 +304,10 @@ class NewsController extends Controller
         $now = Carbon::now();
         try {
             $birthdayList = Cache::remember($now->toDateString() . "_birthday_list", 10080, function () use ($now) {
-                return DB::select('select name_surname as name, expense_center as title from users where birthday = ? and status = 1', [$now->format('d.m')]);
+                return DB::select('select name_surname as name, expense_center as title from users where birthday = ? and status = 1 order by name_surname', [$now->format('d.m')]);
             });
         } catch (\Exception $exception) {
-            $birthdayList = DB::select('select name_surname as name, expense_center as title from users where birthday = ? and status = 1', [$now->format('d.m')]);
+            $birthdayList = DB::select('select name_surname as name, expense_center as title from users where birthday = ? and status = 1 order by name_surname', [$now->format('d.m')]);
         }
 
         return $birthdayList;
@@ -241,8 +321,8 @@ class NewsController extends Controller
             $newsList[] = [
                 'id' => $item->id,
                 'type' => $item->type,
-                'listText' => $item->list_text,
-                'monthName' => $this->_getMonthName($item->start_time),
+                'listText' => $item->title,
+                'monthName' => $this->_getMonthName($item->start_time, $item->type),
                 'discountType' => $item->discount_type,
                 'image' => $item->image,
                 'url' => $item->url,
@@ -253,8 +333,12 @@ class NewsController extends Controller
         return $newsList;
     }
 
-    private function _getMonthName($startTime)
+    private function _getMonthName($startTime, $type)
     {
+	 if ($type == 10) {  //Social clubs
+            return '';
+        }
+
         $carbonStartDate = Carbon::parse($startTime);
         if ($carbonStartDate->isSameYear()) {
             if ($carbonStartDate->isCurrentMonth()) {
@@ -263,9 +347,55 @@ class NewsController extends Controller
                 return $this->isLangEn() ? "LAST MONTH" : "GEÇEN AY";
             }
 
-            return strtoupper($carbonStartDate->formatLocalized('%B')) . ($this->isLangEn() ? "" : " AYI");
+            return strtoupper($carbonStartDate->format('m.Y'));
         }
 
-        return strtoupper($carbonStartDate->formatLocalized('%Y %B')) . ($this->isLangEn() ? "" : " AYI");
+        return strtoupper($carbonStartDate->format('m.Y'));
+    }
+
+
+    public function getDiscountCode($newsId)
+    {
+        //region Controls
+        $validator = Validator::make(['newsId' => $newsId], [
+            'newsId' => 'integer|min:1',
+        ]);
+        if ($validator->fails()) // missing parameters
+        {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => "Eksik/hatalı parametre(ler) var!"
+            ]);
+        }
+        //endregion
+
+        $userId = Auth::id();
+        
+        // check is there is already one assigned for this user
+        $discountCodeAssigned = $this->getFirstItemFromDb("select code from news_discount_codes where news_id =? and user_id = ?", [$newsId, $userId]);
+        if ($discountCodeAssigned != null) {
+            return response()->json([
+                'statusCode' => 200,
+                'responseData' => $discountCodeAssigned 
+            ]);
+        }
+
+        DB::update("update news_discount_codes set user_id = ? where news_id = ? and user_id = 0 LIMIT 1", [$userId, $newsId]);
+            
+        $discountCodeNew = $this->getFirstItemFromDb("select code from news_discount_codes where news_id =? and user_id = ?", [$newsId, $userId]);
+
+        if ($discountCodeNew != null) {
+            return response()->json([
+                'statusCode' => 200,
+                'responseData' => $discountCodeNew 
+            ]);
+        } else {
+            return response()->json([
+                'statusCode' => 401,
+                'responseData' => null,
+                'errorMessage' => "Maalesef tüm indirim kodları diğer kullanıcılar tarafından kullanıldı"
+            ]);
+        }
     }
 }

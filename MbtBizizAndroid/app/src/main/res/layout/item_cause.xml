@@ -5,10 +5,10 @@
 
         <variable
             name="type"
-            type="com.daimler.biziz.android.network.entity.workCalendar.TypeEntity" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.TypeEntity" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="18dp">
@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textCause" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/textCause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             app:layout_constraintStart_toEndOf="@+id/viewDot"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -45,7 +45,7 @@
             app:layout_constraintStart_toEndOf="@+id/viewDot"
             app:layout_constraintTop_toBottomOf="@+id/textCause" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/textToday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,5 +56,5 @@
             android:layout_marginEnd="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textCause" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

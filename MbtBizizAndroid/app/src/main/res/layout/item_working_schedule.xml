@@ -5,16 +5,16 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.model.Day" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.model.Day" />
 
         <variable
             name="callback"
-            type="com.daimler.biziz.android.ui.main.orchestra.schedule.WorkingScheduleFragment.IWorkCalendar" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.schedule.WorkingScheduleFragment.IWorkCalendar" />
 
         <import type="android.view.View" />
     </data>
 
-    <com.daimler.biziz.android.uiControls.SquareCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.SquareCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:background="@{data.selected ? @drawable/bg_rounded_selected_calendar : null}"/>
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvDayNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,5 +47,5 @@
             android:layout_below="@+id/tvDayNumber"
             android:gravity="center_horizontal"
             android:orientation="horizontal" />
-    </com.daimler.biziz.android.uiControls.SquareCoordinatorLayout>
+    </com.daimlertruck.dtag.internal.android.mbt.test.uiControls.SquareCoordinatorLayout>
 </layout>

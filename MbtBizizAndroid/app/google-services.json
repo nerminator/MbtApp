@@ -1,78 +1,35 @@
 {
   "project_info": {
-    "project_number": "277036623606",
-    "firebase_url": "https://biziz-207106.firebaseio.com",
-    "project_id": "biziz-207106",
-    "storage_bucket": "biziz-207106.appspot.com"
+    "project_number": "696890227672",
+    "project_id": "mbt-biziz",
+    "storage_bucket": "mbt-biziz.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:277036623606:android:a3fc5a179e8bf93c",
+        "mobilesdk_app_id": "1:696890227672:android:d36f2f8b22c0b1c933d0ad",
         "android_client_info": {
-          "package_name": "com.daimler.biziz.android"
+          "package_name": "com.daimlertruck.dtag.internal.android.mbt.test"
         }
       },
       "oauth_client": [
         {
-          "client_id": "277036623606-l2ofs9pj9jgidbu8dfvmnkgu00ojhbbq.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "277036623606-l2ofs9pj9jgidbu8dfvmnkgu00ojhbbq.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "696890227672-jk1dv4qdrh367pd4ugar9jpjoviogdtd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daimlertruck.dtag.internal.android.mbt.test",
+            "certificate_hash": "861c2abef2dc37c6eb82493bff8acb9a160a0b16"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBMGDP7jeZV2vsLJp8mxcujVNfborg23t0"
+          "current_key": "AIzaSyC0pFfhXn-7rDBL4WhIxSBV1CHbQV9p7uE"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
           "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:277036623606:android:b9b264f7c5aa2c9a",
-        "android_client_info": {
-          "package_name": "com.daimler.bizizapp.android"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "277036623606-l2ofs9pj9jgidbu8dfvmnkgu00ojhbbq.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "277036623606-l2ofs9pj9jgidbu8dfvmnkgu00ojhbbq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBMGDP7jeZV2vsLJp8mxcujVNfborg23t0"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

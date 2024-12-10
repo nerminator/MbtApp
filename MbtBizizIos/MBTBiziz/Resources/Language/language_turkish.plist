@@ -13,9 +13,9 @@
 		<key>TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TEXT</key>
 		<string>Uygulamayı kullanmaya başlamak için kullanıcı şartlarını kabul etmeniz gerekmektedir. Kabul etmek istemiyorsanız uygulamayı kapatabilirsiniz.</string>
 		<key>TXT_LOGIN_WELCOME_HEADER</key>
-		<string>Hoşgeldiniz</string>
+		<string>Hoş geldiniz</string>
 		<key>TXT_LOGIN_WELCOME_DESCRIPTION</key>
-		<string>Uygulamaya giriş yapmak için cep telefonu numaranızı giriniz.</string>
+		<string>Giriş yap butonuna tıklayıp kimlik doğrulama adımları ile devam edebilirsiniz.</string>
 		<key>TXT_LOGIN_WELCOME_BUTTON</key>
 		<string>Giriş Yap</string>
 		<key>TXT_LOGIN_PIN_TITLE</key>
@@ -26,14 +26,24 @@
 		<string>Tekrar Gönder</string>
 		<key>TXT_LOGIN_PIN_BUTTON</key>
 		<string>Onayla</string>
+		<key>TXT_LOGIN_HOME_ABOUT</key>
+		<string>Hakkımızda</string>
 		<key>TXT_LOGIN_HOME_NEWS</key>
-		<string>Mercedes&apos;ten Haberler</string>
+		<string>Haberler</string>
+		<key>TXT_LOGIN_HOME_EVENTS</key>
+		<string>Etkinlikler</string>
 		<key>TXT_LOGIN_HOME_MAP</key>
 		<string>Yerleşim</string>
 		<key>TXT_LOGIN_HOME_SHUTTLE</key>
 		<string>Ulaşım</string>
 		<key>TXT_LOGIN_HOME_MENU</key>
 		<string>Yemek Menüsü</string>
+		<key>TXT_LOGIN_HOME_DISCOUNTS</key>
+		<string>Şirket İndirimleri</string>
+		<key>TXT_LOGIN_HOME_LINKS</key>
+		<string>Faydalı Bağlantılar</string>
+		<key>TXT_LOGIN_HOME_PHONES</key>
+		<string>Önemli Numaralar</string>
 		<key>TXT_LOGIN_HOME_TAB1</key>
 		<string>Portal</string>
 		<key>TXT_LOGIN_HOME_TAB2</key>
@@ -78,6 +88,8 @@
 		<string>Linkler</string>
 		<key>TXT_LOGIN_NEWS_TYPE9</key>
 		<string>Bağlantılar</string>
+		<key>TXT_LOGIN_NEWS_TYPE10</key>
+		<string>Sosyal Kulüpler</string>
 		<key>TXT_LOGIN_NEWS_BIRTHDAY</key>
 		<string>Bugün Doğanlar</string>
 		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE1</key>
@@ -108,6 +120,8 @@
 		<string>Diğer</string>
 		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE14</key>
 		<string>Teknoloji ve Telekom</string>
+		<key>TXT_ABOUTUS_TITLE</key>
+		<string>Hakkımızda</string>
 		<key>TXT_MENU_MENU_TITLE</key>
 		<string>Yemek Menüsü</string>
 		<key>TXT_MENU_MENU_CALORIE</key>
@@ -217,12 +231,12 @@ Süleyman Şah Caddesi, No:2
 Telefon:0212 867 30 00 pbx
 mbt_app@daimlertruck.com
 
-Mercedes-Benz Türk İcra Kurulu
+İcra Kurulu
 
-Süer Sülün - Mercedes-Benz Türk İcra Kurulu Başkanı (CEO)
-Bülent Acicbe - Otobüs Üretimden Sorumlu İcra Kurulu Üyesi
-Tülin Mede Esmer - Mercedes-Benz Türk Finans ve Kontrol&apos;den Sorumlu İcra Kurulu Üyesi (CFO)
-Ulf Raese - Aksaray Kamyon Fabrikası Direktörü &amp; İcra Kurulu Üyesi
+MBT, İcra Kurulu Başkanı (CEO), Süer Sülün.
+MBT, Otobüs Üretiminden Sorumlu İcra Kurulu Üyesi, Bülent Acicbe.
+MBT, Finans ve Kontrol&apos;den Sorumlu İcra Kurulu Üyesi (CFO), Tülin Mede Esmer.
+MBT, Aksaray Fabrika Direktörü &amp; İcra Kurulu Üyesi, Ulf Raese.
 
 Ticari Kayıt Numarası: 94468
 VAT Kimlik Numarası: 7-9159-7212-1615130
@@ -324,11 +338,11 @@ Tüm Hakları Saklıdır.</string>
 		<key>TXT_PROFILE_SETTINGS_QUIT_WARNING</key>
 		<string>Çıkış yapmak istediğinize emin misiniz?</string>
 		<key>TXT_INFO_NOTIFICATION</key>
-		<string>Bu uygulamanın şirket haberleri (etkinlikler, bildirimler) ile ilgili size bildirimler göndermesini ister misiniz? Bu anlık mesajlar her zaman BizİZ App-&gt;Profilim-&gt;Ayarlar-&gt;Etkinlik Bildirimleri  ve BizİZ App-&gt;Profilim-&gt;Ayarlar-&gt;İndirim Bildirimleri ile aktif veya pasif hale getirilebilir. </string>
+		<string>Bu uygulamanın şirket haberleri (etkinlikler, bildirimler) ile ilgili size bildirimler göndermesini ister misiniz? Bu anlık mesajlar her zaman MBT App-&gt;Profilim-&gt;Ayarlar-&gt;Etkinlik Bildirimleri  ve MBT App-&gt;Profilim-&gt;Ayarlar-&gt;İndirim Bildirimleri ile aktif veya pasif hale getirilebilir. </string>
 		<key>TXT_SETTINGS_DEVICE_BUTTON</key>
 		<string>Cihaz Ayarları&apos;na Git</string>
 		<key>TXT_SETTINGS_NOT_GRANTED_NOTIFICATIONS</key>
-		<string>Cihaz ayarlarında bildirimler kapalı. IOS Ayarlar-&gt;BizİZ-&gt;Bildirimler sayfasından bildirimleri açabilirsiniz.</string>
+		<string>Cihaz ayarlarında bildirimler kapalı. IOS Ayarlar-&gt;MBT App-&gt;Bildirimler sayfasından bildirimleri açabilirsiniz.</string>
 		<key>TXT_COMMON_TODAY</key>
 		<string>BUGÜN</string>
 		<key>TXT_QR_CODE_TITLE</key>
@@ -348,6 +362,46 @@ QR kodunu tarayınız.</string>
 		<string>Tekrar Dene</string>
 		<key>TXT_QR_CODE_POPUP_BUTTON_RETURN</key>
 		<string>Portal’a Dön</string>
+		<key>TXT_DISCOUNT_CODE_GET</key>
+		<string>İndirim Kodu Al</string>
+		<key>TXT_DISCOUNT_CODE_TITLE</key>
+		<string>İNDİRİM KODU</string>
+		<key>TXT_NO_DISCOUNT_CODE</key>
+		<string>İndirim Kodu Kalmadı</string>
+		<key>TXT_LINKS_TITLE1</key>
+		<string>Sosyal Kulüpler</string>
+		<key>TXT_LINKS_TITLE2</key>
+		<string>Dahili İlanlar</string>
+		<key>TXT_LINKS_TITLE3</key>
+		<string>Bugün Doğanlar</string>
+		<key>TXT_LINKS_TITLE4</key>
+		<string>MBFit</string>
+		<key>TXT_LINKS_TITLE5</key>
+		<string>Gürsel Yolcu</string>
+		<key>TXT_LINKS_TITLE6</key>
+		<string>CloudOffix</string>
+		<key>TXT_LINKS_TITLE7</key>
+		<string>Öneri Sistemi</string>
+		<key>TXT_LINKS_TITLE8</key>
+		<string>Araç Kolay</string>
+		<key>TXT_LINKS_TITLE9</key>
+		<string>Kütüphane</string>
+		<key>TXT_COPY</key>
+		<string>Kopyala</string>
+		<key>TXT_COPIED</key>
+		<string>Kopyalandı</string>
+		<key>TXT_CLUBS_ISTANBUL</key>
+		<string>İSTANBUL SOSYAL KULÜPLER</string>
+		<key>TXT_CLUBS_AKSARAY</key>
+		<string>AKSARAY SOSYAL KULÜPLER</string>
+		<key>TXT_SOCIAL_MEDIA_BUTTON</key>
+		<string>Sosyal Medya Hesapları</string>
+		<key>TXT_APP_FEEDBACK_BUTTON</key>
+		<string>Uygulama Geri Bildirim</string>
+		<key>TXT_SUBMIT_BUTTON</key>
+		<string>Gönder</string>
+		<key>TXT_APP_FEEDBACK_PLACEHOLDER</key>
+		<string>Geri bildiriminiz...</string>
 	</dict>
 </dict>
 </plist>

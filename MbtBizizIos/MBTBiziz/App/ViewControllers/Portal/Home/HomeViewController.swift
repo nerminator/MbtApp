@@ -23,11 +23,16 @@ class HomeViewController: MBTBaseViewController, HomeDisplayLogic
     
     // MARK: IBOutlets
     
+    @IBOutlet weak var viewCardAbout: MBTHomeCardView!
     @IBOutlet weak var viewCardNews: MBTHomeCardView!
+    @IBOutlet weak var viewCardEvents: MBTHomeCardView!
     @IBOutlet weak var viewCardLocation: MBTHomeCardView!
     @IBOutlet weak var viewCardTransportation: MBTHomeCardView!
     @IBOutlet weak var viewCardMenu: MBTHomeCardView!
-
+    @IBOutlet weak var viewCardDiscounts: MBTHomeCardView!
+    @IBOutlet weak var viewCardLinks: MBTHomeCardView!
+    @IBOutlet weak var viewCardPhones: MBTHomeCardView!
+    
     private var shouldShowQrCode: Bool = false
     
     // MARK: VIP Protocols
@@ -56,16 +61,11 @@ class HomeViewController: MBTBaseViewController, HomeDisplayLogic
     @objc func barButtonCallCenterTapped(_ sender: UIBarButtonItem) {
         self.tabBarController?.presentAsBottomPopup(.technicalSupport)
     }
-
-    @objc func barButtonQRCodeTapped(_ sender: UIBarButtonItem) {
-        router?.routeToBarcode()
-    }
   
     // MARK: View lifecycle
   
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        
         //HomeWorker().fetchUserConfig { [weak self] (shouldShowQr) in
         //    self?.shouldShowQrCode = shouldShowQr
         //    self?.updateBarButtonItems()
@@ -75,9 +75,6 @@ class HomeViewController: MBTBaseViewController, HomeDisplayLogic
     private func updateBarButtonItems() {
 
         var items = [UIBarButtonItem(image: #imageLiteral(resourceName: "btnCallcenter"), style: .plain, target: self, action: #selector(barButtonCallCenterTapped(_:)))]
-        if shouldShowQrCode {
-            items.append(UIBarButtonItem(image: #imageLiteral(resourceName: "iconQr.pdf"), style: .plain, target: self, action: #selector(barButtonQRCodeTapped(_:))))
-        }
         self.navigationItem.leftBarButtonItems = items
     }
 }
@@ -101,14 +98,24 @@ extension HomeViewController {
 extension HomeViewController : MBTHomeCardViewDelegate {
     
     func homeCardViewDidSelected(_ homeCard: MBTHomeCardView) {
-        if homeCard == viewCardNews {
-            router?.routeToPortalNews()
-        } else if homeCard == viewCardMenu {
-            interactor?.getMealInfo(request: Home.MealInfo.Request())
+        if homeCard == viewCardAbout {
+            router?.routeToAboutUs()
+        } else if homeCard == viewCardNews {
+            router?.routeToPortalNews(newsType: NewsType.duyurular)
+        } else if homeCard == viewCardEvents {
+            router?.routeToPortalNews(newsType: NewsType.etkinlik)
         } else if homeCard == viewCardLocation {
             router?.routeToPortalLocation()
         } else if homeCard == viewCardTransportation {
             router?.routeToPortalTransportation()
+        } else if homeCard == viewCardMenu {
+            interactor?.getMealInfo(request: Home.MealInfo.Request())
+        } else if homeCard == viewCardDiscounts {
+            router?.routeToPortalNews(newsType: NewsType.indirim)
+        } else if homeCard == viewCardLinks{
+            router?.routeToPortalLinks()
+        } else if homeCard == viewCardPhones {
+            router?.routeToPortalPhones()
         }
     }
 }

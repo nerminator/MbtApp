@@ -5,11 +5,11 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.settings.SettingObject" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.settings.SettingObject" />
 
         <variable
             name="settingchangedcallback"
-            type="com.daimler.biziz.android.network.entity.settings.ISettingsChange" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.settings.ISettingsChange" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,7 +31,7 @@
             app:data="@{data}" />
 
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvSettingName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:textColor="@android:color/white"
             android:textSize="17.3dp" />
 
-        <!--<com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <!--<com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvSettingDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

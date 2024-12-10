@@ -11,12 +11,13 @@ import EZSwiftExtensions
 import PureLayout
 import Marshal
 import UserNotifications
+import SwiftUI
+import MSAL
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        guard !TokenManager.sharedManager.token.isEmpty else { return }
+        guard !TokenManager.sharedManager.accessToken.isEmpty else { return }
         WSProvider.shared.wsRequest(.getNotificationBadgeCount) { (response : WSResponse<Int>) in
             if response.isSuccess { MBTNotificationManager.shared.unreadedNotificationCount = response.data ?? 0 }
         }
@@ -75,13 +76,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+    }
 }
 
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenString = deviceToken.reduce("", {$0 + String(format: "%02X",    $1)})
+        print("tokenString")
+        print(tokenString)
         MBTSingleton.shared.deviceTokenForPush = tokenString
     }
     

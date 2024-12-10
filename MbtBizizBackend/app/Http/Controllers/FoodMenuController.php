@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Lang;
-
+use Illuminate\Support\Facades\Log;
 class FoodMenuController extends Controller
 {
     public function foodMenu()
@@ -55,6 +55,7 @@ class FoodMenuController extends Controller
             $minutes = 6 * 60;
             $foodInfo = Cache::remember("foodInfo_$fileName" . "_" . app('translator')->getLocale(), $minutes, function () use ($fileName) {
                 $foodInfo = [];
+                //Log::info("/var/www/html/bizizFiles/food/$fileName.xlsx");
                 $collection = (new FastExcel)->import("/var/www/html/bizizFiles/food/$fileName.xlsx");
                 foreach ($collection as $item) {
                     $itemCarbonDate = Carbon::createFromFormat('d.m.Y', $item['TARİH']->format('d.m.Y'));

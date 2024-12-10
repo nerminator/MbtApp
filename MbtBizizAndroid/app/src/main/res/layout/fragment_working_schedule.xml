@@ -5,12 +5,12 @@
 
         <variable
             name="viewmodel"
-            type="com.daimler.biziz.android.ui.main.orchestra.schedule.VMWorkingScheduleFragment" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.schedule.VMWorkingScheduleFragment" />
 
         <import type="android.view.View" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,13 +22,13 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintDatePicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <com.daimler.biziz.android.uiControls.TextViewDemiCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                 android:id="@+id/tvMonthAndYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,9 +71,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvMonthAndYear"
                 android:background="@color/calendar_header_view"/>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedWorkCalendar"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -88,16 +88,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <android.support.constraint.Guideline
+                    <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline1"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.14285" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="parent"
                         android:gravity="center"
@@ -105,13 +105,13 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="@+id/guideline1"
                         android:layout_height="30dp" />
-                    <android.support.constraint.Guideline
+                    <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline2"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.28571" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="@+id/guideline1"
                         android:gravity="center"
@@ -119,13 +119,13 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="@+id/guideline2"
                         android:layout_height="30dp" />
-                    <android.support.constraint.Guideline
+                    <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline3"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.428571" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="@+id/guideline2"
                         android:gravity="center"
@@ -133,13 +133,13 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="@+id/guideline3"
                         android:layout_height="30dp" />
-                    <android.support.constraint.Guideline
+                    <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline4"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.57142" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="@+id/guideline3"
                         android:gravity="center"
@@ -147,13 +147,13 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="@+id/guideline4"
                         android:layout_height="30dp" />
-                    <android.support.constraint.Guideline
+                    <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline5"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.71428" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="@+id/guideline4"
                         android:gravity="center"
@@ -161,13 +161,13 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="@+id/guideline5"
                         android:layout_height="30dp" />
-                    <android.support.constraint.Guideline
+                    <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline6"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.85714" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="@+id/guideline5"
                         android:gravity="center"
@@ -175,7 +175,7 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="@+id/guideline6"
                         android:layout_height="30dp" />
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:layout_width="0dp"
                         app:layout_constraintStart_toStartOf="@+id/guideline6"
                         android:gravity="center"
@@ -183,9 +183,9 @@
                         android:textColor="@color/fiftyPercentOpacityTextColor"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_height="30dp" />
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.daimler.biziz.android.uiControls.GridRecyclerView
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.GridRecyclerView
                     android:layout_marginTop="15dp"
                     android:id="@+id/recyclerCalendar"
                     android:layout_width="match_parent"
@@ -193,14 +193,14 @@
                     android:nestedScrollingEnabled="false"
                     android:layoutAnimation="@anim/grid_layout_animation_from_bottom" />
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerCause"
                     android:layout_width="match_parent"
                     android:nestedScrollingEnabled="false"
                     android:layout_height="wrap_content"
                     android:paddingBottom="30dp"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
-    </android.support.constraint.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

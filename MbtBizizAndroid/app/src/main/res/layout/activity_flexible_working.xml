@@ -5,17 +5,17 @@
     <data>
         <variable
             name="vm"
-            type="com.daimler.biziz.android.ui.main.orchestra.flexibleWorkingInfo.VMFlexibleWorking"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.flexibleWorkingInfo.VMFlexibleWorking"/>
         <import type="android.view.View"/>
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/food_gradient_bg"
         tools:context=".ui.main.orchestra.flexibleWorkingInfo.FlexibleWorkingActivity">
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
@@ -44,12 +44,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcyclerYearly"
             android:layout_width="0dp"
             android:layout_height="0dp"
             tools:listitem="@layout/item_work_info"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,5 +58,5 @@
 
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

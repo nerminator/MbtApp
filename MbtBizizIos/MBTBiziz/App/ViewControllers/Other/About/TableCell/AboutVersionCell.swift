@@ -16,7 +16,9 @@ class AboutVersionCell: UITableViewCell {
         super.awakeFromNib()
         
         if let version = MBTConstants.Device.releaseVersionNumber {
-            lblVersionText.text = "Version - \(version)"
+            if let buildNo = MBTConstants.Device.buildVersionNumber {
+                lblVersionText.text = "Version - \(version) - \(buildNo)"
+            }
         }
     }
 

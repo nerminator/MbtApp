@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Biziz</string>
+    <string name="app_name">MBT App</string>
     <string name="TXT_COMMON_WARNING">Warning</string>
     <string name="TXT_LOGIN_WELCOME_BUTTON">Sign in</string>
     <string name="TXT_LOGIN_PIN_TITLE">PIN Code</string>
@@ -47,7 +47,12 @@ All Rights Reserved."</string>
     <string name="TXT_LOGIN_HOME_TAB1">Portal</string>
     <string name="TXT_LOGIN_HOME_TAB2">Notifications</string>
     <string name="TXT_LOGIN_HOME_TAB3">My Profile</string>
-    <string name="TXT_LOGIN_HOME_NEWS">MBT News</string>
+    <string name="TXT_LOGIN_HOME_NEWS">News</string>
+    <string name="TXT_LOGIN_HOME_ABOUT_US">About Us</string>
+    <string name="TXT_LOGIN_HOME_EVENTS">Events</string>
+    <string name="TXT_LOGIN_HOME_DISCOUNTS">Discounts</string>
+    <string name="TXT_LOGIN_HOME_USEFUL_LINKS">Useful Links</string>
+    <string name="TXT_LOGIN_HOME_EMERGENCY_NUMBERS">Emergency Numbers</string>
     <string name="TXT_LOGIN_HOME_MAP">Location</string>
     <string name="TXT_LOGIN_HOME_SHUTTLE">Shuttle</string>
     <string name="TXT_LOGIN_HOME_MENU">Meal Menu</string>
@@ -59,7 +64,7 @@ All Rights Reserved."</string>
     <string name="TXT_PROFILE_PROFILE_2ND_BUTTON">Work Calendar</string>
     <string name="TXT_PROFILE_FLEXIBLE_WORK_YEAR">Year</string>
     <string name="TXT_LOGIN_WELCOME_HEADER">Welcome</string>
-    <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Please enter your mobile phone number to sign in the app.</string>
+    <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Please click on Sign In button and continue with authentication steps.</string>
     <string name="TXT_LOGIN_TERMS_WELCOME_TITLE">Terms Of Use</string>
     <string name="TXT_LOGIN_TERMS_WELCOME_ACCEPT">Accept</string>
     <string name="TXT_LOGIN_TERMS_WELCOME_REJECT">Reject</string>
@@ -155,6 +160,7 @@ All Rights Reserved."</string>
     </string-array>
 
     <string name="TXT_MB" translatable="false">Mercedes-Benz Türk</string>
+    <string name="TXT_VERSION_INFO" translatable="false">Version: </string>
     <string name="allowed_chars" translatable="false">1234567890</string>
     <string name="phone_mask" translatable="false">5XX-XXX-XX-XX</string>
     <string name="char_representation" translatable="false">X</string>
@@ -190,8 +196,9 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta 
 Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 
 Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Curabitur bl</string>
-    <string name="TXT_LOGIN_SUPPORT_PHONE1" translatable="false">0216 522 13 73</string>
-    <string name="TXT_LOGIN_SUPPORT_PHONE2" translatable="false">-</string>
+    <string name="TXT_LOGIN_SUPPORT_PHONE1" translatable="false">0212 8673399</string>
+    <string name="TXT_LOGIN_SUPPORT_PHONE_FOR_CALL" translatable="false">02128673399</string>
+    <string name="TXT_LOGIN_SUPPORT_PHONE2" translatable="false">2222</string>
     <string name="map_api_key" translatable="false">AIzaSyCs48Meyy09Z9fgqgUO_70dgpR6iny4lOE</string>
     <string name="default_notification_channel_id" translatable="false">30231</string>
 
@@ -235,7 +242,29 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas fau
     <string name="captchaHintText">Enter the text</string>
     <string name="TXT_MEAL_SERVICE_HOURS">Yemekhane Servis Saatleri</string>
 
+    <string name="TXT_DISCOUNT_CODE_LABEL">DISCOUNT CODE</string>
+    <string name="TXT_GET_DISCOUNT_CODE_LABEL">Get Discount Code</string>
+    <string name="TXT_NO_DISCOUNT_CODE_LABEL">No Discounts Code Left</string>
+    <string name="TXT_CODE_COPIED">Code copied to clipboard!</string>
 
+    <string name="TXT_LINKS_TITLE1">Social Clubs</string>
+    <string name="TXT_LINKS_TITLE2">Internal Ads</string>
+    <string name="TXT_LINKS_TITLE3">Birthdays</string>
+    <string name="TXT_LINKS_TITLE4">MBFit</string>
+    <string name="TXT_LINKS_TITLE5">Gürsel</string>
+    <string name="TXT_LINKS_TITLE6">CloudOffix</string>
+    <string name="TXT_LINKS_TITLE7">Improvement System</string>
+    <string name="TXT_LINKS_TITLE8">Company Car</string>
+    <string name="TXT_LINKS_TITLE9">Library</string>
 
+    <string name="TXT_APP_FEEDBACK">App Feedback</string>
+    <string name="TXT_FEEDBACK_HINT">Your Feedback…</string>
+    <string name="TXT_FEEDBACK_SEND">SEND</string>
+    <string name="TXT_FEEDBACK_DIALOG_TITLE">Information</string>
+    <string name="TXT_FEEDBACK_SUCCESS">Your feedback has been sent!</string>
+    <string name="TXT_FEEDBACK_ERROR">An error occurred.</string>
+    <string name="TXT_FEEDBACK_CHARACTER_ERROR">Your feedback text cannot be less than 3 characters.</string>
+
+    <string name="TXT_APP_SOCIAL_MEDIA">Social Media</string>
 </resources>
 

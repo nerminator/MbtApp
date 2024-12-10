@@ -42,7 +42,7 @@ class QRCodeController extends Controller
         }
 
         try {
-            $code = Input::get('code');
+            $code = $request->input('code');
             $text = $code . PHP_EOL . $email;
             $timeFormat = "d-m-Y_H-i-su";
             if (app()->environment() == "production") {
@@ -68,7 +68,7 @@ class QRCodeController extends Controller
             ]);
         }
 
-        /*$code = Input::get('code');
+        /*$code = $request->input('code');
         if ($code == '4f)XT=vaE$R9SRMe') {
             return response()->json([
                 'statusCode' => 200,

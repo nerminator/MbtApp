@@ -8,6 +8,8 @@
 
 import UIKit
 import AnyFormatKit
+import Foundation
+import UIKit
 
 protocol WelcomeDisplayLogic: class
 {

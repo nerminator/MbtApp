@@ -28,8 +28,10 @@ class NavigationHelper {
     }
     
     func showHomeScreen(/*baseResponse:MBTBaseResponse? = nil*/) {
-        MBTSingleton.shared.activateUser()
-        rootVC.showHomeScreen(/*baseResponse: baseResponse*/)
+        DispatchQueue.main.async {
+            MBTSingleton.shared.activateUser()
+            self.rootVC.showHomeScreen(/*baseResponse: baseResponse*/)
+        }
     }
     
     internal func showBasicAlert(with title:String? = "TXT_COMMON_INFO".localized(), message:String?, actionTitles:[String] = [], cancelTitle:String = "TXT_COMMON_DONE".localized()) {

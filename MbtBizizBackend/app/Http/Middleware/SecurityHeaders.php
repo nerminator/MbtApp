@@ -14,11 +14,17 @@ class SecurityHeaders
     {
         $response = $next($request);
  
-        $response->headers->set('X-Frame-Options', 'allow-from https://bizizapp.com/');
+        if (app()->environment() == "production") {
+            $response->headers->set('X-Frame-Options', 'allow-from https://bizizapp.com/');
+        }else{
+            $response->headers->set('X-Frame-Options', 'allow-from http://localhost:8002/');
+        }
         $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 
         $response->headers->set('Cache-Control', 'no-store, no-cache');
         $response->headers->set('Pragma', 'no-cache');
+
+        $response->headers->set('Content-Security-Policy', "script-src 'self'");
 
         return $response;
     }

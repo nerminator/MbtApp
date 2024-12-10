@@ -2,7 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:minWidth="300dp">
@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnDismiss"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnSend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,5 +62,5 @@
             app:layout_constraintStart_toEndOf="@+id/btnDismiss"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

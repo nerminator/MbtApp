@@ -18,7 +18,7 @@ class MBTSingleton: NSObject {
     
     var deviceTokenForPush : String? {
         didSet {
-            if let deviceToken = deviceTokenForPush, !TokenManager.sharedManager.token.isEmpty {
+            if let deviceToken = deviceTokenForPush, !TokenManager.sharedManager.accessToken.isEmpty {
                 WSProvider.shared.wsRequest(.saveDeviceInfo(deviceToken: deviceToken))
             }
         }
@@ -28,7 +28,7 @@ class MBTSingleton: NSObject {
 extension MBTSingleton {
     
     func clearUser() {
-        TokenManager.sharedManager.clearToken()
+        TokenManager.sharedManager.clearAccessToken()
     }
     
     func activateUser() {

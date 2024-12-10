@@ -45,3 +45,7 @@
 -keep interface org.joda.time.** { *; }
 -keep class com.google.android.gms.maps.** { *; }
 -keep interface com.google.android.gms.maps.** { *; }
+-keep class com.github.chrisbanes.** { *; }
+-dontwarn com.github.chrisbanes.**
+-keep class com.github.denzcoskun.** { *; }
+-dontwarn com.github.denzcoskun.**

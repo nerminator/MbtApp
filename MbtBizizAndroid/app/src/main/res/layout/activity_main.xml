@@ -4,16 +4,15 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.daimler.biziz.android.ui.main.main.VMMain"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.main.VMMain"/>
     </data>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.main.MainActivity"
-        android:background="@drawable/gradient_background"
-        >
+        android:background="@drawable/gradient_background">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabMain"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
@@ -22,7 +21,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:background="@color/tablayoutBgColor"/>
 
-        <com.daimler.biziz.android.uiControls.NonSwipeableViewPager
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.NonSwipeableViewPager
             android:id="@+id/vpMain"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -30,5 +29,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

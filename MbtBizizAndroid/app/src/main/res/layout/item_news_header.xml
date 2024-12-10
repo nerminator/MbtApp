@@ -9,7 +9,7 @@
             type="String" />
     </data>
 
-    <com.daimler.biziz.android.uiControls.TextViewDemiCS xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -17,10 +17,10 @@
         android:textSize="14sp"
         app:textAllCaps="true"
         android:text="@{data}"
-        android:textColor="#80ffffff"
+        android:textColor="@color/btnActiveButtonBgColor"
         tools:background="#1e2536"
         tools:text="Yarin">
 
 
-    </com.daimler.biziz.android.uiControls.TextViewDemiCS>
+    </com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS>
 </layout>

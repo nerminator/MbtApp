@@ -23,7 +23,7 @@ class NewsWorker
     }
     
     @discardableResult
-    func getNewsList(_ newsType : NewsType, discountType : DiscountType?, pageNumber : Int, completion: @escaping (_ response : MBTNewsResponse?)->()) -> MBTCancellable? {
-        return WSProvider.shared.wsRequest(.getNewsList(type: newsType, discountType: discountType, pageNumber: pageNumber), map: completion)
+    func getNewsList(_ newsType : NewsType, discountType : DiscountType?, locId:Int?, pageNumber : Int, completion: @escaping (_ response : MBTNewsResponse?)->()) -> MBTCancellable? {
+        return WSProvider.shared.wsRequest(.getNewsList(type: newsType, discountType: discountType, locId: locId, pageNumber: pageNumber), map: completion)
     }
 }

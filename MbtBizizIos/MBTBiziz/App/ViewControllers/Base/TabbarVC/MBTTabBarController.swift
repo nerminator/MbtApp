@@ -10,6 +10,7 @@ import UIKit
 
 class MBTTabBarController: UITabBarController {
     
+    
     internal final let tabbarDelegate = MBTTabBarControllerDelegate()
     
     var homeVC : HomeViewController {
@@ -39,6 +40,7 @@ class MBTTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         for item in tabBar.items! {
             item.image = item.image?.withRenderingMode(.alwaysOriginal)
         }

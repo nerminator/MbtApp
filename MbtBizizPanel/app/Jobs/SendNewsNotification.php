@@ -190,7 +190,7 @@ class SendNewsNotification implements ShouldQueue
     private function _sendAPNPushNotification($deviceTokenList, $languageCode)
     {
 //        echo "\n--- IOS ---\n";
-        $text = $languageCode == 'tr' ? $this->news->list_text : $this->news->list_text_en;
+        $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
         foreach (collect($deviceTokenList)->chunk(100)->toArray() as $list) {
 
 	    $push = new PushNotification('apn');
@@ -216,15 +216,15 @@ class SendNewsNotification implements ShouldQueue
                 ->getFeedback();
 //            print_r($feedback);
 //            echo "\n";
-	    Log::info("device tokens:" . json_encode(array_values($list)));
-            Log::info("APN $languageCode feedback:\n" . print_r($feedback, true));
+	    //Log::info("device tokens:" . json_encode(array_values($list)));
+          //  Log::info("APN $languageCode feedback:\n" . print_r($feedback, true));
         }
     }
 
     private function _sendFCMPushNotification($deviceTokenList, $languageCode)
     {
 //        echo "\n--- ANDROID ---\n";
-        $text = $languageCode == 'tr' ? $this->news->list_text : $this->news->list_text_en;
+        $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
         foreach (collect($deviceTokenList)->chunk(100)->toArray() as $list) {
             $push = new PushNotification();
             $feedback = $push->setMessage([
@@ -245,8 +245,8 @@ class SendNewsNotification implements ShouldQueue
                 ->getFeedback();
 //            print_r($feedback);
 //            echo "\n";
-            Log::info("device tokens:" . json_encode(array_values($list)));
-            Log::info("FCM $languageCode feedback:\n" . print_r($feedback, true));
+         //   Log::info("device tokens:" . json_encode(array_values($list)));
+          //  Log::info("FCM $languageCode feedback:\n" . print_r($feedback, true));
         }
     }
 }

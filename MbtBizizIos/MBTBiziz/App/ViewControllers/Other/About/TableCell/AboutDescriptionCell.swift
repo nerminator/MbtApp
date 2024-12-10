@@ -9,7 +9,8 @@
 import UIKit
 
 class AboutDescriptionCell: UITableViewCell {
-
+    @IBOutlet weak var aboutTextView: BaseUITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

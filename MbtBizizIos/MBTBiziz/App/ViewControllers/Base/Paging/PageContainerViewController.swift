@@ -41,6 +41,8 @@ class PageContainerViewController: MBTBaseViewController, PageContainerDisplayLo
     fileprivate var pageViewController : UIPageViewController?
     fileprivate var lastPendingViewControllerIndex : Int = 0
     
+    var headers = true
+    
     // MARK: Object lifecycle
   
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -67,6 +69,9 @@ class PageContainerViewController: MBTBaseViewController, PageContainerDisplayLo
         //implemented to manage delete action in content tableview
         if let pageScroll = pageViewController?.view.subviews.first as? UIScrollView {
             pageScroll.canCancelContentTouches = false
+        }
+        if (!headers){
+            constTabHeight.constant = 0
         }
     }
     
@@ -122,7 +127,8 @@ extension PageContainerViewController {
     
     func displayReloadView(viewModel : PageContainer.Initial.ViewModel) {
         if isViewLoaded {
-            scrollableTabView.setup(interactor?.buttonTitles ?? [], distrubition: viewModel.distrubition, startPage: 0)
+            scrollableTabView.setup(interactor?.buttonTitles ?? [], distrubition: viewModel.distrubition, startPage: 0, headers:self
+                .headers)
             setupPageView(viewModel.startPage)
         }
     }

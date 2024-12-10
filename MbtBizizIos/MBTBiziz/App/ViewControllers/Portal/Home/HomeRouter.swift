@@ -10,11 +10,13 @@ import UIKit
 
 protocol HomeRoutingLogic
 {
-    func routeToPortalNews()
+    func routeToAboutUs()
+    func routeToPortalNews(newsType: NewsType)
     func routeToPortalLocation()
     func routeToPortalTransportation()
     func routeToPortalMenu(_ mealInfo : MBTFoodMenuResponse)
-    func routeToBarcode()
+    func routeToPortalLinks()
+    func routeToPortalPhones() 
 }
 
 protocol HomeDataPassing
@@ -22,14 +24,18 @@ protocol HomeDataPassing
     var dataStore: HomeDataStore? { get }
 }
 
-class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing, BarcodeRoutable
+class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing
 {
     weak var viewController: HomeViewController?
     var dataStore: HomeDataStore?
     
     //MARK : Routing
-    func routeToPortalNews() {
-        viewController?.navigationController?.pushViewController(PageContainerViewController.buildPagerForPortalNews(), animated: true)
+    func routeToAboutUs() {
+        viewController?.navigationController?.pushViewController(AboutUsViewController.fromStoryboard(.aboutUs), animated: true)
+    }
+    
+    func routeToPortalNews(newsType: NewsType) {
+	        viewController?.navigationController?.pushViewController(PageContainerViewController.buildPagerForPortalNews(newsType), animated: true)
     }
     
     func routeToPortalLocation() {
@@ -37,15 +43,19 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing, BarcodeRoutable
     }
     
     func routeToPortalTransportation() {
-        viewController?.navigationController?.pushViewController(TransportationOptionsViewController.fromStoryboard(.transportationOptions), animated: true)
+        UIApplication.shared.open(URL(string: "https://apps.apple.com/app/g%C3%BCrsel-yolcu/id1549465749")!)
+            
     }
     
     func routeToPortalMenu(_ mealInfo: MBTFoodMenuResponse) {
         viewController?.navigationController?.pushViewController(PageContainerViewController.buildPagerForPortalMenu(mealInfo), animated: true)
     }
 
-    func routeToBarcode() {
-
-        routeToBarcode(from: viewController)
+    func routeToPortalLinks() {
+        viewController?.navigationController?.pushViewController(LinksViewController.fromStoryboard(.links), animated: true)
+    }
+    func routeToPortalPhones() {
+        let phones = PhoneLocsViewController.fromStoryboard(.phonesLoc)
+        viewController?.navigationController?.pushViewController(phones, animated: true)
     }
 }

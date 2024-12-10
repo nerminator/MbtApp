@@ -6,15 +6,15 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.news.News" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.news.News" />
 
         <variable
             name="callback"
-            type="com.daimler.biziz.android.adapters.NewsAdapter.NewsItemCallback" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.adapters.NewsAdapter.NewsItemCallback" />
 
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{() -> callback.onNewsClick(data)}"
@@ -23,7 +23,7 @@
         tools:background="#1e2536">
 
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvNewsDesc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,5 +62,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

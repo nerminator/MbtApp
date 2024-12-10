@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redis;
 
 class LoginController extends Controller
 {
+
     public function captcha()
     {
         $width = 600;
@@ -62,7 +63,7 @@ class LoginController extends Controller
             $imagePath = dirname(dirname(dirname(dirname(__FILE__)))) . "/storage/app/public/contents/captcha/$imageName";
             imagepng($image, $imagePath);
             $storageImagePath = "contents/captcha/" . $imageName;
-            $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizBackend/public" : "http://mbtbiziz:8888";
+            $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizBackend/public" : "http://127.0.0.1:8002/";
             $imageUrl = $projectUrl . "/storage/$storageImagePath";
 
             DB::table('captcha')->insert([
@@ -110,7 +111,7 @@ class LoginController extends Controller
         }
         //endregion
 
-        $phoneNumber = Input::get('phoneNumber');
+        $phoneNumber = $request->input('phoneNumber');
         if (!is_numeric($phoneNumber)) {
             return response()->json([
                 'statusCode' => 400,
@@ -119,7 +120,7 @@ class LoginController extends Controller
             ]);
         }
 
-        $appVersion = Input::get('appVersion');
+        $appVersion = $request->input('appVersion');
 
         $now = Carbon::now();
         $previousTime = $now->copy()->subMinute();
@@ -130,7 +131,7 @@ class LoginController extends Controller
                                                                 where text = ? and token = ? and
                                                                         is_used = 0 and created_at >= ?
                                                                 order by id desc
-                                                                limit 1", [Input::get('captchaText'), Input::get('captchaToken'), $previousTime]);
+                                                                limit 1", [$request->input('captchaText'), $request->input('captchaToken'), $previousTime]);
             if ($captchaResult == null) {
                 return response()->json([
                     'statusCode' => 401,
@@ -218,7 +219,7 @@ class LoginController extends Controller
         //endregion
 
 
-        $phoneNumber = Input::get('phoneNumber');
+        $phoneNumber = $request->input('phoneNumber');
         if (!is_numeric($phoneNumber)) {
             return response()->json([
                 'statusCode' => 400,
@@ -258,7 +259,7 @@ class LoginController extends Controller
             ]);
         }
 
-        $isTestPhone = in_array(Input::get('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566"]);
+        $isTestPhone = in_array($request->input('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566"]);
 
         $pinCode = random_int(1000, 9999);
         DB::table('user_pin_codes')->insert([
@@ -289,6 +290,36 @@ class LoginController extends Controller
             'errorMessage' => null
         ]);
     }
+    
+    public function oidcLogin(Request $request)
+    {
+        // Extract the token from the request
+        $token = $request->bearerToken();
+
+        // Check if a token is present
+        if (!$token) {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => 'No token provided' 
+             ]);
+        }
+
+        // Optional: Log the token for debugging purposes
+        //Log::info('OIDC Callback received token: ' . $token);
+
+        // Since the authentication logic is handled in the middleware,
+        // you don't need to do much here unless you want to do additional processing
+
+        // For demonstration, we'll just return a success message
+        return response()->json([
+            'statusCode' => 200,
+            'responseData' => null,
+            'errorMessage' => null
+         ]);
+
+    }
+
 
     public function login(Request $request)
     {
@@ -297,6 +328,7 @@ class LoginController extends Controller
             'phoneNumber' => 'required|string|min:10|max:10',
             'pin' => 'required|integer|min:1000|max:9999'
         ]);
+
         if ($validator->fails()) // missing parameters
         {
             return response()->json([
@@ -307,36 +339,11 @@ class LoginController extends Controller
         }
         //endregion
 
-        //region Test Phone
-        /*if (in_array(Input::get('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566",
-            "5332158020", "53586979$height", "5367967265", "5356621663", "5325079351"])) {
-            $user = DB::table("users")->where('mobile_phone', Input::get('phoneNumber'))->where('status', 1)->select('token')->first();
-            if ($user == null || Input::get('pin') != env('TEST_PIN')) {
-                return response()->json([
-                    'statusCode' => 401,
-                    'responseData' => null,
-                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_WRONG_PIN_CODE')
-                ]);
-            } else {
-                return response()->json([
-                    'statusCode' => 200,
-                    'responseData' => ['token' => $user->token],
-                    'errorMessage' => null
-                ]);
-            }
-        }*/
-        //endregion
-
-        /*$checkPinCodeResult = $this->getFirstItemFromDb("select upc.id as id, u.token as token
-                                                                  from user_pin_codes upc, users u
-                                                                  where upc.user_id = u.id and u.mobile_phone = ? and u.status = 1 and
-                                                                        upc.pin_code = ? and upc.is_used = 0 and upc.try_count < 5 and upc.created_at > ?
-                                                                  order by upc.id desc limit 1", [Input::get('phoneNumber'), $pin, Carbon::now()->subMinutes(2)]);*/
         $checkPinCodeResult = $this->getFirstItemFromDb("select upc.id, upc.pin_code, upc.is_used, upc.try_count, u.token
                                                                   from user_pin_codes upc, users u
-                                                                  where upc.user_id = u.id and u.mobile_phone = ? and u.status = 1
+                                                                  where upc.user_id = u.id and u.mobile_phone = ? and u.status = 1 and upc.created_at > ?
                                                                   order by upc.id desc
-                                                                  limit 1", [Input::get('phoneNumber'), Carbon::now()->subMinutes(2)]);
+                                                                  limit 1", [$request->input('phoneNumber'), Carbon::now()->subMinutes(2)]); 
         if ($checkPinCodeResult == null || $checkPinCodeResult->is_used) {
             return response()->json([
                 'statusCode' => 402,
@@ -350,7 +357,7 @@ class LoginController extends Controller
                 'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_TOO_MUCH_PIN_CODE_TRY')
             ]);
         } else {
-            if ($checkPinCodeResult->pin_code == Input::get('pin')) {
+            if ($checkPinCodeResult->pin_code == $request->input('pin')) {
                 DB::update("update user_pin_codes set is_used = 1, updated_at = ? where id = ?", [Carbon::now(), $checkPinCodeResult->id]);
 
                 return response()->json([
@@ -379,6 +386,27 @@ class LoginController extends Controller
             'responseData' => null,
             'errorMessage' => null
         ]);
+    }
+
+    public function appStartup(Request $request)
+    {
+        if ($this->isLangEn()) {
+            $aboutText = Redis::get('aboutEN');
+            $appDescriptionText = Redis::get('appDescriptionEN');
+        } else {
+            $aboutText = Redis::get('aboutTR');
+            $appDescriptionText = Redis::get('appDescriptionTR');
+        }
+
+        return response()->json([
+            'statusCode' => 200,
+            'responseData' => [
+                'aboutText' => $aboutText,
+                'appDescriptionText' => $appDescriptionText 
+            ],
+            'errorMessage' => null
+        ]);
+
     }
 
     private function _contains($needle, $haystack)

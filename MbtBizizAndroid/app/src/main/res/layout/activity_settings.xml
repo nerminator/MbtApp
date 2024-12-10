@@ -12,7 +12,7 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_below="@+id/toolbar"
             android:id="@+id/nestedViewSettings"
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!--<com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <!--<com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvTitleSettings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -34,12 +34,12 @@
                     android:textColor="@color/descriptionColor"
                     android:textSize="12sp" />-->
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <!--<com.daimler.biziz.android.uiControls.TextViewDemiCS
+                <!--<com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
                     android:id="@+id/tvTitlePermission"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                         android:layout_marginEnd="17.3dp"
                         android:src="@drawable/ic_arrow_right_gray" />
 
-                    <com.daimler.biziz.android.uiControls.TextViewRegularCS
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                         android:id="@+id/tvSettingName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -87,10 +87,10 @@
             </RelativeLayout>
 
 
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnSignOutSetting"
             android:layout_width="match_parent"
             android:layout_height="51.3dp"

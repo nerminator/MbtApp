@@ -42,9 +42,11 @@
 
     <!--Terms And Cond-->
     <color name="gradientWhite">#f1f1f1</color>
+    <color name="gradientTransparentWhite">#88f1f1f1</color>
 
     <!--Portal-->
     <color name="portal_menu_item_bg">#3D44506c</color>
+    <color name="pdf_background_color">#9999BB</color>
 
     <!--Profile-->
     <color name="sixPercentWhite">#0fffffff</color>
@@ -80,5 +82,7 @@
     <color name="stop_text_color">#4cd3d3d3</color>
 
     <color name="calendar_header_view">#414141</color>
+    <color name="discount_code_label_text_color">#717171</color>
+    <color name="discount_code_active_text_color">#3478F6</color>
 
 </resources>

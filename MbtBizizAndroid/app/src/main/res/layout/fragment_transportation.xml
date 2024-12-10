@@ -5,19 +5,19 @@
 
         <variable
             name="viewmodel"
-            type="com.daimler.biziz.android.ui.transportation.VMTransportation" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.transportation.VMTransportation" />
 
         <import type="android.view.View" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         tools:context=".ui.transportation.TransportationFragment">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cConstraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txtToNav"
                 app:srcCompat="@drawable/ic_icn_destination" />
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/txtFromNav"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txtFromNav" />
 
 
-            <com.daimler.biziz.android.uiControls.TextViewRegularCS
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
                 android:id="@+id/txtToNav"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -141,9 +141,9 @@
                 app:srcCompat="@drawable/ic_btn_switch" />
 
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvShuttleDestination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cConstraint" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvShuttleTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cConstraint" />
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabShuttle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -181,7 +181,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cConstraint" />
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vpShuttle"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -191,16 +191,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabShuttle" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerShuttle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:visibility="@{viewmodel.viewPagerModeEnabled ? View.GONE : View.VISIBLE}"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvShuttleDestination" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

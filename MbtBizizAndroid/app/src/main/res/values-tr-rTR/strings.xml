@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Biziz</string>
+    <string name="app_name">MBT App</string>
 
     <!--Show Message Global Text-->
     <string name="TXT_COMMON_WARNING">Uyarı</string>
@@ -17,7 +17,7 @@
     <!--About-->
     <string name="TXT_ABOUT_NAV">Hakkında</string>
     <string name="TXT_ABOUT_HEADER">SAĞLAYICI</string>
-<string name="TXT_ABOUT_MAIN_PROVIDER_INFO">"Mercedes-Benz Türk A.Ş.
+    <string name="TXT_ABOUT_MAIN_PROVIDER_INFO">"Mercedes-Benz Türk A.Ş.
 Akçaburgaz Mahallesi,
 Süleyman Şah Caddesi, No:2
 34522 Esenyurt, İstanbul
@@ -25,7 +25,7 @@ Süleyman Şah Caddesi, No:2
 Telefon:0212 867 30 00 pbx
 mbt_app@daimlertruck.com
 
-Yönetim Kurulu
+İcra Kurulu
 
 MBT, İcra Kurulu Başkanı (CEO), Süer Sülün
 MBT, Otobüs Üretiminden Sorumlu İcra Kurulu Üyesi, Bülent Acicbe
@@ -51,10 +51,15 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_LOGIN_HOME_TAB3">Profilim</string>
 
     <!--Main Menu Names-->
-    <string name="TXT_LOGIN_HOME_NEWS">MBT\'den Haberler</string>
+    <string name="TXT_LOGIN_HOME_NEWS">Haberler</string>
     <string name="TXT_LOGIN_HOME_MAP">Yerleşim</string>
     <string name="TXT_LOGIN_HOME_SHUTTLE">Ulaşım</string>
     <string name="TXT_LOGIN_HOME_MENU">Yemek Menüsü</string>
+    <string name="TXT_LOGIN_HOME_ABOUT_US">Hakkımızda</string>
+    <string name="TXT_LOGIN_HOME_EVENTS">Etkinlikler</string>
+    <string name="TXT_LOGIN_HOME_DISCOUNTS">Şirket İndirimleri</string>
+    <string name="TXT_LOGIN_HOME_USEFUL_LINKS">Faydalı Bağlantılar</string>
+    <string name="TXT_LOGIN_HOME_EMERGENCY_NUMBERS">Önemli Numaralar</string>
 
     <!--Profile-->
     <string name="TXT_PROFILE_PROFILE_1ST_SUBTITLE">LOKASYON / ŞUBE</string>
@@ -68,8 +73,8 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_PROFILE_FLEXIBLE_WORK_YEAR">Yıl</string>
 
     <!--Login-->
-    <string name="TXT_LOGIN_WELCOME_HEADER">Hoşgeldiniz</string>
-    <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Uygulamaya giriş yapmak için cep telefonu numaranızı giriniz</string>
+    <string name="TXT_LOGIN_WELCOME_HEADER">Hoş geldiniz</string>
+    <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Giriş yap butonuna tıklayıp kimlik doğrulama adımları ile devam edebilirsiniz.</string>
 
     <!--Terms And Cond-->
     <string name="TXT_LOGIN_TERMS_WELCOME_TITLE">Kullanım Şartları</string>
@@ -158,7 +163,6 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_LOCATIONS_LOCATIONS_MEETING_ROOM">Toplantı Odası</string>
 
 
-
     <!--Driver Info-->
     <string name="TXT_SHUTTLE_SHUTTLE_DRIVER_INFO">Sürücü Bilgileri</string>
     <string name="TXT_SHUTTLE_SHUTTLE_DRIVER">Sürücü</string>
@@ -239,4 +243,29 @@ Tüm Hakları Saklıdır."</string>
     <string name="qrCodeScreenTitle">QR Kodunu Tara</string>
     <string name="captchaHintText">Soldaki yazıyı giriniz</string>
     <string name="TXT_MEAL_SERVICE_HOURS">Cafeteria Service Times</string>
+
+    <string name="TXT_DISCOUNT_CODE_LABEL">İNDİRİM KODU</string>
+    <string name="TXT_GET_DISCOUNT_CODE_LABEL">İndirim Kodu Al</string>
+    <string name="TXT_NO_DISCOUNT_CODE_LABEL">İndirim Kodu Kalmadı</string>
+    <string name="TXT_CODE_COPIED">Kod kopyalandı!</string>
+
+    <string name="TXT_LINKS_TITLE1">Sosyal Kulüpler</string>
+    <string name="TXT_LINKS_TITLE2">Dahili İlanlar</string>
+    <string name="TXT_LINKS_TITLE3">Bugün Doğanlar</string>
+    <string name="TXT_LINKS_TITLE4">MBFit</string>
+    <string name="TXT_LINKS_TITLE5">Gürsel Yolcu</string>
+    <string name="TXT_LINKS_TITLE6">CloudOffix</string>
+    <string name="TXT_LINKS_TITLE7">Öneri Sistemi</string>
+    <string name="TXT_LINKS_TITLE8">Araç Kolay</string>
+    <string name="TXT_LINKS_TITLE9">Kütüphane</string>
+
+    <string name="TXT_APP_FEEDBACK">Uygulama Geri Bildirim</string>
+    <string name="TXT_FEEDBACK_HINT">Geri bildiriminiz…</string>
+    <string name="TXT_FEEDBACK_SEND">GÖNDER</string>
+    <string name="TXT_FEEDBACK_DIALOG_TITLE">Bilgilendirme</string>
+    <string name="TXT_FEEDBACK_SUCCESS">Geri bildiriminiz gönderildi!</string>
+    <string name="TXT_FEEDBACK_ERROR">Geri bildirim gönderilirken bir hata oluştu.</string>
+    <string name="TXT_FEEDBACK_CHARACTER_ERROR">Geri bildiriminiz 3 karakterden az olamaz.</string>
+
+    <string name="TXT_APP_SOCIAL_MEDIA">Sosyal Medya Hesapları</string>
 </resources>

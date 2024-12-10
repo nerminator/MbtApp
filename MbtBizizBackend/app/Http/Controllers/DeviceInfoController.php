@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 
 class DeviceInfoController extends Controller
 {
@@ -38,8 +37,12 @@ class DeviceInfoController extends Controller
 
         $currentTime = Carbon::now()->toDateTimeString();
 
-        Queue::push(new SaveDeviceInfoJob(Auth::id(), Input::get('deviceToken'), Input::get('osType'), app('translator')->getLocale(), $currentTime));
-
+        //Too many device info jobs triggering. Client should be updated to send less.
+        //After client update this will be enabled back.
+        if ($request->input('newApp') == true) {
+            Queue::push(new SaveDeviceInfoJob(Auth::id(), $request->input('deviceToken'), $request->input('osType'), app('translator')->getLocale(), $currentTime));
+        }
+        
         return response()->json([
             'statusCode' => 200,
             'responseData' => null,
@@ -64,7 +67,7 @@ class DeviceInfoController extends Controller
         }
         //endregion
 
-        Queue::push(new DeleteDeviceInfoJob(Auth::id(), Input::get('deviceToken'), Input::get('osType')));
+        Queue::push(new DeleteDeviceInfoJob(Auth::id(), $request->input('deviceToken'), $request->input('osType')));
 
         return response()->json([
             'statusCode' => 200,

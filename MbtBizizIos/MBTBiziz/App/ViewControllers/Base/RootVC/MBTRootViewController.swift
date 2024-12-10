@@ -34,7 +34,11 @@ class MBTRootViewController: MBTBaseViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        WSProvider.shared.wsRequest(.appStartup, success: { (response: MBTAppStartupResponse?) in
+            MBTConstants.aboutText = response?.aboutText ??  ""
+            MBTConstants.appDescriptionText = response?.appDescriptionText ??  ""
+        })
+        
         if JailbreakHelper.isJailbroken() {
             isLegitimateToContinue = false
         } else {
@@ -47,11 +51,15 @@ class MBTRootViewController: MBTBaseViewController {
     private func continueToApplication() {
         
         backgroundView.isHidden = true
-        if TokenManager.sharedManager.token.isEmpty {
-            showWelcomeScreen()
-        } else {
-            NavigationHelper().showHomeScreen()
-        }
+        
+        TokenManager.sharedManager.signinSilently({ success in
+            if success  {
+                NavigationHelper().showHomeScreen()
+            } else {
+                self.showOidcScreen()
+            }
+        })
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +87,10 @@ class MBTRootViewController: MBTBaseViewController {
     }
     
     func showWelcomeScreen() {
+        controller = SignInNavCon.fromStoryboard(.welcomeNav)
+    }
+    
+    func showOidcScreen() {
         controller = SignInNavCon.fromStoryboard(.welcomeNav)
     }
     

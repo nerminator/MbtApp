@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -87,11 +88,18 @@ class ProfileController extends Controller
 
         $yearList = null;
         $selectedYear = intval($year);
+
+        $regNo = Auth::user()->register_number; 
+        if ($regNo == 1234563) {
+            $regNo = 100038;
+        }
+        //Log::info($regNo);
         if ($year == 0) { // default (means selected last year)
+
             $yearListResult = DB::select("select year(info_date) as year_info
                                                   from working_hours_info
                                                   where register_number = ?
-                                                  group by year(info_date)", [Auth::user()->register_number]);
+                                                  group by year(info_date)", [$regNo]);
             if ($yearListResult == null || count($yearListResult) == 0) {
                 return response()->json([
                     'statusCode' => 401,
@@ -100,8 +108,11 @@ class ProfileController extends Controller
                 ]);
             }
 
-            $yearList = from($yearListResult)->select('$v->year_info')->toArray();
-            $selectedYear = from($yearList)->max();
+            $yearList = from($yearListResult)->select(function ($v) {return $v->year_info;})->toArray();
+            //select('$v->year_info')->toArray();
+            if ($yearList != null && count($yearList) != 0){
+                $selectedYear = from($yearList)->max();
+            }
         }
 
         if (Auth::user()->type == Constants::EMPLOYEE_TYPE_WHITE_COLLAR) { // beyaz yaka
@@ -123,7 +134,7 @@ class ProfileController extends Controller
                                               cast(sum(minus_hours) as char(6)) as minusHours, cast(sum(total_hours) as char(6)) as totalHours
                                             from working_hours_info
                                             where register_number = ? and year(info_date) = ?
-                                            group by month(info_date)", [Auth::user()->register_number, $selectedYear]);
+                                            group by month(info_date)", [$regNo, $selectedYear]);
         }
 
         return response()->json([
@@ -163,11 +174,16 @@ class ProfileController extends Controller
         }
 
 
+        $regNo = Auth::user()->register_number; 
+        if ($regNo == 1234563) {
+            $regNo = 100038;
+        }
+
         $dayList = DB::select("select date_format(info_date,'%d.%m.%Y %a') as dayText, hours_info as hoursText, cast(plus_hours as char(6)) as plusHours,
                                               cast(minus_hours as char(6)) as minusHours, cast(total_hours as char(6)) as totalHours
                                         from working_hours_info
                                         where register_number = ? and year(info_date) = ? and month(info_date) = ?
-                                        order by info_date", [Auth::user()->register_number, $year, $month]);
+                                        order by info_date", [$regNo, $year, $month]);
 
         return response()->json([
             'statusCode' => 200,

@@ -3,19 +3,82 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34F9441DC8A4F34CE04BE0B0 /* Pods_MBTBiziz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E519F64EA5E8CBAA2D5DE7A /* Pods_MBTBiziz.framework */; };
+		159781925EF223C84042860C /* Pods_MBTBiziz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9756B4E88391A439FB98F7A /* Pods_MBTBiziz.framework */; };
+		34F9441DC8A4F34CE04BE0B0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		4E14FF622B3CEE8D0006496D /* SocialMediaTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF602B3CEE8D0006496D /* SocialMediaTableCell.swift */; };
+		4E14FF632B3CEE8D0006496D /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF612B3CEE8D0006496D /* SocialMediaViewController.swift */; };
+		4E14FF662B3CF41D0006496D /* MBTSocialMediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF652B3CF41D0006496D /* MBTSocialMediaResponse.swift */; };
+		4E14FF682B3D9E110006496D /* AppFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */; };
+		4E1930472AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */; };
+		4E1930482AEE994F00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */; };
+		4E212C922BDE578700C69288 /* AppFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */; };
+		4E212C932BDE57AA00C69288 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */; };
+		4E212C942BDE57B300C69288 /* PhoneLocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA992B3B22EF00EA31D8 /* PhoneLocsViewController.swift */; };
+		4E212C952BDE57B700C69288 /* PhonesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA9A2B3B22EF00EA31D8 /* PhonesTableCell.swift */; };
+		4E212C962BDE57BB00C69288 /* PhonesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA982B3B22EF00EA31D8 /* PhonesViewController.swift */; };
+		4E212C972BDE57BF00C69288 /* ClubLocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2E22B1BEB2600542152 /* ClubLocsViewController.swift */; };
+		4E212C982BDE57C100C69288 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA932B3B087D00EA31D8 /* ClubsViewController.swift */; };
+		4E212C992BDE57C400C69288 /* ClubsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA952B3B102C00EA31D8 /* ClubsTableCell.swift */; };
+		4E212C9A2BDE57C700C69288 /* LinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2D52B0CC32F00542152 /* LinksViewController.swift */; };
+		4E212C9B2BDE57CA00C69288 /* LinksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2D72B0CC63800542152 /* LinksRouter.swift */; };
+		4E212C9C2BDE57CC00C69288 /* LinksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2D92B0CC73B00542152 /* LinksInteractor.swift */; };
+		4E212C9D2BDE57CF00C69288 /* LinksWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2DB2B0E61AA00542152 /* LinksWorker.swift */; };
+		4E212C9E2BDE57D100C69288 /* LinksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2DD2B0E620C00542152 /* LinksPresenter.swift */; };
+		4E212C9F2BDE57D400C69288 /* LinksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2DF2B0E627D00542152 /* LinksModels.swift */; };
+		4E212CA02BDE586300C69288 /* MBTClubLocsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA8F2B3ADFED00EA31D8 /* MBTClubLocsResponse.swift */; };
+		4E212CA12BDE586600C69288 /* MBTClubsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA912B3AE21A00EA31D8 /* MBTClubsResponse.swift */; };
+		4E212CA22BDE586A00C69288 /* MBTSocialMediaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF652B3CF41D0006496D /* MBTSocialMediaResponse.swift */; };
+		4E212CA32BDE586E00C69288 /* MBTPhoneLocsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEAA12B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift */; };
+		4E212CA42BDE587100C69288 /* MBTPhonesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEAA22B3B256C00EA31D8 /* MBTPhonesResponse.swift */; };
+		4E212CA52BDE58AA00C69288 /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF612B3CEE8D0006496D /* SocialMediaViewController.swift */; };
+		4E212CA62BDE58CC00C69288 /* SocialMediaTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF602B3CEE8D0006496D /* SocialMediaTableCell.swift */; };
+		4E35938E2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E35938D2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift */; };
+		4E35938F2C550D2800A4CB83 /* BaseUIButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E35938D2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift */; };
+		4E3593912C58069700A4CB83 /* MBTAppStartupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3593902C58069700A4CB83 /* MBTAppStartupResponse.swift */; };
+		4E3593932C580E1100A4CB83 /* AppDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3593922C580E1100A4CB83 /* AppDescriptionViewController.swift */; };
+		4E3593942C5838E400A4CB83 /* MBTAppStartupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3593902C58069700A4CB83 /* MBTAppStartupResponse.swift */; };
+		4E3593952C58390200A4CB83 /* AppDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3593922C580E1100A4CB83 /* AppDescriptionViewController.swift */; };
+		4E3977902B7EB2DF00BAF94C /* MBTButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39778E2B7EB2DF00BAF94C /* MBTButtonCardView.swift */; };
+		4E3977912B7EB2DF00BAF94C /* MBTButtonCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E39778E2B7EB2DF00BAF94C /* MBTButtonCardView.swift */; };
+		4E3977922B7EB2DF00BAF94C /* MBTButtonCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E39778F2B7EB2DF00BAF94C /* MBTButtonCardView.xib */; };
+		4E3977932B7EB2DF00BAF94C /* MBTButtonCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E39778F2B7EB2DF00BAF94C /* MBTButtonCardView.xib */; };
+		4E545ECA2C74F5E800958CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E022078357C0057FC69 /* Assets.xcassets */; };
+		4E545ECB2C74F5E800958CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E022078357C0057FC69 /* Assets.xcassets */; };
+		4E7DCA752C749C7E0066EB7C /* OidcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8491D2C6CBD560055A918 /* OidcViewController.swift */; };
 		4E9F0F29240BDF0800719A0A /* NewsContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9F0F28240BDF0800719A0A /* NewsContactCell.swift */; };
 		4E9F0F2A240BDF0800719A0A /* NewsContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9F0F28240BDF0800719A0A /* NewsContactCell.swift */; };
+		4EA170D62AE3D561009C6189 /* MBTNewsPdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D52AE3D561009C6189 /* MBTNewsPdf.swift */; };
+		4EA170D92AE56DF4009C6189 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */; };
+		4EA170DB2AE59873009C6189 /* aboutusTR.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EA170DA2AE59873009C6189 /* aboutusTR.html */; };
+		4EA170DD2AE59A07009C6189 /* aboutusEN.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EA170DC2AE59A07009C6189 /* aboutusEN.html */; };
+		4EA8491E2C6CBD560055A918 /* OidcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8491D2C6CBD560055A918 /* OidcViewController.swift */; };
 		4ED58DDF23E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED58DDD23E0DB94005EBC12 /* MBTAnnotationEmergencyView.swift */; };
 		4ED58DE023E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED58DDD23E0DB94005EBC12 /* MBTAnnotationEmergencyView.swift */; };
 		4ED58DE123E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED58DDE23E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib */; };
 		4ED58DE223E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED58DDE23E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib */; };
+		4EDAC2D62B0CC32F00542152 /* LinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2D52B0CC32F00542152 /* LinksViewController.swift */; };
+		4EDAC2D82B0CC63800542152 /* LinksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2D72B0CC63800542152 /* LinksRouter.swift */; };
+		4EDAC2DA2B0CC73B00542152 /* LinksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2D92B0CC73B00542152 /* LinksInteractor.swift */; };
+		4EDAC2DC2B0E61AA00542152 /* LinksWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2DB2B0E61AA00542152 /* LinksWorker.swift */; };
+		4EDAC2DE2B0E620C00542152 /* LinksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2DD2B0E620C00542152 /* LinksPresenter.swift */; };
+		4EDAC2E02B0E627D00542152 /* LinksModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2DF2B0E627D00542152 /* LinksModels.swift */; };
+		4EDAC2E32B1BEB2600542152 /* ClubLocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAC2E22B1BEB2600542152 /* ClubLocsViewController.swift */; };
 		4EDD2B5F23BE0C230071FF6C /* NewsLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD2B5E23BE0C230071FF6C /* NewsLinkCell.swift */; };
 		4EDD2B6023BE0C230071FF6C /* NewsLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD2B5E23BE0C230071FF6C /* NewsLinkCell.swift */; };
+		4EEDEA902B3ADFED00EA31D8 /* MBTClubLocsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA8F2B3ADFED00EA31D8 /* MBTClubLocsResponse.swift */; };
+		4EEDEA922B3AE21A00EA31D8 /* MBTClubsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA912B3AE21A00EA31D8 /* MBTClubsResponse.swift */; };
+		4EEDEA942B3B087D00EA31D8 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA932B3B087D00EA31D8 /* ClubsViewController.swift */; };
+		4EEDEA962B3B102C00EA31D8 /* ClubsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA952B3B102C00EA31D8 /* ClubsTableCell.swift */; };
+		4EEDEA9B2B3B22EF00EA31D8 /* PhonesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA982B3B22EF00EA31D8 /* PhonesViewController.swift */; };
+		4EEDEA9C2B3B22EF00EA31D8 /* PhoneLocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA992B3B22EF00EA31D8 /* PhoneLocsViewController.swift */; };
+		4EEDEA9D2B3B22EF00EA31D8 /* PhonesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA9A2B3B22EF00EA31D8 /* PhonesTableCell.swift */; };
+		4EEDEAA32B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEAA12B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift */; };
+		4EEDEAA42B3B256C00EA31D8 /* MBTPhonesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEAA22B3B256C00EA31D8 /* MBTPhonesResponse.swift */; };
+		4EEDEAA52B3CD95F00EA31D8 /* MBTNewsPdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D52AE3D561009C6189 /* MBTNewsPdf.swift */; };
 		A100F6F921205685000D7BBA /* MBTWorkCalendarInitialDayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100F6F821205684000D7BBA /* MBTWorkCalendarInitialDayList.swift */; };
 		A100F6FA21205685000D7BBA /* MBTWorkCalendarInitialDayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100F6F821205684000D7BBA /* MBTWorkCalendarInitialDayList.swift */; };
 		A10150FE20A63EF0004D2FCA /* MBTFoodMenuShuttleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10150F320A63EEF004D2FCA /* MBTFoodMenuShuttleInfo.swift */; };
@@ -276,10 +339,6 @@
 		A1B1826E2087EC6900D50B42 /* NotificationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B182682087EC6900D50B42 /* NotificationsInteractor.swift */; };
 		A1B182712087F0AD00D50B42 /* MBTHomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B182702087F0AD00D50B42 /* MBTHomeCardView.swift */; };
 		A1B182732087F0B800D50B42 /* MBTHomeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B182722087F0B800D50B42 /* MBTHomeCardView.xib */; };
-		A1B33F5723D78261004F9450 /* BarcodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B33F5523D78261004F9450 /* BarcodeScannerViewController.xib */; };
-		A1B33F5823D78261004F9450 /* BarcodeScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B33F5523D78261004F9450 /* BarcodeScannerViewController.xib */; };
-		A1B33F5923D78261004F9450 /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B33F5623D78261004F9450 /* BarcodeScannerViewController.swift */; };
-		A1B33F5A23D78261004F9450 /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B33F5623D78261004F9450 /* BarcodeScannerViewController.swift */; };
 		A1C236AE20CBCC3A00CB78DC /* MBTTransportationOptionsCompanyLocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C236AB20CBCC3900CB78DC /* MBTTransportationOptionsCompanyLocationList.swift */; };
 		A1C236AF20CBCC3A00CB78DC /* MBTTransportationOptionsCompanyLocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C236AB20CBCC3900CB78DC /* MBTTransportationOptionsCompanyLocationList.swift */; };
 		A1C236B020CBCC3A00CB78DC /* MBTTransportationOptionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C236AC20CBCC3A00CB78DC /* MBTTransportationOptionsResponse.swift */; };
@@ -380,7 +439,6 @@
 		A1F0913120A24F1400969D97 /* MealMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0912B20A24F1400969D97 /* MealMenuViewController.swift */; };
 		A1F0913220A24F1400969D97 /* MealMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0912C20A24F1400969D97 /* MealMenuInteractor.swift */; };
 		A1F62DFC2078357B0057FC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F62DFB2078357B0057FC69 /* AppDelegate.swift */; };
-		A1F62E032078357C0057FC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E022078357C0057FC69 /* Assets.xcassets */; };
 		A1F62E062078357C0057FC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E042078357C0057FC69 /* LaunchScreen.storyboard */; };
 		A1F8E50B20D152F000F6E213 /* MBTSettingsNotificationSettingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8E50920D152F000F6E213 /* MBTSettingsNotificationSettingList.swift */; };
 		A1F8E50C20D152F000F6E213 /* MBTSettingsNotificationSettingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F8E50920D152F000F6E213 /* MBTSettingsNotificationSettingList.swift */; };
@@ -643,7 +701,6 @@
 		A1F96A6920BF4727008EAD2B /* TermOfUseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152C5DB207C06E90053CD40 /* TermOfUseRouter.swift */; };
 		A1F96A6A20BF4727008EAD2B /* MBTLocationBuildingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148EC7F20B9CE1000CE3285 /* MBTLocationBuildingList.swift */; };
 		A1F96A6B20BF4727008EAD2B /* FlexibleWorkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA96F920ACD2AE008B34B9 /* FlexibleWorkWorker.swift */; };
-		A1F96A6D20BF4727008EAD2B /* Pods_MBTBiziz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E519F64EA5E8CBAA2D5DE7A /* Pods_MBTBiziz.framework */; };
 		A1F96A6F20BF4727008EAD2B /* MBTHomeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B182722087F0B800D50B42 /* MBTHomeCardView.xib */; };
 		A1F96A7020BF4727008EAD2B /* legalEN.html in Resources */ = {isa = PBXBuildFile; fileRef = A152C4F0207BFA3E0053CD40 /* legalEN.html */; };
 		A1F96A7120BF4727008EAD2B /* appdescriptionEN.html in Resources */ = {isa = PBXBuildFile; fileRef = A152C4EF207BFA3E0053CD40 /* appdescriptionEN.html */; };
@@ -672,7 +729,6 @@
 		A1F96A8A20BF4727008EAD2B /* CaloryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A101511320A64E25004D2FCA /* CaloryView.xib */; };
 		A1F96A8B20BF4727008EAD2B /* Portal_Transportation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B1822D2087E8AA00D50B42 /* Portal_Transportation.storyboard */; };
 		A1F96A8C20BF4727008EAD2B /* thirdpartyTR.html in Resources */ = {isa = PBXBuildFile; fileRef = A152C4E9207BFA3E0053CD40 /* thirdpartyTR.html */; };
-		A1F96A8D20BF4727008EAD2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E022078357C0057FC69 /* Assets.xcassets */; };
 		A1F96A8E20BF4727008EAD2B /* LocationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10C7B3E20B9F123009E9C0E /* LocationOverlayView.xib */; };
 		A1F96A8F20BF4727008EAD2B /* DaimlerCA-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A152C4F7207BFA3E0053CD40 /* DaimlerCA-Regular.ttf */; };
 		A1F96A9020BF4727008EAD2B /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B182312087E8D100D50B42 /* Notifications.storyboard */; };
@@ -709,11 +765,42 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E519F64EA5E8CBAA2D5DE7A /* Pods_MBTBiziz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTBiziz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E14FF602B3CEE8D0006496D /* SocialMediaTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaTableCell.swift; sourceTree = "<group>"; };
+		4E14FF612B3CEE8D0006496D /* SocialMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaViewController.swift; sourceTree = "<group>"; };
+		4E14FF652B3CF41D0006496D /* MBTSocialMediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTSocialMediaResponse.swift; sourceTree = "<group>"; };
+		4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedbackViewController.swift; sourceTree = "<group>"; };
+		4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTGetDiscountCodeResponse.swift; sourceTree = "<group>"; };
+		4E35938D2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIButtonWithIcon.swift; sourceTree = "<group>"; };
+		4E3593902C58069700A4CB83 /* MBTAppStartupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTAppStartupResponse.swift; sourceTree = "<group>"; };
+		4E3593922C580E1100A4CB83 /* AppDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionViewController.swift; sourceTree = "<group>"; };
+		4E39778E2B7EB2DF00BAF94C /* MBTButtonCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTButtonCardView.swift; sourceTree = "<group>"; };
+		4E39778F2B7EB2DF00BAF94C /* MBTButtonCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBTButtonCardView.xib; sourceTree = "<group>"; };
 		4E9F0F28240BDF0800719A0A /* NewsContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContactCell.swift; sourceTree = "<group>"; };
+		4EA170D52AE3D561009C6189 /* MBTNewsPdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTNewsPdf.swift; sourceTree = "<group>"; };
+		4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		4EA170DA2AE59873009C6189 /* aboutusTR.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = aboutusTR.html; sourceTree = "<group>"; };
+		4EA170DC2AE59A07009C6189 /* aboutusEN.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = aboutusEN.html; sourceTree = "<group>"; };
+		4EA8491C2C5FC96A0055A918 /* MBTBiziz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBTBiziz.entitlements; sourceTree = "<group>"; };
+		4EA8491D2C6CBD560055A918 /* OidcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OidcViewController.swift; sourceTree = "<group>"; };
 		4ED58DDD23E0DB94005EBC12 /* MBTAnnotationEmergencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTAnnotationEmergencyView.swift; sourceTree = "<group>"; };
 		4ED58DDE23E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBTAnnotationEmergencyView.xib; sourceTree = "<group>"; };
+		4EDAC2D52B0CC32F00542152 /* LinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksViewController.swift; sourceTree = "<group>"; };
+		4EDAC2D72B0CC63800542152 /* LinksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksRouter.swift; sourceTree = "<group>"; };
+		4EDAC2D92B0CC73B00542152 /* LinksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksInteractor.swift; sourceTree = "<group>"; };
+		4EDAC2DB2B0E61AA00542152 /* LinksWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksWorker.swift; sourceTree = "<group>"; };
+		4EDAC2DD2B0E620C00542152 /* LinksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksPresenter.swift; sourceTree = "<group>"; };
+		4EDAC2DF2B0E627D00542152 /* LinksModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksModels.swift; sourceTree = "<group>"; };
+		4EDAC2E22B1BEB2600542152 /* ClubLocsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubLocsViewController.swift; sourceTree = "<group>"; };
 		4EDD2B5E23BE0C230071FF6C /* NewsLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLinkCell.swift; sourceTree = "<group>"; };
+		4EEDEA8F2B3ADFED00EA31D8 /* MBTClubLocsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTClubLocsResponse.swift; sourceTree = "<group>"; };
+		4EEDEA912B3AE21A00EA31D8 /* MBTClubsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTClubsResponse.swift; sourceTree = "<group>"; };
+		4EEDEA932B3B087D00EA31D8 /* ClubsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsViewController.swift; sourceTree = "<group>"; };
+		4EEDEA952B3B102C00EA31D8 /* ClubsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsTableCell.swift; sourceTree = "<group>"; };
+		4EEDEA982B3B22EF00EA31D8 /* PhonesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesViewController.swift; sourceTree = "<group>"; };
+		4EEDEA992B3B22EF00EA31D8 /* PhoneLocsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLocsViewController.swift; sourceTree = "<group>"; };
+		4EEDEA9A2B3B22EF00EA31D8 /* PhonesTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesTableCell.swift; sourceTree = "<group>"; };
+		4EEDEAA12B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTPhoneLocsResponse.swift; sourceTree = "<group>"; };
+		4EEDEAA22B3B256C00EA31D8 /* MBTPhonesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTPhonesResponse.swift; sourceTree = "<group>"; };
 		A100F6F821205684000D7BBA /* MBTWorkCalendarInitialDayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTWorkCalendarInitialDayList.swift; sourceTree = "<group>"; };
 		A10150F320A63EEF004D2FCA /* MBTFoodMenuShuttleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTFoodMenuShuttleInfo.swift; sourceTree = "<group>"; };
 		A10150F420A63EEF004D2FCA /* MBTFoodMenuFoodInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTFoodMenuFoodInfo.swift; sourceTree = "<group>"; };
@@ -974,8 +1061,6 @@
 		A1B182682087EC6900D50B42 /* NotificationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsInteractor.swift; sourceTree = "<group>"; };
 		A1B182702087F0AD00D50B42 /* MBTHomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTHomeCardView.swift; sourceTree = "<group>"; };
 		A1B182722087F0B800D50B42 /* MBTHomeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MBTHomeCardView.xib; sourceTree = "<group>"; };
-		A1B33F5523D78261004F9450 /* BarcodeScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarcodeScannerViewController.xib; sourceTree = "<group>"; };
-		A1B33F5623D78261004F9450 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 		A1C236AB20CBCC3900CB78DC /* MBTTransportationOptionsCompanyLocationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTTransportationOptionsCompanyLocationList.swift; sourceTree = "<group>"; };
 		A1C236AC20CBCC3A00CB78DC /* MBTTransportationOptionsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTTransportationOptionsResponse.swift; sourceTree = "<group>"; };
 		A1C236AD20CBCC3A00CB78DC /* MBTTransportationOptionsTypeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTTransportationOptionsTypeList.swift; sourceTree = "<group>"; };
@@ -1072,7 +1157,7 @@
 		A1F0912C20A24F1400969D97 /* MealMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealMenuInteractor.swift; sourceTree = "<group>"; };
 		A1F62DF82078357B0057FC69 /* MBTBiziz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBTBiziz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F62DFB2078357B0057FC69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1F62E022078357C0057FC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1F62E022078357C0057FC69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MBTBiziz/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A1F62E052078357C0057FC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1F62E072078357C0057FC69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1F8E50920D152F000F6E213 /* MBTSettingsNotificationSettingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTSettingsNotificationSettingList.swift; sourceTree = "<group>"; };
@@ -1095,6 +1180,7 @@
 		BC4F037E5F138C1529AFB884 /* Pods-MBTBiziz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTBiziz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz.debug.xcconfig"; sourceTree = "<group>"; };
 		C1C3FDC33888218FD446AA93 /* Pods-MBTBiziz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTBiziz.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz.release.xcconfig"; sourceTree = "<group>"; };
 		C56912901EEDB42EB014A40F /* Pods_MBTBiziz_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTBiziz_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9756B4E88391A439FB98F7A /* Pods_MBTBiziz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTBiziz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB22B22ADA54948ED36722B /* Pods-MBTBiziz-Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTBiziz-Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1103,7 +1189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34F9441DC8A4F34CE04BE0B0 /* Pods_MBTBiziz.framework in Frameworks */,
+				34F9441DC8A4F34CE04BE0B0 /* (null) in Frameworks */,
+				159781925EF223C84042860C /* Pods_MBTBiziz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,7 +1198,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F96A6D20BF4727008EAD2B /* Pods_MBTBiziz.framework in Frameworks */,
 				D61D17AF3236DD27C9A6CFDF /* Pods_MBTBiziz_Prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1119,11 +1205,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E14FF5F2B3CED6B0006496D /* SocialMedia */ = {
+			isa = PBXGroup;
+			children = (
+				4E14FF602B3CEE8D0006496D /* SocialMediaTableCell.swift */,
+				4E14FF612B3CEE8D0006496D /* SocialMediaViewController.swift */,
+			);
+			path = SocialMedia;
+			sourceTree = "<group>";
+		};
+		4E14FF642B3CF3FF0006496D /* SocialMediaResponse */ = {
+			isa = PBXGroup;
+			children = (
+				4E14FF652B3CF41D0006496D /* MBTSocialMediaResponse.swift */,
+			);
+			path = SocialMediaResponse;
+			sourceTree = "<group>";
+		};
+		4E39778D2B7EB26C00BAF94C /* ButtonCardView */ = {
+			isa = PBXGroup;
+			children = (
+				4E39778E2B7EB2DF00BAF94C /* MBTButtonCardView.swift */,
+				4E39778F2B7EB2DF00BAF94C /* MBTButtonCardView.xib */,
+			);
+			path = ButtonCardView;
+			sourceTree = "<group>";
+		};
+		4EA170D72AE56D83009C6189 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				4E14FF5F2B3CED6B0006496D /* SocialMedia */,
+				4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */,
+			);
+			path = AboutUs;
+			sourceTree = "<group>";
+		};
+		4EDAC2D42B0CC2A800542152 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				4EDAC2E12B1BEB0A00542152 /* Clubs */,
+				4EDAC2D52B0CC32F00542152 /* LinksViewController.swift */,
+				4EDAC2D72B0CC63800542152 /* LinksRouter.swift */,
+				4EDAC2D92B0CC73B00542152 /* LinksInteractor.swift */,
+				4EDAC2DB2B0E61AA00542152 /* LinksWorker.swift */,
+				4EDAC2DD2B0E620C00542152 /* LinksPresenter.swift */,
+				4EDAC2DF2B0E627D00542152 /* LinksModels.swift */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
+		4EDAC2E12B1BEB0A00542152 /* Clubs */ = {
+			isa = PBXGroup;
+			children = (
+				4EDAC2E22B1BEB2600542152 /* ClubLocsViewController.swift */,
+				4EEDEA932B3B087D00EA31D8 /* ClubsViewController.swift */,
+				4EEDEA952B3B102C00EA31D8 /* ClubsTableCell.swift */,
+			);
+			path = Clubs;
+			sourceTree = "<group>";
+		};
+		4EEDEA8E2B3ADFC700EA31D8 /* SocialClubsResponse */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDEA8F2B3ADFED00EA31D8 /* MBTClubLocsResponse.swift */,
+				4EEDEA912B3AE21A00EA31D8 /* MBTClubsResponse.swift */,
+			);
+			path = SocialClubsResponse;
+			sourceTree = "<group>";
+		};
+		4EEDEA972B3B228900EA31D8 /* Phones */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDEA992B3B22EF00EA31D8 /* PhoneLocsViewController.swift */,
+				4EEDEA9A2B3B22EF00EA31D8 /* PhonesTableCell.swift */,
+				4EEDEA982B3B22EF00EA31D8 /* PhonesViewController.swift */,
+			);
+			path = Phones;
+			sourceTree = "<group>";
+		};
+		4EEDEAA02B3B24EC00EA31D8 /* PhonesResponse */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDEAA12B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift */,
+				4EEDEAA22B3B256C00EA31D8 /* MBTPhonesResponse.swift */,
+			);
+			path = PhonesResponse;
+			sourceTree = "<group>";
+		};
 		79DDD4C4251BF009F40E34EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0E519F64EA5E8CBAA2D5DE7A /* Pods_MBTBiziz.framework */,
 				C56912901EEDB42EB014A40F /* Pods_MBTBiziz_Prod.framework */,
+				C9756B4E88391A439FB98F7A /* Pods_MBTBiziz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1381,6 +1554,7 @@
 			children = (
 				A14417A121E0CBF900EE4FF0 /* InitResponse.swift */,
 				A1B0F85E23DC651300CDE581 /* MBTUserConfigResponse.swift */,
+				4E3593902C58069700A4CB83 /* MBTAppStartupResponse.swift */,
 			);
 			path = InitResponse;
 			sourceTree = "<group>";
@@ -1466,6 +1640,8 @@
 				A152C4EE207BFA3E0053CD40 /* thirdpartyEN.html */,
 				A152C4EF207BFA3E0053CD40 /* appdescriptionEN.html */,
 				A152C4F0207BFA3E0053CD40 /* legalEN.html */,
+				4EA170DA2AE59873009C6189 /* aboutusTR.html */,
+				4EA170DC2AE59A07009C6189 /* aboutusEN.html */,
 			);
 			path = Htmls;
 			sourceTree = "<group>";
@@ -1580,6 +1756,7 @@
 		A152C512207BFA3E0053CD40 /* BaseUIButton */ = {
 			isa = PBXGroup;
 			children = (
+				4E35938D2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift */,
 				A152C513207BFA3E0053CD40 /* BaseUIButtonDemi.swift */,
 				A152C514207BFA3E0053CD40 /* BaseUIButton.swift */,
 				A152C515207BFA3E0053CD40 /* BaseUIButtonCARegular.swift */,
@@ -1696,6 +1873,9 @@
 		A152C534207BFA3E0053CD40 /* ResponseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				4E14FF642B3CF3FF0006496D /* SocialMediaResponse */,
+				4EEDEAA02B3B24EC00EA31D8 /* PhonesResponse */,
+				4EEDEA8E2B3ADFC700EA31D8 /* SocialClubsResponse */,
 				A14417A021E0CBA000EE4FF0 /* InitResponse */,
 				A1F8E51320D1CF7100F6E213 /* NotificationResponse */,
 				A1F8E50F20D1BC0800F6E213 /* ProfileResponse */,
@@ -1778,6 +1958,7 @@
 			children = (
 				A1E66659208695C600BB3218 /* Welcome */,
 				A1E66658208695C600BB3218 /* ActivationCode */,
+				4EA8491D2C6CBD560055A918 /* OidcViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1821,7 +2002,6 @@
 		A152C5BD207C06B50053CD40 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				A1B33F5423D7823E004F9450 /* BarcodeScanner */,
 				A1A3983B20A00DEF009EF08F /* Popups */,
 				A152C5BF207C06B50053CD40 /* About */,
 				A152C5C0207C06B50053CD40 /* TermOfUse */,
@@ -1839,6 +2019,8 @@
 				A152C5D0207C06DA0053CD40 /* AboutModels.swift */,
 				A152C5D1207C06DA0053CD40 /* AboutViewController.swift */,
 				A152C5D2207C06DA0053CD40 /* AboutInteractor.swift */,
+				4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */,
+				4E3593922C580E1100A4CB83 /* AppDescriptionViewController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -1880,6 +2062,8 @@
 				A16EE5F0209F7E60000B4464 /* MBTNewsResponse.swift */,
 				A16EE5F1209F7E60000B4464 /* MBTNewsNewsList.swift */,
 				A13F7A5820A0FA55005B8E3E /* MBTNewsDetailResponse.swift */,
+				4EA170D52AE3D561009C6189 /* MBTNewsPdf.swift */,
+				4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */,
 			);
 			path = NewsResponse;
 			sourceTree = "<group>";
@@ -1949,6 +2133,9 @@
 		A1B182352087EBB400D50B42 /* Portal */ = {
 			isa = PBXGroup;
 			children = (
+				4EEDEA972B3B228900EA31D8 /* Phones */,
+				4EDAC2D42B0CC2A800542152 /* Links */,
+				4EA170D72AE56D83009C6189 /* AboutUs */,
 				A1B182362087EBB400D50B42 /* Home */,
 				A1B182372087EBB400D50B42 /* Transportation */,
 				A1B182382087EBB400D50B42 /* Location */,
@@ -2072,15 +2259,6 @@
 				A1B182722087F0B800D50B42 /* MBTHomeCardView.xib */,
 			);
 			path = HomeCardView;
-			sourceTree = "<group>";
-		};
-		A1B33F5423D7823E004F9450 /* BarcodeScanner */ = {
-			isa = PBXGroup;
-			children = (
-				A1B33F5623D78261004F9450 /* BarcodeScannerViewController.swift */,
-				A1B33F5523D78261004F9450 /* BarcodeScannerViewController.xib */,
-			);
-			path = BarcodeScanner;
 			sourceTree = "<group>";
 		};
 		A1C236C620CBCD6000CB78DC /* TransportationOptions */ = {
@@ -2233,6 +2411,7 @@
 		A1E6667720869DD900BB3218 /* CustomUIs */ = {
 			isa = PBXGroup;
 			children = (
+				4E39778D2B7EB26C00BAF94C /* ButtonCardView */,
 				A19CFE3F20C6E5ED006B9DE1 /* AnnotationView */,
 				A10C7B3920B9F0F9009E9C0E /* LocationOverlay */,
 				A101511920A84269004D2FCA /* DensityView */,
@@ -2279,6 +2458,7 @@
 		A1F62DFA2078357B0057FC69 /* MBTBiziz */ = {
 			isa = PBXGroup;
 			children = (
+				4EA8491C2C5FC96A0055A918 /* MBTBiziz.entitlements */,
 				A152C528207BFA3E0053CD40 /* App */,
 				A152C52B207BFA3E0053CD40 /* Network */,
 				A152C4DE207BFA3E0053CD40 /* Resources */,
@@ -2379,7 +2559,6 @@
 				A1F62DF52078357B0057FC69 /* Frameworks */,
 				A1F62DF62078357B0057FC69 /* Resources */,
 				7D4F1000D62276D9C042D064 /* [CP] Embed Pods Frameworks */,
-				51AF0E3088FAA06EC70D9A60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2399,7 +2578,6 @@
 				A1F96A6C20BF4727008EAD2B /* Frameworks */,
 				A1F96A6E20BF4727008EAD2B /* Resources */,
 				A1F96A9A20BF4727008EAD2B /* [CP] Embed Pods Frameworks */,
-				A1F96A9B20BF4727008EAD2B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2418,7 +2596,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = "Serkut Yegin";
+				ORGANIZATIONNAME = "Onion Tech";
 				TargetAttributes = {
 					A1F62DF72078357B0057FC69 = {
 						CreatedOnToolsVersion = 9.3;
@@ -2468,6 +2646,7 @@
 				A152C53C207BFA3E0053CD40 /* dataprotectionTR.html in Resources */,
 				A152C53A207BFA3E0053CD40 /* language_english.plist in Resources */,
 				A101511820A64E45004D2FCA /* ServiceTimeView.xib in Resources */,
+				4EA170DB2AE59873009C6189 /* aboutusTR.html in Resources */,
 				A1B1822A2087E86500D50B42 /* Portal_News.storyboard in Resources */,
 				A152C540207BFA3E0053CD40 /* dataprotectionEN.html in Resources */,
 				A1E666542086890F00BB3218 /* Login.storyboard in Resources */,
@@ -2483,16 +2662,17 @@
 				A1188BE82096066700A5A0FC /* MBTPagerView.xib in Resources */,
 				A1B1822C2087E89200D50B42 /* Portal_Location.storyboard in Resources */,
 				A152C53E207BFA3E0053CD40 /* appsupportTR.html in Resources */,
+				4E545ECB2C74F5E800958CFC /* Assets.xcassets in Resources */,
 				A152C54A207BFA3E0053CD40 /* DaimlerCS-Light.ttf in Resources */,
 				A152C54B207BFA3E0053CD40 /* DaimlerCS-Regular.ttf in Resources */,
 				A152C53D207BFA3E0053CD40 /* appsupportEN.html in Resources */,
 				A101511420A64E25004D2FCA /* CaloryView.xib in Resources */,
 				A1B1822E2087E8AA00D50B42 /* Portal_Transportation.storyboard in Resources */,
 				A152C541207BFA3E0053CD40 /* thirdpartyTR.html in Resources */,
-				A1F62E032078357C0057FC69 /* Assets.xcassets in Resources */,
 				4ED58DE123E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib in Resources */,
 				A10C7B3F20B9F123009E9C0E /* LocationOverlayView.xib in Resources */,
 				A152C54D207BFA3E0053CD40 /* DaimlerCA-Regular.ttf in Resources */,
+				4E3977922B7EB2DF00BAF94C /* MBTButtonCardView.xib in Resources */,
 				A18AFCD220FB70C400B3137B /* bizizapp.crt in Resources */,
 				A1B182322087E8D100D50B42 /* Notifications.storyboard in Resources */,
 				A1B182342087E8DC00D50B42 /* Profile.storyboard in Resources */,
@@ -2501,7 +2681,7 @@
 				A152C54C207BFA3E0053CD40 /* DaimlerCS-Demi.ttf in Resources */,
 				A152C545207BFA3E0053CD40 /* fossTR.html in Resources */,
 				A16EE5EB209F5AE1000B4464 /* LoadingView.xib in Resources */,
-				A1B33F5723D78261004F9450 /* BarcodeScannerViewController.xib in Resources */,
+				4EA170DD2AE59A07009C6189 /* aboutusEN.html in Resources */,
 				A1E6667C20869DFB00BB3218 /* MBTTitleView.xib in Resources */,
 				A12510F2209A598600D5FCD5 /* Popups.storyboard in Resources */,
 				A101510620A63EF0004D2FCA /* yemek.json in Resources */,
@@ -2526,6 +2706,7 @@
 				A1F96A7B20BF4727008EAD2B /* LaunchScreen.storyboard in Resources */,
 				A1F96A7C20BF4727008EAD2B /* language_turkish.plist in Resources */,
 				A1F96A7D20BF4727008EAD2B /* ScrollableTabView.xib in Resources */,
+				4E3977932B7EB2DF00BAF94C /* MBTButtonCardView.xib in Resources */,
 				A19CFE4520C6E634006B9DE1 /* MBTAnnotationView.xib in Resources */,
 				A1F96A7E20BF4727008EAD2B /* appdescriptionTR.html in Resources */,
 				A1F96A7F20BF4727008EAD2B /* fossEN.html in Resources */,
@@ -2541,11 +2722,11 @@
 				A1F96A8A20BF4727008EAD2B /* CaloryView.xib in Resources */,
 				A1F96A8B20BF4727008EAD2B /* Portal_Transportation.storyboard in Resources */,
 				A1F96A8C20BF4727008EAD2B /* thirdpartyTR.html in Resources */,
-				A1F96A8D20BF4727008EAD2B /* Assets.xcassets in Resources */,
 				4ED58DE223E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib in Resources */,
 				A1F96A8E20BF4727008EAD2B /* LocationOverlayView.xib in Resources */,
 				A1F96A8F20BF4727008EAD2B /* DaimlerCA-Regular.ttf in Resources */,
 				A18AFCD320FB70C400B3137B /* bizizapp.crt in Resources */,
+				4E545ECA2C74F5E800958CFC /* Assets.xcassets in Resources */,
 				A1F96A9020BF4727008EAD2B /* Notifications.storyboard in Resources */,
 				A1F96A9120BF4727008EAD2B /* Profile.storyboard in Resources */,
 				A1F96A9220BF4727008EAD2B /* thirdpartyEN.html in Resources */,
@@ -2553,7 +2734,6 @@
 				A1F96A9420BF4727008EAD2B /* DaimlerCS-Demi.ttf in Resources */,
 				A1F96A9520BF4727008EAD2B /* fossTR.html in Resources */,
 				A1F96A9620BF4727008EAD2B /* LoadingView.xib in Resources */,
-				A1B33F5823D78261004F9450 /* BarcodeScannerViewController.xib in Resources */,
 				A1F96A9720BF4727008EAD2B /* MBTTitleView.xib in Resources */,
 				A1F96A9820BF4727008EAD2B /* Popups.storyboard in Resources */,
 				A1F96A9920BF4727008EAD2B /* yemek.json in Resources */,
@@ -2563,51 +2743,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		51AF0E3088FAA06EC70D9A60 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7D4F1000D62276D9C042D064 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/AnyFormatKit/AnyFormatKit.framework",
-				"${BUILT_PRODUCTS_DIR}/EZSwiftExtensions/EZSwiftExtensions.framework",
-				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyFormatKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZSwiftExtensions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A1F9695E20BF4727008EAD2B /* [CP] Check Pods Manifest.lock */ = {
@@ -2633,46 +2783,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/AnyFormatKit/AnyFormatKit.framework",
-				"${BUILT_PRODUCTS_DIR}/EZSwiftExtensions/EZSwiftExtensions.framework",
-				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyFormatKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZSwiftExtensions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A1F96A9B20BF4727008EAD2B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FAE98D46FB85C72BDC32750E /* [CP] Check Pods Manifest.lock */ = {
@@ -2704,12 +2824,12 @@
 				A1F96ABB20BF4F82008EAD2B /* SettingsPresenter.swift in Sources */,
 				A101514520A8F613004D2FCA /* DriverInfoViewController.swift in Sources */,
 				A141D41023D4C4BD0045F957 /* JailbreakHelper.swift in Sources */,
+				4E3593912C58069700A4CB83 /* MBTAppStartupResponse.swift in Sources */,
 				A1CA96E220ACD1A0008B34B9 /* FSCalendarCollectionView.m in Sources */,
 				A1CA96E720ACD1A0008B34B9 /* FSCalendar.m in Sources */,
 				A152C554207BFA3E0053CD40 /* BaseUITextField.swift in Sources */,
 				A1CA96ED20ACD1A0008B34B9 /* FSCalendarConstants.m in Sources */,
 				A152C556207BFA3E0053CD40 /* BaseUITextFieldLight.swift in Sources */,
-				A1B33F5923D78261004F9450 /* BarcodeScannerViewController.swift in Sources */,
 				A152C59F207C02670053CD40 /* NSObject+AGi18n.m in Sources */,
 				A101510320A63EF0004D2FCA /* MBTFoodMenuTimeList.swift in Sources */,
 				A1F96AC920BF4FF6008EAD2B /* SettingsTableCell.swift in Sources */,
@@ -2723,6 +2843,7 @@
 				A1D9440A20C7423800FC51B7 /* LocationResultModels.swift in Sources */,
 				A1B182472087EBCC00D50B42 /* HomeRouter.swift in Sources */,
 				A101513520A8D5A4004D2FCA /* TransportationSearchPresenter.swift in Sources */,
+				4EEDEA9D2B3B22EF00EA31D8 /* PhonesTableCell.swift in Sources */,
 				A1B182482087EBCC00D50B42 /* HomeModels.swift in Sources */,
 				A1CA96EF20ACD1A0008B34B9 /* FSCalendarHeaderView.m in Sources */,
 				A13F7A4220A0E979005B8E3E /* NewsDetailPresenter.swift in Sources */,
@@ -2732,9 +2853,11 @@
 				A10C7B5220BA2E03009E9C0E /* MBTWorkCalendarResponse.swift in Sources */,
 				A1B1826A2087EC6900D50B42 /* NotificationsWorker.swift in Sources */,
 				A1B1826E2087EC6900D50B42 /* NotificationsInteractor.swift in Sources */,
+				4EEDEA962B3B102C00EA31D8 /* ClubsTableCell.swift in Sources */,
 				A1F0913120A24F1400969D97 /* MealMenuViewController.swift in Sources */,
 				A152C5E2207C06E90053CD40 /* TermOfUseModels.swift in Sources */,
 				A1CA96EB20ACD1A0008B34B9 /* FSCalendarExtensions.m in Sources */,
+				4EDAC2DA2B0CC73B00542152 /* LinksInteractor.swift in Sources */,
 				A1188BF6209607FF00A5A0FC /* PageContainerViewController+Builder.swift in Sources */,
 				A1E666652086960C00BB3218 /* WelcomeInteractor.swift in Sources */,
 				A1F96ABD20BF4F82008EAD2B /* SettingsWorker.swift in Sources */,
@@ -2745,6 +2868,7 @@
 				A101510420A63EF0004D2FCA /* MBTFoodMenuShuttleList.swift in Sources */,
 				A1188BE62096065B00A5A0FC /* MBTPagerView.swift in Sources */,
 				A1C236BA20CBCCDB00CB78DC /* MBTTransportationListStopList.swift in Sources */,
+				4EA170D92AE56DF4009C6189 /* AboutUsViewController.swift in Sources */,
 				A152C5A0207C02670053CD40 /* UIButton+AGi18n.m in Sources */,
 				A1B1826C2087EC6900D50B42 /* NotificationsModels.swift in Sources */,
 				A1CA970120ACD2AE008B34B9 /* FlexibleWorkModels.swift in Sources */,
@@ -2753,6 +2877,7 @@
 				A1B182452087EBCC00D50B42 /* HomePresenter.swift in Sources */,
 				A152C566207BFA3E0053CD40 /* UIImageView+Extensions.swift in Sources */,
 				A152C572207BFA3E0053CD40 /* HtmlHelper.swift in Sources */,
+				4EDAC2D82B0CC63800542152 /* LinksRouter.swift in Sources */,
 				A1A39836209F9A1B009EF08F /* NewsHeaderCell.swift in Sources */,
 				A152C5BB207C042F0053CD40 /* EventsNavBar.swift in Sources */,
 				4E9F0F29240BDF0800719A0A /* NewsContactCell.swift in Sources */,
@@ -2768,6 +2893,7 @@
 				A1CA970E20ACD2B9008B34B9 /* WorkCalendarViewController.swift in Sources */,
 				A152C59E207C02670053CD40 /* UINavigationItem+AGi18n.m in Sources */,
 				A1F8E50B20D152F000F6E213 /* MBTSettingsNotificationSettingList.swift in Sources */,
+				4E14FF662B3CF41D0006496D /* MBTSocialMediaResponse.swift in Sources */,
 				A142FC9A20B19180000B25E4 /* FlexibleWorkDetailWorker.swift in Sources */,
 				A10C7B4A20BA154F009E9C0E /* MBTFlexibleYearlyMonthList.swift in Sources */,
 				A1188BF4209607FF00A5A0FC /* PageContainerModels.swift in Sources */,
@@ -2776,6 +2902,7 @@
 				A101510B20A64D0A004D2FCA /* MealMenuCell.swift in Sources */,
 				A152C555207BFA3E0053CD40 /* BaseUITextFieldCARegular.swift in Sources */,
 				A152C55B207BFA3E0053CD40 /* BaseUILabel.swift in Sources */,
+				4EDAC2E32B1BEB2600542152 /* ClubLocsViewController.swift in Sources */,
 				A1F0913020A24F1400969D97 /* MealMenuModels.swift in Sources */,
 				A101514020A8EAAD004D2FCA /* TransportationRouteCell.swift in Sources */,
 				A152C552207BFA3E0053CD40 /* MBTLanguageManager.swift in Sources */,
@@ -2794,6 +2921,7 @@
 				A16EE5F3209F7E61000B4464 /* MBTNewsNewsList.swift in Sources */,
 				A101511620A64E3B004D2FCA /* ServiceTimeView.swift in Sources */,
 				A1CA96E320ACD1A0008B34B9 /* FSCalendarDelegationProxy.m in Sources */,
+				4E14FF632B3CEE8D0006496D /* SocialMediaViewController.swift in Sources */,
 				A1F96ACD20BF543B008EAD2B /* NotificationTableCell.swift in Sources */,
 				A1B182282087E52B00D50B42 /* UIFont+Extensions.swift in Sources */,
 				A1B182542087EBE200D50B42 /* ProfileModels.swift in Sources */,
@@ -2809,8 +2937,10 @@
 				A152C5D7207C06DA0053CD40 /* AboutViewController.swift in Sources */,
 				A101512920A8D596004D2FCA /* TransportationPresenter.swift in Sources */,
 				A19A398E20AE167400B57FCB /* CalendarTableCell.swift in Sources */,
+				4EEDEAA32B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift in Sources */,
 				A1B182692087EC6900D50B42 /* NotificationsPresenter.swift in Sources */,
 				A101510220A63EF0004D2FCA /* MBTFoodMenuFoodList.swift in Sources */,
+				4EEDEA9B2B3B22EF00EA31D8 /* PhonesViewController.swift in Sources */,
 				A1B0F85F23DC651300CDE581 /* MBTUserConfigResponse.swift in Sources */,
 				A13F7A5120A0E988005B8E3E /* BirthdayListModels.swift in Sources */,
 				A1E1550820A237300099C579 /* MBTBirthdayBirthdayList.swift in Sources */,
@@ -2839,10 +2969,13 @@
 				A1CA96E820ACD1A0008B34B9 /* FSCalendarCollectionViewLayout.m in Sources */,
 				A152C5D8207C06DA0053CD40 /* AboutInteractor.swift in Sources */,
 				A142FC9B20B19180000B25E4 /* FlexibleWorkDetailRouter.swift in Sources */,
+				4EEDEA942B3B087D00EA31D8 /* ClubsViewController.swift in Sources */,
 				A101511220A64E13004D2FCA /* CaloryView.swift in Sources */,
 				A1E666642086960C00BB3218 /* WelcomeViewController.swift in Sources */,
+				4EEDEAA42B3B256C00EA31D8 /* MBTPhonesResponse.swift in Sources */,
 				A10C7B4B20BA154F009E9C0E /* MBTFlexibleYearlyResponse.swift in Sources */,
 				A152C59B207C02670053CD40 /* UISegmentedControl+AGi18n.m in Sources */,
+				4E3593932C580E1100A4CB83 /* AppDescriptionViewController.swift in Sources */,
 				A1F0912620A247B100969D97 /* BirthdayTableCell.swift in Sources */,
 				A152C59D207C02670053CD40 /* UIBarButtonItem+AGi18n.m in Sources */,
 				A16EE5EE209F67DB000B4464 /* MBTLoginResponse.swift in Sources */,
@@ -2879,10 +3012,12 @@
 				A152C55D207BFA3E0053CD40 /* BaseUILabelRegular.swift in Sources */,
 				A152C5B6207C042F0053CD40 /* MBTBaseHomeViewController.swift in Sources */,
 				A1CA96EA20ACD1A0008B34B9 /* FSCalendarWeekdayView.m in Sources */,
+				4E14FF622B3CEE8D0006496D /* SocialMediaTableCell.swift in Sources */,
 				A101510920A64CFE004D2FCA /* MealMenuHeaderCell.swift in Sources */,
 				A152C5D5207C06DA0053CD40 /* AboutRouter.swift in Sources */,
 				A1CA96F020ACD1A0008B34B9 /* FSCalendarTransitionCoordinator.m in Sources */,
 				A10150FE20A63EF0004D2FCA /* MBTFoodMenuShuttleInfo.swift in Sources */,
+				4E1930472AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */,
 				4ED58DDF23E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */,
 				A1C236BC20CBCCDB00CB78DC /* MBTTransportationListShuttleList.swift in Sources */,
 				A148EC7B20B9C41300CE3285 /* LocationSearchViewController.swift in Sources */,
@@ -2893,9 +3028,11 @@
 				A1E6666F2086961800BB3218 /* ActivationCodeModels.swift in Sources */,
 				A19CFE4120C6E627006B9DE1 /* MBTAnnotationView.swift in Sources */,
 				A152C5D6207C06DA0053CD40 /* AboutModels.swift in Sources */,
+				4EDAC2DC2B0E61AA00542152 /* LinksWorker.swift in Sources */,
 				A152C55C207BFA3E0053CD40 /* BaseUILabelCARegular.swift in Sources */,
 				A1F96ABF20BF4F82008EAD2B /* SettingsRouter.swift in Sources */,
 				A101513920A8D5A4004D2FCA /* TransportationSearchViewController.swift in Sources */,
+				4EDAC2E02B0E627D00542152 /* LinksModels.swift in Sources */,
 				A152C558207BFA3E0053CD40 /* RoundedView.swift in Sources */,
 				A152C563207BFA3E0053CD40 /* BaseUIButtonLight.swift in Sources */,
 				A142FC9120B18EF7000B25E4 /* FlexibleTableCell.swift in Sources */,
@@ -2903,6 +3040,7 @@
 				A16EE5EA209F5AE1000B4464 /* LoadingView.swift in Sources */,
 				A101510F20A64D29004D2FCA /* MealMenuServiceCell.swift in Sources */,
 				A1E666702086961800BB3218 /* ActivationCodeViewController.swift in Sources */,
+				4EEDEA902B3ADFED00EA31D8 /* MBTClubLocsResponse.swift in Sources */,
 				A152C5E4207C06E90053CD40 /* TermOfUseInteractor.swift in Sources */,
 				A19A399020AE16DC00B57FCB /* WorkTableCell.swift in Sources */,
 				A101512C20A8D596004D2FCA /* TransportationModels.swift in Sources */,
@@ -2910,6 +3048,7 @@
 				A1C236D120CBCD7E00CB78DC /* TransportationOptionsRouter.swift in Sources */,
 				A1FE539520CFF72800962604 /* TransportationPreviousSearchCell.swift in Sources */,
 				A1A39830209F99E4009EF08F /* NewsImageCell.swift in Sources */,
+				4E3977902B7EB2DF00BAF94C /* MBTButtonCardView.swift in Sources */,
 				A1188BF1209607FF00A5A0FC /* PageContainerWorker.swift in Sources */,
 				A13F7A3A20A0E95B005B8E3E /* NewsViewController.swift in Sources */,
 				A138474D20A0E4660065B65E /* CommonExtensions.swift in Sources */,
@@ -2918,6 +3057,7 @@
 				A152C56F207BFA3E0053CD40 /* NavigationHelper.swift in Sources */,
 				A1F0912E20A24F1400969D97 /* MealMenuWorker.swift in Sources */,
 				A1E6667A20869DEE00BB3218 /* MBTTitleView.swift in Sources */,
+				4EDAC2DE2B0E620C00542152 /* LinksPresenter.swift in Sources */,
 				A1E666632086960C00BB3218 /* WelcomeModels.swift in Sources */,
 				A152C598207C02670053CD40 /* UISearchBar+AGi18n.m in Sources */,
 				A1B182492087EBCC00D50B42 /* HomeViewController.swift in Sources */,
@@ -2937,6 +3077,7 @@
 				A1188BF7209607FF00A5A0FC /* PageContainerInteractor.swift in Sources */,
 				A1F0912D20A24F1400969D97 /* MealMenuPresenter.swift in Sources */,
 				A13F7A3520A0E95B005B8E3E /* NewsModels.swift in Sources */,
+				4E14FF682B3D9E110006496D /* AppFeedbackViewController.swift in Sources */,
 				A1E666712086961800BB3218 /* ActivationCodeInteractor.swift in Sources */,
 				A152C557207BFA3E0053CD40 /* BaseUITextFieldDemi.swift in Sources */,
 				A1C236CD20CBCD7E00CB78DC /* TransportationOptionsPresenter.swift in Sources */,
@@ -2968,8 +3109,12 @@
 				A152C567207BFA3E0053CD40 /* UIViewController+Extensions.swift in Sources */,
 				A1CA96E420ACD1A0008B34B9 /* FSCalendarDelegationFactory.m in Sources */,
 				A1CA970B20ACD2B9008B34B9 /* WorkCalendarWorker.swift in Sources */,
+				4EA8491E2C6CBD560055A918 /* OidcViewController.swift in Sources */,
 				A142FC9D20B19180000B25E4 /* FlexibleWorkDetailViewController.swift in Sources */,
 				A152C5D3207C06DA0053CD40 /* AboutPresenter.swift in Sources */,
+				4EEDEA922B3AE21A00EA31D8 /* MBTClubsResponse.swift in Sources */,
+				4EEDEA9C2B3B22EF00EA31D8 /* PhoneLocsViewController.swift in Sources */,
+				4EDAC2D62B0CC32F00542152 /* LinksViewController.swift in Sources */,
 				A152C562207BFA3E0053CD40 /* BaseUIButtonCARegular.swift in Sources */,
 				A152C56A207BFA3E0053CD40 /* String+Extensions.swift in Sources */,
 				A14417A821E0E26900EE4FF0 /* AboutVersionCell.swift in Sources */,
@@ -2977,12 +3122,14 @@
 				A148EC6F20B9C40000CE3285 /* LocationViewController.swift in Sources */,
 				A152C56D207BFA3E0053CD40 /* AppearenceHelper.swift in Sources */,
 				A1E2551320A23ABF0018AA40 /* UIView+Inspectables.swift in Sources */,
+				4EA170D62AE3D561009C6189 /* MBTNewsPdf.swift in Sources */,
 				A101512D20A8D596004D2FCA /* TransportationViewController.swift in Sources */,
 				A13F7A5020A0E988005B8E3E /* BirthdayListRouter.swift in Sources */,
 				A101511F20A844DD004D2FCA /* DensityHelper.swift in Sources */,
 				A1B182712087F0AD00D50B42 /* MBTHomeCardView.swift in Sources */,
 				A13F7A3820A0E95B005B8E3E /* NewsRouter.swift in Sources */,
 				A1D9440820C7423800FC51B7 /* LocationResultRouter.swift in Sources */,
+				4E35938E2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift in Sources */,
 				A1CA970D20ACD2B9008B34B9 /* WorkCalendarModels.swift in Sources */,
 				A1188BF2209607FF00A5A0FC /* PageContainerViewController.swift in Sources */,
 				A13F7A4F20A0E988005B8E3E /* BirthdayListWorker.swift in Sources */,
@@ -3012,14 +3159,16 @@
 			files = (
 				A1F9696020BF4727008EAD2B /* MBTLocationMeetingRoomList.swift in Sources */,
 				A1F96ABC20BF4F82008EAD2B /* SettingsPresenter.swift in Sources */,
+				4E212C992BDE57C400C69288 /* ClubsTableCell.swift in Sources */,
 				A1F9696120BF4727008EAD2B /* DriverInfoViewController.swift in Sources */,
+				4E3593942C5838E400A4CB83 /* MBTAppStartupResponse.swift in Sources */,
 				A141D41123D4C4BD0045F957 /* JailbreakHelper.swift in Sources */,
+				4E212C9B2BDE57CA00C69288 /* LinksRouter.swift in Sources */,
 				A1F9696220BF4727008EAD2B /* FSCalendarCollectionView.m in Sources */,
 				A1F9696320BF4727008EAD2B /* FSCalendar.m in Sources */,
 				A1F9696520BF4727008EAD2B /* BaseUITextField.swift in Sources */,
 				A1F9696620BF4727008EAD2B /* FSCalendarConstants.m in Sources */,
 				A1F9696720BF4727008EAD2B /* BaseUITextFieldLight.swift in Sources */,
-				A1B33F5A23D78261004F9450 /* BarcodeScannerViewController.swift in Sources */,
 				A1F9696820BF4727008EAD2B /* NSObject+AGi18n.m in Sources */,
 				A1F9696920BF4727008EAD2B /* MBTFoodMenuTimeList.swift in Sources */,
 				A1F96ACA20BF4FF6008EAD2B /* SettingsTableCell.swift in Sources */,
@@ -3035,9 +3184,11 @@
 				A1F9697320BF4727008EAD2B /* TransportationSearchPresenter.swift in Sources */,
 				A1F9697420BF4727008EAD2B /* HomeModels.swift in Sources */,
 				A1F9697520BF4727008EAD2B /* FSCalendarHeaderView.m in Sources */,
+				4E212C9E2BDE57D100C69288 /* LinksPresenter.swift in Sources */,
 				A1F9697620BF4727008EAD2B /* NewsDetailPresenter.swift in Sources */,
 				A1F9697720BF4727008EAD2B /* AboutDescriptionCell.swift in Sources */,
 				A1F9697920BF4727008EAD2B /* TransportationSearchWorker.swift in Sources */,
+				4E212CA62BDE58CC00C69288 /* SocialMediaTableCell.swift in Sources */,
 				A1F9697A20BF4727008EAD2B /* WorkCalendarPresenter.swift in Sources */,
 				A1F9697B20BF4727008EAD2B /* MBTWorkCalendarResponse.swift in Sources */,
 				A1F9697C20BF4727008EAD2B /* NotificationsWorker.swift in Sources */,
@@ -3071,12 +3222,14 @@
 				A1F9699420BF4727008EAD2B /* MBTNewsResponse.swift in Sources */,
 				A1C236B120CBCC3A00CB78DC /* MBTTransportationOptionsResponse.swift in Sources */,
 				A1F9699520BF4727008EAD2B /* UILabel+AGi18n.m in Sources */,
+				4E212CA32BDE586E00C69288 /* MBTPhoneLocsResponse.swift in Sources */,
 				A1F9699620BF4727008EAD2B /* HomeInteractor.swift in Sources */,
 				A1F9699720BF4727008EAD2B /* MBTConstants.swift in Sources */,
 				A1F9699820BF4727008EAD2B /* NewsDetailModels.swift in Sources */,
 				A1F9699920BF4727008EAD2B /* BaseUIButtonDemi.swift in Sources */,
 				A1F9699B20BF4727008EAD2B /* WorkCalendarViewController.swift in Sources */,
 				A1F9699C20BF4727008EAD2B /* UINavigationItem+AGi18n.m in Sources */,
+				4E212C942BDE57B300C69288 /* PhoneLocsViewController.swift in Sources */,
 				A1F8E50C20D152F000F6E213 /* MBTSettingsNotificationSettingList.swift in Sources */,
 				A1F9699D20BF4727008EAD2B /* FlexibleWorkDetailWorker.swift in Sources */,
 				A1F9699E20BF4727008EAD2B /* MBTFlexibleYearlyMonthList.swift in Sources */,
@@ -3095,6 +3248,7 @@
 				A1C236BF20CBCCDB00CB78DC /* MBTTransportationListDriverInfo.swift in Sources */,
 				A1C236D820CBCD7E00CB78DC /* TransportationOptionsInteractor.swift in Sources */,
 				A1F969AB20BF4727008EAD2B /* TransportationSearchRouter.swift in Sources */,
+				4E212CA42BDE587100C69288 /* MBTPhonesResponse.swift in Sources */,
 				A1F969AC20BF4727008EAD2B /* ProfileViewController.swift in Sources */,
 				A1D9440D20C7423800FC51B7 /* LocationResultViewController.swift in Sources */,
 				A1F969AD20BF4727008EAD2B /* TransportationTableCell.swift in Sources */,
@@ -3158,7 +3312,9 @@
 				A1F969E120BF4727008EAD2B /* MBTLoginResponse.swift in Sources */,
 				A1F969E220BF4727008EAD2B /* FlexibleWorkDetailModels.swift in Sources */,
 				A1F969E320BF4727008EAD2B /* BaseNavCon.swift in Sources */,
+				4E3593952C58390200A4CB83 /* AppDescriptionViewController.swift in Sources */,
 				A1F969E420BF4727008EAD2B /* TransportationRouter.swift in Sources */,
+				4E212C9A2BDE57C700C69288 /* LinksViewController.swift in Sources */,
 				A1F969E520BF4727008EAD2B /* MealMenuInteractor.swift in Sources */,
 				A1F969E620BF4727008EAD2B /* GradientView.swift in Sources */,
 				A16CACCF20C2F74C0013A311 /* MBTWorkCalendarTypeList.swift in Sources */,
@@ -3169,10 +3325,13 @@
 				A1F969EB20BF4727008EAD2B /* MBTTabbarAnimator.swift in Sources */,
 				A1F969EC20BF4727008EAD2B /* AboutVerifierCell.swift in Sources */,
 				A1F969ED20BF4727008EAD2B /* MBTRootViewController.swift in Sources */,
+				4E212C9F2BDE57D400C69288 /* LinksModels.swift in Sources */,
 				A1F969EE20BF4727008EAD2B /* WSCodes.swift in Sources */,
 				A1F969EF20BF4727008EAD2B /* MBTDataManager.swift in Sources */,
 				A1F969F020BF4727008EAD2B /* TransportationSearchModels.swift in Sources */,
+				4E1930482AEE994F00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */,
 				A1C236D420CBCD7E00CB78DC /* TransportationOptionsModels.swift in Sources */,
+				4E212C922BDE578700C69288 /* AppFeedbackViewController.swift in Sources */,
 				A1F969F120BF4727008EAD2B /* FlexibleWorkViewController.swift in Sources */,
 				A1F969F220BF4727008EAD2B /* MBTFoodMenuCalorieDetails.swift in Sources */,
 				A1F969F320BF4727008EAD2B /* DensityView.swift in Sources */,
@@ -3195,6 +3354,7 @@
 				A1F96A0520BF4727008EAD2B /* MBTFoodMenuShuttleInfo.swift in Sources */,
 				4ED58DE023E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */,
 				A1C236BD20CBCCDB00CB78DC /* MBTTransportationListShuttleList.swift in Sources */,
+				4E212C962BDE57BB00C69288 /* PhonesViewController.swift in Sources */,
 				A1F96A0620BF4727008EAD2B /* LocationSearchViewController.swift in Sources */,
 				A1F96A0720BF4727008EAD2B /* BirthdayListPresenter.swift in Sources */,
 				A1F96A0820BF4727008EAD2B /* MBTBaseViewController.swift in Sources */,
@@ -3203,12 +3363,14 @@
 				A1F96A0920BF4727008EAD2B /* ActivationCodeModels.swift in Sources */,
 				A19CFE4220C6E627006B9DE1 /* MBTAnnotationView.swift in Sources */,
 				A1F96A0A20BF4727008EAD2B /* AboutModels.swift in Sources */,
+				4E212C982BDE57C100C69288 /* ClubsViewController.swift in Sources */,
 				A1F96A0B20BF4727008EAD2B /* BaseUILabelCARegular.swift in Sources */,
 				A1F96AC020BF4F82008EAD2B /* SettingsRouter.swift in Sources */,
 				A1F96A0C20BF4727008EAD2B /* TransportationSearchViewController.swift in Sources */,
 				A1F96A0D20BF4727008EAD2B /* RoundedView.swift in Sources */,
 				A1F96A0E20BF4727008EAD2B /* BaseUIButtonLight.swift in Sources */,
 				A1F96A0F20BF4727008EAD2B /* FlexibleTableCell.swift in Sources */,
+				4E212C932BDE57AA00C69288 /* AboutUsViewController.swift in Sources */,
 				A1F96A1020BF4727008EAD2B /* TransportationHeaderCell.swift in Sources */,
 				A1F96A1120BF4727008EAD2B /* LoadingView.swift in Sources */,
 				A1F96A1220BF4727008EAD2B /* MealMenuServiceCell.swift in Sources */,
@@ -3218,6 +3380,7 @@
 				A1F96A1620BF4727008EAD2B /* TransportationModels.swift in Sources */,
 				A1F96A1720BF4727008EAD2B /* PopupContainerViewController.swift in Sources */,
 				A1C236D220CBCD7E00CB78DC /* TransportationOptionsRouter.swift in Sources */,
+				4E212C9D2BDE57CF00C69288 /* LinksWorker.swift in Sources */,
 				A1FE539620CFF72800962604 /* TransportationPreviousSearchCell.swift in Sources */,
 				A1F96A1920BF4727008EAD2B /* NewsImageCell.swift in Sources */,
 				A1F96A1A20BF4727008EAD2B /* PageContainerWorker.swift in Sources */,
@@ -3225,6 +3388,7 @@
 				A1F96A1C20BF4727008EAD2B /* CommonExtensions.swift in Sources */,
 				A1F96AC620BF4F82008EAD2B /* SettingsInteractor.swift in Sources */,
 				A1F96A1D20BF4727008EAD2B /* MBTSingleton.swift in Sources */,
+				4E212CA52BDE58AA00C69288 /* SocialMediaViewController.swift in Sources */,
 				A1F96A1E20BF4727008EAD2B /* NavigationHelper.swift in Sources */,
 				A1F96A1F20BF4727008EAD2B /* MealMenuWorker.swift in Sources */,
 				A1F96A2020BF4727008EAD2B /* MBTTitleView.swift in Sources */,
@@ -3246,6 +3410,7 @@
 				A1F96A2F20BF4727008EAD2B /* AboutWorker.swift in Sources */,
 				A1F96A3020BF4727008EAD2B /* PageContainerInteractor.swift in Sources */,
 				A1F96A3120BF4727008EAD2B /* MealMenuPresenter.swift in Sources */,
+				4E212C972BDE57BF00C69288 /* ClubLocsViewController.swift in Sources */,
 				A1F96A3220BF4727008EAD2B /* NewsModels.swift in Sources */,
 				A1F96A3320BF4727008EAD2B /* ActivationCodeInteractor.swift in Sources */,
 				A1F96A3420BF4727008EAD2B /* BaseUITextFieldDemi.swift in Sources */,
@@ -3257,12 +3422,14 @@
 				A1F96A3820BF4727008EAD2B /* ProfileInteractor.swift in Sources */,
 				A1F96A3920BF4727008EAD2B /* TermOfUseViewController.swift in Sources */,
 				A1F96A3A20BF4727008EAD2B /* LocationSearchWorker.swift in Sources */,
+				4E3977912B7EB2DF00BAF94C /* MBTButtonCardView.swift in Sources */,
 				A1F96A3B20BF4727008EAD2B /* MBTFoodMenuDensityInfo.swift in Sources */,
 				A1F96A3C20BF4727008EAD2B /* TokenManager.swift in Sources */,
 				A1F96A3D20BF4727008EAD2B /* WSProvider+Internal.swift in Sources */,
 				A14417A321E0CBF900EE4FF0 /* InitResponse.swift in Sources */,
 				A1F96A3E20BF4727008EAD2B /* ProfileWorker.swift in Sources */,
 				A1F96A3F20BF4727008EAD2B /* MealMenuRouter.swift in Sources */,
+				4E212CA22BDE586A00C69288 /* MBTSocialMediaResponse.swift in Sources */,
 				A1D9440520C7423800FC51B7 /* LocationResultPresenter.swift in Sources */,
 				A1F96A4020BF4727008EAD2B /* FlexibleDetailCell.swift in Sources */,
 				A1F96A4120BF4727008EAD2B /* NetworkAPI+Protocols.swift in Sources */,
@@ -3272,11 +3439,15 @@
 				A1F96A4420BF4727008EAD2B /* TransportationContentViewController.swift in Sources */,
 				A1F96A4520BF4727008EAD2B /* WSProvider.swift in Sources */,
 				A1F96A4620BF4727008EAD2B /* RoundedImageView.swift in Sources */,
+				4E212C9C2BDE57CC00C69288 /* LinksInteractor.swift in Sources */,
 				A1F96A4720BF4727008EAD2B /* UIPickerView+Extensions.swift in Sources */,
 				A1F96A4820BF4727008EAD2B /* LocationWorker.swift in Sources */,
+				4E212CA12BDE586600C69288 /* MBTClubsResponse.swift in Sources */,
 				A1F96A4920BF4727008EAD2B /* BaseUILabelDemi.swift in Sources */,
 				A1F96A4B20BF4727008EAD2B /* UIViewController+Extensions.swift in Sources */,
 				A1F96A4E20BF4727008EAD2B /* FSCalendarDelegationFactory.m in Sources */,
+				4E7DCA752C749C7E0066EB7C /* OidcViewController.swift in Sources */,
+				4E212C952BDE57B700C69288 /* PhonesTableCell.swift in Sources */,
 				A1F96A4F20BF4727008EAD2B /* WorkCalendarWorker.swift in Sources */,
 				A1F96A5020BF4727008EAD2B /* FlexibleWorkDetailViewController.swift in Sources */,
 				A1F96A5120BF4727008EAD2B /* AboutPresenter.swift in Sources */,
@@ -3287,6 +3458,7 @@
 				A1F96A5420BF4727008EAD2B /* LocationViewController.swift in Sources */,
 				A1F96A5520BF4727008EAD2B /* AppearenceHelper.swift in Sources */,
 				A1F96A5620BF4727008EAD2B /* UIView+Inspectables.swift in Sources */,
+				4EEDEAA52B3CD95F00EA31D8 /* MBTNewsPdf.swift in Sources */,
 				A1F96A5720BF4727008EAD2B /* TransportationViewController.swift in Sources */,
 				A1F96A5820BF4727008EAD2B /* BirthdayListRouter.swift in Sources */,
 				A1F96A5920BF4727008EAD2B /* DensityHelper.swift in Sources */,
@@ -3294,6 +3466,7 @@
 				A1F96A5B20BF4727008EAD2B /* NewsRouter.swift in Sources */,
 				A1D9440920C7423800FC51B7 /* LocationResultRouter.swift in Sources */,
 				A1F96A5C20BF4727008EAD2B /* WorkCalendarModels.swift in Sources */,
+				4E35938F2C550D2800A4CB83 /* BaseUIButtonWithIcon.swift in Sources */,
 				A1F96A5D20BF4727008EAD2B /* PageContainerViewController.swift in Sources */,
 				A1F96A5E20BF4727008EAD2B /* BirthdayListWorker.swift in Sources */,
 				4EDD2B6023BE0C230071FF6C /* NewsLinkCell.swift in Sources */,
@@ -3311,6 +3484,7 @@
 				A1F96A6720BF4727008EAD2B /* PageContainerPresenter.swift in Sources */,
 				A1F96A6820BF4727008EAD2B /* TransportationInteractor.swift in Sources */,
 				A1F96A6920BF4727008EAD2B /* TermOfUseRouter.swift in Sources */,
+				4E212CA02BDE586300C69288 /* MBTClubLocsResponse.swift in Sources */,
 				A1F96A6A20BF4727008EAD2B /* MBTLocationBuildingList.swift in Sources */,
 				A1F96A6B20BF4727008EAD2B /* FlexibleWorkWorker.swift in Sources */,
 			);
@@ -3452,17 +3626,21 @@
 			baseConfigurationReference = BC4F037E5F138C1529AFB884 /* Pods-MBTBiziz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = MBTBiziz/MBTBiziz.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 933X37Z2FJ;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				INFOPLIST_FILE = MBTBiziz/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daimler.bizizapp-ent.ios";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./MBTBiziz/MBT-Bridging-Header.h";
@@ -3477,17 +3655,21 @@
 			baseConfigurationReference = C1C3FDC33888218FD446AA93 /* Pods-MBTBiziz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = MBTBiziz/MBTBiziz.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 933X37Z2FJ;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				INFOPLIST_FILE = MBTBiziz/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daimler.bizizapp-ent.ios";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./MBTBiziz/MBT-Bridging-Header.h";
@@ -3502,18 +3684,22 @@
 			baseConfigurationReference = ABFD501D0513CB84B16E7829 /* Pods-MBTBiziz-Prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MBTBiziz/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-iquote",
@@ -3534,10 +3720,10 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.framework/Headers\"",
 					"-fstack-protector-all",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daimler.bizizapp-ent.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BizizInHouse6;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = BizizInhouse7;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MbtApp3;
 				SWIFT_OBJC_BRIDGING_HEADER = "./MBTBiziz/MBT-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.0;
@@ -3550,18 +3736,22 @@
 			baseConfigurationReference = EFB22B22ADA54948ED36722B /* Pods-MBTBiziz-Prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MBTBiziz/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-iquote",
@@ -3582,10 +3772,10 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.framework/Headers\"",
 					"-fstack-protector-all",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daimler.bizizapp-ent.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BizizInHouse6;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = BizizInhouse7;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MbtApp3;
 				SWIFT_OBJC_BRIDGING_HEADER = "./MBTBiziz/MBT-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.0;

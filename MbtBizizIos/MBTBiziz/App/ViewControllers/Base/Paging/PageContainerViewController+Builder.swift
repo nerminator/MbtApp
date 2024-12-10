@@ -16,19 +16,22 @@ extension UIViewController {
 
 extension PageContainerViewController {
     
-    class func buildPagerForPortalNews() -> PageContainerViewController {
+    class func buildPagerForPortalNews(_ newsType: NewsType, locId: Int? = nil ) -> PageContainerViewController {
         let pager = PageContainerViewController.fromStoryboard(.pageContainer)
         var destination = pager.router?.dataStore
+        pager.headers = false
         var pageItems = [PageItem]()
         
-        NewsType.newsTypeList.forEach { (newsType) in
-            pageItems.append(PageItem(title: newsType.title,
+
+        pageItems.append(PageItem(title: newsType.title,
                                       storyboardIdentifier: .news,
-                                      additionalData:[MBTConstants.UserDefined.NewsTypeKey : newsType]))
-        }
+                                      additionalData:[
+                                        MBTConstants.UserDefined.NewsTypeKey : newsType,
+                                        MBTConstants.UserDefined.LocIdKey : locId,
+                                      ]))
         
         destination?.pageItems = pageItems
-        destination?.title = "TXT_LOGIN_HOME_NEWS".localized()
+        destination?.title = newsType.title
         destination?.tabDistubition = MBTConstants.Device.isIpad ? .equal(spacing: 0) : .proportionally
         return pager
     }

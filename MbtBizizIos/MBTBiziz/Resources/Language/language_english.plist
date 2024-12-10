@@ -15,7 +15,7 @@
 		<key>TXT_LOGIN_WELCOME_HEADER</key>
 		<string>Welcome</string>
 		<key>TXT_LOGIN_WELCOME_DESCRIPTION</key>
-		<string>Please enter your mobile phone number to sign in the app.</string>
+		<string>Please click on Sign In button and continue with authentication steps.</string>
 		<key>TXT_LOGIN_WELCOME_BUTTON</key>
 		<string>Sign in</string>
 		<key>TXT_LOGIN_PIN_TITLE</key>
@@ -26,14 +26,24 @@
 		<string>Resend</string>
 		<key>TXT_LOGIN_PIN_BUTTON</key>
 		<string>Verify</string>
+		<key>TXT_LOGIN_HOME_ABOUT</key>
+		<string>About Us</string>
 		<key>TXT_LOGIN_HOME_NEWS</key>
-		<string>Mercedes News</string>
+		<string>News</string>
+		<key>TXT_LOGIN_HOME_EVENTS</key>
+		<string>Events</string>
 		<key>TXT_LOGIN_HOME_MAP</key>
 		<string>Location</string>
 		<key>TXT_LOGIN_HOME_SHUTTLE</key>
 		<string>Shuttle</string>
 		<key>TXT_LOGIN_HOME_MENU</key>
 		<string>Meal Menu</string>
+		<key>TXT_LOGIN_HOME_DISCOUNTS</key>
+		<string>Discounts</string>
+		<key>TXT_LOGIN_HOME_LINKS</key>
+		<string>Useful Links</string>
+		<key>TXT_LOGIN_HOME_PHONES</key>
+		<string>Emergency Numbers</string>
 		<key>TXT_LOGIN_HOME_TAB1</key>
 		<string>Portal</string>
 		<key>TXT_LOGIN_HOME_TAB2</key>
@@ -78,6 +88,8 @@
 		<string>Links</string>
 		<key>TXT_LOGIN_NEWS_TYPE9</key>
 		<string>Contacts</string>
+		<key>TXT_LOGIN_NEWS_TYPE10</key>
+		<string>Social Clubs</string>
 		<key>TXT_LOGIN_NEWS_BIRTHDAY</key>
 		<string>Born Today</string>
 		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE1</key>
@@ -108,6 +120,8 @@
 		<string>Tourism and Car Rental</string>
 		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE13</key>
 		<string>Other</string>
+		<key>TXT_ABOUTUS_TITLE</key>
+		<string>About Us</string>
 		<key>TXT_MENU_MENU_TITLE</key>
 		<string>Meal Menu</string>
 		<key>TXT_MENU_MENU_CALORIE</key>
@@ -312,12 +326,12 @@ Telephone:0212 867 30 00 pbx
 mbt_app@daimlertruck.com
 
 
-Mercedes-Benz Türk Board of Management
+Board of Management
 
-Süer Sülün - Mercedes-Benz Türk Chief Executive Officer (CEO)
-Bülent Acicbe - Mercedes-Benz Türk Executive Vice President Production Bus
-Tülin Mede Esmer - Mercedes-Benz Türk Chief Financial Officer (CFO)
-Ulf Raese – Mercedes-Benz Türk Aksaray Plant Head of Operations &amp; Member of the Board     
+MBT, Chief Executive Officer (CEO), Süer Sülün.
+MBT, Executive Vice President Production Bus, Bülent Acicbe.
+MBT, Chief Financial Officer (CFO), Tülin Mede Esmer.
+MBT, Aksaray Plant Head of Operations &amp; Member of the Board, Ulf Raese.     
 
 Commercial Register Number: 94468
 VAT Identification Number: 7-9159-7212-1615130
@@ -327,13 +341,13 @@ All Rights Reserved.</string>
 		<key>TXT_INFO_NOTIFICATION</key>
 		<string>Do you want this app to send push messages informing you about company news (such as events, discounts)? 
 You can deactivate or reactivate these push notifications at any time by:
-  BizİZ App-&gt; My Profile-&gt; Settings-&gt;Event Notifications or 
-  BizİZ App-&gt; My Profile-&gt; Settings-&gt;Discount Notifications.
-You can also activate/deactivate push notifications at any time by IOS Settings-&gt;Notifications-&gt;BizİZ</string>
+  MBT App-&gt; My Profile-&gt; Settings-&gt;Event Notifications or 
+  MBT App-&gt; My Profile-&gt; Settings-&gt;Discount Notifications.
+You can also activate/deactivate push notifications at any time by IOS Settings-&gt;Notifications-&gt;MBT App</string>
 		<key>TXT_SETTINGS_DEVICE_BUTTON</key>
 		<string>Go To Device Settings</string>
 		<key>TXT_SETTINGS_NOT_GRANTED_NOTIFICATIONS</key>
-		<string>Notifications are disabled in device&apos;s settings page. You can enable notifications from IOS Settings-&gt;BizİZ-&gt;Notifications page.</string>
+		<string>Notifications are disabled in device&apos;s settings page. You can enable notifications from IOS Settings-&gt;MBT App-&gt;Notifications page.</string>
 		<key>TXT_COMMON_TODAY</key>
 		<string>TODAY</string>
 		<key>TXT_QR_CODE_TITLE</key>
@@ -353,6 +367,46 @@ of meeting room</string>
 		<string>Try Again</string>
 		<key>TXT_QR_CODE_POPUP_BUTTON_RETURN</key>
 		<string>Return to Portal</string>
+		<key>TXT_DISCOUNT_CODE_GET</key>
+		<string>Get Discount Code</string>
+		<key>TXT_DISCOUNT_CODE_TITLE</key>
+		<string>DISCOUNT CODE</string>
+		<key>TXT_NO_DISCOUNT_CODE</key>
+		<string>No Discounts Code Left</string>
+		<key>TXT_LINKS_TITLE1</key>
+		<string>Social Clubs</string>
+		<key>TXT_LINKS_TITLE2</key>
+		<string>Internal Ads</string>
+		<key>TXT_LINKS_TITLE3</key>
+		<string>Birthdays</string>
+		<key>TXT_LINKS_TITLE4</key>
+		<string>MBFit</string>
+		<key>TXT_LINKS_TITLE5</key>
+		<string>Gürsel</string>
+		<key>TXT_LINKS_TITLE6</key>
+		<string>CloudOffix</string>
+		<key>TXT_LINKS_TITLE7</key>
+		<string>Improvement System</string>
+		<key>TXT_LINKS_TITLE8</key>
+		<string>Company Car</string>
+		<key>TXT_LINKS_TITLE9</key>
+		<string>Library</string>
+		<key>TXT_COPY</key>
+		<string>Copy</string>
+		<key>TXT_COPIED</key>
+		<string>Copied</string>
+		<key>TXT_CLUBS_ISTANBUL</key>
+		<string>ISTANBUL SOCIAL CLUBS</string>
+		<key>TXT_CLUBS_AKSARAY</key>
+		<string>AKSARAY SOCIAL CLUBS</string>
+		<key>TXT_SOCIAL_MEDIA_BUTTON</key>
+		<string>Social Media Accounts</string>
+		<key>TXT_APP_FEEDBACK_BUTTON</key>
+		<string>App Feedback</string>
+		<key>TXT_SUBMIT_BUTTON</key>
+		<string>Send</string>
+		<key>TXT_APP_FEEDBACK_PLACEHOLDER</key>
+		<string>Your feedback...</string>
 	</dict>
 </dict>
 </plist>

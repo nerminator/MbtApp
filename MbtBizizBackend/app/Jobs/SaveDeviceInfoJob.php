@@ -54,12 +54,16 @@ class SaveDeviceInfoJob extends Job
 
     private function _saveUserDeviceInfo()
     {
-        // check if user notification exists
-        $userDeviceInfo = $this->_getFirstItemFromDb("select id, language_code
-                                                                from user_devices
-                                                                where user_id = ? and device_token = ? and os_type = ?
+        // check if user exists
+        $userInfo = $this->_getFirstItemFromDb("select id from users where id = ?",[$this->userId]);
+
+        if ($userInfo == null) return;
+
+        // check if user device token exists
+        $userDeviceInfo = $this->_getFirstItemFromDb("select id from user_devices
+                                                                where user_id = ? and os_type = ?
                                                                 order by updated_at desc
-                                                                limit 1", [$this->userId, $this->deviceToken, $this->osType]);
+                                                                limit 1", [$this->userId, $this->osType]);
 
         if ($userDeviceInfo == null) {
             DB::table('user_devices')->insert([
@@ -67,8 +71,9 @@ class SaveDeviceInfoJob extends Job
                 'os_type' => $this->osType, 'language_code' => $this->languageCode,
                 'created_at' => $this->currentTime, 'updated_at' => $this->currentTime
             ]);
-        } elseif ($userDeviceInfo->language_code != $this->languageCode) {
+        } else {
             DB::table('user_devices')->where('id', $userDeviceInfo->id)->update([
+                'device_token' => $this->deviceToken,
                 'language_code' => $this->languageCode,
                 'updated_at' => $this->currentTime
             ]);

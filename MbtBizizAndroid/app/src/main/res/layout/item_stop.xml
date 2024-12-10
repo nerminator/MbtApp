@@ -5,10 +5,10 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.transportation.StopListEntity" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.StopListEntity" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="4dp">
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/txtStopName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,5 +43,5 @@
             android:background="@color/divider_stoplist"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageStopDot" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

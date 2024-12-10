@@ -47,5 +47,12 @@ enum NewsDetail
         
         struct ViewModel { }
     }
-    
+
+    enum GetUserDiscountCode {
+        struct Request { }
+        
+        struct Response { }
+        
+        struct ViewModel { }
+    }
 }

@@ -145,10 +145,6 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: NewsTitleCell.className, for: indexPath) as! NewsTitleCell
                 cell.setup(interactor?.items[indexPath.section][indexPath.row - 1])
                 return cell
-            } else if newsType == .indirim {
-                let cell = tableView.dequeueReusableCell(withIdentifier: NewsImageCell.className, for: indexPath) as! NewsImageCell
-                cell.setup(interactor?.items[indexPath.section][indexPath.row - 1])
-                return cell
             } else if newsType == .linkler  {
                 let cell = tableView.dequeueReusableCell(withIdentifier: NewsLinkCell.className, for: indexPath) as! NewsLinkCell
                 cell.setup(interactor?.items[indexPath.section][indexPath.row - 1])

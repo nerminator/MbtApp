@@ -51,7 +51,7 @@ class SettingsViewController: MBTBaseViewController, SettingsDisplayLogic
     @IBAction func btnQuitTapped(_ sender: UIButton) {
         let controller = UIAlertController.init(title: "TXT_COMMON_WARNING".localized(), message: "TXT_PROFILE_SETTINGS_QUIT_WARNING".localized(), preferredStyle: .alert)
         controller.addAction(UIAlertAction.init(title: "TXT_COMMON_YES".localized(), style: .default, handler: { (action) in
-            self.interactor?.reloadPage(request: Settings.Reload.Request())
+            self.interactor?.reloadPage(parentVC: self, request: Settings.Reload.Request())
         }))
         controller.addAction(UIAlertAction.init(title: "TXT_COMMON_NO".localized(), style: .cancel, handler: nil))
         present(controller, animated: true, completion: nil)

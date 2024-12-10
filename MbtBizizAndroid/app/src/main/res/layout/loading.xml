@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:background="@drawable/ic_oval">
 
-    <com.daimler.biziz.android.ui.dialogs.SpinView
+    <com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.SpinView
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_width="wrap_content" />

@@ -30,6 +30,7 @@ class ScrollableTabView: UIView {
     
     fileprivate var arrTabButtons : [UIButton] = []
     fileprivate var distrubition : TabDistrubition = .proportionally
+    fileprivate var headers = true
     
     var currentPage = 0 {
         willSet {
@@ -52,8 +53,11 @@ class ScrollableTabView: UIView {
         handleIndicator(currentPage, animated: true)
     }
     
-    func setup(_ titleArray : [String], distrubition: TabDistrubition, startPage : Int = 0) {
-        setupButtons(titleArray, startPage: startPage, distrubition: distrubition)
+    func setup(_ titleArray : [String], distrubition: TabDistrubition, startPage : Int = 0, headers : Bool = true) {
+        if (headers) {
+            setupButtons(titleArray, startPage: startPage, distrubition: distrubition)
+        }
+        self.headers = headers
     }
     
     fileprivate func setupButtons(_ titleArray: [String], startPage : Int, distrubition : TabDistrubition) {

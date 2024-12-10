@@ -3,17 +3,17 @@
     <data>
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.flexibleWorkHours.FlexibleItemEntity"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.flexibleWorkHours.FlexibleItemEntity"/>
 
         <variable
             name="textdata"
-            type="com.daimler.biziz.android.network.entity.flexibleWorkHours.FlexibleWorkEntity"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.flexibleWorkHours.FlexibleWorkEntity"/>
 
         <import type="android.view.View"/>
         <import type="android.text.TextUtils"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/container"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:paddingEnd="20dp"
         android:background="@android:color/transparent">
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvTitle" />
 
-        <com.daimler.biziz.android.uiControls.TextViewLightCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewLightCS
             android:id="@+id/tvRightValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             app:layout_constraintTop_toTopOf="@+id/tvTitle"
             tools:text="2.61" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvTimeList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:visibility="@{TextUtils.isEmpty(data.hoursText) ? View.GONE:View.VISIBLE}"
             />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvPlusTimeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
             tools:text="ARTI SAAT:" />
 
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvPlusTimeValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             tools:text="2.71"
             android:text="@{data.plusHours}" />
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvMinusTimeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
             android:text="@{textdata.minusHoursText +`:`}"/>
 
 
-        <com.daimler.biziz.android.uiControls.TextViewRegularCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
             android:id="@+id/tvMinusTimeValie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,5 +126,5 @@
             app:layout_constraintTop_toTopOf="@+id/tvPlusTimeTitle"
             tools:text="0.10"
             android:text="@{data.minusHours}"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

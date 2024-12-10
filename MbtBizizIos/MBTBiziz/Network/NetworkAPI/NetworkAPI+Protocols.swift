@@ -28,9 +28,9 @@ extension NetworkAPI : Authorization, Loading {
     }
     var needToShowLoading: Bool {
         switch self {
-        case .getNewsList(_),.getBirthdayList,.getNewsDetail(_),.getProfile,.getMonthlyWorkHours(_),
+        case .getProfile,.getMonthlyWorkHours(_),
              .getWorkCalendar(_),.getNotificationSettings,.saveDeviceInfo(_),.deleteDeviceInfo(_),
-             .getNotificationList(_),.deleteNotification(_),.getNotificationBadgeCount, .initCall, .getCaptcha, .getUserConfig:
+             .getNotificationList(_),.deleteNotification(_),.getNotificationBadgeCount, .initCall, .getCaptcha, .getUserConfig, .appStartup :
             return false
         default:
             return true

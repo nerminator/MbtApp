@@ -36,10 +36,11 @@ class SettingsWorker
         
     }
     
-    func signout(_ completion: @escaping () ->()) {
+    func signout(_ parentVC:UIViewController, _ completion: @escaping () ->()) {
         if let deviceToken = MBTSingleton.shared.deviceTokenForPush {
             WSProvider.shared.wsRequest(.deleteDeviceInfo(deviceToken: deviceToken))
         }
+        TokenManager.sharedManager.signOut(parentVC: parentVC)
         WSProvider.shared.wsRequest(.signOut, success: { (_ response : WSResponse<MarshalResponse>) in
             completion()
         }) { (error) in

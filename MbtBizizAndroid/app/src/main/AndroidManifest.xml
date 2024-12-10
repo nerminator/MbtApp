@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.daimler.biziz.android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera2" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <queries>
+        <package android:name="app.milenyum.gursel.gursel_yolcu" />
+        <package android:name="com.wellbees.android" />
+        <package android:name="com.cloudoffix" />
+    </queries>
 
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="false"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher2"
+        android:icon="@mipmap/ic_launcher_mbt"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.socialmedia.SocialMediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fullscreenimage.FullscreenImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:theme="@style/AppTheme.Fullscreen" />
 
-        android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="true">
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/SplashTheme"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,8 +46,14 @@
         </activity>
         <activity
             android:name=".ui.about.AboutActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.main.main.MainActivity"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".ui.htmlview.HtmlActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.main.main.MainActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:theme="@style/LoginTheme" />
@@ -52,6 +68,7 @@
         <activity android:name=".ui.transportation.TransportationActivity" />
         <activity android:name=".ui.transportation.search.SearchShuttleActivity" />
         <activity android:name=".ui.settings.SettingsActivity" />
+        <activity android:name=".ui.usefullinks.UsefulLinksActivity" />
 
         <receiver
             android:name=".receiver.LogOutReceiver"
@@ -65,29 +82,39 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />
 
-        <activity android:name=".ui.residential.SearchRoomActivity"></activity>
+        <activity android:name=".ui.residential.SearchRoomActivity" />
 
-        <service android:name=".firebase.MyFirebaseMessagingService">
+        <service
+            android:name=".firebase.MyFirebaseMessagingService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".firebase.MyFirebaseInstanceIDService">
+        <activity
+            android:name="com.microsoft.identity.client.BrowserTabActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msauth"
+                    android:host="com.daimlertruck.dtag.internal.android.mbt.test"
+                    android:path="/hhwqvvLcN8brgkk7%2F4rLmhYKCxY%3D" />
             </intent-filter>
-        </service>
+        </activity>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_ic_notification" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimaryDark" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />

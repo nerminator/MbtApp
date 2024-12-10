@@ -32,5 +32,5 @@ class Constants
         NEWS_TYPE_PASSING = 5;
 
     const
-        APN_CERTIFICATE_PATH = "/app/BizizEnt.pem";
+        APN_CERTIFICATE_PATH = "/app/MbtApp.pem";
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Redis;
 
 class ExampleController extends Controller
 {
@@ -13,6 +14,18 @@ class ExampleController extends Controller
     {
         //
     }
+    public function get(){
+        if(Redis::exists('example5'))
+        return "exists";
+        else
+        return "not exists";
 
+        return (Redis::get('example5'));
+    }
+    public function set(){
+        $count = Redis::get('example');
+        Redis::set('example', $count+1);
+        return 1;
+    }
     //
 }

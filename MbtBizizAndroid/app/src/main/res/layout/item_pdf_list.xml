@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.newsDetail.NewsDetailPdf" />
+
+        <variable
+            name="callback"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.newsDetail.recycler.NewsDetailPdfAdapter.NewsDetailPdfItemCallback" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPdf"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:onClick="@{()-> callback.onItemClick(data.pdf)}"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageViewIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_pdf"
+            android:layout_marginBottom="5dp"/>
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="4dp"
+            android:text="@{data.name}"
+            tools:text="@string/TXT_LOGIN_HOME_NEWS" />
+
+    </LinearLayout>
+</layout>

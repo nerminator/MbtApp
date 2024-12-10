@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Laravel\Lumen\Providers\EventServiceProvider as ServiceProvider;
+use App\Listeners\LogSuccessfulLogin;
+use Illuminate\Auth\Events\Login ;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -12,8 +14,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LogSuccessfulLogin',
         ],
     ];
 }

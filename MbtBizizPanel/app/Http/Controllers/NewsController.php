@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 
 class NewsController extends Controller
 {
@@ -29,7 +30,7 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   /* public function index()
     {
         $emp = $this->getEmployeeTypeList();
         $comp = $this->getCompanyList();
@@ -39,8 +40,106 @@ class NewsController extends Controller
             ->with('emp', json_decode($emp, true))
             ->with('compL', json_decode($comp, true))
             ->with('compC', json_decode($loc, true));
-    }
+    }*/
 
+    public function addnewsEmpty()
+    {
+        $id = DB::table('news')->insertGetId(array());
+        return redirect('editnews-'.$id);
+    }
+    public function addClubEmpty($loc_id)
+    {
+        $id = DB::table('news')->insertGetId(array('type' => 10, 'status' => 1,'loc_id'=> $loc_id));
+        return redirect('editnews-'.$id);
+    }
+    
+
+    private function updateImages(Request $request, int $newsId, string $redirect  ){
+        DB::table('news_images')->where('news_id', $newsId)->delete();
+            
+        $i = 0;
+        $imageList = [];    
+        $tmp=null;    
+        $imageUrl=null;
+        for ( ; $i < 10; $i++) {
+            $strImg = ($i==0?'':$i);
+            $imageString = $request->Input('imageString'. $strImg);
+            if (!empty($imageString)) {
+           
+                    if (str_contains($imageString, 'https://bizizapp.com/') || str_contains($imageString, 'localhost')){ //already URL
+                        $imageUrl = $imageString;
+                    } else {
+                        $base64Str = substr($imageString, strpos($imageString, ",") + 1);
+                        if ($this->getBase64ImageSize($base64Str) > 1.5) {
+                            return redirect($redirect)->with('status', ' File must be less than 1.5 megabytes!'); // file size error
+                            //return -2; // file size error
+                        }
+                        $image = base64_decode($base64Str);
+    
+                        $imagePath = "contents/news/$newsId/" . uniqid() . uniqid() . uniqid() . ".png";
+                        Storage::disk('public')->put($imagePath, $image);
+                        $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizPanel/public" : "http://localhost:8002";
+                        $imageUrl = $projectUrl . "/storage/$imagePath";
+                    }
+
+                    if ($i==0) {
+                        $tmp=$imageUrl ;
+                    }
+                    $imageList[] =['news_id' => $newsId , 'image' => $imageUrl];
+       
+            } else{
+                $tmp=null;
+                break;
+            }
+        }    
+
+
+        if ($imageList!=[]){
+            DB::table('news')->where('id', $newsId)->update(['image' => $tmp]);
+            DB::table('news_images')->where('news_id', $newsId)->delete();
+            DB::table('news_images')->insert($imageList);
+        }
+    }
+    private function updatePdfFiles(Request $request, int $newsId, string $redirect  ){
+        DB::table('news_pdf_files')->where('news_id', $newsId)->delete();
+            
+        $i = 0;
+        $list = [];    
+        $tmp=null;    
+        $url=null;
+        for ( ; $i < 10; $i++) {
+            $str = ($i==0?'':$i);
+            $pdfFile = $request->Input('pdfFile'. $str);
+            if (!empty($pdfFile)) {
+           
+                    if (str_contains($pdfFile, 'https://bizizapp.com/')){ //already URL
+                        $url = $pdfFile;
+                    } else {
+                        if ($this->getFileSize($pdfFile) > 1.5) {
+                            return redirect($redirect)->with('status', ' File must be less than 1.5 megabytes!'); // file size error
+                        }
+
+                        $path = "contents/news/$newsId/pdf/" . uniqid() . uniqid() . uniqid() . ".png";
+                        Storage::disk('public')->put($path, $pdfFile);
+                        $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizPanel/public" : "localhost:8002";
+                        $url = $projectUrl . "/storage/$path";
+                    }
+
+                    if ($i==0) {
+                        $tmp=$url ;
+                    }
+                    $list[] =['news_id' => $newsId , 'pdf_file' => $url];
+       
+            } else{
+                break;
+            }
+        }    
+
+        if ($list!=[]){
+            DB::table('news_pdf_files')->where('news_id', $newsId)->delete();
+            DB::table('news_pdf_files')->insert($list);
+        }
+    }
     public function getList(Request $request)
     {
         //region Controls
@@ -55,10 +154,10 @@ class NewsController extends Controller
         }
         //endregion
 
-        $searchText = Input::get('searchText');
-        $rowOffset = 20 * (Input::get('pageNumber') - 1);
+        $searchText = $request->Input('searchText');
+        $rowOffset = 20 * ($request->Input('pageNumber') - 1);
 
-        $sqlQuery = "select n.*,
+        $sqlQuery = "select n.id, n.title, n.type, n.discount_type, n.start_time, n.status, n.created_at,
                             (case
                                 when n.employee_type = 1 then 'White Collar'
                                 when n.employee_type = 2 then 'Blue Collar'
@@ -75,19 +174,21 @@ class NewsController extends Controller
                               from news_employee_location nel
                               join employee_locations el on nel.employee_location_id = el.id
                               where nel.news_id = n.id
-							) as location_names
+							) as location_names,
+							(
+                                select ni.image
+                                from news_images ni
+                                where ni.news_id = n.id
+                                LIMIT 1
+                              ) as image                            
                     from news n
-                    where n.status <> 0";
+                    where n.status <> 0 and n.type!=10";
 
         if (!empty($searchText)) {
-            $sqlQuery .= " and
-                          (n.title like ? or n.title_en like ? or
-                            n.text like ? or n.text_en like ? or
-                            n.sub_title like ? or n.sub_title_en like ? or
-                            n.sub_text like ? or n.sub_text_en like ?)";
+            $sqlQuery .= " and (n.title like ? ) ";
         }
 
-        if (Input::get('sortType') == Constants::SORT_TYPE_CREATED_AT) {
+        if ($request->Input('sortType') == Constants::SORT_TYPE_CREATED_AT) {
             $sqlQuery .= " order by n.id desc";
         } else {
             $sqlQuery .= " order by n.start_time desc";
@@ -97,21 +198,19 @@ class NewsController extends Controller
 
         if (!empty($searchText)) {
             $searchValue = '%' . $searchText . '%';
-            $params = array_fill(0, 8, $searchValue);
+            $params = array_fill(0, 1, $searchValue);
             $params[] = $rowOffset;
             $newsList = DB::select($sqlQuery, $params);
         } else {
             $newsList = DB::select($sqlQuery, [$rowOffset]);
         }
 
-        /*if (Input::get('sortType') == Constants::SORT_TYPE_CREATED_AT) {
+        /*if ($request->Input('sortType') == Constants::SORT_TYPE_CREATED_AT) {
             if (!empty($searchText)) {
                 $searchValue = '%' . $searchText . '%';
                 $newsList = DB::table('news')->where('status', '<>', 0)->where(function ($query) use ($searchValue) {
                     $query->where('title', 'like', $searchValue)->orWhere('title_en', 'like', $searchValue)
-                        ->orWhere('text', 'like', $searchValue)->orWhere('text_en', 'like', $searchValue)
-                        ->orWhere('sub_title', 'like', $searchValue)->orWhere('sub_title_en', 'like', $searchValue)
-                        ->orWhere('sub_text', 'like', $searchValue)->orWhere('sub_text_en', 'like', $searchValue);
+                        ->orWhere('text', 'like', $searchValue)->orWhere('text_en', 'like', $searchValue) ;
                 })->orderByDesc('id')->offset($rowOffset)->limit(20)->get();
             } else {
                 $newsList = DB::table('news')->where('status', '<>', 0)->orderByDesc('id')->offset($rowOffset)->limit(20)->get();
@@ -121,15 +220,13 @@ class NewsController extends Controller
                 $searchValue = '%' . $searchText . '%';
                 $newsList = DB::table('news')->where('status', '<>', 0)->where(function ($query) use ($searchValue) {
                     $query->where('title', 'like', $searchValue)->orWhere('text', 'like', $searchValue)
-                        ->orWhere('text', 'like', $searchValue)->orWhere('text_en', 'like', $searchValue)
-                        ->orWhere('sub_title', 'like', $searchValue)->orWhere('sub_title_en', 'like', $searchValue)
-                        ->orWhere('sub_text', 'like', $searchValue)->orWhere('sub_text_en', 'like', $searchValue);
+                        ->orWhere('text', 'like', $searchValue)->orWhere('text_en', 'like', $searchValue) );
                 })->orderByDesc('start_time')->offset($rowOffset)->limit(20)->get();
             } else {
                 $newsList = DB::table('news')->where('status', '<>', 0)->orderByDesc('start_time')->offset($rowOffset)->limit(20)->get();
             }
         }*/
-
+	//Log::info($newsList);
         return json_encode($newsList);
     }
 
@@ -145,8 +242,11 @@ class NewsController extends Controller
         }
         //endregion
 
-//        $newsResult = DB::table('news')->where('id', Input::get('id'))->first();
-        $newsResult = $this->getFirstItemFromDb("select n.*,
+        return json_encode( $this->getNews($request->Input('id')) );
+    }
+    public static function getNews(int $newsId)
+    {
+        $newsResult = DB::select("select n.*,
                                                               (
                                                                 select group_concat(ncl.id)
                                                                 from news_company_location ncl
@@ -156,11 +256,32 @@ class NewsController extends Controller
                                                                 select group_concat(nel.id)
                                                                 from news_employee_location nel
                                                                 where nel.news_id = n.id
-                                                              ) as location_ids
-                                                          from news n
-                                                          where id = ?", [Input::get('id')]);
+                                                              ) as location_ids,
+                                                              (
+                                                                select group_concat(ni.image)
+                                                                from news_images ni
+                                                                where ni.news_id = n.id
+                                                              ) as images,
+                                                              (
+                                                                select concat( '[', group_concat('{\"id\":',np.id,',\"pdf\":\"',np.pdf_file,'\",\"name\":\"',np.pdf_name,'\"}'), ']')
+                                                                from news_pdf_files np
+                                                                where np.news_id = n.id
+                                                              ) as pdfs,
+                                                              (
+                                                                select count(code) 
+                                                                from news_discount_codes ndc
+                                                                where ndc.news_id=n.id 
+                                                               ) as codeCount, 
+                                                              (
+                                                                select count(code) 
+                                                                from news_discount_codes ndc
+                                                                where ndc.user_id!=0 and ndc.news_id=n.id 
+                                                                ) as usedCodeCount                                                                
 
-        return json_encode($newsResult);
+                                                          from news n
+                                                          where id = ?", [$newsId]);
+
+        return $newsResult[0];
     }
 
     public static function getEmployeeTypeList()
@@ -205,130 +326,28 @@ class NewsController extends Controller
         return json_encode($companyCodeList);
     }
 
-    public function add(Request $request)
-    {
-        //region Controls
-        $validator = Validator::make($request->all(), [
-            'listText' => 'required|string|max:100',
-            'listTextEn' => 'required|string|max:100',
-            'title' => 'nullable|string|max:100',
-            'titleEn' => 'nullable|string|max:100',
-            'text' => 'nullable|string|max:10000',
-            'textEn' => 'nullable|string|max:10000',
-            'subTitle' => 'nullable|string|max:100',
-            'subTitleEn' => 'nullable|string|max:100',
-            'subText' => 'nullable|string|max:10000',
-            'subTextEn' => 'nullable|string|max:10000',
-            'imageString' => 'nullable|string',
-            'url' => 'nullable|url',
-            'phone' => 'nullable|numeric',
-            'type' => 'required|integer|min:1|max:9',
-            'discountType' => 'required_if:type,==,3|integer|min:1|max:14',
-            'startTime' => 'required|date',
-            'endTime' => 'nullable|date',
-            'employeeType' => 'nullable|integer|min:1|max:2',
-            'companyIdList' => 'nullable|array',
-            'companyIdList.*' => 'string',
-            'locationIdList' => 'nullable|array',
-            'locationIdList.*' => 'string'
-        ]);
-        if ($validator->fails()) // missing parameters
-        {
-            return -1;
-            //return response()->json($validator->errors());
-        }
-        //endregion
-
-        $now = Carbon::now();
-        $newsId = DB::table('news')->insertGetId([
-            'list_text' => Input::get('listText'),
-            'list_text_en' => Input::get('listTextEn'),
-            'title' => Input::get('title'),
-            'title_en' => Input::get('titleEn'),
-            'text' => Input::get('text'),
-            'text_en' => Input::get('textEn'),
-            'sub_title' => Input::get('subTitle'),
-            'sub_title_en' => Input::get('subTitleEn'),
-            'sub_text' => Input::get('subText'),
-            'sub_text_en' => Input::get('subTextEn'),
-            'url' => Input::get('url'),
-            'phone' => Input::get('phone'),
-            'type' => Input::get('type'),
-            'discount_type' => Input::get('discountType'),
-            'start_time' => Input::get('startTime'),
-            'end_time' => Input::get('endTime'),
-            'employee_type' => Input::get('employeeType'),
-            'status' => Constants::STATUS_PASSIVE,
-            'created_at' => $now,
-            'updated_at' => $now
-        ]);
-
-        $companyIdList = Input::get('companyIdList');
-        if (is_array($companyIdList) && count($companyIdList) > 0) {
-            $newsCompanyLocationList = [];
-            foreach ($companyIdList as $companyId) {
-                $newsCompanyLocationList[] = [
-                    'news_id' => $newsId,
-                    'company_location_id' => $companyId
-                ];
-            }
-            DB::table('news_company_location')->insert($newsCompanyLocationList);
-        }
-
-        $locationIdList = Input::get('locationIdList');
-        if (is_array($locationIdList) && count($locationIdList) > 0) {
-            $newsEmployeeLocationList = [];
-            foreach ($locationIdList as $locationId) {
-                $newsEmployeeLocationList[] = [
-                    'news_id' => $newsId,
-                    'employee_location_id' => $locationId
-                ];
-            }
-            DB::table('news_employee_location')->insert($newsEmployeeLocationList);
-        }
-
-        $imageString = Input::get('imageString');
-        if (!empty($imageString)) {
-            try {
-                $base64Str = substr($imageString, strpos($imageString, ",") + 1);
-                if ($this->getBase64ImageSize($base64Str) > 1.5) {
-                    return redirect('addnews')->with('status', ' File must be less than 1.5 megabytes!'); // file size error
-                    //return -2; // file size error
-                }
-                $image = base64_decode($base64Str);
-
-                $imagePath = "contents/news/$newsId/" . uniqid() . uniqid() . uniqid() . ".png";
-                Storage::disk('public')->put($imagePath, $image);
-                $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizPanel/public" : "http://mbtbiziz:8888";
-                $imageUrl = $projectUrl . "/storage/$imagePath";
-                DB::table('news')->where('id', $newsId)->update(['image' => $imageUrl]);
-            } catch (\Exception $e) {
-
-            }
-        }
-
-        return view('home');
-    }
-
     public function edit(Request $request)
     {
         //region Controls
         $validator = Validator::make($request->all(), [
             'id' => 'required|integer|min:1',
-            'listText' => 'required|string|max:100',
-            'listTextEn' => 'required|string|max:100',
-            'title' => 'nullable|string|max:100',
-            'titleEn' => 'nullable|string|max:100',
+            'title' => 'nullable|string|max:150',
+            'titleEn' => 'nullable|string|max:150',
             'text' => 'nullable|string|max:10000',
             'textEn' => 'nullable|string|max:10000',
-            'subTitle' => 'nullable|string|max:100',
-            'subTitleEn' => 'nullable|string|max:100',
-            'subText' => 'nullable|string|max:10000',
-            'subTextEn' => 'nullable|string|max:10000',
             'imageString' => 'nullable|string',
+            'imageString1' => 'nullable|string',            
+            'imageString2' => 'nullable|string',  
+            'imageString3' => 'nullable|string',  
+            'imageString4' => 'nullable|string',  
+            'imageString5' => 'nullable|string',  
+            'imageString6' => 'nullable|string',  
+            'imageString7' => 'nullable|string',                                                                          
+            'imageString8' => 'nullable|string',                                                                          
+            'imageString9' => 'nullable|string', 
             'url' => 'nullable|url',
             'phone' => 'nullable|numeric',
-            'type' => 'required|integer|min:1|max:9',
+            'type' => 'integer|min:1|max:10',
             'discountType' => 'required_if:type,==,3|integer|min:1|max:14',
             'startTime' => 'required|date',
             'endTime' => 'nullable|date',
@@ -336,39 +355,63 @@ class NewsController extends Controller
             'companyIdList' => 'nullable|array',
             'companyIdList.*' => 'string',
             'locationIdList' => 'nullable|array',
-            'locationIdList.*' => 'string'
+            'locationIdList.*' => 'string',
+            'discountCodeType' => 'required_if:type,==,3|integer|min:0|max:2'
         ]);
         if ($validator->fails()) // missing parameters
         {
-            return Input::get('companyIdList');
-
+            return json_encode( [
+                'statusCode' => 200,
+                'responseData' => -1,
+                'errorMessage' => 'Beklenmedik bir hata oluştu. Hata kodu: 12'
+            ] );
+        } else if ( $request->Input('type') == 3 && $request->Input('discountCodeType') == 2 ){ // discount and one code for each
+            //then we need at least one discount code loaded
+            $resultCode = DB::select("select COUNT(code) as countCode from news_discount_codes where news_id = ?", [$request->Input('id')]);
+            if ($resultCode[0]->countCode == 0){
+                return json_encode( [
+                    'statusCode' => 200,
+                    'responseData' => -1,
+                    'errorMessage' => 'En az bir adet indirim kodu girmelisiniz'
+                ] );
+            }
+        }else if ( $request->Input('type') == 3 && $request->Input('discountCodeType') == 1 ){ // discount and one code for all
+            //then we need the one code
+             if ($request->Input('oneForAllCodeInput') == NULL){
+                return json_encode( [
+                    'statusCode' => 200,
+                    'responseData' => -1,
+                    'errorMessage' => 'Indirim Kodunu girmelisiniz'
+                ] );
+            }
         }
         //endregion
 
-        $newsId = Input::get('id');
+        $newsId = $request->Input('id');
+        $discountCodeForAll = $request->Input('oneForAllCodeInput');
+        if ( $request->Input('type') == 3 && $request->Input('discountCodeType') != 1 ){
+            $discountCodeForAll = null;
+        }
+
         DB::table('news')->where('id', $newsId)->update([
-            'list_text' => Input::get('listText'),
-            'list_text_en' => Input::get('listTextEn'),
-            'title' => Input::get('title'),
-            'title_en' => Input::get('titleEn'),
-            'text' => Input::get('text'),
-            'text_en' => Input::get('textEn'),
-            'sub_title' => Input::get('subTitle'),
-            'sub_title_en' => Input::get('subTitleEn'),
-            'sub_text' => Input::get('subText'),
-            'sub_text_en' => Input::get('subTextEn'),
-            'url' => Input::get('url'),
-            'phone' => Input::get('phone'),
-            'type' => Input::get('type'),
-            'discount_type' => Input::get('discountType'),
-            'start_time' => Input::get('startTime'),
-            'end_time' => Input::get('endTime'),
-            'employee_type' => Input::get('employeeType'),
-            'updated_at' => Carbon::now()
+            'title' => $request->Input('title'),
+            'title_en' => $request->Input('titleEn'),
+            'text' => $request->Input('text'),
+            'text_en' => $request->Input('textEn'),
+            'url' => $request->Input('url'),
+            'phone' => $request->Input('phone'),
+            'type' => $request->Input('type'),
+            'discount_type' => $request->Input('discountType'),
+            'start_time' => $request->Input('startTime'),
+            'end_time' => $request->Input('endTime'),
+            'employee_type' => $request->Input('employeeType'),
+            'updated_at' => Carbon::now(),
+            'discount_code_type' => $request->Input('discountCodeType'),
+            'discount_code_all' => $discountCodeForAll
         ]);
 
         DB::table('news_company_location')->where('news_id', $newsId)->delete();
-        $companyIdList = Input::get('companyIdList');
+        $companyIdList = $request->Input('companyIdList');
         if (is_array($companyIdList) && count($companyIdList) > 0) {
             $newsCompanyLocationList = [];
             foreach ($companyIdList as $companyId) {
@@ -381,7 +424,7 @@ class NewsController extends Controller
         }
 
         DB::table('news_employee_location')->where('news_id', $newsId)->delete();
-        $locationIdList = Input::get('locationIdList');
+        $locationIdList = $request->Input('locationIdList');
         if (is_array($locationIdList) && count($locationIdList) > 0) {
             $newsEmployeeLocationList = [];
             foreach ($locationIdList as $locationId) {
@@ -393,33 +436,38 @@ class NewsController extends Controller
             DB::table('news_employee_location')->insert($newsEmployeeLocationList);
         }
 
-        $imageString = Input::get('imageString');
-        if (!empty($imageString)) {
-            try {
-                $base64Str = substr($imageString, strpos($imageString, ",") + 1);
-                if ($this->getBase64ImageSize($base64Str) > 1.5) {
-                    return redirect('addnews')->with('status', ' File must be less than 1.5 megabytes!'); // file size error
-                    //return -2; // file size error
-                }
-                $image = base64_decode($base64Str);
+        $this->updateImages($request, $newsId, 'editnews');
+        //$this->updatePdfFiles($newsId, 'editnews');
 
-                $imagePath = "contents/news/$newsId/" . uniqid() . uniqid() . uniqid() . ".png";
-                Storage::disk('public')->put($imagePath, $image);
-                $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizPanel/public" : "http://mbtbiziz:8888";
-                $imageUrl = $projectUrl . "/storage/$imagePath";
-                DB::table('news')->where('id', $newsId)->update(['image' => $imageUrl]);
-            } catch (\Exception $e) {
-
-            }
+        if ( $request->Input('type') == 3 && $request->Input('discountCodeType') != 2 ){ // no need for a list of codes
+            //delete all codes
+            DB::delete("delete from news_discount_codes where news_id = ?", [$newsId]);
         }
 
-        return view('home');
+        return json_encode( [
+            'statusCode' => 200,
+            'responseData' => 0,
+            'errorMessage' => null
+        ] );
     }
 
     private function getBase64ImageSize($base64Image)
     {
         try {
             $size_in_bytes = (int)(strlen(rtrim($base64Image, '=')) * 3 / 4);
+            $size_in_kb = $size_in_bytes / 1024;
+            $size_in_mb = $size_in_kb / 1024;
+
+            return $size_in_mb;
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+
+    private function getFileSize($content)
+    {
+        try {
+            $size_in_bytes = (int)(strlen($content) * 3 / 4);
             $size_in_kb = $size_in_bytes / 1024;
             $size_in_mb = $size_in_kb / 1024;
 
@@ -441,7 +489,7 @@ class NewsController extends Controller
         }
         //endregion
 
-        $newsId = Input::get('id');
+        $newsId = $request->Input('id');
         $affectedRowCount = DB::table('news')->where('id', $newsId)->update(['status' => Constants::STATUS_ACTIVE, 'updated_at' => Carbon::now()]);
         DeleteNewsNotification::dispatch($newsId);
 
@@ -460,7 +508,7 @@ class NewsController extends Controller
         }
         //endregion
 
-        $newsId = Input::get('id');
+        $newsId = $request->Input('id');
         $affectedRowCount = DB::table('news')->where('id', $newsId)->update(['status' => Constants::STATUS_PASSIVE, 'updated_at' => Carbon::now()]);
         DeleteNewsNotification::dispatch($newsId);
 
@@ -479,14 +527,14 @@ class NewsController extends Controller
         }
         //endregion
 
-        $newsId = Input::get('id');
-        $affectedRowCount = DB::table('news')->where('id', $newsId)->update(['status' => Constants::STATUS_DELETED, 'updated_at' => Carbon::now()]);
+        $newsId = $request->Input('id');
+        $affectedRowCount = DB::table('news')->where('id', $newsId)->delete();
         DeleteNewsNotification::dispatch($newsId);
 
         return json_encode($affectedRowCount > 0);
     }
 
-    public function deleteImage(Request $request)
+   /* public function deleteImage(Request $request)
     {
         //region Controls
         $validator = Validator::make($request->all(), [
@@ -498,10 +546,10 @@ class NewsController extends Controller
         }
         //endregion
 
-        $affectedRowCount = DB::table('news')->where('id', Input::get('id'))->update(['image' => null, 'updated_at' => Carbon::now()]);
+        $affectedRowCount = DB::table('news')->where('id', $request->Input('id'))->update(['image' => null, 'updated_at' => Carbon::now()]);
 
         return json_encode($affectedRowCount > 0);
-    }
+    }*/
 
     public function sendPushNotification(Request $request)
     {
@@ -515,7 +563,7 @@ class NewsController extends Controller
         }
         //endregion
 
-        $newsId = Input::get('id');
+        $newsId = $request->Input('id');
         $newsResult = DB::table('news')->where('id', $newsId)->where('status', Constants::STATUS_ACTIVE)->first();
         if (empty($newsResult)) {
             return -2;
@@ -526,3 +574,4 @@ class NewsController extends Controller
         return json_encode(true);
     }
 }
+

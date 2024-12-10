@@ -27,6 +27,7 @@ extension NetworkAPI : TargetType {
         case .login(_): return "/login"
         case .getNewsList(_): return "/newsList"
         case .getNewsDetail(let identifier): return "/newsDetail/\(identifier)"
+        case .getDiscountCode(let identifier): return "/getDiscountCode/\(identifier)"
         case .getBirthdayList: return "/birthdayList"
         case .getFoodMenu: return "/foodMenu"
         case .getLocations: return "/maps"
@@ -49,6 +50,13 @@ extension NetworkAPI : TargetType {
         case .getCaptcha: return "/captcha"
         case .checkPhone: return "/checkPhone"
         case .getUserConfig: return "/userConfig"
+        case .getClubLocs: return "/socialClubLocs"
+        case .getPhoneLocs: return "/phoneLocs"
+        case .getClubs(let loc_id): return "/socialClubs/\(loc_id)"
+        case .getPhones(let loc_id): return "/phones/\(loc_id)"
+        case .getMedias : return "/medias"
+        case .submitFeedback: return "/submitFeedback"
+        case .appStartup: return "/appStartup"
         }
     }
     
@@ -65,10 +73,12 @@ extension NetworkAPI : TargetType {
             return .requestParameters(parameters: ["phoneNumber":phoneNumber], encoding: JSONEncoding.default)
         case .login(let phoneNumber, let pin):
             return .requestParameters(parameters: ["phoneNumber":phoneNumber, "pin":pin], encoding: JSONEncoding.default)
-        case .getNewsList(let type, let discountType, let pageNumber):
+        case .getNewsList(let type, let discountType, let locId, let pageNumber):
             if let discountType = discountType {
                 return .requestParameters(parameters: ["type":type.rawValue,"discountType":discountType.rawValue ,"pageNumber":pageNumber], encoding: JSONEncoding.default)
-            } else {
+            } else if let locId = locId {
+                return .requestParameters(parameters: ["type":type.rawValue, "locId":locId, "pageNumber":pageNumber], encoding: JSONEncoding.default)
+            }else {
                 return .requestParameters(parameters: ["type":type.rawValue, "pageNumber":pageNumber], encoding: JSONEncoding.default)
             }
         case .getShuttleList(let type, let companyLocationId):
@@ -76,7 +86,7 @@ extension NetworkAPI : TargetType {
         case .changeNotificationSetting(let type, let value):
             return .requestParameters(parameters: ["type":type,"value":value], encoding: JSONEncoding.default)
         case .saveDeviceInfo(let deviceToken), .deleteDeviceInfo(let deviceToken):
-            return .requestParameters(parameters: ["osType":2,"deviceToken":deviceToken], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["osType":2,"deviceToken":deviceToken, "newApp":true], encoding: JSONEncoding.default)
         case .getNotificationList(let firstDate, let lastDate):
             var params : [String : Any] = [:]
             if let firstDate = firstDate { params["firstDate"] = firstDate }
@@ -90,6 +100,9 @@ extension NetworkAPI : TargetType {
             return .requestParameters(parameters: ["code":code], encoding: JSONEncoding.default)
         case .checkPhone(let phoneNumber):
             return .requestParameters(parameters: ["phoneNumber":phoneNumber], encoding: JSONEncoding.default)
+        case .submitFeedback(let text):
+            return .requestParameters(parameters: ["text":text], encoding: JSONEncoding.default)
+
         default:
             return .requestPlain
         }
@@ -97,15 +110,17 @@ extension NetworkAPI : TargetType {
     
     var headers: [String : String]? {
         if needAuthorization {
-            return ["token" : TokenManager.sharedManager.token, "lang" : MBTConstants.Device.PreferredLanguageCode]
+            
+            return ["Authorization" : "Bearer \(TokenManager.sharedManager.accessToken)", "lang" : MBTConstants.Device.PreferredLanguageCode]
         }
         return ["lang" : MBTConstants.Device.PreferredLanguageCode]
     }
     
     var method: Moya.Method {
         switch self {
-        case .getNewsDetail(_),.getBirthdayList,.getFoodMenu,.getLocations,.getProfile,.getYearlyWorkHours(_),
-             .getMonthlyWorkHours(_),.getWorkCalendar(_),.getShuttleOptions,.getNotificationSettings,.getNotificationBadgeCount,.signOut, .getCaptcha, .getUserConfig:
+        case .getNewsDetail(_),.getDiscountCode(_),.getBirthdayList,.getFoodMenu,.getLocations,.getProfile,.getYearlyWorkHours(_),
+                .getMonthlyWorkHours(_),.getWorkCalendar(_),.getShuttleOptions,.getNotificationSettings,.getNotificationBadgeCount,.signOut, .getCaptcha, .getUserConfig, .getClubs(_), .getClubLocs, .getMedias,
+                    .getPhones(_),.getPhoneLocs:
             return .get
         default:
             return .post

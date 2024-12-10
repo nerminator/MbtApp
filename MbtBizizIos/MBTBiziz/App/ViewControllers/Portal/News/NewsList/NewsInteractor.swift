@@ -33,6 +33,7 @@ class NewsInteractor: NewsBusinessLogic, NewsDataStore
     var worker = NewsWorker()
     var newsType: NewsType = .hepsi
     var discountType: DiscountType = .tumu
+    var locId : Int? = nil
     var headers: [String] = []
     var items: [[MBTNewsNewsList]] = []
     var currentPage: Int = 0
@@ -41,6 +42,10 @@ class NewsInteractor: NewsBusinessLogic, NewsDataStore
     func initializeView(request : News.Initialize.Request) {
         if let type = request.additionalData[MBTConstants.UserDefined.NewsTypeKey] as? NewsType {
             self.newsType = type
+        
+            if let locId = request.additionalData[MBTConstants.UserDefined.LocIdKey] as? Int {
+                self.locId = locId
+            }
             presenter?.presentInitializeViewResult(response: News.Initialize.Response(newsType: type))
         }
     }
@@ -52,7 +57,7 @@ class NewsInteractor: NewsBusinessLogic, NewsDataStore
     func reloadPage(request : News.Reload.Request) {
         newsRequest?.cancel()
         currentPage = 0
-        worker.getNewsList(newsType, discountType: newsType == .indirim ? discountType : nil, pageNumber: currentPage) { [weak self] (response) in
+        worker.getNewsList(newsType, discountType: newsType == .indirim ? discountType : nil, locId: self.locId, pageNumber: currentPage) { [weak self] (response) in
             self?.headers = []
             self?.items = []
             self?.appendItemsToList(response?.newsList)
@@ -61,7 +66,7 @@ class NewsInteractor: NewsBusinessLogic, NewsDataStore
     }
     
     func sendData(request : News.SendData.Request) {
-        newsRequest = worker.getNewsList(newsType, discountType: newsType == .indirim ? discountType : nil, pageNumber: currentPage + 1, completion: { [weak self] (response) in
+        newsRequest = worker.getNewsList(newsType, discountType: newsType == .indirim ? discountType : nil, locId: locId, pageNumber: currentPage + 1, completion: { [weak self] (response) in
             if let response = response {
                 self?.currentPage += 1
                 self?.appendItemsToList(response.newsList)

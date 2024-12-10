@@ -9,7 +9,7 @@
 import UIKit
 
 class MBTBaseViewController: UIViewController {
-
+    
     var additionalData : [String:Any] = [:]
     internal var firstWillAppear = true
     internal var firstDidAppear = true
@@ -198,7 +198,8 @@ extension MBTBaseViewController {
     }
     
     @objc func barButtonItemInfoTapped(_ sender :  UIBarButtonItem) {
-        self.navigationController?.pushViewController(AboutViewController.fromStoryboard(.about), animated: true)
+        let vc = AboutViewController.fromStoryboard(.about)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     fileprivate func keyboardNotification(willShow:Bool,endFrame:CGRect,duration:TimeInterval,animationCurve:UIViewKeyframeAnimationOptions) {
@@ -226,7 +227,8 @@ extension MBTBaseViewController {
         seperator.autoSetDimension(.height, toSize: 1)
         seperator.autoPinEdge(.leading, to: .leading, of: view)
         seperator.autoPinEdge(.trailing, to: .trailing, of: view)
-        seperator.autoPin(toTopLayoutGuideOf: self, withInset: 0)
+        seperator.autoPinEdge(.top, to: .top, of: view)
+        //seperator.autoPin(toTopLayoutGuideOf: self, withInset: 0)
         navBarSeperator = seperator
     }
     

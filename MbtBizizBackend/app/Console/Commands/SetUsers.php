@@ -62,6 +62,7 @@ class SetUsers extends Command
             // PERSONEL SİCİL NUMARASI - KULLANICI ADI (x) - ADI SOYADI - MASRAF YERİ - MASRAF YERİ KOD - ORGANİZASYON ANAHTARI (x) - ORGANİZASYON BİRİM METNİ (x) - DOĞUM TARİHİ - ÇALIŞAN ALT GRUBU METNİ - LOKASYON - İŞ YERİ - TELEFON - EMAIL - POZİSYON - ŞİRKET KODU
 
             $registerNumber = trim($columns[0]); // PERSONEL SİCİL NUMARASI (-)
+            $userName = trim($columns[1]); // KULLANICI ADI (-)
             $nameSurname = trim($columns[2]); // ADI SOYADI (-)
             $expenseCenterNumber = trim($columns[3]); // MASRAF YERİ (0000006310)
             $expenseCenter = trim($columns[4]); // MASRAF YERİ KOD (TE/STC)
@@ -86,6 +87,7 @@ class SetUsers extends Command
                 if ($user == null) {
                     DB::table('users')->insert([
                         'register_number' => $registerNumber,
+                        'user_name' => $userName,
                         'name_surname' => $nameSurname,
                         'expense_center_number' => $expenseCenterNumber,
                         'expense_center' => $expenseCenter,
@@ -104,6 +106,7 @@ class SetUsers extends Command
                         'created_at' => $now
                     ]);
                 } else {
+                    $user->user_name = $userName;
                     $user->name_surname = $nameSurname;
                     $user->expense_center_number = $expenseCenterNumber;
                     $user->expense_center = $expenseCenter;
@@ -126,9 +129,10 @@ class SetUsers extends Command
 
         if (is_array($registerNumberList) && count($registerNumberList) > 0) {
             $testMobilePhoneList = [5551234561, 5551234562, 5551234563, 5551234564, 5551234565, 5551234566];
-            DB::table('users')->whereNotIn('register_number', $registerNumberList)->whereNotIn('mobile_phone', $testMobilePhoneList)->where('status', 1)->update(['status' => 0, 'updated_at' => $now]);
-//            DB::table('users')->whereNotIn('register_number', $registerNumberList)->where('status', 1)->update(['status' => 0, 'updated_at' => $now]);
-            Queue::push(new DeleteUsersJob());
+	                DB::table('users')->whereNotIn('register_number', $registerNumberList)->where('status', 1)->update(['status' => 0, 'updated_at' => $now]);
+            DB::table('users')->whereIn('mobile_phone', $testMobilePhoneList)->where('status', 0)->update(['status' => 1, 'updated_at' => $now]);
+
+	    Queue::push(new DeleteUsersJob());
 
             TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak kullanıcılar başarıyla güncellendi.");
         }

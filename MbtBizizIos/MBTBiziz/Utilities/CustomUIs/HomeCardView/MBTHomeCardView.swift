@@ -14,7 +14,10 @@ import UIKit
 
 class MBTHomeCardView: UIView {
     
+
+    @IBOutlet weak var constraintLabel: NSLayoutConstraint!
     var backImageName:String? = "";
+    var data = 0;
     @IBInspectable var icon:UIImage? {
         set {
             imgIcon.image = newValue
@@ -43,6 +46,15 @@ class MBTHomeCardView: UIView {
             return lblTitle.text
         }
     }
+
+    @IBInspectable var labelPos:NSNumber? {
+        set {
+            constraintLabel.constant = newValue as! CGFloat
+        }
+        get {
+            return constraintLabel.constant as NSNumber
+        }
+    }
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var delegate : MBTHomeCardViewDelegate?
@@ -51,6 +63,12 @@ class MBTHomeCardView: UIView {
     @IBOutlet weak var view: UIView!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        Bundle.main.loadNibNamed(self.className, owner: self, options: nil)
+        self.addSubview(view)
+        view.autoPinEdgesToSuperviewEdges()
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         Bundle.main.loadNibNamed(self.className, owner: self, options: nil)
         self.addSubview(view)
         view.autoPinEdgesToSuperviewEdges()

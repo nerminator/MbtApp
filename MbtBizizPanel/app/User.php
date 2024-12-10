@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\ResetPassword as ResetPassword;
+use Illuminate\Auth\Notifications\ResetPassword as ResetPassword;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -15,23 +16,16 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = "panel_users";
+    protected $table = "oidc_users";
     protected $fillable = [
-        'name', 'email', 'password', 'type', 'status','password_changed_at'
+        'name', 'email', 'remember_token'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
 
 
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
     }
+   
 }

@@ -8,6 +8,8 @@
     <dimen name="tab_indicator_height">5dp</dimen>
     <dimen name="toolbar_height">55dp</dimen>
 
+    <dimen name="grid_layout_manager_spacing">14dp</dimen>
+
     <!--Margins-->
 
     <!--Paddings-->

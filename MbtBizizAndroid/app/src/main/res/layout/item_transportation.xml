@@ -5,16 +5,16 @@
 
         <variable
             name="data"
-            type="com.daimler.biziz.android.network.entity.transportation.ShuttleListEntity" />
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.ShuttleListEntity" />
 
         <variable
             name="click"
-            type="com.daimler.biziz.android.ui.transportation.TransportationFragment.IDriverInfo"/>
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.transportation.TransportationFragment.IDriverInfo"/>
 
         <import type="android.view.View" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.daimler.biziz.android.uiControls.TextViewDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
             android:id="@+id/textTransportationPoint"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             app:layout_constraintStart_toEndOf="@id/imageMarker"
             app:layout_constraintTop_toTopOf="@id/imageMarker" />
 
-        <com.daimler.biziz.android.uiControls.TextViewLightCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewLightCS
             android:id="@+id/textTransportationTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.daimler.biziz.android.uiControls.ButtonDemiCS
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnRoute"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,16 +97,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/btnRoute"
             android:layout_height="0dp" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerRoute"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnRoute" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

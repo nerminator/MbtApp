@@ -25,7 +25,7 @@ class SetWorkingHoursInfo extends Command
         Log::info("set:working_hours_info started.");
         $this->_setIdListToDelete();
         $this->_setBlueCollarWorkingHoursInfo();
-        $this->_setWhiteCollarWorkingHoursInfo();
+        //$this->_setWhiteCollarWorkingHoursInfo();
         $this->_deleteOldWorkingHoursInfo();
         Log::info("set:working_hours_info finished.");
 
