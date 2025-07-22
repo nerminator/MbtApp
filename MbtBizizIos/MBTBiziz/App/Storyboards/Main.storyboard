@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O7T-8W-Ubl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O7T-8W-Ubl">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -275,7 +275,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="TXT_APP_FEEDBACK_BUTTON">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.0" green="0.69114691019058228" blue="0.96171110868453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </backgroundConfiguration>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
@@ -524,7 +524,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="TXT_SOCIAL_MEDIA_BUTTON">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.0" green="0.67843137254901964" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </backgroundConfiguration>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
@@ -573,7 +573,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-He-Dfm">
-                                <rect key="frame" x="0.0" y="20" width="375" height="570"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -622,33 +622,14 @@
                                     <outlet property="delegate" destination="dqc-Ie-gbE" id="d1I-Ko-tba"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRh-Us-2gh" userLabel="SocialMedia" customClass="BaseUIButtonRegular" customModule="MBTBiziz" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="600" width="365" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="gWV-XE-23L"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="TXT_SOCIAL_MEDIA_BUTTON">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="socialMediaClicked:" destination="9bW-Q8-lCD" eventType="touchUpInside" id="Mg7-Oo-yPf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7xN-hK-Wr3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XRh-Us-2gh" firstAttribute="top" secondItem="T45-He-Dfm" secondAttribute="bottom" constant="10" id="Axb-RZ-4pd"/>
-                            <constraint firstItem="XRh-Us-2gh" firstAttribute="leading" secondItem="7xN-hK-Wr3" secondAttribute="leading" id="CUL-K7-9Ug"/>
                             <constraint firstItem="T45-He-Dfm" firstAttribute="top" secondItem="7xN-hK-Wr3" secondAttribute="top" id="Jpn-pH-dAW"/>
-                            <constraint firstItem="7xN-hK-Wr3" firstAttribute="bottom" secondItem="XRh-Us-2gh" secondAttribute="bottom" constant="7" id="Mu1-mr-ULt"/>
-                            <constraint firstItem="7xN-hK-Wr3" firstAttribute="trailing" secondItem="XRh-Us-2gh" secondAttribute="trailing" constant="10" id="NhQ-EK-7zv"/>
                             <constraint firstItem="7xN-hK-Wr3" firstAttribute="trailing" secondItem="T45-He-Dfm" secondAttribute="trailing" id="SHX-y1-P2n"/>
                             <constraint firstItem="T45-He-Dfm" firstAttribute="leading" secondItem="7xN-hK-Wr3" secondAttribute="leading" id="TYQ-Na-d2s"/>
+                            <constraint firstItem="T45-He-Dfm" firstAttribute="bottom" secondItem="7xN-hK-Wr3" secondAttribute="bottom" id="jEm-5b-aMd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -657,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMh-Hd-kvm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-573"/>
+            <point key="canvasLocation" x="-362.39999999999998" y="-573.46326836581716"/>
         </scene>
         <!--App Feedback View Controller-->
         <scene sceneID="VmV-O5-Gao">
@@ -690,7 +671,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="TXT_SUBMIT_BUTTON">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.0" green="0.67843137254901964" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </backgroundConfiguration>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>

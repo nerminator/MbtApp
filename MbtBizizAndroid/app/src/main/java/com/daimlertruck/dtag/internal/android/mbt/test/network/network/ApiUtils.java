@@ -4,6 +4,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.manager.TokenManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -211,6 +212,11 @@ public class ApiUtils extends AbstractApiUtils {
     @Override
     public void appStartUp(NetworkCallback<BaseResponse<AppStartUpEntity>> callback) {
         sendRequest(APIService.appStartUp(new AppStartUpBody("0", "1")), callback);
+    }
+
+    @Override
+    public void sendCrashLog(CrashLogBody crashLogBody, NetworkCallback<BaseResponse> callback) {
+        sendRequest(APIService.sendCrashLog(crashLogBody), callback);
     }
 
     public <R> Callback sendRequest(Call<R> call, final NetworkCallback<R> callBack) {

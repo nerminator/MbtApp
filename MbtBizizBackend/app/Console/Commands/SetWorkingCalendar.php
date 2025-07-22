@@ -93,9 +93,8 @@ class SetWorkingCalendar extends Command
 
     private function _file_get_contents_utf8($fn)
     {
-        $content = file_get_contents($fn);
-        return mb_convert_encoding($content, 'UTF-8',
-            mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
+            // file UTF-8 zaten, hiçbir encoding değiştirme
+            return file_get_contents($fn);
     }
 
     private function _getType($type, $name)

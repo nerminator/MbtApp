@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.daimlertruck.dtag.internal.android.mbt.test.R;
@@ -56,14 +57,12 @@ public class SocialMediaActivity extends BaseActivity<ActivitySocialMediaBinding
     private void redirectToUrl(@Nullable String url) {
         if (url != null) {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
             startActivity(intent);
         }
     }
 
     public static void start(Context context) {
         Intent starter = new Intent(context, SocialMediaActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
 }

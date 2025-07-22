@@ -15,6 +15,10 @@
 		4E14FF682B3D9E110006496D /* AppFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */; };
 		4E1930472AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */; };
 		4E1930482AEE994F00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */; };
+		4E1A75B02DB067B400DAEE56 /* CrashLoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */; };
+		4E1A75B12DB067B400DAEE56 /* CrashLoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */; };
+		4E1E0B112E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */; };
+		4E1E0B122E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */; };
 		4E212C922BDE578700C69288 /* AppFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */; };
 		4E212C932BDE57AA00C69288 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */; };
 		4E212C942BDE57B300C69288 /* PhoneLocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA992B3B22EF00EA31D8 /* PhoneLocsViewController.swift */; };
@@ -770,6 +774,8 @@
 		4E14FF652B3CF41D0006496D /* MBTSocialMediaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTSocialMediaResponse.swift; sourceTree = "<group>"; };
 		4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedbackViewController.swift; sourceTree = "<group>"; };
 		4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTGetDiscountCodeResponse.swift; sourceTree = "<group>"; };
+		4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLoggerHelper.swift; sourceTree = "<group>"; };
+		4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTPayslipResponse.swift; sourceTree = "<group>"; };
 		4E35938D2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIButtonWithIcon.swift; sourceTree = "<group>"; };
 		4E3593902C58069700A4CB83 /* MBTAppStartupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTAppStartupResponse.swift; sourceTree = "<group>"; };
 		4E3593922C580E1100A4CB83 /* AppDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -1786,6 +1792,7 @@
 		A152C520207BFA3E0053CD40 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */,
 				A152C522207BFA3E0053CD40 /* AppearenceHelper.swift */,
 				A152C524207BFA3E0053CD40 /* NavigationHelper.swift */,
 				A152C527207BFA3E0053CD40 /* HtmlHelper.swift */,
@@ -1873,6 +1880,7 @@
 		A152C534207BFA3E0053CD40 /* ResponseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */,
 				4E14FF642B3CF3FF0006496D /* SocialMediaResponse */,
 				4EEDEAA02B3B24EC00EA31D8 /* PhonesResponse */,
 				4EEDEA8E2B3ADFC700EA31D8 /* SocialClubsResponse */,
@@ -2676,6 +2684,7 @@
 				A18AFCD220FB70C400B3137B /* bizizapp.crt in Resources */,
 				A1B182322087E8D100D50B42 /* Notifications.storyboard in Resources */,
 				A1B182342087E8DC00D50B42 /* Profile.storyboard in Resources */,
+				4E1E0B122E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */,
 				A152C546207BFA3E0053CD40 /* thirdpartyEN.html in Resources */,
 				A152C543207BFA3E0053CD40 /* legalTR.html in Resources */,
 				A152C54C207BFA3E0053CD40 /* DaimlerCS-Demi.ttf in Resources */,
@@ -2712,6 +2721,7 @@
 				A1F96A7F20BF4727008EAD2B /* fossEN.html in Resources */,
 				A1F96A8020BF4727008EAD2B /* termsofuseTR.html in Resources */,
 				A1F96A8120BF4727008EAD2B /* Portal_Menu.storyboard in Resources */,
+				4E1E0B112E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */,
 				A1F96A8220BF4727008EAD2B /* DensityView.xib in Resources */,
 				A1F96A8420BF4727008EAD2B /* MBTPagerView.xib in Resources */,
 				A1F96A8520BF4727008EAD2B /* Portal_Location.storyboard in Resources */,
@@ -2751,9 +2761,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz/Pods-MBTBiziz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2786,9 +2800,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Prod/Pods-MBTBiziz-Prod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2976,6 +2994,7 @@
 				A10C7B4B20BA154F009E9C0E /* MBTFlexibleYearlyResponse.swift in Sources */,
 				A152C59B207C02670053CD40 /* UISegmentedControl+AGi18n.m in Sources */,
 				4E3593932C580E1100A4CB83 /* AppDescriptionViewController.swift in Sources */,
+				4E1A75B02DB067B400DAEE56 /* CrashLoggerHelper.swift in Sources */,
 				A1F0912620A247B100969D97 /* BirthdayTableCell.swift in Sources */,
 				A152C59D207C02670053CD40 /* UIBarButtonItem+AGi18n.m in Sources */,
 				A16EE5EE209F67DB000B4464 /* MBTLoginResponse.swift in Sources */,
@@ -3313,6 +3332,7 @@
 				A1F969E220BF4727008EAD2B /* FlexibleWorkDetailModels.swift in Sources */,
 				A1F969E320BF4727008EAD2B /* BaseNavCon.swift in Sources */,
 				4E3593952C58390200A4CB83 /* AppDescriptionViewController.swift in Sources */,
+				4E1A75B12DB067B400DAEE56 /* CrashLoggerHelper.swift in Sources */,
 				A1F969E420BF4727008EAD2B /* TransportationRouter.swift in Sources */,
 				4E212C9A2BDE57C700C69288 /* LinksViewController.swift in Sources */,
 				A1F969E520BF4727008EAD2B /* MealMenuInteractor.swift in Sources */,
@@ -3639,7 +3659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3668,7 +3688,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3688,7 +3708,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
 				ENABLE_TESTABILITY = YES;
@@ -3699,7 +3719,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-iquote",
@@ -3723,7 +3743,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BizizInHouse6;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MbtApp3;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Mbtapp6;
 				SWIFT_OBJC_BRIDGING_HEADER = "./MBTBiziz/MBT-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.0;
@@ -3740,7 +3760,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
 				ENABLE_TESTABILITY = YES;
@@ -3751,7 +3771,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-iquote",
@@ -3775,7 +3795,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.daimlertruck.dtag.internal.ios.mbt.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BizizInHouse6;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MbtApp3;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Mbtapp6;
 				SWIFT_OBJC_BRIDGING_HEADER = "./MBTBiziz/MBT-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PROJECT_NAME)-Swift.h";
 				SWIFT_VERSION = 4.0;

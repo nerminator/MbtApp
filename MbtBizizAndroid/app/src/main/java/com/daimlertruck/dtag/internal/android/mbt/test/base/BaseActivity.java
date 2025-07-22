@@ -33,7 +33,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
             super.onReceive(context, intent);
 
             Intent intentForLogin = new Intent(BaseActivity.this, LoginActivity.class);
-            intentForLogin.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
             intentForLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intentForLogin);
         }

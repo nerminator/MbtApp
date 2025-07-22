@@ -1,5 +1,6 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.di.components;
 
+import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.di.module.ApiUtilsModule;
 import com.daimlertruck.dtag.internal.android.mbt.test.di.module.NetworkModule;
 import com.daimlertruck.dtag.internal.android.mbt.test.di.module.SharedPreferenceManagerModule;
@@ -141,6 +142,7 @@ public interface AppComponent {
     void inject(LoginFragment loginFragment);
     //Fragment Injection
 
+    void inject(BaseApplication application);  // Add this method
 
     //Glide Injection
     //void injectCustomGlideModule(CustomGlideModule customGlideModule);

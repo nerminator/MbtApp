@@ -68,7 +68,7 @@ class AppFeedbackViewController: MBTBaseViewController, UITextViewDelegate
                     self.navigationController?.popViewController(animated: true)
                 })
             }) { (error) in
-                self.showBasicAlert(message: "Bağlantı problemi! Tekrar Deneyiniz",  cancelHandler:{ () in
+                self.showBasicAlert(message: "Geri bildirim verebilmek için uygulamaya giriş yapınız.",  cancelHandler:{ () in
                 })
             }
         }

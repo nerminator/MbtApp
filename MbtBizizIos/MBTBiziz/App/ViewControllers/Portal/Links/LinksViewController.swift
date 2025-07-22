@@ -25,12 +25,12 @@ class LinksViewController: MBTBaseViewController, LinksDisplayLogic
     @IBOutlet weak var viewCardClubs: MBTHomeCardView!
     @IBOutlet weak var viewCardAds: MBTHomeCardView!
     @IBOutlet weak var viewCardBirthdays: MBTHomeCardView!
-    @IBOutlet weak var viewCardMbFit: MBTHomeCardView!
-    @IBOutlet weak var viewCardGursel: MBTHomeCardView!
+    @IBOutlet weak var viewCardSapConcur: MBTHomeCardView!
+    @IBOutlet weak var viewCardDinner: MBTHomeCardView!
     @IBOutlet weak var viewCardOrchestra: MBTHomeCardView!
     @IBOutlet weak var viewCardImprovement: MBTHomeCardView!
-    @IBOutlet weak var viewCardCar: MBTHomeCardView!
-    @IBOutlet weak var viewCardLibrary: MBTHomeCardView!
+    @IBOutlet weak var viewCardOracleHcm: MBTHomeCardView!
+    @IBOutlet weak var viewCardSocialMedia: MBTHomeCardView!
     
     
     // MARK: VIP Protocols
@@ -87,18 +87,18 @@ extension LinksViewController : MBTHomeCardViewDelegate {
             router?.routeToAds()
         } else if homeCard == viewCardBirthdays {
             router?.routeToBirthday()
-        } else if homeCard == viewCardMbFit {
-            router?.routeToMbFit()
-        } else if homeCard == viewCardGursel {
-            router?.routeToGursel()
-        } else if homeCard == viewCardOrchestra {
+        } else if homeCard == viewCardSapConcur {
+            router?.routeToSapConcur()
+        } else if homeCard == viewCardDinner {
+            router?.routeToDinner()
+        }else if homeCard == viewCardOrchestra {
             router?.routeToOrchestra()
         } else if homeCard == viewCardImprovement {
             router?.routeToImprovement()
-        } else if homeCard == viewCardCar{
-            router?.routeToCar()
-        } else if homeCard == viewCardLibrary {
-            router?.routeToLibrary()
+        } else if homeCard == viewCardOracleHcm{
+            router?.routeToOracleHcm()
+        } else if homeCard == viewCardSocialMedia {
+            router?.routeToSocialMedia()
         }
     }
 }

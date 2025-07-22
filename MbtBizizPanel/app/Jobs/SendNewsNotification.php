@@ -12,6 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Google\Auth\OAuth2;
 
 class SendNewsNotification implements ShouldQueue
 {
@@ -186,8 +187,58 @@ class SendNewsNotification implements ShouldQueue
 
         $this->userIdListForPN = $notificationUserIdList;
     }
+private function _sendAPNPushNotification($deviceTokenList, $languageCode)
+{
+    $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
+    $bundleId = 'com.daimlertruck.dtag.internal.ios.mbt.test'; // ← your app's bundle ID
+    $certPath = base_path() . Constants::APN_CERTIFICATE_PATH;
 
-    private function _sendAPNPushNotification($deviceTokenList, $languageCode)
+    foreach (collect($deviceTokenList)->chunk(100)->toArray() as $list) {
+        foreach ($list as $deviceToken) {
+            $payload = json_encode([
+                'aps' => [
+                    'alert' => [
+                        'title' => $text,
+                        'body'  => $text
+                    ],
+                    'sound' => 'default'
+                ],
+                'newsId'       => intval($this->newsId),
+                'type'         => intval($this->news->type),
+                'discountType' => intval($this->news->discount_type)
+            ]);
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://api.push.apple.com/3/device/{$deviceToken}");
+            curl_setopt($ch, CURLOPT_PORT, 443);
+            curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSLCERT, $certPath);
+            curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'PEM');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                "apns-topic: {$bundleId}",
+                "apns-push-type: alert",
+                "Content-Type: application/json"
+            ]);
+
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $error    = curl_error($ch);
+
+            curl_close($ch);
+
+            Log::info("APNs CURL to device {$deviceToken}: HTTP {$httpCode}");
+            Log::info("APNs Response: {$response}");
+            if ($error) {
+                Log::error("APNs CURL error: {$error}");
+            }
+        }
+    }
+}
+
+    private function old_sendAPNPushNotification($deviceTokenList, $languageCode)
     {
 //        echo "\n--- IOS ---\n";
         $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
@@ -195,7 +246,7 @@ class SendNewsNotification implements ShouldQueue
 
 	    $push = new PushNotification('apn');
 
-            $push->setConfig(['certificate' => base_path().Constants::APN_CERTIFICATE_PATH,  'dry_run'=> false]);
+            $push->setConfig(['certificate' => base_path().Constants::APN_CERTIFICATE_PATH,  'dry_run'=> false, 'topic'       => 'com.daimlertruck.dtag.internal.ios.mbt.test' ]);
 
             $feedback = $push->setMessage([
                     'aps' => [
@@ -216,12 +267,122 @@ class SendNewsNotification implements ShouldQueue
                 ->getFeedback();
 //            print_r($feedback);
 //            echo "\n";
-	    //Log::info("device tokens:" . json_encode(array_values($list)));
+	  //  Log::info("device tokens:" . json_encode(array_values($list)));
           //  Log::info("APN $languageCode feedback:\n" . print_r($feedback, true));
         }
     }
 
-    private function _sendFCMPushNotification($deviceTokenList, $languageCode)
+private function _sendFCMPushNotification($deviceTokenList, $languageCode)
+{
+    $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
+
+    $serviceAccountPath = base_path('app/firebase-service-account.json');
+    $projectId = 'mbt-app-eb79d'; // change this
+
+    $scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
+    $auth = new OAuth2([
+        'audience' => 'https://oauth2.googleapis.com/token',
+        'issuer' => json_decode(file_get_contents($serviceAccountPath))->client_email,
+        'signingAlgorithm' => 'RS256',
+        'signingKey' => json_decode(file_get_contents($serviceAccountPath))->private_key,
+        'tokenCredentialUri' => 'https://oauth2.googleapis.com/token',
+        'scope' => $scopes,
+    ]);
+
+    $auth->fetchAuthToken();
+    $accessToken = $auth->getLastReceivedToken()['access_token'];
+
+    foreach (collect($deviceTokenList)->chunk(100)->toArray() as $list) {
+        foreach ($list as $deviceToken) {
+            $payload = [
+                'message' => [
+                    'token' => $deviceToken,
+                    'notification' => [
+                        'title' => $text,
+                        'body'  => $text,
+                    ],
+                    'data' => [
+                        'newsId'       => strval($this->newsId),
+                        'type'         => strval($this->news->type),
+                        'discountType' => strval($this->news->discount_type),
+                    ]
+                ]
+            ];
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://fcm.googleapis.com/v1/projects/{$projectId}/messages:send");
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                "Authorization: Bearer {$accessToken}",
+                'Content-Type: application/json'
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $error = curl_error($ch);
+
+            curl_close($ch);
+
+            Log::info("✅ FCM v1 HTTP Code: {$httpCode}");
+            Log::info("✅ FCM v1 Response: {$response}");
+            if ($error) {
+                Log::error("❌ FCM v1 CURL error: {$error}");
+            }
+        }
+    }
+}
+
+
+   private function _old2sendFCMPushNotification($deviceTokenList, $languageCode)
+{
+    $fcmApiKey = env('FCM_API_KEY');
+    $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
+
+    foreach (collect($deviceTokenList)->chunk(100)->toArray() as $list) {
+        $tokens = array_values($list);
+
+        $payload = [
+            'registration_ids' => $tokens,
+            'notification' => [
+                'title' => $text,
+                'body'  => $text,
+                'sound' => 'default'
+            ],
+            'data' => [
+                'newsId'       => intval($this->newsId),
+                'type'         => intval($this->news->type),
+                'discountType' => intval($this->news->discount_type)
+            ]
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: key=' . $fcmApiKey,
+            'Content-Type: application/json'
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error    = curl_error($ch);
+
+        curl_close($ch);
+
+        Log::info("📡 FCM tokens: " . json_encode($tokens));
+        Log::info("📡 FCM HTTP Code: $httpCode");
+        Log::info("📡 FCM Response: $response");
+        if ($error) {
+            Log::error("⚠️ FCM CURL Error: $error");
+        }
+    }
+   }
+
+    private function _sendiOldFCMPushNotification($deviceTokenList, $languageCode)
     {
 //        echo "\n--- ANDROID ---\n";
         $text = $languageCode == 'tr' ? $this->news->title : $this->news->title_en;
@@ -245,8 +406,8 @@ class SendNewsNotification implements ShouldQueue
                 ->getFeedback();
 //            print_r($feedback);
 //            echo "\n";
-         //   Log::info("device tokens:" . json_encode(array_values($list)));
-          //  Log::info("FCM $languageCode feedback:\n" . print_r($feedback, true));
+            Log::info("device tokens:" . json_encode(array_values($list)));
+            Log::info("FCM $languageCode feedback:\n" . print_r($feedback, true));
         }
     }
 }

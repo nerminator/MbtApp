@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -112,4 +113,19 @@ public class UsefulLinksCategoryFragment extends BaseFragment {
     }
 
     private static final String IS_PHONE_SELECTED = "IS_PHONE_SELECTED";
+
+    public void onDestroyView() {
+        boolean isPhoneSelected = getArguments().getBoolean(IS_PHONE_SELECTED);
+        if (!isPhoneSelected){
+            UsefulLinksActivity activity = (UsefulLinksActivity) getActivity();
+            if (activity != null) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                // Check if the backstack is decreasing (going back)
+                if (fragmentManager.getBackStackEntryCount() == 1) {
+                    activity.updateToolbarTitle(activity.previousToolbarTitle);
+                }
+            }
+        }
+        super.onDestroyView();
+    }
 }

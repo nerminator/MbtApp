@@ -4,6 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
+
+import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.microsoft.identity.client.IPublicClientApplication;
+import com.microsoft.identity.client.ISingleAccountPublicClientApplication;
+import com.microsoft.identity.client.PublicClientApplication;
+import com.microsoft.identity.client.exception.MsalException;
+
+import androidx.annotation.NonNull;
 
 
 public class SharedPreferenceManager {
@@ -23,6 +33,8 @@ public class SharedPreferenceManager {
     private SharedPreferences preferences;
     private Editor editor;
 
+    private ISingleAccountPublicClientApplication mSingleAccountApp;
+
     @SuppressLint("CommitPrefEdits")
     public SharedPreferenceManager(Context context) {
         preferences = context.getSharedPreferences(BIZIZ_PREF, 0);
@@ -35,6 +47,24 @@ public class SharedPreferenceManager {
             editor.putString(KEY_ACCESS_TOKEN, accessToken);
             editor.commit();
         } catch (Exception ignored) {
+        }
+    }
+
+    public void fullLogout() {
+        try {
+            // Preserve the "read terms" flag
+            String isReadedTerms = preferences.getString(KEY_IS_READED_TERMS, "");
+
+            editor.clear();
+            editor.commit();
+
+            // Restore the terms acceptance flag
+            editor.putString(KEY_IS_READED_TERMS, isReadedTerms);
+            editor.commit();
+
+            Log.i("SharedPreferenceManager", "All preferences cleared.");
+        } catch (Exception e) {
+            Log.e("SharedPreferenceManager", "Error clearing preferences: " + e.getMessage());
         }
     }
     public void logout() {

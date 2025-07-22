@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1236,7 +1236,7 @@ Etiam porta sem malesuada magna mollis euismod.</string>
                                     <outlet property="delegate" destination="161-Yb-CPX" id="LhK-vH-Bla"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-7c-NQS" userLabel="View Card MbFit" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-7c-NQS" userLabel="View Card SapConcur" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
                                 <rect key="frame" x="10.000000000000007" y="265.33333333333331" width="124.66666666666669" height="215.33333333333331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -1251,7 +1251,7 @@ Etiam porta sem malesuada magna mollis euismod.</string>
                                     <outlet property="delegate" destination="161-Yb-CPX" id="9Lz-S2-7cv"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWl-lY-lqx" userLabel="View Card Gursel" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWl-lY-lqx" userLabel="View Card Dinner" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
                                 <rect key="frame" x="144.66666666666666" y="265.33333333333331" width="124.66666666666666" height="215.33333333333331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -1266,7 +1266,7 @@ Etiam porta sem malesuada magna mollis euismod.</string>
                                     <outlet property="delegate" destination="161-Yb-CPX" id="QRR-eg-xTu"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jq-aN-tP2" userLabel="View Card Orchestra" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jq-aN-tP2" userLabel="View Card CloudOffix" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
                                 <rect key="frame" x="279.33333333333331" y="265.33333333333331" width="124.66666666666669" height="215.33333333333331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -1296,7 +1296,7 @@ Etiam porta sem malesuada magna mollis euismod.</string>
                                     <outlet property="delegate" destination="161-Yb-CPX" id="lFv-45-0gr"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkk-LJ-R63" userLabel="View Card Car" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkk-LJ-R63" userLabel="View Card Oracle HCM" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
                                 <rect key="frame" x="144.66666666666666" y="500.66666666666669" width="124.66666666666666" height="215.33333333333331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -1311,7 +1311,7 @@ Etiam porta sem malesuada magna mollis euismod.</string>
                                     <outlet property="delegate" destination="161-Yb-CPX" id="3Y5-A3-fYL"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbw-Vx-vVW" userLabel="View Card Library" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbw-Vx-vVW" userLabel="View Card Social Media" customClass="MBTHomeCardView" customModule="MBTBiziz" customModuleProvider="target">
                                 <rect key="frame" x="279.33333333333331" y="500.66666666666669" width="124.66666666666669" height="215.33333333333331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -1378,13 +1378,13 @@ Etiam porta sem malesuada magna mollis euismod.</string>
                     <connections>
                         <outlet property="viewCardAds" destination="qUh-DZ-3rZ" id="gDQ-kh-wg2"/>
                         <outlet property="viewCardBirthdays" destination="V1L-fX-bup" id="7gh-le-syp"/>
-                        <outlet property="viewCardCar" destination="mkk-LJ-R63" id="RFg-Dl-FJa"/>
                         <outlet property="viewCardClubs" destination="bFO-pL-cUv" id="o3B-kB-oeC"/>
-                        <outlet property="viewCardGursel" destination="CWl-lY-lqx" id="Vbg-vF-Xoc"/>
-                        <outlet property="viewCardImprovement" destination="b9L-RT-Z6W" id="72S-Wi-AMj"/>
-                        <outlet property="viewCardLibrary" destination="Xbw-Vx-vVW" id="kuh-vo-eBf"/>
-                        <outlet property="viewCardMbFit" destination="5fg-7c-NQS" id="NCj-YF-1IJ"/>
-                        <outlet property="viewCardOrchestra" destination="8jq-aN-tP2" id="hR7-ch-rla"/>
+                        <outlet property="viewCardDinner" destination="CWl-lY-lqx" id="F05-ER-NrA"/>
+                        <outlet property="viewCardImprovement" destination="b9L-RT-Z6W" id="Gyw-I9-SF8"/>
+                        <outlet property="viewCardOracleHcm" destination="mkk-LJ-R63" id="N5d-91-Aeb"/>
+                        <outlet property="viewCardOrchestra" destination="8jq-aN-tP2" id="Fne-Hb-Kpr"/>
+                        <outlet property="viewCardSapConcur" destination="5fg-7c-NQS" id="zgm-Vj-DKA"/>
+                        <outlet property="viewCardSocialMedia" destination="Xbw-Vx-vVW" id="Yqn-7a-omf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbT-ih-YnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1659,12 +1659,12 @@ Etiam porta sem malesuada magna mollis euismod.</string>
         <image name="link_icn1" width="35.666667938232422" height="25.666666030883789"/>
         <image name="link_icn2" width="30.333333969116211" height="35"/>
         <image name="link_icn3" width="36" height="36"/>
-        <image name="link_icn4" width="40" height="26.666666030883789"/>
-        <image name="link_icn5" width="35" height="35"/>
+        <image name="link_icn4" width="31.333333969116211" height="39.333332061767578"/>
+        <image name="link_icn5" width="34.666667938232422" height="40"/>
         <image name="link_icn6" width="32.666667938232422" height="35.333332061767578"/>
         <image name="link_icn7" width="28" height="38"/>
-        <image name="link_icn8" width="36" height="25.333333969116211"/>
-        <image name="link_icn9" width="36" height="28.666666030883789"/>
+        <image name="link_icn8" width="34" height="34"/>
+        <image name="link_icn9" width="34.333332061767578" height="34.333332061767578"/>
         <image name="m_icn1" width="35" height="35.333332061767578"/>
         <image name="m_icn2" width="31.333333969116211" height="35"/>
         <image name="m_icn3" width="36" height="29"/>
@@ -1675,7 +1675,7 @@ Etiam porta sem malesuada magna mollis euismod.</string>
         <image name="m_icn8" width="34" height="34"/>
         <image name="m_icn9" width="35" height="35"/>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

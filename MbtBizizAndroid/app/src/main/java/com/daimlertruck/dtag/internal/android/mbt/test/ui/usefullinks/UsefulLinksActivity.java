@@ -3,6 +3,7 @@ package com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,9 +16,9 @@ import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinkscategory.Us
 public class UsefulLinksActivity extends BaseActivity<ActivityUsefulLinksBinding> {
 
     boolean isFromContacts = false;
+    public String previousToolbarTitle;
     public static void start(Context context, boolean isFromContacts) {
         Intent starter = new Intent(context, UsefulLinksActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(IS_FROM_CONTACTS, isFromContacts);
         context.startActivity(starter);
     }
@@ -51,11 +52,22 @@ public class UsefulLinksActivity extends BaseActivity<ActivityUsefulLinksBinding
             if (isFromContacts) {
                 toolBarTitle = getString(R.string.TXT_LOGIN_HOME_EMERGENCY_NUMBERS);
             }
+            previousToolbarTitle = toolBarTitle;
             VMToolbar vmToolbar = VMToolbar.createVMToolbarFor(this, toolBarTitle, null);
             binding.toolbar.setVm(vmToolbar);
         } catch (Exception e) {
         }
 
+    }
+
+    public void updateToolbarTitle(String newTitle) {
+        if (binding != null && binding.toolbar != null) {
+            VMToolbar vmToolbar = binding.toolbar.getVm();
+            if (vmToolbar != null) {
+                // Update toolbar title
+                vmToolbar.setTexts(newTitle, null);
+            }
+        }
     }
 
     public void addFragment(Fragment fragment) {

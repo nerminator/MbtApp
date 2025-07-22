@@ -35,7 +35,7 @@ Stefan Karrenbauer, Managing Director of Mercedes Benz Finansman Türk A.Ş.
 Commercial Register Number: 94468
 VAT Identification Number: 7-9159-7212-1615130
 
-Copyright 2018-2023 Mercedes-Benz Türk A.Ş.
+Copyright 2018-2025 Mercedes-Benz Türk A.Ş.
 All Rights Reserved."</string>
     <string name="TXT_ABOUT_MAIN_APP_DESCRIPTION">App Description</string>
     <string name="TXT_ABOUT_MAIN_TERMS_OF_USE">Terms Of Use</string>
@@ -250,19 +250,19 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas fau
     <string name="TXT_LINKS_TITLE1">Social Clubs</string>
     <string name="TXT_LINKS_TITLE2">Internal Ads</string>
     <string name="TXT_LINKS_TITLE3">Birthdays</string>
-    <string name="TXT_LINKS_TITLE4">MBFit</string>
-    <string name="TXT_LINKS_TITLE5">Gürsel</string>
+    <string name="TXT_LINKS_TITLE4">SAP Concur</string>
+    <string name="TXT_LINKS_TITLE5">Meal Box</string>
     <string name="TXT_LINKS_TITLE6">CloudOffix</string>
     <string name="TXT_LINKS_TITLE7">Improvement System</string>
-    <string name="TXT_LINKS_TITLE8">Company Car</string>
-    <string name="TXT_LINKS_TITLE9">Library</string>
+    <string name="TXT_LINKS_TITLE8">Oracle HCM</string>
+    <string name="TXT_LINKS_TITLE9">MBT Social Media</string>
 
     <string name="TXT_APP_FEEDBACK">App Feedback</string>
     <string name="TXT_FEEDBACK_HINT">Your Feedback…</string>
     <string name="TXT_FEEDBACK_SEND">SEND</string>
     <string name="TXT_FEEDBACK_DIALOG_TITLE">Information</string>
     <string name="TXT_FEEDBACK_SUCCESS">Your feedback has been sent!</string>
-    <string name="TXT_FEEDBACK_ERROR">An error occurred.</string>
+    <string name="TXT_FEEDBACK_ERROR">Login first to submit feedback.</string>
     <string name="TXT_FEEDBACK_CHARACTER_ERROR">Your feedback text cannot be less than 3 characters.</string>
 
     <string name="TXT_APP_SOCIAL_MEDIA">Social Media</string>

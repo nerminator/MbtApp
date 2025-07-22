@@ -18,7 +18,7 @@ return [
     'TXT_WHITE_COLLAR_YEARLY_WORK_HOURS' => 'Esnek Çalışma Bakiyesi (EÇB)',
     'TXT_BLUE_COLLAR_MONTHLY_WORK_HOURS' => 'OFÇ',
     'TXT_WHITE_COLLAR_MONTHLY_WORK_HOURS' => 'EÇH',
-    'TXT_PLUS_HOURS' => 'Artı Saat',
+    'TXT_PLUS_HOURS' => 'Normal Saat',
     'TXT_MINUS_HOURS' => 'Eksi Saat',
 
     'TXT_SHUTTLE_OPTION_EMPLOYEE' => 'Personel',
@@ -50,9 +50,9 @@ return [
     'TXT_SERVER_ERROR_CAPTCHA_NOT_VALID' => 'Captcha geçerli değil.',
 
     'TXT_VERSION_POPUP_MAJOR_UPDATE_TITLE' => 'Önemli Güncelleme',
-    'TXT_VERSION_POPUP_MAJOR_UPDATE_MESSAGE' => 'Biziz uygulamasını kullanmaya devam edebilmek için yeni versiyonu yüklemeniz gerekiyor.',
+    'TXT_VERSION_POPUP_MAJOR_UPDATE_MESSAGE' => 'MBT App uygulamasını kullanmaya devam edebilmek için yeni versiyonu yüklemeniz gerekiyor.',
     'TXT_VERSION_POPUP_MINOR_UPDATE_TITLE' => 'Versiyon Güncelleme',
-    'TXT_VERSION_POPUP_MINOR_UPDATE_MESSAGE' => 'Biziz uygulamasının yeni bir versiyonu yayınlandı, Güncelleme yapmak ister misiniz?',
+    'TXT_VERSION_POPUP_MINOR_UPDATE_MESSAGE' => 'MBT App uygulamasının yeni bir versiyonu yayınlandı. Güncelleme yapmak ister misiniz?',
     'TXT_VERSION_POPUP_DOWNLOAD_BUTTON' => 'İndir',
     'TXT_VERSION_POPUP_CONTINUE_BUTTON' => 'Uygulamaya devam et',
     'TXT_SUPPORT_PHONE_LABEL_1'=> 'Phone/Tel',

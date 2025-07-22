@@ -180,11 +180,15 @@ class LoginController extends Controller
 
         if (!$isTestPhone) {
             try {
+                Log::warning("SMS sending to $phoneNumber with pin code $pinCode");
                 $sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
+                Log::warning("SMS response : $$sendSMSResponse ");
                 if (!$this->_contains("errno=0", $sendSMSResponse)) {
+                    Log::warning("Inside if condition");
                     Log::error("Couldn't send SMS to $phoneNumber\nResponse: $sendSMSResponse");
                 }
             } catch (\Exception $exception) {
+                Log::warning("Exception occurred while sending SMS to $phoneNumber");
                 Log::error("Couldn't send SMS to $phoneNumber\nException: " . $exception->getMessage());
                 return response()->json([
                     'statusCode' => 401,
@@ -208,6 +212,8 @@ class LoginController extends Controller
         $validator = Validator::make($request->all(), [
             'phoneNumber' => 'required|string|min:10|max:10'
         ]);
+        Log::warning("checkPhone called with phoneNumber: " . $request->input('phoneNumber'));
+
         if ($validator->fails()) // missing parameters
         {   
             return response()->json([
@@ -228,7 +234,7 @@ class LoginController extends Controller
             ]);
         }
 
-
+        Log::warning("checkPhone step2");
 
         $userResult = $this->getFirstItemFromDb("select id from users where mobile_phone = ? and status = 1", [$phoneNumber]);
         if ($userResult == null) {
@@ -247,7 +253,7 @@ class LoginController extends Controller
         $now = Carbon::now();
         $previousTime = $now->copy()->subMinute();
 
-
+        Log::warning("checkPhone step3");
 
         /*$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);*/
         $checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
@@ -270,11 +276,15 @@ class LoginController extends Controller
 
         if (!$isTestPhone) {
             try {
+                Log::warning("SMS sending to $phoneNumber with pin code $pinCode");
                 $sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
+                Log::warning("SMS response : $$sendSMSResponse ");
                 if (!$this->_contains("errno=0", $sendSMSResponse)) {
+                    Log::warning("Inside if condition");
                     Log::error("Couldn't send SMS to $phoneNumber\nResponse: $sendSMSResponse");
                 }
             } catch (\Exception $exception) {
+                Log::warning("Exception occurred while sending SMS to $phoneNumber");
                 Log::error("Couldn't send SMS to $phoneNumber\nException: " . $exception->getMessage());
                 return response()->json([
                     'statusCode' => 401,

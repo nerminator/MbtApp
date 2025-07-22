@@ -12,11 +12,13 @@ class BaseNavCon: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.isTranslucent = true
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [.font : UIFont(name: FontType.caRegular.fontName, size: 20)!, .foregroundColor : UIColor.white]
+        }
     }
 
     override func didReceiveMemoryWarning() {

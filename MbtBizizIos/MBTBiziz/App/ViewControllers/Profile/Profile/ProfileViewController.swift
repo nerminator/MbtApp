@@ -106,4 +106,8 @@ extension ProfileViewController {
     @IBAction func btnWorkCalendarTapped(_ sender: UIButton) {
     }
     
+    @IBAction func btnPayslipTapped(_ sender: UIButton) {
+        // Seçim ekranına yönlendirme yapılacak
+        router?.routeToPayslip()
+    }
 }

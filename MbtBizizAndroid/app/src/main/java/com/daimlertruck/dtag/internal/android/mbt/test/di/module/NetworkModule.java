@@ -1,6 +1,7 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.di.module;
 
 import com.daimlertruck.dtag.internal.android.mbt.test.di.scopes.ApplicationScope;
+import com.daimlertruck.dtag.internal.android.mbt.test.manager.MsalManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.TokenManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.network.APIService;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.network.LoginInterceptor;
@@ -92,7 +93,7 @@ public class NetworkModule {
     @ApplicationScope
     @Provides
     public LoginInterceptor getLoginIntercepter(Gson gson, TokenManager tokenManager) {
-        return new LoginInterceptor(tokenManager, gson);
+        return new LoginInterceptor(tokenManager, gson, MsalManager.getSingleMsalManager());
     }
     //endregion
 

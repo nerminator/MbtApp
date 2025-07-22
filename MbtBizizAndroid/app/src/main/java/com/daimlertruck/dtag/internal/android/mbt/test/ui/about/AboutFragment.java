@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
 import com.daimlertruck.dtag.internal.android.mbt.test.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
@@ -81,7 +82,8 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     }
 
     private void setVersionText() {
-        String versionText = getResources().getString(R.string.TXT_VERSION_INFO) + "1.0.0 - 19";
+        String versionText = getResources().getString(R.string.TXT_VERSION_INFO) +
+                BuildConfig.VERSION_NAME+"."+BuildConfig.VERSION_CODE;
         binding.txtVersionInfo.setText(versionText);
     }
 
@@ -94,6 +96,7 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View v) {
         AboutDetailFragment aboutDetailFragment = new AboutDetailFragment();
         Bundle bunle = new Bundle();
+
         if (v.getId() == R.id.relAppDescriptionAbout) {
             //Uygulama Açıklaması
             if (Locale.getDefault().getLanguage().equals("tr")) {
@@ -158,5 +161,6 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
         aboutDetailFragment.setArguments(bunle);
         ((AboutActivity) getActivity()).loadFragment(R.id.container, aboutDetailFragment, true);
 
+        // throw new RuntimeException("This is a crash");
     }
 }

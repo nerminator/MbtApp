@@ -30,7 +30,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:tabSelectedTextColor="@android:color/white"
             app:tabTextAppearance="@style/tabNewsTextAppearance"
-            app:tabTextColor="#80ffffff" />-->
+            app:tabTextColor="@color/tabUnSelectedColor" />-->
 
         <!--<androidx.viewpager.widget.ViewPager
             android:id="@+id/vpNews"

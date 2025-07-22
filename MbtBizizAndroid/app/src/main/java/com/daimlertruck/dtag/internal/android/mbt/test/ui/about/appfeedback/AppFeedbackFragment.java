@@ -57,6 +57,14 @@ public class AppFeedbackFragment extends BaseFragment {
                 showFeedbackDialog(getString(R.string.TXT_FEEDBACK_ERROR), true);
             }
         });
+
+        vmAppFeedback.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                showProgressDialog();
+            } else {
+                dismissProgressDialog();
+            }
+        });
     }
 
     private void initView() {
@@ -84,7 +92,10 @@ public class AppFeedbackFragment extends BaseFragment {
         );
         messageDialog.setOnDismissListener(() -> {
             if (!isError) {
-                ((BaseActivity) getActivity()).onBackPressed();
+                BaseActivity activity = (BaseActivity) getActivity();
+                if (activity != null && !activity.isFinishing()) {
+                    activity.onBackPressed();
+                }
             }
         });
         messageDialog.show(getActivity().getSupportFragmentManager(), "");

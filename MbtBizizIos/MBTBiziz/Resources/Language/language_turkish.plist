@@ -83,7 +83,7 @@
 		<key>TXT_LOGIN_NEWS_TYPE6</key>
 		<string>Diğer</string>
 		<key>TXT_LOGIN_NEWS_TYPE7</key>
-		<string>Duyurular</string>
+		<string>Haberler</string>
 		<key>TXT_LOGIN_NEWS_TYPE8</key>
 		<string>Linkler</string>
 		<key>TXT_LOGIN_NEWS_TYPE9</key>
@@ -375,17 +375,17 @@ QR kodunu tarayınız.</string>
 		<key>TXT_LINKS_TITLE3</key>
 		<string>Bugün Doğanlar</string>
 		<key>TXT_LINKS_TITLE4</key>
-		<string>MBFit</string>
+		<string>SAP Concur</string>
 		<key>TXT_LINKS_TITLE5</key>
-		<string>Gürsel Yolcu</string>
+		<string>Yemeğim Evimde</string>
 		<key>TXT_LINKS_TITLE6</key>
 		<string>CloudOffix</string>
 		<key>TXT_LINKS_TITLE7</key>
 		<string>Öneri Sistemi</string>
 		<key>TXT_LINKS_TITLE8</key>
-		<string>Araç Kolay</string>
+		<string>Oracle HCM</string>
 		<key>TXT_LINKS_TITLE9</key>
-		<string>Kütüphane</string>
+		<string>MBT Sosyal Medya</string>
 		<key>TXT_COPY</key>
 		<string>Kopyala</string>
 		<key>TXT_COPIED</key>

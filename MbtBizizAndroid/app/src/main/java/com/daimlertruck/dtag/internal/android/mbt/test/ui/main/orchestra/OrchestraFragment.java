@@ -69,7 +69,6 @@ public class OrchestraFragment extends Fragment {
             if (aBoolean) {
                 sharedPreferenceManager.logout();
                 Intent intent = new Intent();
-                intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                 intent.setAction("com.daimler.biziz.intent.LOG_OUT");
                 getActivity().sendBroadcast(intent);
             }

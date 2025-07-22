@@ -3,6 +3,7 @@ package com.daimlertruck.dtag.internal.android.mbt.test.network.network;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -137,6 +138,9 @@ public interface APIService {
 
     @POST("submitFeedback")
     Call<BaseResponse> submitFeedback(@Body SubmitFeedbackBody body);
+
+    @POST("sendCrashLog")
+    Call<BaseResponse> sendCrashLog(@Body CrashLogBody body);
 
     @GET("medias")
     Call<BaseResponse<SocialMediaEntity>> getSocialMedias();

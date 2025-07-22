@@ -48,7 +48,6 @@ public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding> 
 
     public static void start(Context context, String newsDetailId) {
         Intent starter = new Intent(context, NewsDetailActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(KEY_NEWS_DETAIL_ID, newsDetailId);
         context.startActivity(starter);
     }
@@ -112,7 +111,6 @@ public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding> 
                 url = vmNewsDetail.getNewsDetail().getValue().getUrl();
                 if (!TextUtils.isEmpty(url)) {
                     Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                     i.setData(Uri.parse(url));
                     startActivity(i);
                 }
@@ -195,7 +193,6 @@ public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding> 
 
     private void openPdfItem(String pdfUrl) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         intent.setDataAndType(Uri.parse("http://docs.google.com/viewer?url=" + pdfUrl), "text/html");
         startActivity(intent);
     }

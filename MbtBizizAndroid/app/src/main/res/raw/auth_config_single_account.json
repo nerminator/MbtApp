@@ -1,7 +1,7 @@
 {
   "client_id": "bc50644f-7099-4737-bcd1-a2791ba4930b",
   "authorization_user_agent": "WEBVIEW",
-  "redirect_uri": "msauth://com.daimlertruck.dtag.internal.android.mbt.test/M33Vk69YJWUrQhslWjEi3OSpqvw%3D",
+  "redirect_uri": "msauth://com.daimlertruck.dtag.internal.android.mbt.test/hhwqvvLcN8brgkk7%2F4rLmhYKCxY%3D",
   "broker_redirect_uri_registered": true,
   "account_mode": "SINGLE",
   "authorities": [

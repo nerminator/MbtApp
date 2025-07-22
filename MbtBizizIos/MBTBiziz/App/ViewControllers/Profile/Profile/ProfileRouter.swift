@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol ProfileRoutingLogic
 {
-
+    func routeToPayslip()
 }
 
 protocol ProfileDataPassing
@@ -24,5 +24,12 @@ class ProfileRouter: NSObject, ProfileRoutingLogic, ProfileDataPassing
     var dataStore: ProfileDataStore?
     
     //MARK : Routing
+    
+    func routeToPayslip() {
+            let storyboard = UIStoryboard(name: "Payslip", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "PayslipViewController") as? PayslipViewController {
+                viewController?.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     
 }

@@ -192,7 +192,6 @@ public class PortalFragment extends Fragment {
 
     private void goToSettings() {
         Intent myAppSettings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getActivity().getPackageName()));
-        myAppSettings.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         myAppSettings.addCategory(Intent.CATEGORY_DEFAULT);
         myAppSettings.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivityForResult(myAppSettings, REQUEST_APP_SETTINGS);

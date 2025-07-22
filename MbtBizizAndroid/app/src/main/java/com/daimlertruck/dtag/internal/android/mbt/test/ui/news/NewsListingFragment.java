@@ -186,7 +186,6 @@ public class NewsListingFragment extends BaseFragment implements DiscountTypeBot
         if (news.getType() == News.TYPE_LINKS) {
             if (!TextUtils.isEmpty(news.getUrl())) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                 i.setData(Uri.parse(news.getUrl()));
                 startActivity(i);
             }
@@ -194,7 +193,6 @@ public class NewsListingFragment extends BaseFragment implements DiscountTypeBot
         else if (news.getType() == News.TYPE_CONTACTS) {
             if (!TextUtils.isEmpty(news.getPhone())) {
                 Intent i = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", news.getPhone(), null));
-                i.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                 startActivity(i);
             }
         }

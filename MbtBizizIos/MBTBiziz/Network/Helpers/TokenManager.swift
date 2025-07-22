@@ -170,21 +170,29 @@ class TokenManager {
                 if (nsError.domain == MSALErrorDomain) {
                     
                     if (nsError.code == MSALError.interactionRequired.rawValue) {
-                        
-                        completion(false)
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
                     }
                 }
                 
-                completion(false)
+                DispatchQueue.main.async {
+                    completion(false)
+                }
             }
             
             if let result = result  {
                 
                 self._accessToken  = result.accessToken
-                completion(true)
+                
+                DispatchQueue.main.async {
+                    completion(true)
+                }
                 
             } else {
-                completion(false)
+                DispatchQueue.main.async {
+                    completion(false)
+                }
             }
             
             

@@ -35,7 +35,7 @@ MBT, Aksaray Fabrika Direktörü &amp; İcra Kurulu Üyesi, Ulf Raese
 Ticari Kayıt Numarası: 94468
 VAT Kimlik Numarası: 7-9159-7212-1615130
 
-Telif Hakkı 2018-2023 Mercedes-Benz Türk A.Ş.
+Telif Hakkı 2018-2025 Mercedes-Benz Türk A.Ş.
 Tüm Hakları Saklıdır."</string>
 
     <string name="TXT_ABOUT_MAIN_APP_DESCRIPTION">Uygulama Açıklaması</string>
@@ -135,7 +135,7 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_COMMON_NOVEMBER">Kasım</string>
     <string name="TXT_COMMON_DECEMBER">Aralık</string>
 
-    <string name="TXT_COMMON_ANNOUNCEMENT">Duyuru</string>
+    <string name="TXT_COMMON_ANNOUNCEMENT">Haberler</string>
 
     <string name="TXT_LOGIN_NEWS_DISCOUNT_TYPE1">Kategoriler</string>
 
@@ -252,19 +252,19 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_LINKS_TITLE1">Sosyal Kulüpler</string>
     <string name="TXT_LINKS_TITLE2">Dahili İlanlar</string>
     <string name="TXT_LINKS_TITLE3">Bugün Doğanlar</string>
-    <string name="TXT_LINKS_TITLE4">MBFit</string>
-    <string name="TXT_LINKS_TITLE5">Gürsel Yolcu</string>
+    <string name="TXT_LINKS_TITLE4">SAP Concur</string>
+    <string name="TXT_LINKS_TITLE5">Yemeğim Evimde</string>
     <string name="TXT_LINKS_TITLE6">CloudOffix</string>
     <string name="TXT_LINKS_TITLE7">Öneri Sistemi</string>
-    <string name="TXT_LINKS_TITLE8">Araç Kolay</string>
-    <string name="TXT_LINKS_TITLE9">Kütüphane</string>
+    <string name="TXT_LINKS_TITLE8">Oracle HCM</string>
+    <string name="TXT_LINKS_TITLE9">MBT Sosyal Medya</string>
 
     <string name="TXT_APP_FEEDBACK">Uygulama Geri Bildirim</string>
     <string name="TXT_FEEDBACK_HINT">Geri bildiriminiz…</string>
     <string name="TXT_FEEDBACK_SEND">GÖNDER</string>
     <string name="TXT_FEEDBACK_DIALOG_TITLE">Bilgilendirme</string>
     <string name="TXT_FEEDBACK_SUCCESS">Geri bildiriminiz gönderildi!</string>
-    <string name="TXT_FEEDBACK_ERROR">Geri bildirim gönderilirken bir hata oluştu.</string>
+    <string name="TXT_FEEDBACK_ERROR">Geri bildirim verebilmek için uygulamaya giriş yapınız.</string>
     <string name="TXT_FEEDBACK_CHARACTER_ERROR">Geri bildiriminiz 3 karakterden az olamaz.</string>
 
     <string name="TXT_APP_SOCIAL_MEDIA">Sosyal Medya Hesapları</string>

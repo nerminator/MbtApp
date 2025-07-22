@@ -40,7 +40,6 @@ public class HtmlActivity extends BaseActivity<ActivityHtmlBinding> {
 
     public static void start(Context context, String htmlUrl, Boolean isSocialMediaActive) {
         Intent starter = new Intent(context, HtmlActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(KEY_HTML_URL, htmlUrl);
         starter.putExtra(SOCIAL_MEDIA_FLAG, isSocialMediaActive);
         context.startActivity(starter);

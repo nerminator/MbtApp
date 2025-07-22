@@ -14,7 +14,9 @@ class JailbreakHelper: NSObject {
 
         FileManager.default.fileExists(atPath: "")
 
-        if TARGET_IPHONE_SIMULATOR != 1 {
+#if targetEnvironment(simulator)
+        return false // Simulators are not jailbroken
+#else
 
             // Check 1 : existence of files that are common for jailbroken devices
             if FileManager.default.fileExists(atPath: "/Applications/Cydia.app")
@@ -36,8 +38,6 @@ class JailbreakHelper: NSObject {
             } catch {
                 return false
             }
-        } else {
-            return false
-        }
+#endif
     }
 }

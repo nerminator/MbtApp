@@ -5,7 +5,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
 }
-
 android {
 
     signingConfigs {
@@ -29,8 +28,8 @@ android {
         applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
         minSdk = 24
         targetSdk = 33
-        versionCode = 21
-        versionName = "1.0.0"
+        versionCode = 34
+        versionName = "1.2.0"
         dataBinding.enable = true
         multiDexEnabled = false
 

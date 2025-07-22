@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -20,6 +21,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.SettingsAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivitySettingsBinding;
+import com.daimlertruck.dtag.internal.android.mbt.test.manager.MsalManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.settings.ISettingsChange;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.settings.SettingObject;
@@ -82,11 +84,19 @@ public class SettingsActivity extends BaseActivity<ActivitySettingsBinding> {
 
         vmSettings.logoutSucced.observe(this, aBoolean -> {
             if (aBoolean) {
-                sharedPreferenceManager.logout();
-                Intent intent = new Intent();
-                intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
-                intent.setAction("com.daimler.biziz.intent.LOG_OUT");
-                sendBroadcast(intent);
+                MsalManager.getSingleMsalManager().signOut(new MsalManager.ISignoutCallback() {
+                    @Override
+                    public void onSuccess() {
+                        Intent intent = new Intent();
+                        intent.setAction("com.daimler.biziz.intent.LOG_OUT");
+                        sendBroadcast(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                });
             }
         });
         goToSettings();
@@ -115,6 +125,19 @@ public class SettingsActivity extends BaseActivity<ActivitySettingsBinding> {
                 .setMessage(R.string.TXT_PROFILE_SETTINGS_QUIT_WARNING)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        MsalManager.getSingleMsalManager().signOut(new MsalManager.ISignoutCallback() {
+                            @Override
+                            public void onSuccess() {
+                                Intent intent = new Intent();
+                                intent.setAction("com.daimler.biziz.intent.LOG_OUT");
+                                sendBroadcast(intent);
+                            }
+
+                            @Override
+                            public void onFailure(Exception e) {
+                                Log.d("MSAL", e.getMessage());
+                            }
+                        });
                         alertDialog.dismiss();
                     }
                 })
@@ -128,7 +151,6 @@ public class SettingsActivity extends BaseActivity<ActivitySettingsBinding> {
 
     private void goToSettings() {
         Intent myAppSettings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()));
-        myAppSettings.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         myAppSettings.addCategory(Intent.CATEGORY_DEFAULT);
         myAppSettings.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivityForResult(myAppSettings, REQUEST_APP_SETTINGS);
@@ -162,7 +184,6 @@ public class SettingsActivity extends BaseActivity<ActivitySettingsBinding> {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, SettingsActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
 }

@@ -10,9 +10,13 @@ public class InitPostBody {
     @SerializedName("osType")
     private Integer osType;
 
+    @SerializedName("newApp")
+    private boolean newApp;
+
     public InitPostBody(String code) {
         this.code = code;
         this.osType = 1;
+        this.newApp = true;
     }
 
     public String getCode() {

@@ -1,12 +1,16 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra;
 
 import android.app.Application;
+import android.content.Intent;
+import android.util.Log;
+
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.annotation.NonNull;
 
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.SingleLiveEvent;
+import com.daimlertruck.dtag.internal.android.mbt.test.manager.MsalManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponseCodes;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ProfileEntity;
@@ -56,25 +60,21 @@ public class VmOrchestra extends AndroidViewModel {
 
     public void logout() {
         isLoading.postValue(true);
-        abstractApiUtils.getLogout(new NetworkCallback<BaseResponse>() {
+
+        MsalManager.getSingleMsalManager().signOut(new MsalManager.ISignoutCallback() {
             @Override
-            public void onSuccess(BaseResponse response) {
+            public void onSuccess() {
                 isLoading.postValue(false);
                 logoutSucced.postValue(true);
             }
 
             @Override
-            public void onServiceFailure(int httpResponseCode, String message) {
-                isLoading.postValue(false);
-                logoutSucced.postValue(true);
-            }
-
-            @Override
-            public void onNetworkFailure(Throwable message) {
+            public void onFailure(Exception e) {
                 isLoading.postValue(false);
                 logoutSucced.postValue(true);
             }
         });
+
     }
 
 

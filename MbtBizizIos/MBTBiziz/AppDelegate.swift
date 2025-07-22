@@ -14,16 +14,52 @@ import UserNotifications
 import SwiftUI
 import MSAL
 
+
+func handleUncaughtException(_ exception: NSException) {
+    let crashDetails = """
+    Name: \(exception.name)
+    Reason: \(exception.reason ?? "Unknown")
+    Stack Trace: \(exception.callStackSymbols.joined(separator: "\n"))
+    """
+
+    CrashLoggerHelper.shared.logCrash(message: crashDetails) // Your crash logging logic
+}
+
+
+
+func sendCrashToServer(_ crash: [String: Any]) {
+    guard let url = URL(string: "https://your-backend-url.com/api/crash") else { return }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    let body = try? JSONSerialization.data(withJSONObject: crash)
+    request.httpBody = body
+
+    URLSession.shared.dataTask(with: request).resume()
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         MBTLanguageManager.sharedManager.initialize()
         AppearenceHelper().setupAppearence()
         UNUserNotificationCenter.current().delegate = self
+        
+        //NSSetUncaughtExceptionHandler(handleUncaughtException)
+        
+        //if let crash = UserDefaults.standard.dictionary(forKey: "lastCrash") {
+        //    CrashLoggerHelper.shared.logCrash(message: crash) // Your crash logging logic
+        //    UserDefaults.standard.removeObject(forKey: "lastCrash")
+        //}
+        
         return true
     }
 

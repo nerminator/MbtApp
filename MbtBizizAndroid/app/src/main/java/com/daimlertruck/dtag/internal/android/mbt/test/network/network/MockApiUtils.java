@@ -3,6 +3,7 @@ package com.daimlertruck.dtag.internal.android.mbt.test.network.network;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.TokenManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -211,6 +212,10 @@ public class MockApiUtils extends AbstractApiUtils {
 
     @Override
     public void sendFeedback(SubmitFeedbackBody submitFeedbackBody, NetworkCallback<BaseResponse> callback) {
+
+    }
+
+    public void sendCrashLog(CrashLogBody crashLogBody, NetworkCallback<BaseResponse> callback) {
 
     }
 

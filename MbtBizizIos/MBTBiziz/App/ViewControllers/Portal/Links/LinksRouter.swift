@@ -14,12 +14,12 @@ protocol LinksRoutingLogic
     func routeToClubs()
     func routeToAds()
     func routeToBirthday()
-    func routeToMbFit()
-    func routeToGursel()
+    func routeToSapConcur()
     func routeToOrchestra()
     func routeToImprovement()
-    func routeToCar()
-    func routeToLibrary()
+    func routeToOracleHcm()
+    func routeToSocialMedia()
+    func routeToDinner()
 }
 
 protocol LinksDataPassing
@@ -39,7 +39,7 @@ class LinksRouter: NSObject, LinksRoutingLogic, LinksDataPassing
     }
     
     func routeToAds() { //URL
-        UIApplication.shared.open(URL(string:"https://performancemanager5.successfactors.eu/acme?bplte_company=mercedesbe&fbacme_n=recruiting&recruiting%5fns=joblisting%20summary&_s.crb=9ZPnbTenOQEkBst64BF17GYPU8usDnQOfv2MFLy3e1U%3d")!)
+        UIApplication.shared.open(URL(string:"https://performancemanager5.successfactors.eu/sf/careers/jobsearch?bplte_company=mercedesbe&_s.crb=McXCkAgE%252fh%252bQRsZU9VjG2iZj%252f4QF%252b%252bcAtBlOkPdHY4U%253d")!)
     }
     
     func routeToBirthday() {
@@ -47,12 +47,16 @@ class LinksRouter: NSObject, LinksRoutingLogic, LinksDataPassing
         viewController?.navigationController?.pushViewController(birthday, animated: true)
     }
     
-    func routeToMbFit() {
-       UIApplication.shared.open(URL(string: "https://apps.apple.com/tr/app/wellbees/id1459175907?l=tr")!)
+    func routeToSapConcur() {
+      // test a crash to see that log is sent
+      //  let array = NSArray(object: "Test")
+      //  let _ = array.object(at: 2) // Index out of bounds → raises NSException
+        
+       UIApplication.shared.open(URL(string: "https://apps.apple.com/tr/app/sap-concur/id335023774?l=tr")!)
     }
     
-    func routeToGursel() {
-        UIApplication.shared.open(URL(string: "https://apps.apple.com/app/g%C3%BCrsel-yolcu/id1549465749")!)
+    func routeToDinner() {
+        UIApplication.shared.open(URL(string: "https://mercedes-benz.rezervem.com.tr/")!)
             
     }
     
@@ -64,10 +68,11 @@ class LinksRouter: NSObject, LinksRoutingLogic, LinksDataPassing
         UIApplication.shared.open(URL(string: "https://daimler-truck.ideas.cloud/app/")!)
     }
     
-    func routeToCar() {
-        UIApplication.shared.open(URL(string: "https://vts.tr152.corpintra.net/account/LoginPortal?returnUrl=/")!)
+    func routeToOracleHcm() {
+        UIApplication.shared.open(URL(string: "https://login-exdu-saasfaprod1.fa.ocs.oraclecloud.com/")!)
     }
-    func routeToLibrary() {
-        UIApplication.shared.open(URL(string: "https://kitapdunyasi.tr152.corpintra.net/")!)
+    func routeToSocialMedia() {
+        let sm = SocialMediaViewController.fromStoryboard(.socialmedia)
+        viewController?.navigationController?.pushViewController(sm, animated: true)
     }
 }

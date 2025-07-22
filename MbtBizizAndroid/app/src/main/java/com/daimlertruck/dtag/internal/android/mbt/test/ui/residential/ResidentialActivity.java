@@ -55,13 +55,11 @@ public class ResidentialActivity extends BaseActivity<ActivityResidentialBinding
 
     public static void start(Context context) {
         Intent starter = new Intent(context, ResidentialActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
 
     public static void start(Context context, Building building, MeetingRoom meetingRoom) {
         Intent starter = new Intent(context, ResidentialActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(KEY_BUILD, building);
         starter.putExtra(KEY_IS_SEARCH, true);
         starter.putExtra(KEY_MEETING_ROOM, meetingRoom);

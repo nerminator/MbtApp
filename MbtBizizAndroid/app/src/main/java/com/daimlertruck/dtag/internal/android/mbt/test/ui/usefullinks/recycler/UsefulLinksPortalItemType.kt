@@ -4,10 +4,10 @@ enum class UsefulLinksPortalItemType {
     SOCIAL_CLUBS,
     INTERNAL_ADS,
     BIRTHDAYS,
-    MBFIT,
-    GURSEL,
+    SAP_CONCUR,
+    MEALBOX,
     ORCHESTRA,
     IMPROVEMENT_SYSTEM,
-    COMPANY_CAR,
-    LIBRARY
+    ORACLE_HCM,
+    SOCIAL_MEDIA
 }

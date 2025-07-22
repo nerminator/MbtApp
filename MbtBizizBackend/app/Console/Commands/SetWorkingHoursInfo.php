@@ -61,7 +61,11 @@ class SetWorkingHoursInfo extends Command
         $contents = $this->_file_get_contents_utf8($filePath);
         $lines = explode(PHP_EOL, $contents);
         $isHeaderLine = true;
-        $startOfDayNow = Carbon::now()->startOfDay();
+	$startOfDayNow = Carbon::now()->startOfDay();
+
+	// Collect all register numbers
+	$validRegisterNumbers = DB::table('users')->pluck('register_number')->toArray();
+
         foreach ($lines as $line) {
             if ($isHeaderLine) {
                 $isHeaderLine = false;
@@ -79,6 +83,12 @@ class SetWorkingHoursInfo extends Command
                 continue;
             }
 
+	    // Check if register number exists in users table
+	    if (!in_array($columns[0], $validRegisterNumbers)) {
+       		 Log::warning("Skipping insert: register_number '{$columns[0]}' does not exist in users table.");
+           	 continue;
+	    }
+
             $workingHoursInfoList[] = [
                 'register_number' => $columns[0], // Personel No
                 'info_date' => Carbon::createFromFormat('d.m.Y', $columns[1]), // Tarih
@@ -91,10 +101,13 @@ class SetWorkingHoursInfo extends Command
         }
 
         if (is_array($workingHoursInfoList) && count($workingHoursInfoList) > 0) {
-            foreach (collect($workingHoursInfoList)->chunk(100)->toArray() as $list) {
-                DB::table('working_hours_info')->insert($list);
-            }
-
+	       foreach (collect($workingHoursInfoList)->chunk(100)->toArray() as $list) {
+		  try {
+                	DB::table('working_hours_info')->insert($list);
+            	  } catch (\Exception $e) {
+                	Log::error("Error inserting working hours: " . $e->getMessage());
+	      	  }
+                }
             TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel çalışma saati verileri başarıyla güncellendi.");
         }
     }

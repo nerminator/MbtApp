@@ -26,7 +26,6 @@ public class FlexibleWorkingDetailActivity extends BaseActivity<ActivityFlexible
 
     public static void start(Context context, String title, ArrayList<FlexibleItemEntity> list, FlexibleWorkEntity textData) {
         Intent starter = new Intent(context, FlexibleWorkingDetailActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(KEY_FLEXIBLE_TITLE,title);
         starter.putExtra(KEY_FLEXIBLE_LIST,list);
         starter.putExtra(KEY_FLEXIBLE_TEXT_DATA,textData);

@@ -147,27 +147,24 @@
             app:layout_constraintGuide_percent="0.93" />
 
 
-
-
         <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnAra"
             android:layout_width="160dp"
             android:layout_height="52dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/radius_bg_blue"
-            android:text="@string/TXT_LOGIN_SUPPORT_BUTTON"
-            android:textSize="18sp"
+            android:background="@color/btnActiveButtonBgColor"
+            android:drawableLeft="@drawable/ic_phone"
             android:drawablePadding="-17dp"
-            android:textAlignment="center"
             android:paddingStart="17dp"
             android:paddingEnd="17dp"
+            android:text="@string/TXT_LOGIN_SUPPORT_BUTTON"
+            android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:drawableLeft="@drawable/ic_phone"
+            android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideLine"
             app:layout_constraintStart_toEndOf="@+id/leftGuideLine"
-            app:layout_constraintTop_toBottomOf="@+id/middleContainer"
-             />
+            app:layout_constraintTop_toBottomOf="@+id/middleContainer" />
 
         <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/button2"

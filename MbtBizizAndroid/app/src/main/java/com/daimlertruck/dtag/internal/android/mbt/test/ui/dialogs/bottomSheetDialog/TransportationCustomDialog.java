@@ -45,7 +45,6 @@ public class TransportationCustomDialog extends BottomSheetDialog {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", shuttleListEntity.getDriverInfo().getTelephone(), null));
-                intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                 fragment.getActivity().startActivity(intent);
             }
         });

@@ -99,13 +99,11 @@ public class AboutDetailFragment extends BaseFragment {
                     openDetailPage(url);
                 } else if (url.startsWith("mailto")) {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                     view.getContext().startActivity(intent);
                     // Return true means, leave the current web view and handle the url itself
                     return true;
                 } else {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
                     startActivity(intent);
                 }
                 return super.shouldOverrideUrlLoading(view, request);

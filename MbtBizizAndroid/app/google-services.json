@@ -1,30 +1,21 @@
 {
   "project_info": {
-    "project_number": "696890227672",
-    "project_id": "mbt-biziz",
-    "storage_bucket": "mbt-biziz.appspot.com"
+    "project_number": "915703309320",
+    "project_id": "mbt-app-eb79d",
+    "storage_bucket": "mbt-app-eb79d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:696890227672:android:d36f2f8b22c0b1c933d0ad",
+        "mobilesdk_app_id": "1:915703309320:android:e5a3e9036c1f20101eddbd",
         "android_client_info": {
           "package_name": "com.daimlertruck.dtag.internal.android.mbt.test"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "696890227672-jk1dv4qdrh367pd4ugar9jpjoviogdtd.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.daimlertruck.dtag.internal.android.mbt.test",
-            "certificate_hash": "861c2abef2dc37c6eb82493bff8acb9a160a0b16"
-          }
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC0pFfhXn-7rDBL4WhIxSBV1CHbQV9p7uE"
+          "current_key": "AIzaSyBZt9LtwKxhuRpURJ0mJSPGDj_DH8Q2IA0"
         }
       ],
       "services": {

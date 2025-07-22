@@ -51,6 +51,7 @@ enum NetworkAPI {
     case getMedias
     case submitFeedback(text: String)
     case appStartup
+    case fetchPayslip(year: Int, month: Int)
 }
 
 enum ServiceUrl : String {

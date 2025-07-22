@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_background"
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="51.3dp"
             android:layout_alignParentBottom="true"
-            android:background="#353c54"
+            android:background="@color/btnActiveButtonBgColor"
             android:text="@string/TXT_PROFILE_SETTINGS_BUTTON"
             android:textColor="@android:color/white"
             android:textSize="17.3sp" />

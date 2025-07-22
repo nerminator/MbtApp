@@ -9,6 +9,8 @@ import Result
 import Alamofire
 import Marshal
 
+
+
 #if MOCK
     fileprivate let SHOULD_STUB_RESPONSES = true
 #else
@@ -72,6 +74,7 @@ fileprivate let manager: Manager = {
 
 fileprivate let networkLoggerPlugin = NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)
 
+
 class WSProvider {
 
     static var shared: WSProvider = WSProvider()
@@ -89,8 +92,49 @@ class WSProvider {
 extension WSProvider {
     
     @discardableResult
-    internal func wsRequest<T>(_ target: NetworkAPI, success: WSResponse<T>.WSSuccessCompletion?, wrappedSuccess: WSResponse<T>.WSWrappedSuccessCompletion?  ,failure: @escaping WSFailureCompletion) -> Cancellable? {
+    internal func wsRequest<T>(
+        _ target: NetworkAPI,
+        success: WSResponse<T>.WSSuccessCompletion?,
+        wrappedSuccess: WSResponse<T>.WSWrappedSuccessCompletion?,
+        failure: @escaping WSFailureCompletion
+    ) -> Cancellable? {
+        
+        guard target.needAuthorization else {
+            return self.performWsRequest(target, success: success, wrappedSuccess: wrappedSuccess, failure: failure)
+        }
+        
+        guard let currentAccount = TokenManager.sharedManager.currentAccount else {
+            DispatchQueue.main.async {
+                NavigationHelper().showWelcomeScreen()
+            }
+            return nil
+        }
+        
+        TokenManager.sharedManager.acquireTokenSilently(currentAccount) { [weak self] refreshed in
+            guard let self = self else { return }
+            
+            if refreshed {
+                _ = self.performWsRequest(target, success: success, wrappedSuccess: wrappedSuccess, failure: failure)
+            } else {
+                DispatchQueue.main.async {
+                    NavigationHelper().showWelcomeScreen()
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    
+    fileprivate func performWsRequest<T>(
+        _ target: NetworkAPI,
+        success: WSResponse<T>.WSSuccessCompletion?,
+        wrappedSuccess: WSResponse<T>.WSWrappedSuccessCompletion?,
+        failure: @escaping WSFailureCompletion
+    ) -> Cancellable? {
+        
         let stubBehaviour = WSProvider.sharedProvider.stubClosure(target)
+        
         switch stubBehaviour {
         case .never:
             if let reachability = reachability, reachability.isReachable {
@@ -192,6 +236,37 @@ extension WSProvider {
         }
         return errorMessage
     }
+    
+    @discardableResult
+    func wsAuthorizedRequest<T>(
+        _ target: NetworkAPI,
+        success: WSResponse<T>.WSSuccessCompletion?,
+        wrappedSuccess: WSResponse<T>.WSWrappedSuccessCompletion? = nil,
+        failure: @escaping WSFailureCompletion
+    ) -> Cancellable? {
+        
+        // only do token check if the target wants authorization
+        guard target.needAuthorization else {
+            return self.wsRequest(target, success: success, wrappedSuccess: wrappedSuccess, failure: failure)
+        }
+        
+        TokenManager.sharedManager.acquireTokenSilently(TokenManager.sharedManager.currentAccount) { [weak self] refreshed in
+            guard let self = self else { return }
+            
+            if refreshed {
+                // token refreshed, now proceed
+                _ = self.wsRequest(target, success: success, wrappedSuccess: wrappedSuccess, failure: failure)
+            } else {
+                // token refresh failed - force sign out or handle
+                DispatchQueue.main.async {
+                    NavigationHelper().showWelcomeScreen()
+                }
+            }
+        }
+        
+        return nil
+    }
+
 }
 
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
@@ -203,3 +278,5 @@ private func JSONResponseDataFormatter(_ data: Data) -> Data {
         return data // fallback to original data if it can't be serialized.
     }
 }
+
+

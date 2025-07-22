@@ -22,7 +22,6 @@ public class Navigate {
 
     public static void to(Context context, @action String action) {
         Intent intent = new Intent(NAVIGATION_ACTION);
-        intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         intent.putExtra(NAVIGATION_ACTION, action);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }

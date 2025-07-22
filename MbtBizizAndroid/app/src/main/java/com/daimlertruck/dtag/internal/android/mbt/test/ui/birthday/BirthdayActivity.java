@@ -27,7 +27,6 @@ public class BirthdayActivity extends BaseActivity<ActivityBirthdayBinding> {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, BirthdayActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
 

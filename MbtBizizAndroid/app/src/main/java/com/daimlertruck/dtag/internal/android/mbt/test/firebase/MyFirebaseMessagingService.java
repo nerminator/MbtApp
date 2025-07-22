@@ -95,7 +95,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService  {
      */
     private void sendNotification(RemoteMessage messageBody) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(MainActivity.KEY_FROM_NOTI,true);
         intent.putExtra(MainActivity.KEY_NEWS_ID,messageBody.getData().get("newsId"));

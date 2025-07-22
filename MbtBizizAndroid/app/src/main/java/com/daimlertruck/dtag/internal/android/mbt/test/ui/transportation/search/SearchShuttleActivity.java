@@ -64,7 +64,6 @@ public class SearchShuttleActivity extends BaseActivity<ActivitySearchShuttleBin
     private void setAdapter() {
         shuttleSearchAdapter = new ShuttleSearchAdapter(adapterStopList, stop -> {
             Intent intent = new Intent();
-            intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
             intent.putExtra("companyListEntity", createResultObject(stop));
             intent.putExtra("stopName", stop.getStopListEntity().getName());
             String rs = sharedPreferenceManager.getRecentSearchs();
@@ -209,7 +208,6 @@ public class SearchShuttleActivity extends BaseActivity<ActivitySearchShuttleBin
 
     public static void start(Fragment context, int requestCode, boolean isTakeOff, ShuttleListResponse shuttleListResponse, int selectedListPosition, Integer stopType) {
         Intent starter = new Intent(context.getContext(), SearchShuttleActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         Bundle bundle = new Bundle();
         bundle.putSerializable("shuttleList", shuttleListResponse);
         bundle.putBoolean("isTakeOff", isTakeOff);

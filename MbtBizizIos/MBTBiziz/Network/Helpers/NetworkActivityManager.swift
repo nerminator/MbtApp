@@ -13,6 +13,7 @@ class NetworkActivityManager {
     fileprivate var isNotReachablePopupOnScreen = false
     fileprivate let loadingView = LoadingView.fromNib()
     
+    
     private var activityCount = 0 {
         didSet {
             DispatchQueue.main.async { [unowned self] in

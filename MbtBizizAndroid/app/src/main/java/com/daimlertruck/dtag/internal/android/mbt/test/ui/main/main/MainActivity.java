@@ -145,13 +145,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
 
     public static void start(Context context, String newsId) {
         Intent starter = new Intent(context, MainActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(KEY_FROM_NOTI, true);
         starter.putExtra(KEY_NEWS_ID, newsId);
         context.startActivity(starter);

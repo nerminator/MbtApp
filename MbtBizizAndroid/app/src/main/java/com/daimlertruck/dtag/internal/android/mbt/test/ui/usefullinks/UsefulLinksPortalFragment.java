@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -19,6 +20,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentUsefulLinksPortalBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.birthday.BirthdayActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.portal.recycler.PortalSpacesItemDecoration;
+import com.daimlertruck.dtag.internal.android.mbt.test.ui.socialmedia.SocialMediaActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks.recycler.UsefulLinksPortalAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinkscategory.UsefulLinksCategoryFragment;
 
@@ -68,19 +70,26 @@ public class UsefulLinksPortalFragment extends Fragment {
         UsefulLinksPortalAdapter portalAdapter = new UsefulLinksPortalAdapter(vmUsefulLinksPortal.getPortalList(), itemCallback -> {
             switch (itemCallback){
                 case SOCIAL_CLUBS:
+                    // Update the toolbar title
+                    UsefulLinksActivity activity = (UsefulLinksActivity) getActivity();
+                    if (activity != null) {
+                        activity.updateToolbarTitle(getString(R.string.TXT_LINKS_TITLE1)); // Call a method in Activity
+                    }
+
                     ((com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks.UsefulLinksActivity)getActivity()).addFragment(UsefulLinksCategoryFragment.newInstance(false));
+
                     break;
                 case INTERNAL_ADS:
-                    redirectToUrl("https://performancemanager5.successfactors.eu/acme?bplte_company=mercedesbe&fbacme_n=recruiting&recruiting%5fns=joblisting%20summary&_s.crb=9ZPnbTenOQEkBst64BF17GYPU8usDnQOfv2MFLy3e1U%3d");
+                    redirectToUrl("https://performancemanager5.successfactors.eu/sf/careers/jobsearch?bplte_company=mercedesbe&_s.crb=McXCkAgE%252fh%252bQRsZU9VjG2iZj%252f4QF%252b%252bcAtBlOkPdHY4U%253d");
                     break;
                 case BIRTHDAYS:
                     BirthdayActivity.start(getContext());
                     break;
-                case MBFIT:
-                    redirectToPlayStore(WELLBEES_APP_PACKAGE_NAME);
+                case SAP_CONCUR:
+                    redirectToPlayStore(SAP_CONCUR_APP_PACKAGE_NAME);
                     break;
-                case GURSEL:
-                    redirectToGurselApp();
+                case MEALBOX:
+                    redirectToUrl("https://mercedes-benz.rezervem.com.tr/");
                     break;
                 case ORCHESTRA:
                     redirectToCloudOffixApp();
@@ -88,11 +97,12 @@ public class UsefulLinksPortalFragment extends Fragment {
                 case IMPROVEMENT_SYSTEM:
                     redirectToUrl("https://daimler-truck.ideas.cloud/app/");
                     break;
-                case COMPANY_CAR:
-                    redirectToUrl("https://vts.tr152.corpintra.net/account/LoginPortal?returnUrl=/");
+                case ORACLE_HCM:
+                    redirectToUrl("https://login-exdu-saasfaprod1.fa.ocs.oraclecloud.com");
                     break;
-                case LIBRARY:
-                    redirectToUrl("https://kitapdunyasi.tr152.corpintra.net/");
+                case SOCIAL_MEDIA:
+                    SocialMediaActivity.start(this.getContext());
+                    //redirectToUrl("https://kitapdunyasi.tr152.corpintra.net/");
                     break;
             }
         });
@@ -160,6 +170,7 @@ public class UsefulLinksPortalFragment extends Fragment {
     //endregion
 
     private static final String GURSEL_APP_PACKAGE_NAME  = "app.milenyum.gursel.gursel_yolcu";
-    private static final String WELLBEES_APP_PACKAGE_NAME  = "com.wellbees.android";
+    //private static final String WELLBEES_APP_PACKAGE_NAME  = "com.wellbees.android";
+    private static final String SAP_CONCUR_APP_PACKAGE_NAME  = "com.concur.breeze";
     private static final String CLOUD_OFFIX_PACKAGE_NAME  = "com.cloudoffix";
 }

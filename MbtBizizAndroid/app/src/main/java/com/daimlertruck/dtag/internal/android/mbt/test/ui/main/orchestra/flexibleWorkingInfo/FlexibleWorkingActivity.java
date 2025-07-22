@@ -54,7 +54,6 @@ public class FlexibleWorkingActivity extends BaseActivity<ActivityFlexibleWorkin
 
     public static void start(Context context, String yearlyWorkHoursText, String monthlyWorkHoursText) {
         Intent starter = new Intent(context, FlexibleWorkingActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         starter.putExtra(KEY_YEARLY_TEXT,yearlyWorkHoursText);
         starter.putExtra(KEY_MONTHLY_TEXT,monthlyWorkHoursText);
         context.startActivity(starter);

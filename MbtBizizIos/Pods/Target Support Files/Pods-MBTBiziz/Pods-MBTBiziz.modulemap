@@ -1,0 +1,6 @@
+framework module Pods_MBTBiziz {
+  umbrella header "Pods-MBTBiziz-umbrella.h"
+
+  export *
+  module * { export * }
+}

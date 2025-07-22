@@ -54,6 +54,9 @@ class InitController
             }
 
             $versionPopup = [];
+
+	            // Only check for version differences if newApp flag is true
+        if ($request->boolean('newApp')) {
             $currentVersion = $request->input('osType') == self::ANDROID ? explode('.', env('ANDROID_VERSION')) : explode('.', env('IOS_VERSION'));
             if ($currentVersion[0] > $userVersion[0]) {
                 $versionPopup = [
@@ -96,25 +99,29 @@ class InitController
                         ]
                     ]
                 ];
-            } else{
-                $versionPopup = [
-                    'callPhone' => "02128673399",
-                    'phoneList' => [ 
-                        [
-                            'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_1"),
-                            'phone' => "0212 8673399"
-                        ],
-                        [
-                            'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_2"),
-                            'phone' => ""
-                        ],
-                        [
-                            'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_3"),
-                            'phone' => "2222"
-                        ]
+            }
+        }
+
+        // Add fallback support contact info if versionPopup is still empty
+        if (empty($versionPopup)) {
+            $versionPopup = [
+                'callPhone' => "02128673399",
+                'phoneList' => [
+                    [
+                        'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_1"),
+                        'phone' => "0212 8673399"
+                    ],
+                    [
+                        'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_2"),
+                        'phone' => ""
+                    ],
+                    [
+                        'label' => Lang::get("lang.TXT_SUPPORT_PHONE_LABEL_3"),
+                        'phone' => "2222"
                     ]
-                ];
-            } 
+                ]
+            ];
+        }
 
             return response()->json([
                 'statusCode' => 200,

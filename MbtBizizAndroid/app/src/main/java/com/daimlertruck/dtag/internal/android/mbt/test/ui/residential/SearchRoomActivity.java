@@ -25,7 +25,6 @@ public class SearchRoomActivity extends BaseActivity<ActivitySearchRoomBinding> 
 
     public static void start(Context context, ArrayList<Residential> residentials) {
         Intent activity = new Intent(context, SearchRoomActivity.class);
-        activity.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         activity.putParcelableArrayListExtra("residentials", residentials);
         context.startActivity(activity);
     }

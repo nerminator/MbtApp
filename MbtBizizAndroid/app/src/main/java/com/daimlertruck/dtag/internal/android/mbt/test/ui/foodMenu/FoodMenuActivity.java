@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -20,6 +22,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.Densi
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.bottomSheetDialog.PickerBottomSheetDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +38,6 @@ public class  FoodMenuActivity extends BaseActivity<ActivityFoodMenuBinding> {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, FoodMenuActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
     @Override
@@ -178,12 +180,9 @@ public class  FoodMenuActivity extends BaseActivity<ActivityFoodMenuBinding> {
 
         binding.vpFood.setAdapter(adapter);
         binding.tabFood.setupWithViewPager(binding.vpFood);
-        binding.tabFood.getTabAt(todayIndex).select();
-
+        TabLayout.Tab tab = binding.tabFood.getTabAt(todayIndex);
+        if (tab != null) {
+            tab.select();
+        }
     }
-
-
-
-
-
 }

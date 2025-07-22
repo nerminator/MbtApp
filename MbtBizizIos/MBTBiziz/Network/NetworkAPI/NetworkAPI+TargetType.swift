@@ -57,6 +57,7 @@ extension NetworkAPI : TargetType {
         case .getMedias : return "/medias"
         case .submitFeedback: return "/submitFeedback"
         case .appStartup: return "/appStartup"
+        case .fetchPayslip: return "/payslip/fetch"
         }
     }
     
@@ -95,14 +96,16 @@ extension NetworkAPI : TargetType {
         case .deleteNotification(let notificationId):
             return .requestParameters(parameters: ["notificationId":notificationId], encoding: JSONEncoding.default)
         case .initCall(let versionNumber):
-            return .requestParameters(parameters: ["version":versionNumber, "osType":"2"], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["version":versionNumber, "osType":"2", "newApp":true], encoding: JSONEncoding.default)
         case .sendQRCode(let code):
             return .requestParameters(parameters: ["code":code], encoding: JSONEncoding.default)
         case .checkPhone(let phoneNumber):
             return .requestParameters(parameters: ["phoneNumber":phoneNumber], encoding: JSONEncoding.default)
         case .submitFeedback(let text):
             return .requestParameters(parameters: ["text":text], encoding: JSONEncoding.default)
-
+        case .fetchPayslip(let year, let month):
+            return .requestParameters(parameters: ["year": year, "month": month], encoding: JSONEncoding.default)
+            
         default:
             return .requestPlain
         }

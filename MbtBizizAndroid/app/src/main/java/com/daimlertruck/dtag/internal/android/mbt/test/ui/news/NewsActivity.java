@@ -22,7 +22,6 @@ public class NewsActivity extends BaseActivity<ActivityNewsBinding> {
 
     public static void start(Context context, NewsType newsType) {
         Intent starter = new Intent(context, NewsActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         Bundle bundle = new Bundle();
         bundle.putString(NEWS_TYPE, String.valueOf(newsType));
         starter.putExtras(bundle);

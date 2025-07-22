@@ -27,6 +27,8 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
     //$router->post('oidc_callback.html', 'LoginController@oidcLogin');
     $router->post('appStartup', 'LoginController@appStartup');
 
+    $router->post('sendCrashLog', 'CrashLogController@sendCrashLog');
+
     $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->post('newsList', 'NewsController@newsList');
         $router->get('newsDetail/{id}', 'NewsController@newsDetail');
@@ -68,6 +70,15 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
 
         $router->get('medias', 'MediasController@getMedias');
         $router->post('submitFeedback', 'AppFeedbackController@submitFeedback');
+
+        // Bordro OTP başlat
+        $router->post('payslip/request-otp', 'PayslipController@requestOtp');
+
+        // Bordro OTP doğrulama
+        $router->post('payslip/verify-otp', 'PayslipController@verifyOtp');
+
+        // Bordro listeleme
+        $router->post('payslip/fetch', 'PayslipController@fetchPayslip');
     });
 });
 

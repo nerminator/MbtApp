@@ -37,7 +37,6 @@ public class FullscreenImageActivity extends BaseActivity<ActivityFullscreenImag
 
     public static void start(Context context, String imageUrl) {
         Intent intent = new Intent(context, FullscreenImageActivity.class);
-        intent.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         intent.putExtra("IMAGE_URL", imageUrl);
         context.startActivity(intent);
     }

@@ -73,7 +73,9 @@ public class MessageDialog extends DialogFragment {
 
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
-        dismissListener.onDismiss();
+        if (dismissListener != null) {
+            dismissListener.onDismiss();
+        }
         super.onDismiss(dialog);
     }
 }

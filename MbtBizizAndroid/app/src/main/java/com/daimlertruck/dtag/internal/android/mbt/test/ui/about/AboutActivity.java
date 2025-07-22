@@ -22,7 +22,6 @@ public class AboutActivity extends BaseActivity {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, AboutActivity.class);
-        starter.setPackage("com.daimlertruck.dtag.internal.android.mbt.test");
         context.startActivity(starter);
     }
 

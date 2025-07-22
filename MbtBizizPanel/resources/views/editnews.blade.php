@@ -107,6 +107,7 @@
                                                 <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
                                             @endforeach
                                         </select>
+                                    @else<div hidden>
                                         <label class="col-md-12 translation_title" for="locationIdList">COMPANY LOCATION</label>
                                         <select name="locationIdList[]" class="col-md-12 form-control"
                                                 style="height: 45px;" multiple>
@@ -121,6 +122,7 @@
                                                 <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
                                             @endforeach
                                         </select>
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="col-md-6">
