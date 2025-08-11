@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -277,10 +278,29 @@ class LoginController extends Controller
         if (!$isTestPhone) {
             try {
                 Log::warning("SMS sending to $phoneNumber with pin code $pinCode");
-                $sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
-                Log::warning("SMS response : $$sendSMSResponse ");
-                if (!$this->_contains("errno=0", $sendSMSResponse)) {
-                    Log::warning("Inside if condition");
+                
+                //$sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
+                
+                // Telefon numarası doğrulaması (regex ile)
+                if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
+                    return response()->json([
+                        'statusCode' => 400,
+                        'errorMessage' => 'Geçersiz telefon numarası'
+                    ]);
+                }
+
+                // Güvenli HTTP isteği
+                $response = Http::get('https://www.postaguvercini.com/api_http/sendsms.asp', [
+                    'user' => 'Mercedesbulk',
+                    'password' => '123456',
+                    'gsm' => $phoneNumber,
+                    'text' => "MBT BizIZ pin kodunuz: $pinCode"
+                ]);
+
+                $sendSMSResponse = $response->body();
+
+                // Yanıt kontrolü
+                if (!str_contains($sendSMSResponse, "errno=0")) {
                     Log::error("Couldn't send SMS to $phoneNumber\nResponse: $sendSMSResponse");
                 }
             } catch (\Exception $exception) {
