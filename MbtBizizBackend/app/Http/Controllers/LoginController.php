@@ -182,19 +182,40 @@ class LoginController extends Controller
         if (!$isTestPhone) {
             try {
                 Log::warning("SMS sending to $phoneNumber with pin code $pinCode");
-                $sendSMSResponse = file_get_contents("https://www.postaguvercini.com/api_http/sendsms.asp?user=Mercedesbulk&password=123456&gsm=$phoneNumber&text=MBT%20BizIZ%20pin%20kodunuz%3A%20$pinCode");
-                Log::warning("SMS response : $$sendSMSResponse ");
-                if (!$this->_contains("errno=0", $sendSMSResponse)) {
-                    Log::warning("Inside if condition");
+        
+                // Temel doğrulama
+                if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
+                    return response()->json([
+                        'statusCode' => 400,
+                        'responseData' => null,
+                        'errorMessage' => 'Geçersiz telefon numarası'
+                    ]);
+                }
+        
+                // Güvenli HTTP çağrısı
+                $response = Http::timeout(10)->get(
+                    'https://www.postaguvercini.com/api_http/sendsms.asp',
+                    [
+                        'user' => 'Mercedesbulk',
+                        'password' => '123456',
+                        'gsm' => $phoneNumber,
+                        'text' => "MBT BizIZ pin kodunuz: $pinCode",
+                    ]
+                );
+        
+                $sendSMSResponse = $response->body();
+                Log::warning("SMS response : $sendSMSResponse");
+        
+                if (!str_contains($sendSMSResponse, 'errno=0')) {
                     Log::error("Couldn't send SMS to $phoneNumber\nResponse: $sendSMSResponse");
                 }
-            } catch (\Exception $exception) {
+            } catch (\Throwable $exception) {
                 Log::warning("Exception occurred while sending SMS to $phoneNumber");
                 Log::error("Couldn't send SMS to $phoneNumber\nException: " . $exception->getMessage());
                 return response()->json([
                     'statusCode' => 401,
                     'responseData' => null,
-                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_SEND_SMS')
+                    'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_SEND_SMS'),
                 ]);
             }
         }

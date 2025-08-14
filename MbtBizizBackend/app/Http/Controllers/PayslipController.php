@@ -46,7 +46,11 @@ class PayslipController extends Controller
         $cachedOtp = Cache::get("payslip_otp_" . $user->id);
 
         if ($otp != $cachedOtp) {
-            return response()->json(['status'=>'fail', 'message'=>'OTP yanlış'], 401);
+            // OTP expired / invalid
+            return response()->json([
+                'statusCode' => 401,             // <— internal code = WSStatusCode.authorizationError
+                'errorMessage' => 'Kod yanlış veya kullanım süresi doldu'
+            ], 200); 
         }
 
         // flag set edelim
@@ -67,9 +71,9 @@ class PayslipController extends Controller
 
         $verified = Cache::get("payslip_verified_" . $user->id);
 
-        /*if (!$verified) {
+        if (!$verified) {
             return response()->json(['status'=>'fail', 'message'=>'OTP doğrulanmadı'], 403);
-        }*/
+        }
 
         $year = $request->input('year');
         $month = $request->input('month');
@@ -112,7 +116,7 @@ class PayslipController extends Controller
             }
 
             // LOG işlemi
-            Log::info("Payslip viewed by user: ".$user->id." for period ".$period);
+            Log::info('PayslipView', ['user'=>$user->id, 'period'=>$period, 'ts'=>now()->toIso8601String()]);
 
             return response()->json([
                 'status' => 'success',
