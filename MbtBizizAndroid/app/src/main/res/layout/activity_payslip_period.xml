@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_dark"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TXT_PAYSLIP_PERIOD"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="48dp" />
+
+        <!-- Ay Label -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+            android:id="@+id/tvMonthLabel"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/TXT_PAYSLIP_PERIOD_MONTH"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp" />
+
+        <!-- Ay Spinner -->
+        <Spinner
+            android:id="@+id/spinnerMonth"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:popupBackground="@color/black"
+            android:textAlignment="center"
+            android:spinnerMode="dropdown"
+            android:padding="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvMonthLabel"
+            app:layout_constraintStart_toEndOf="@id/tvMonthLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Yıl Label -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+            android:id="@+id/tvYearLabel"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/TXT_PAYSLIP_PERIOD_YEAR"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/spinnerMonth"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="32dp" />
+
+        <!-- Yıl Spinner -->
+        <Spinner
+            android:id="@+id/spinnerYear"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:textAlignment="center"
+            android:spinnerMode="dropdown"
+            android:padding="8dp"
+            android:popupBackground="@color/black"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvYearLabel"
+            app:layout_constraintStart_toEndOf="@id/tvYearLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Bordro Göster Butonu -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonRegularCS
+            android:id="@+id/btnShowPayslip"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="@string/TXT_PAYSLIP_PERIOD_BUTTON"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/bg_button_blue"
+            app:layout_constraintTop_toBottomOf="@id/spinnerYear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

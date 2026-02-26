@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_dark"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TXT_OTP_TITLE"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="48dp" />
+
+        <!-- Subtitle -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+            android:id="@+id/tvSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/TXT_OTP_TEXT"
+            android:textColor="#DDFFFFFF"
+            android:textSize="16sp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp" />
+
+        <!-- OTP Input -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.EditTextRegularCS
+            android:id="@+id/etOtpCode"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:hint="@string/TXT_OTP_HINT"
+            android:gravity="center"
+            android:textColorHint="#88FFFFFF"
+            android:textColor="@android:color/white"
+            android:inputType="number"
+            android:maxLength="6"
+            android:background="@drawable/bg_input_rounded"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <!-- Verify Button -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonRegularCS
+            android:id="@+id/btnVerifyOtp"
+            android:enabled="false"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="@string/TXT_OTP_VERIFY"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/resend_otp_text_color"
+            app:layout_constraintTop_toBottomOf="@id/etOtpCode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginHorizontal="24dp" />
+
+        <!-- Resend OTP — minimalist text button -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonRegularCS
+            android:id="@+id/btnResendOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TXT_OTP_RESEND"
+            android:textAllCaps="false"
+            android:textColor="@color/resend_otp_text_color"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            app:layout_constraintTop_toBottomOf="@id/btnVerifyOtp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Timer -->
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#DDFFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/btnResendOtp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
