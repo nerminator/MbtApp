@@ -78,6 +78,13 @@ return [
             'level' => 'debug',
         ],
 
+        // 🟦 Custom Payslip log channel
+        'payslip' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/payslip.log'),
+            'level' => 'info',
+        ],
+
         'deprecations' => [
 		'driver' => 'single',
 		'path' => storage_path('logs/php-deprecation-warnings.log'),

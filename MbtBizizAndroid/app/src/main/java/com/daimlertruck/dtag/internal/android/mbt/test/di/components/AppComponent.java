@@ -24,6 +24,8 @@ import com.daimlertruck.dtag.internal.android.mbt.test.ui.login.VMSms;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.main.VMMain;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.notification.VMNotification;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.OrchestraFragment;
+import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.PayslipOtpActivity;
+import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.PayslipPeriodActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.VmOrchestra;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.flexibleWorkingInfo.VMFlexibleWorking;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.portal.PortalFragment;
@@ -143,6 +145,10 @@ public interface AppComponent {
     //Fragment Injection
 
     void inject(BaseApplication application);  // Add this method
+
+
+    void inject(PayslipOtpActivity activity);
+    void inject(PayslipPeriodActivity activity);
 
     //Glide Injection
     //void injectCustomGlideModule(CustomGlideModule customGlideModule);

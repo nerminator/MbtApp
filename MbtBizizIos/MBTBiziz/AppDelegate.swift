@@ -46,12 +46,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    private func migrateTokenIfNeeded() {
+        let key = MBTConstants.UserPreference.AccessToken
+
+        if let oldToken = UserDefaults.standard.string(forKey: key) {
+            KeychainHelper.save(
+                oldToken,
+                service: TokenManager.service,
+                account: TokenManager.account
+            )
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         MBTLanguageManager.sharedManager.initialize()
         AppearenceHelper().setupAppearence()
         UNUserNotificationCenter.current().delegate = self
+        
+        migrateTokenIfNeeded()
         
         //NSSetUncaughtExceptionHandler(handleUncaughtException)
         

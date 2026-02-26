@@ -12,11 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentAboutBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentAboutBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.about.appfeedback.AppFeedbackFragment;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;

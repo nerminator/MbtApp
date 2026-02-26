@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
+use App\Services\MenuViewService;
 
 class PhonesController extends Controller
 {
@@ -29,6 +30,8 @@ class PhonesController extends Controller
             ];
         }
     
+        MenuViewService::increment('EmergencyNumbers');
+
         return response()->json([
             'statusCode' => 200,
             'responseData' => [

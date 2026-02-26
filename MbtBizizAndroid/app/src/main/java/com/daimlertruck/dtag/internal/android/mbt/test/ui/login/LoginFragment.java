@@ -17,10 +17,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentLoginBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentLoginBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.MsalManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.TokenManager;
@@ -50,7 +50,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
-import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
 import android.os.Handler;
 /**
  * A simple {@link Fragment} subclass.

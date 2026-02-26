@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.microsoft.identity.client.IPublicClientApplication;
 import com.microsoft.identity.client.ISingleAccountPublicClientApplication;
 import com.microsoft.identity.client.PublicClientApplication;

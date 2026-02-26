@@ -4,10 +4,10 @@ import android.graphics.Color;
 import androidx.core.content.ContextCompat;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemWorkInfoBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemWorkInfoBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.interfaces.IWorkInfoClick;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.flexibleWorkHours.FlexibleItemEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.flexibleWorkHours.FlexibleWorkEntity;

@@ -14,6 +14,8 @@ protocol ProfileDisplayLogic: class
     func displayValidateInputs(viewModel : Profile.Validate.ViewModel)
     func displayReloadPageResult(viewModel : Profile.Reload.ViewModel)
     func displaySendDataResult(viewModel : Profile.SendData.ViewModel)
+    func displayBusinessCardOptions(shortUrl: String?)
+    func displayKVKKDialog()
 }
 
 class ProfileViewController: MBTBaseViewController, ProfileDisplayLogic
@@ -22,12 +24,16 @@ class ProfileViewController: MBTBaseViewController, ProfileDisplayLogic
     // MARK: IBOutlets
     
     @IBOutlet weak var constFlexibleHeight: NSLayoutConstraint!
-    @IBOutlet weak var lblFlexible: BaseUILabel!
-    @IBOutlet weak var viewCalendar: UIView!
+    
     @IBOutlet weak var viewFlexible: UIView!
+    
+    @IBOutlet weak var viewCalendar: UIView!
+    @IBOutlet weak var lblFlexible: BaseUILabel!
+
     @IBOutlet weak var lblLdap: BaseUILabelDemi!
     @IBOutlet weak var lblUsername: BaseUILabelRegular!
-    @IBOutlet weak var lblDuty: BaseUILabel!
+    @IBOutlet weak var lblRole: BaseUILabel!
+    
     @IBOutlet weak var lblLocation: BaseUILabelRegular!
     @IBOutlet weak var lblOrganization: BaseUILabelRegular!
     
@@ -71,6 +77,21 @@ class ProfileViewController: MBTBaseViewController, ProfileDisplayLogic
             dataStore?.navigationTitleSmall = interactor?.monthlyWorkHoursText
         }
     }
+    @IBAction func btnBusinessCardTapped(_ sender: Any) {
+        
+        WSProvider.shared.wsRequest(.getUserBusinessCardState) { (_ response: MBTGetBusinessCardStateResponse?) in
+            
+            if let isActivated = response?.isActivated, isActivated == true, let digitalCardUrl = response?.digitalCardUrl {
+                self.displayBusinessCardOptions(shortUrl: digitalCardUrl)
+            } else {
+                self.displayKVKKDialog()
+            }
+            
+        } failure: { error in
+            self.showAlert(message: "Bağlantı Hatası!")
+            
+        }
+    }
 }
 
 extension ProfileViewController {
@@ -79,15 +100,13 @@ extension ProfileViewController {
     func displayInitializeViewResult(viewModel : Profile.Initialize.ViewModel) {
         lblLdap.text = viewModel.registerNumber
         lblUsername.text = viewModel.nameSurname
-        lblDuty.text = viewModel.title
+        lblRole.text = viewModel.title
         lblLocation.text = viewModel.officeLocation
         lblOrganization.text = viewModel.organizationUnit
         lblFlexible.text = viewModel.flexibleTitle
-        if viewModel.isSuccess {
-            viewFlexible.isHidden = false
-            viewCalendar.isHidden = false
-        }
-        constFlexibleHeight.constant = viewModel.flexibleAvailable ? 60 : 0
+        
+        viewFlexible.isHidden =  !viewModel.flexibleAvailable
+        
         view.layoutIfNeeded()
     }
     
@@ -99,15 +118,75 @@ extension ProfileViewController {
 }
 
 extension ProfileViewController {
-    
-    @IBAction func btnFlexibleWorkTapped(_ sender: UIButton) {
+
+    func displayKVKKDialog() {
+        self.navigationController?.pushViewController(KvkkViewController.fromStoryboard(.kvkkVc), animated: true)
+    }
+
+    func displayBusinessCardOptions(shortUrl: String?) {
+        guard let shortUrl = shortUrl, let url = URL(string: shortUrl) else { return }
+
+        
+        let alert = UIAlertController(title: "TXT_CARD_MENU_TITLE".localized(), message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "TXT_CARD_MENU_SHOW".localized(), style: .default) { _ in
+            UIApplication.shared.open(url)
+        })
+        
+        alert.addAction(UIAlertAction(title: "TXT_CARD_MENU_SHARE".localized(), style: .default) { _ in
+                self.shareBusinessCard(link: shortUrl)
+            })
+        
+        //  deactivate business card
+        alert.addAction(UIAlertAction(title: "TXT_CARD_MENU_CANCEL".localized(), style: .destructive) { _ in
+            self.confirmDeactivateBusinessCard()
+        })
+        
+        alert.addAction(UIAlertAction(title: "TXT_COMMON_CANCEL2".localized(), style: .cancel))
+        present(alert, animated: true)
+    }
+
+    private func shareBusinessCard(link: String) {
+        let items: [Any] = ["TXT_CARD_SHARE_PREFIX".localized(), URL(string: link)!]
+
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // iPad destek (crash olmaması için)
+        if let popover = activityVC.popoverPresentationController {
+            popover.sourceView = self.view
+            popover.sourceRect = CGRect(x: self.view.bounds.midX,
+                                        y: self.view.bounds.midY,
+                                        width: 0, height: 0)
+            popover.permittedArrowDirections = []
+        }
+
+        self.present(activityVC, animated: true)
     }
     
-    @IBAction func btnWorkCalendarTapped(_ sender: UIButton) {
+    
+    private func confirmDeactivateBusinessCard() {
+        let confirmAlert = UIAlertController(
+            title: "TXT_CARD_MENU_CANCEL".localized(),
+            message: "TXT_CARD_DEACTIVATE_MESSAGE".localized(),
+            preferredStyle: .alert
+        )
+
+        confirmAlert.addAction(UIAlertAction(title: "TXT_COMMON_CANCEL".localized(), style: .cancel))
+        confirmAlert.addAction(UIAlertAction(title: "TXT_COMMON_YES".localized(), style: .destructive) { _ in
+            self.deactivateBusinessCard()
+        })
+
+        present(confirmAlert, animated: true)
+    }
+
+    private func deactivateBusinessCard() {
+        WSProvider.shared.wsRequest(.deactivateDigitalCard) { (_ response: MarshalResponse?) in
+
+            self.showToast("TXT_CARD_DEACTIVATE_TOAST".localized())
+            
+        } failure: { error in
+            self.showToast("Bağlantı hatası!")
+        }
     }
     
-    @IBAction func btnPayslipTapped(_ sender: UIButton) {
-        // Seçim ekranına yönlendirme yapılacak
-        router?.routeToPayslip()
-    }
 }
+

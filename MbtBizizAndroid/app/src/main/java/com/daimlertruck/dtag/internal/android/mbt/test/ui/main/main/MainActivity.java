@@ -19,9 +19,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityMainBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityMainBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.newsDetail.NewsDetailActivity;
 import com.google.firebase.FirebaseApp;
 

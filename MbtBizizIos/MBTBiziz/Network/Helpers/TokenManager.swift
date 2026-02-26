@@ -11,6 +11,22 @@ import MSAL
 
 class TokenManager {
     
+    static let service = "com.mbtbiziz.auth"
+    static let account = "access_token"
+    
+    
+    static func save(token: String) {
+        KeychainHelper.save(token, service: service, account: account)
+    }
+
+    static func getToken() -> String? {
+        return KeychainHelper.read(service: service, account: account)
+    }
+
+    static func clear() {
+        KeychainHelper.delete(service: service, account: account)
+    }
+    
     static let _sharedManager = TokenManager()
     
     static var sharedManager : TokenManager {
@@ -40,14 +56,31 @@ class TokenManager {
         return _accessToken ?? ""
     }
     
-    fileprivate var _accessToken : String? = UserDefaults.standard.object(forKey: MBTConstants.UserPreference.AccessToken) as? String {
-        didSet {
-            UserDefaults.standard.set(_accessToken, forKey: MBTConstants.UserPreference.AccessToken)
+    fileprivate var _accessToken: String? {
+        get {
+            return KeychainHelper.read(
+                service: TokenManager.service,
+                account: TokenManager.account
+            )
+        }
+        set {
+            if let token = newValue {
+                KeychainHelper.save(
+                    token,
+                    service: TokenManager.service,
+                    account: TokenManager.account
+                )
+            } else {
+                KeychainHelper.delete(
+                    service: TokenManager.service,
+                    account: TokenManager.account
+                )
+            }
         }
     }
     
     
-    var token : String {
+  /*  var token : String {
         return _token ?? ""
     }
     fileprivate var _token : String? = UserDefaults.standard.object(forKey: MBTConstants.UserPreference.Token) as? String {
@@ -59,7 +92,7 @@ class TokenManager {
     func clearToken() {
         _token = nil
     }
-    
+    */
     func clearAccessToken() {
         _accessToken = nil
     }
@@ -67,12 +100,13 @@ class TokenManager {
     func isTokenInvalid() -> Bool {
         return false
     }
-    
+  
+    /*
     func handleLoginResponse(_ loginResponse : MBTLoginResponse) {
         guard let token = loginResponse.token else { return }
         _token = token
     }
-    
+    */
     
     func initMSAL() throws {
         

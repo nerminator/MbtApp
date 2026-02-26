@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.BirthdayAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityBirthdayBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityBirthdayBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.about.AboutActivity;
 

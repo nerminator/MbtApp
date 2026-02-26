@@ -16,10 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.MeetingRoomAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityResidentialBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityResidentialBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Building;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.MeetingRoom;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;

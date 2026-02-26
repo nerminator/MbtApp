@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.WorkInfoAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityFlexibleWorkingBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityFlexibleWorkingBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.interfaces.IWorkInfoClick;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.flexibleWorkHours.FlexibleItemEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.MessageDialog;

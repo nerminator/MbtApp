@@ -71,10 +71,7 @@ struct MBTConstants {
     }
     
     struct UserPreference {
-        static let UserId = "MBTCONSTANTS_USERNAME"
-        static let Token = "MBTCONSTANTS_TOKEN"
         static let AccessToken = "MBTCONSTANTS_ACCESS_TOKEN"
-        static let PasswordNeedsChange = "MBTCONSTANTS_PASSWORD_NEEDS_CHANGE"
         static let TermsOfUseShown = "MBTCONSTANTS_TERMS_OF_USE_SHOWN"
         static let CalendarIdentifier = "MBTCONSTANTS_CALENDAR_IDENTIFIER"
         static let OneSignalDeleteTagError = "MBTCONSTANTS_ONESIGNAL_DELETETAG_ERROR"

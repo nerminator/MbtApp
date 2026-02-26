@@ -32,6 +32,7 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing
     //MARK : Routing
     func routeToAboutUs() {
         viewController?.navigationController?.pushViewController(AboutUsViewController.fromStoryboard(.aboutUs), animated: true)
+        WSProvider.shared.wsRequest(.menuIncrement(keyName: "AboutUs"))
     }
     
     func routeToPortalNews(newsType: NewsType) {
@@ -44,7 +45,9 @@ class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing
     
     func routeToPortalTransportation() {
         UIApplication.shared.open(URL(string: "https://apps.apple.com/app/g%C3%BCrsel-yolcu/id1549465749")!)
-            
+        
+        WSProvider.shared.wsRequest(.menuIncrement(keyName: "Transportation"))
+        
     }
     
     func routeToPortalMenu(_ mealInfo: MBTFoodMenuResponse) {

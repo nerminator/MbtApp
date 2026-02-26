@@ -20,10 +20,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentPortalBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentPortalBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.MenuIncrementBody;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.network.APIService;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.network.AbstractApiUtils;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.network.ApiUtils;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.about.AboutActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.ConfirmationDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.bottomSheetDialog.SupportCustomBottomSheetDialog;
@@ -54,6 +58,8 @@ public class PortalFragment extends Fragment {
 
     private com.daimlertruck.dtag.internal.android.mbt.test.ui.main.portal.VMPortal vmPortal;
     private FragmentPortalBinding binding;
+    @Inject
+    AbstractApiUtils abstractApiUtils;
 
     public static PortalFragment newInstance() {
 
@@ -102,12 +108,14 @@ public class PortalFragment extends Fragment {
             switch (itemCallback) {
                 case ABOUT_US:
                     showAboutUsHTML();
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("AboutUs"));
                     break;
                 case NEWS:
                     NewsActivity.start(getContext(), NewsType.ANNOUNCEMENT);
                     break;
                 case SHUTTLE:
                     redirectToGurselApp();
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("Transportation"));
                     break;
                 case LOCATION:
                     ResidentialActivity.start(getContext());

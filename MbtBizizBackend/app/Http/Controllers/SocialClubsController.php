@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
+use App\Services\MenuViewService;
 
 class SocialClubsController extends Controller
 {
@@ -28,6 +29,7 @@ class SocialClubsController extends Controller
             'location' => $item->location
         ];
     }
+    MenuViewService::increment('SocialClubs');
     return response()->json([
         'statusCode' => 200,
         'responseData' => [

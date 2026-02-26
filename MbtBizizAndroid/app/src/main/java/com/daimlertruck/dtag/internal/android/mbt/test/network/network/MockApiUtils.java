@@ -4,6 +4,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.manager.TokenManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.MenuIncrementBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -23,6 +24,9 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notificati
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.NotificationPostBody;
 
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ProfileEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.SendQrCodePostBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.UserConfigEntity;
@@ -47,6 +51,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Callback;
@@ -215,10 +220,24 @@ public class MockApiUtils extends AbstractApiUtils {
 
     }
 
+    public void menuIncrement(MenuIncrementBody body) {
+
+    }
+
     public void sendCrashLog(CrashLogBody crashLogBody, NetworkCallback<BaseResponse> callback) {
 
     }
 
+    public Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse<PayslipEntity>> callback) {
+        return null;
+    }
+
+    public void verifyPayslipOtp(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback) {
+        return;
+    }
+    public void requestPayslipOtp(NetworkCallback<BaseResponse> callback) {
+        return;
+    }
     @Override
     public void getSocialMedias(NetworkCallback<BaseResponse<SocialMediaEntity>> callback) {
 
@@ -229,4 +248,15 @@ public class MockApiUtils extends AbstractApiUtils {
 
     }
 
+    @Override
+    public void getUserBusinessCardState(NetworkCallback<BaseResponse<BusinessCardStateResponse>> callback) {
+
+    }
+    @Override
+    public void activateDigitalCard(NetworkCallback<BaseResponse<ActivateCardResponse>> callback) {
+    }
+    @Override
+    public void deactivateDigitalCard(NetworkCallback<BaseResponse> callback) {
+
+    }
 }

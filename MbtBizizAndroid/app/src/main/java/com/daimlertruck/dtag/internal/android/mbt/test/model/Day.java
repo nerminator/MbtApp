@@ -3,7 +3,7 @@ package com.daimlertruck.dtag.internal.android.mbt.test.model;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.BR;
+import com.daimlertruck.dtag.internal.android.mbt.BR;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.TypeEntity;
 
 import java.util.List;

@@ -277,3 +277,39 @@ extension MBTBaseViewController {
     }
     
 }
+
+extension UIViewController {
+    func showAlert(title: String = "Bilgi", message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Tamam", style: .default))
+        present(ac, animated: true)
+    }
+
+    func showToast(_ message: String, duration: TimeInterval = 2.0) {
+        let lbl = UILabel()
+        lbl.text = message
+        lbl.numberOfLines = 0
+        lbl.textAlignment = .center
+        lbl.alpha = 0
+        lbl.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        lbl.textColor = .white
+        lbl.layer.cornerRadius = 8
+        lbl.layer.masksToBounds = true
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(lbl)
+        NSLayoutConstraint.activate([
+            lbl.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24),
+            lbl.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24),
+            lbl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lbl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        ])
+        view.layoutIfNeeded()
+
+        UIView.animate(withDuration: 0.25, animations: { lbl.alpha = 1 }) { _ in
+            UIView.animate(withDuration: 0.25, delay: duration, options: [], animations: {
+                lbl.alpha = 0
+            }, completion: { _ in lbl.removeFromSuperview() })
+        }
+    }
+}

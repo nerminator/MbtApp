@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.NotificationAdapter;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentNotificationBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentNotificationBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.Notification;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.about.AboutActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.newsDetail.NewsDetailActivity;

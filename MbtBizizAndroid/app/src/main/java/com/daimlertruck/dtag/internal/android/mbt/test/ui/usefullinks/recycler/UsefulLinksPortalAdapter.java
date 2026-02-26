@@ -1,9 +1,10 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks.recycler;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemUsefulLinksPortalMenuBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemUsefulLinksPortalMenuBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemUsefulLinksPortalMenuBinding;
 
 import java.util.ArrayList;
 import java.util.List;

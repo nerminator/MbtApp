@@ -4,6 +4,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppS
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.MenuIncrementBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -23,6 +24,11 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notificati
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.NotificationPostBody;
 
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipFetchRequest;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipOtpVerifyRequest;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ProfileEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.SendQrCodePostBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.UserConfigEntity;
@@ -37,13 +43,17 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullink
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullinks.UsefulLinksClubsEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.WorkCalendarEntity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -136,6 +146,9 @@ public interface APIService {
     @GET("phones/{id}")
     Call<BaseResponse<PhonesEntity>> getPhonesById(@Path("id") Integer id);
 
+    @POST("menuIncrement")
+    Call<BaseResponse> menuIncrement(@Body MenuIncrementBody body);
+
     @POST("submitFeedback")
     Call<BaseResponse> submitFeedback(@Body SubmitFeedbackBody body);
 
@@ -147,4 +160,22 @@ public interface APIService {
 
     @POST("appStartup")
     Call<BaseResponse<AppStartUpEntity>> appStartUp(@Body AppStartUpBody body);
+
+    @POST("payslip/request-otp")
+    Call<BaseResponse> requestPayslipOtp(@Body HashMap<String, Object> body);
+
+    @POST("payslip/verify-otp")
+    Call<BaseResponse> verifyPayslipOtp(@Body HashMap<String, Object> body);
+
+    @POST("payslip/fetch")
+    Call<BaseResponse<PayslipEntity>> fetchPayslip(@Body HashMap<String, Object> body);
+
+    @GET("getUserBusinessCardState")
+    Call<BaseResponse<BusinessCardStateResponse>> getUserBusinessCardState();
+
+    @GET("activateDigitalCard")
+    Call<BaseResponse<ActivateCardResponse>> activateDigitalCard();
+
+    @GET("deactivateDigitalCard")
+    Call<BaseResponse> deactivateDigitalCard();
 }

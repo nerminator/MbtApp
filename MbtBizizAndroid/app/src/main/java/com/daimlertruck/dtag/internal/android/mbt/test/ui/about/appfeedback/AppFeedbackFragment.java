@@ -14,11 +14,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentAppFeedbackBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentAppFeedbackBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.MessageDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
 

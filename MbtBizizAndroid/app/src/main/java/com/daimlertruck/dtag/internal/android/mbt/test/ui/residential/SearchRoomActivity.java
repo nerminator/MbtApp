@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.MeetingRoomSearchAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivitySearchRoomBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivitySearchRoomBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Building;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.MeetingRoom;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;

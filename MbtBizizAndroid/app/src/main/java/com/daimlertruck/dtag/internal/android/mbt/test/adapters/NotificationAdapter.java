@@ -1,9 +1,9 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.adapters;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemNotificationBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemNotificationBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.Notification;
 
 import java.util.List;

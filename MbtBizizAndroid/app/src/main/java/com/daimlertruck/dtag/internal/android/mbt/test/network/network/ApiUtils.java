@@ -5,6 +5,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppS
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.MenuIncrementBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -24,6 +25,9 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notificati
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.Notification;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.NotificationPostBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ProfileEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.SendQrCodePostBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.UserConfigEntity;
@@ -38,6 +42,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullink
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullinks.UsefulLinksClubsEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.WorkCalendarEntity;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -204,6 +209,25 @@ public class ApiUtils extends AbstractApiUtils {
         sendRequest(APIService.submitFeedback(submitFeedbackBody), callback);
     }
 
+    public void menuIncrement(MenuIncrementBody body) {
+        sendRequest(APIService.menuIncrement(body), new NetworkCallback<BaseResponse>() {
+            @Override
+            public void onSuccess(BaseResponse response) {
+
+            }
+
+            @Override
+            public void onServiceFailure(int httpResponseCode, String message) {
+
+            }
+
+            @Override
+            public void onNetworkFailure(Throwable message) {
+
+            }
+        });
+    }
+
     @Override
     public void getSocialMedias(NetworkCallback<BaseResponse<SocialMediaEntity>> callback) {
         sendRequest(APIService.getSocialMedias(), callback);
@@ -217,6 +241,22 @@ public class ApiUtils extends AbstractApiUtils {
     @Override
     public void sendCrashLog(CrashLogBody crashLogBody, NetworkCallback<BaseResponse> callback) {
         sendRequest(APIService.sendCrashLog(crashLogBody), callback);
+    }
+
+    @Override
+    public void requestPayslipOtp(NetworkCallback<BaseResponse> callback) {
+        HashMap<String, Object> body = new HashMap<>(); // empty JSON body {}
+        sendRequest(APIService.requestPayslipOtp(body), callback);
+    }
+
+    @Override
+    public void verifyPayslipOtp(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback) {
+        sendRequest(APIService.verifyPayslipOtp(body), callback);
+    }
+
+    @Override
+    public Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse<PayslipEntity>> callback) {
+        return sendRequest(APIService.fetchPayslip(body), callback);
     }
 
     public <R> Callback sendRequest(Call<R> call, final NetworkCallback<R> callBack) {
@@ -250,6 +290,22 @@ public class ApiUtils extends AbstractApiUtils {
     }
 
 
+    @Override
+    public void deactivateDigitalCard(NetworkCallback<BaseResponse> callback) {
+        sendRequest(APIService.deactivateDigitalCard(), callback);
+    }
+
+    @Override
+    public void activateDigitalCard(NetworkCallback<BaseResponse<ActivateCardResponse>> callback) {
+        sendRequest(APIService.activateDigitalCard(), callback);
+    }
+
+    @Override
+    public void getUserBusinessCardState(NetworkCallback<BaseResponse<BusinessCardStateResponse>> callback) {
+        sendRequest(APIService.getUserBusinessCardState(), callback);
+    }
+
+
 /*    @Override
     public Observable<DataHolder<LoginModel>> login(String userName, String password, String otpCode, String captchaCode) {
         Observable<DataHolder<LoginModel>> loginObservable = customCallbackSender.sendRequest(APIService.firstLogin("password", userName.toUpperCase(), password, otpCode, captchaCode));
@@ -257,6 +313,7 @@ public class ApiUtils extends AbstractApiUtils {
         Observable concated = starttedObservable.concatWith(loginObservable);
         return concated;
     }*/
+
 
 
 }

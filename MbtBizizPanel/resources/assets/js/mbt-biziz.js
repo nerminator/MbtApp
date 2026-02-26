@@ -144,21 +144,56 @@ function pdfclick(url) {
     window.open(decodeURIComponent(url), "_blank");
 }
 
-function getPdfHtml(id, name, url) {
-    return "<div class='col-md-12 userdiv active pdffile pdf"+id+"' style='padding-top: 10px;'> \
-    <div class='col-md-2 pointer_on_hover' onclick=\"pdfclick('"+encodeURIComponent(url)+"');\" ><img src='../img/pdf-icon.png' style='margin-top: 6px; width: 25px; height:25px;'> </div> \
-    <div class='col-md-9 pointer_on_hover' onclick=\"pdfclick('"+encodeURIComponent(url)+"');\"   >" + name + "</div> \
-    <div class='col-md-1' style='text-align: right; padding-top: 5px;'> \
-        <div class='dropdown'> \
-            <a style='text-decoration: none; color:#636b6f; width: 100%;' class='fa fa-ellipsis-v fa-2x dropdown-toggle pointer_on_hover' \
-                    aria-hidden='true' type='button' data-toggle='dropdown'></a> \
-            <ul class='dropdown-menu'> \
-                <li><a data='" + id + "' class='removePdf pointer_on_hover'>Kaldır</a></li> \
-            </ul> \
-        </div> \
-    </div> \
-    </div>"
-}    
+function safeUrl(u) {
+  if (typeof u !== 'string') return '';
+  u = u.trim();
+
+  // sadece http/https veya relative path kabul et
+  if (/^https?:\/\/[^\s"'<>]+$/i.test(u)) return u;
+  if (/^\/[^\s"'<>]*$/i.test(u)) return u;
+
+  return '';
+}
+
+function getPdfNode(id, name, url) {
+  var safe = safeUrl(url);
+
+  var $wrap = $('<div>', {
+    class: 'col-md-12 userdiv active pdffile pdf' + id,
+    css: { paddingTop: '10px' }
+  });
+
+  var $icon = $('<div>', { class: 'col-md-2 pointer_on_hover' })
+    .append($('<img>', {
+      src: '../img/pdf-icon.png',
+      css: { marginTop: '6px', width: '25px', height: '25px' }
+    }));
+
+  var $name = $('<div>', { class: 'col-md-9 pointer_on_hover' })
+    .text(name || '-');
+
+  var clickHandler = function () {
+    if (safe) pdfclick(encodeURIComponent(safe));
+  };
+  $icon.on('click', clickHandler);
+  $name.on('click', clickHandler);
+
+  var $menu = $(
+    "<div class='col-md-1' style='text-align: right; padding-top: 5px;'>" +
+      "<div class='dropdown'>" +
+        "<a style='text-decoration: none; color:#636b6f; width: 100%;' class='fa fa-ellipsis-v fa-2x dropdown-toggle pointer_on_hover' aria-hidden='true' type='button' data-toggle='dropdown'></a>" +
+        "<ul class='dropdown-menu'>" +
+          "<li><a class='removePdf pointer_on_hover'>Kaldır</a></li>" +
+        "</ul>" +
+      "</div>" +
+    "</div>"
+  );
+
+  $menu.find('.removePdf').attr('data', String(id));
+
+  $wrap.append($icon, $name, $menu);
+  return $wrap;
+}
 
 
 function pdfupload(input) {
@@ -180,7 +215,7 @@ function pdfupload(input) {
                 alert("Pdf boyutu 10MB'dan büyük olmamalı.")
             }
             else {
-                $("[name='pdf_list']").append( getPdfHtml(data.id, filename, data.url)); 
+                $("[name='pdf_list']").append(getPdfNode(data.id, filename, data.url));
                 $("[name='pdf_list']").show();
             }
         },
@@ -551,7 +586,7 @@ $(document).ready(function () {
         if (pdfStr != null && pdfStr!=""){
             pdfs = JSON.parse(pdfStr);
             for (var a = 0; a < pdfs.length; a++) {
-                var html = getPdfHtml(pdfs[a].id, pdfs[a].name, pdfs[a].pdf)
+                var html = getPdfNode(pdfs[a].id, pdfs[a].name, pdfs[a].pdf);
                 $("[name='pdf_list']").append(html);                                
                 $("[name='pdf_list']").show();
             }
@@ -986,30 +1021,90 @@ function onClickAddClubLoc(target){
 }
 
 function addEmptyClubLocation(data, target){
-    $('#clubLocsDiv').prepend(' \
-        <div id="locDiv-'+ data +'">\
-            <div id="locCollapsibleDiv-'+ data +'"class="row sc_collapsible" style="padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;" > \
-                <div class="col-md-12" style="width: calc(100% - 18px); padding-right: 0px; padding-left:0px;"> \
-                    <div class="col-md-11" style="padding-left:0px;"> \
-                        <input type="text" class="sc-input-text" placeholder="ex: Aksaray" name="clubLoc" maxlength="100" data='+ data +' onchange="onChangeClubLoc(this);"> \
-                    </div> \
-                    <div class="dropdown col-md-1" style="text-align: right;"> \
-                        <a style="text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown" onclick="event.preventDefault();"></a> \
-                        <ul class="dropdown-menu"> \
-                            <li><a class="remove" href="javascript:onClickDeleteClubLoc('+ data +' );"><b>Delete</b></a></li> \
-                        </ul> \
-                    </div> \
-                </div> \
-            </div> \
-            <div class="content sc1_content" style="display: none;">\
-                <a name="addNewClub" style="margin: 18px;display: inline-block;" href="javascript:onClickAddClub('+ data +');" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Club</a>\
-                <div id="clubsDivForLoc-'+ data +'">\
-                </div>\
-            </div>\
-        </div>\
-    ')
+  // 1) ID kesinlikle sayı olsun (Snyk’in “tainted” flow’unu da keser)
+  var id = parseInt(data, 10);
+  if (isNaN(id)) return;
 
-    setupCollapsibleOnClick( document.getElementById('locCollapsibleDiv-'+ data) )
+  // 2) DOM node üret
+  var $locDiv = $('<div>', { id: 'locDiv-' + id });
+
+  var $collapsible = $('<div>', {
+    id: 'locCollapsibleDiv-' + id,
+    'class': 'row sc_collapsible',
+    css: { paddingTop:'10px', paddingBottom:'10px', paddingRight:'0px', marginLeft:'0px' }
+  });
+
+  var $col12 = $('<div>', {
+    'class': 'col-md-12',
+    css: { width:'calc(100% - 18px)', paddingRight:'0px', paddingLeft:'0px' }
+  });
+
+  var $col11 = $('<div>', { 'class': 'col-md-11', css: { paddingLeft:'0px' } });
+
+  var $input = $('<input>', {
+    type: 'text',
+    'class': 'sc-input-text',
+    placeholder: 'ex: Aksaray',
+    name: 'clubLoc',
+    maxlength: 100
+  }).attr('data', id).on('change', function(){
+    onChangeClubLoc(this);
+  });
+
+  $col11.append($input);
+
+  // Dropdown + Delete (inline javascript: yerine click handler)
+  var $dropdown = $('<div>', { 'class': 'dropdown col-md-1', css: { textAlign:'right' } });
+
+  var $toggle = $('<a>', {
+    'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+    'aria-hidden': 'true',
+    type: 'button',
+    'data-toggle': 'dropdown',
+    css: { textDecoration:'none', color:'#636b6f', paddingLeft:'18px', paddingRight:'18px' }
+  }).on('click', function(e){ e.preventDefault(); });
+
+  var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+  var $li = $('<li>');
+  var $del = $('<a>', { 'class': 'remove', href: '#'}).append($('<b>').text('Delete'))
+    .on('click', function(e){
+      e.preventDefault();
+      onClickDeleteClubLoc(id);
+    });
+
+  $li.append($del);
+  $menu.append($li);
+
+  $dropdown.append($toggle, $menu);
+
+  $col12.append($col11, $dropdown);
+  $collapsible.append($col12);
+
+  // Content kısmı
+  var $content = $('<div>', { 'class': 'content sc1_content', css: { display:'none' } });
+
+  var $addNew = $('<a>', {
+    name: 'addNewClub',
+    href: '#',
+    css: { margin:'18px', display:'inline-block' }
+  }).append($('<i>', { 'class': 'fa fa-plus-circle', 'aria-hidden':'true' }))
+    .append(' Add New Club')
+    .on('click', function(e){
+      e.preventDefault();
+      onClickAddClub(id);
+    });
+
+  var $clubsDiv = $('<div>', { id: 'clubsDivForLoc-' + id });
+
+  $content.append($addNew, $clubsDiv);
+
+  $locDiv.append($collapsible, $content);
+
+  // 3) DOM’a bas
+  $('#clubLocsDiv').prepend($locDiv);
+
+  // 4) Mevcut fonksiyonun beklentisi aynı kalsın
+  setupCollapsibleOnClick(document.getElementById('locCollapsibleDiv-' + id));
 }
 
 function onClickDeleteClubLoc(loc_id){
@@ -1060,29 +1155,90 @@ function onClickAddClub(loc_id){
 }
 
 function addEmptyClub(data, loc_id){
-    $('#clubsDivForLoc-'+ loc_id ).prepend(' \
-         <div id="clubDiv-'+ data +'">\
-            <div id="clubCollapsibleDiv-'+ data +'" class="row sc2_collapsible" style="padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;" >\
-                <div class="col-md-12" style="width: calc(100% - 18px); padding-right: 0px; padding-left:0px;">\
-                    <div class="col-md-11" style="padding-left:0px;">\
-                        <input type="text" class="sc-input-text" placeholder="ex: Bisiklet Kulubü" maxlength="100" data='+ data +' onchange="onChangeClub(this);">\
-                    </div>\
-                    <div class="dropdown col-md-1" style="text-align: right;">\
-                        <a style="text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown" onclick="event.preventDefault();"></a>\
-                        <ul class="dropdown-menu">\
-                            <li><a class="remove" href="javascript:onClickDeleteClub('+ data +' );"><b>Delete</b></a></li>\
-                        </ul>\
-                    </div>\
-                </div>\
-            </div>\
-            <div class="sc2_content" style="display: none;">\
-                <a style="margin: 14px;display: inline-block;" href="javascript:onClickAddClubDetail('+ data +')" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Person</a>\
-                <div id="detailDivForClub-'+ data +'">\
-                </div>\
-            </div> \
-    ')
+    // ✅ allowlist: sadece integer ID
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
 
-    setupCollapsible2OnClick( document.getElementById('clubCollapsibleDiv-'+ data) )
+    var loc = parseInt(loc_id, 10);
+    if (isNaN(loc)) return;
+
+    var $clubDiv = $('<div>', { id: 'clubDiv-' + id });
+
+    var $collapsible = $('<div>', {
+        id: 'clubCollapsibleDiv-' + id,
+        'class': 'row sc2_collapsible',
+        style: 'padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;'
+    });
+
+    var $col12 = $('<div>', {
+        'class': 'col-md-12',
+        style: 'width: calc(100% - 18px); padding-right: 0px; padding-left:0px;'
+    });
+
+    var $col11 = $('<div>', { 'class': 'col-md-11', style: 'padding-left:0px;' });
+
+    var $input = $('<input>', {
+        type: 'text',
+        'class': 'sc-input-text',
+        placeholder: 'ex: Bisiklet Kulubü',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangeClub(this);
+    });
+
+    $col11.append($input);
+
+    // Dropdown (inline javascript: yerine handler)
+    var $dropdown = $('<div>', { 'class': 'dropdown col-md-1', style: 'text-align: right;' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function(e){ e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function(e){
+            e.preventDefault();
+            onClickDeleteClub(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropdown.append($toggle, $menu);
+
+    $col12.append($col11, $dropdown);
+    $collapsible.append($col12);
+
+    // Content
+    var $content = $('<div>', { 'class': 'sc2_content', style: 'display: none;' });
+
+    var $addPerson = $('<a>', {
+        href: '#',
+        style: 'margin: 14px;display: inline-block;'
+    }).append($('<i>', { 'class': 'fa fa-plus-circle', 'aria-hidden': 'true' }))
+      .append(' Add New Person')
+      .on('click', function(e){
+          e.preventDefault();
+          onClickAddClubDetail(id);
+      });
+
+    var $detailDiv = $('<div>', { id: 'detailDivForClub-' + id });
+
+    $content.append($addPerson, $detailDiv);
+
+    $clubDiv.append($collapsible, $content);
+
+    $('#clubsDivForLoc-' + loc).prepend($clubDiv);
+
+    setupCollapsible2OnClick(document.getElementById('clubCollapsibleDiv-' + id));
 }
 
 function onClickDeleteClub(id){
@@ -1132,31 +1288,83 @@ function onClickAddClubDetail(club_id){
 }
 
 function addEmptyClubDetail(data, club_id){
-    $('#detailDivForClub-'+ club_id ).prepend(' \
-    <div id="clubDetailDiv-'+ data +'">\
-        <div class="row" style="padding-top: 8px; padding-bottom: 8px;">\
-            <div class="col-md-12 " >\
-                <div class="col-md-6" > \
-                    <input type="text" class="col-md-12 sc-input-text"  \
-                        placeholder="Name" name="respName" maxlength="100" data="'+ data +'" onchange="onChangeClubPersonName(this);">\
-                </div>\
-                <div class="col-md-5" >\
-                    <input type="text" class="col-md-12 sc-input-text" \
-                        placeholder="ex: 05321234567" name="respContact" maxlength="100" data="'+ data +'" onchange="onChangeClubPersonContact(this);">\
-                </div>\
-                <div class="col-md-1" style="text-align: right;">\
-                    <div class="dropdown">\
-                        <a style="text-decoration: none; color:#636b6f;padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown"></a>\
-                        <ul class="dropdown-menu">\
-                            <li><a class="remove" href="javascript:onClickDeleteClubDetail('+ data +');"><b>Delete</b></a></li>\
-                        </ul>\
-                    </div>\
-                </div>\
-            </div>\
-        </div>\
-    </div>\
-    ')
+    // ✅ allowlist: sadece integer ID
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
+
+    var club = parseInt(club_id, 10);
+    if (isNaN(club)) return;
+
+    var $wrap = $('<div>', { id: 'clubDetailDiv-' + id });
+
+    var $row = $('<div>', {
+        'class': 'row',
+        style: 'padding-top: 8px; padding-bottom: 8px;'
+    });
+
+    var $col12 = $('<div>', { 'class': 'col-md-12' });
+
+    // Name input
+    var $col6 = $('<div>', { 'class': 'col-md-6' });
+    var $name = $('<input>', {
+        type: 'text',
+        'class': 'col-md-12 sc-input-text',
+        placeholder: 'Name',
+        name: 'respName',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangeClubPersonName(this);
+    });
+    $col6.append($name);
+
+    // Contact input
+    var $col5 = $('<div>', { 'class': 'col-md-5' });
+    var $contact = $('<input>', {
+        type: 'text',
+        'class': 'col-md-12 sc-input-text',
+        placeholder: 'ex: 05321234567',
+        name: 'respContact',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangeClubPersonContact(this);
+    });
+    $col5.append($contact);
+
+    // Dropdown delete (javascript: href yerine click handler)
+    var $col1 = $('<div>', { 'class': 'col-md-1', style: 'text-align: right;' });
+    var $dropdown = $('<div>', { 'class': 'dropdown' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function(e){ e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function(e){
+            e.preventDefault();
+            onClickDeleteClubDetail(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropdown.append($toggle, $menu);
+    $col1.append($dropdown);
+
+    $col12.append($col6, $col5, $col1);
+    $row.append($col12);
+    $wrap.append($row);
+
+    $('#detailDivForClub-' + club).prepend($wrap);
 }
+
 function onClickDeleteClubDetail(id){
     var id = parseInt(id);
     $.ajax({
@@ -1316,29 +1524,87 @@ function onClickAddMedia(target){
 }
 
 function addEmptyMedia(data, target){
-    $('#mediasDiv').prepend(' \
-    <div id="mediaDiv-'+ data +'">\
-        <div id="mediaCollapsibleDiv-'+ data +'" class="row sc_collapsible" style="padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;" >\
-            <div class="col-md-12" style="width: calc(100% - 18px); padding-right: 0px; padding-left:0px;">\
-                <div class="col-md-11" style="padding-left:0px;">\
-                    <input type="text" class="sc-input-text" placeholder="ex: Instagram" maxlength="100" data="'+ data +'" onchange="onChangeMedia(this);">\
-                </div>\
-                <div class="dropdown col-md-1" style="text-align: right;">\
-                    <a style="text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown" onclick="event.preventDefault();"></a>\
-                    <ul class="dropdown-menu">\
-                        <li><a class="remove" href="javascript:onClickDeleteMedia('+ data +');"><b>Delete</b></a></li>\
-                    </ul>\
-                </div>\
-            </div>\
-        </div>\
-        <div class="content sc1_content" style="display: none;">\
-            <a style="margin: 18px;display: inline-block;" href="javascript:onClickAddMediaDetail('+ data +');" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Media Detail</a>\
-            <div id="detailDivForMedia-'+ data +'">\
-            </div>\
-        </div>\
-    </div> \
-    ')
-    setupCollapsibleOnClick( document.getElementById('mediaCollapsibleDiv-'+ data) )
+    // ✅ allowlist: sadece integer ID kabul et
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
+
+    var $mediaDiv = $('<div>', { id: 'mediaDiv-' + id });
+
+    var $collapsible = $('<div>', {
+        id: 'mediaCollapsibleDiv-' + id,
+        'class': 'row sc_collapsible',
+        style: 'padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;'
+    });
+
+    var $col12 = $('<div>', {
+        'class': 'col-md-12',
+        style: 'width: calc(100% - 18px); padding-right: 0px; padding-left:0px;'
+    });
+
+    var $col11 = $('<div>', { 'class': 'col-md-11', style: 'padding-left:0px;' });
+
+    var $input = $('<input>', {
+        type: 'text',
+        'class': 'sc-input-text',
+        placeholder: 'ex: Instagram',
+        maxlength: 100
+    }).attr('data', id).on('change', function () {
+        onChangeMedia(this);
+    });
+
+    $col11.append($input);
+
+    // Dropdown + Delete (javascript: yerine click handler)
+    var $dropdown = $('<div>', { 'class': 'dropdown col-md-1', style: 'text-align: right;' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function (e) { e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function (e) {
+            e.preventDefault();
+            onClickDeleteMedia(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropdown.append($toggle, $menu);
+
+    $col12.append($col11, $dropdown);
+    $collapsible.append($col12);
+
+    // Content (Add New Media Detail)
+    var $content = $('<div>', { 'class': 'content sc1_content', style: 'display: none;' });
+
+    var $addDetail = $('<a>', {
+        href: '#',
+        style: 'margin: 18px;display: inline-block;'
+    }).append($('<i>', { 'class': 'fa fa-plus-circle', 'aria-hidden': 'true' }))
+      .append(' Add New Media Detail')
+      .on('click', function (e) {
+          e.preventDefault();
+          onClickAddMediaDetail(id);
+      });
+
+    var $detailDiv = $('<div>', { id: 'detailDivForMedia-' + id });
+
+    $content.append($addDetail, $detailDiv);
+
+    $mediaDiv.append($collapsible, $content);
+
+    $('#mediasDiv').prepend($mediaDiv);
+
+    setupCollapsibleOnClick(document.getElementById('mediaCollapsibleDiv-' + id));
 }
 
 function onClickDeleteMedia(loc_id){
@@ -1387,27 +1653,80 @@ function onClickAddMediaDetail(media_id){
 }
 
 function addEmptyMediaDetail(data, media_id){
-    
-    $('#detailDivForMedia-'+ media_id ).prepend('\
-    <div id="detailDiv-'+ data +'">\
-        <div class="row" style="padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;" >\
-            <div class="col-md-12" style="width: calc(100% - 18px); padding-right: 0px; padding-left:0px;">\
-                <div class="col-md-4" style="padding-left:0px;">\
-                    <input type="text" class="sc-input-text" placeholder="ex: Mercedes-Benz Türk" maxlength="100" data="'+ data +'" onchange="onChangeMediaAccount(this);">\
-                </div>\
-                <div class="col-md-7" >\
-                    <input type="text" class="sc-input-text" placeholder="ex: https://www.instagram.com/mercedesbenzturk/" maxlength="100"  data="'+ data +'" onchange="onChangeMediaUrl(this);">\
-                </div>\
-                <div class="dropdown col-md-1" style="text-align: right;">\
-                    <a style="text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown" onclick="event.preventDefault();"></a>\
-                    <ul class="dropdown-menu">\
-                        <li><a class="remove" href="javascript:onClickDeleteMediaDetail('+ data +');"><b>Delete</b></a></li>\
-                    </ul>\
-                </div>\
-            </div>\
-        </div>\
-    </div>\
-    ')
+    // ✅ allowlist: sadece integer ID
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
+
+    var media = parseInt(media_id, 10);
+    if (isNaN(media)) return;
+
+    var $detailWrap = $('<div>', { id: 'detailDiv-' + id });
+
+    var $row = $('<div>', {
+        'class': 'row',
+        style: 'padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;'
+    });
+
+    var $col12 = $('<div>', {
+        'class': 'col-md-12',
+        style: 'width: calc(100% - 18px); padding-right: 0px; padding-left:0px;'
+    });
+
+    // Account input
+    var $col4 = $('<div>', { 'class': 'col-md-4', style: 'padding-left:0px;' });
+    var $acc = $('<input>', {
+        type: 'text',
+        'class': 'sc-input-text',
+        placeholder: 'ex: Mercedes-Benz Türk',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangeMediaAccount(this);
+    });
+    $col4.append($acc);
+
+    // URL input
+    var $col7 = $('<div>', { 'class': 'col-md-7' });
+    var $url = $('<input>', {
+        type: 'text',
+        'class': 'sc-input-text',
+        placeholder: 'ex: https://www.instagram.com/mercedesbenzturk/',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangeMediaUrl(this);
+    });
+    $col7.append($url);
+
+    // Dropdown delete (javascript: href yerine click handler)
+    var $dropCol = $('<div>', { 'class': 'dropdown col-md-1', style: 'text-align: right;' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function(e){ e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function(e){
+            e.preventDefault();
+            onClickDeleteMediaDetail(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropCol.append($toggle, $menu);
+
+    $col12.append($col4, $col7, $dropCol);
+    $row.append($col12);
+    $detailWrap.append($row);
+
+    $('#detailDivForMedia-' + media).prepend($detailWrap);
 }
 
 function onClickDeleteMediaDetail(id){
@@ -1623,32 +1942,89 @@ function phonesSetup(){
     return false
   }
   
-  function addEmptyPhoneLocation(data, target){
-    $('#phoneLocsDiv').prepend(' \
-        <div id="locDiv-'+ data +'">\
-            <div id="locCollapsibleDiv-'+ data +'"class="row sc_collapsible" style="padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;" > \
-                <div class="col-md-12" style="width: calc(100% - 18px); padding-right: 0px; padding-left:0px;"> \
-                    <div class="col-md-11" style="padding-left:0px;"> \
-                        <input type="text" class="sc-input-text" placeholder="ex: Aksaray" maxlength="100" data='+ data +' onchange="onChangePhoneLoc(this);"> \
-                    </div> \
-                    <div class="dropdown col-md-1" style="text-align: right;"> \
-                        <a style="text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown" onclick="event.preventDefault();"></a> \
-                        <ul class="dropdown-menu"> \
-                            <li><a class="remove" href="javascript:onClickDeletePhoneLoc('+ data +' );"><b>Delete</b></a></li> \
-                        </ul> \
-                    </div> \
-                </div> \
-            </div> \
-            <div class="content sc1_content" style="display: none;">\
-                <a style="margin: 18px;display: inline-block;" href="javascript:onClickAddPhone('+ data +');" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Phone</a>\
-                <div id="phonesDivForLoc-'+ data +'">\
-                </div>\
-            </div>\
-        </div>\
-    ')
-  
-    setupCollapsibleOnClick( document.getElementById('locCollapsibleDiv-'+ data) )
-  }
+function addEmptyPhoneLocation(data, target){
+    // ✅ allowlist: sadece integer ID
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
+
+    var $locDiv = $('<div>', { id: 'locDiv-' + id });
+
+    var $collapsible = $('<div>', {
+        id: 'locCollapsibleDiv-' + id,
+        'class': 'row sc_collapsible',
+        style: 'padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;'
+    });
+
+    var $col12 = $('<div>', {
+        'class': 'col-md-12',
+        style: 'width: calc(100% - 18px); padding-right: 0px; padding-left:0px;'
+    });
+
+    var $col11 = $('<div>', { 'class': 'col-md-11', style: 'padding-left:0px;' });
+
+    var $input = $('<input>', {
+        type: 'text',
+        'class': 'sc-input-text',
+        placeholder: 'ex: Aksaray',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangePhoneLoc(this);
+    });
+
+    $col11.append($input);
+
+    // Dropdown + Delete (javascript: yerine click handler)
+    var $dropdown = $('<div>', { 'class': 'dropdown col-md-1', style: 'text-align: right;' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function(e){ e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function(e){
+            e.preventDefault();
+            onClickDeletePhoneLoc(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropdown.append($toggle, $menu);
+
+    $col12.append($col11, $dropdown);
+    $collapsible.append($col12);
+
+    // Content (Add New Phone)
+    var $content = $('<div>', { 'class': 'content sc1_content', style: 'display: none;' });
+
+    var $addPhone = $('<a>', {
+        href: '#',
+        style: 'margin: 18px;display: inline-block;'
+    }).append($('<i>', { 'class': 'fa fa-plus-circle', 'aria-hidden': 'true' }))
+      .append(' Add New Phone')
+      .on('click', function(e){
+          e.preventDefault();
+          onClickAddPhone(id);
+      });
+
+    var $phonesDiv = $('<div>', { id: 'phonesDivForLoc-' + id });
+
+    $content.append($addPhone, $phonesDiv);
+
+    $locDiv.append($collapsible, $content);
+
+    $('#phoneLocsDiv').prepend($locDiv);
+
+    setupCollapsibleOnClick(document.getElementById('locCollapsibleDiv-' + id));
+}
   
   function onClickDeletePhoneLoc(loc_id){
     var id = parseInt(loc_id);
@@ -1697,31 +2073,92 @@ function phonesSetup(){
     return false
   }
   
-  function addEmptyPhone(data, loc_id){
-    $('#phonesDivForLoc-'+ loc_id ).prepend(' \
-         <div id="phoneDiv-'+ data +'">\
-            <div id="phoneCollapsibleDiv-'+ data +'" class="row sc2_collapsible" style="padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;" >\
-                <div class="col-md-12" style="width: calc(100% - 18px); padding-right: 0px; padding-left:0px;">\
-                    <div class="col-md-11" style="padding-left:0px;">\
-                        <input type="text" class="sc-input-text" placeholder="ex: İtfaiye" maxlength="100" data='+ data +' onchange="onChangePhone(this);">\
-                    </div>\
-                    <div class="dropdown col-md-1" style="text-align: right;">\
-                        <a style="text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown" onclick="event.preventDefault();"></a>\
-                        <ul class="dropdown-menu">\
-                            <li><a class="remove" href="javascript:onClickDeletePhone('+ data +' );"><b>Delete</b></a></li>\
-                        </ul>\
-                    </div>\
-                </div>\
-            </div>\
-            <div class="sc2_content" style="display: none;">\
-                <a style="margin: 14px;display: inline-block;" href="javascript:onClickAddPhoneDetail('+ data +')" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Phone Detail</a>\
-                <div id="detailDivForPhone-'+ data +'">\
-                </div>\
-            </div> \
-    ')
-  
-    setupCollapsible2OnClick( document.getElementById('phoneCollapsibleDiv-'+ data) )
-  }
+function addEmptyPhone(data, loc_id){
+    // ✅ allowlist: sadece integer ID
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
+
+    var loc = parseInt(loc_id, 10);
+    if (isNaN(loc)) return;
+
+    var $phoneDiv = $('<div>', { id: 'phoneDiv-' + id });
+
+    var $collapsible = $('<div>', {
+        id: 'phoneCollapsibleDiv-' + id,
+        'class': 'row sc2_collapsible',
+        style: 'padding-top: 10px; padding-bottom: 10px; padding-right:0px; margin-left:0px;'
+    });
+
+    var $col12 = $('<div>', {
+        'class': 'col-md-12',
+        style: 'width: calc(100% - 18px); padding-right: 0px; padding-left:0px;'
+    });
+
+    var $col11 = $('<div>', { 'class': 'col-md-11', style: 'padding-left:0px;' });
+
+    var $input = $('<input>', {
+        type: 'text',
+        'class': 'sc-input-text',
+        placeholder: 'ex: İtfaiye',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangePhone(this);
+    });
+
+    $col11.append($input);
+
+    // Dropdown + Delete (javascript: yerine click handler)
+    var $dropdown = $('<div>', { 'class': 'dropdown col-md-1', style: 'text-align: right;' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function(e){ e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function(e){
+            e.preventDefault();
+            onClickDeletePhone(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropdown.append($toggle, $menu);
+
+    $col12.append($col11, $dropdown);
+    $collapsible.append($col12);
+
+    // Content (Add New Phone Detail)
+    var $content = $('<div>', { 'class': 'sc2_content', style: 'display: none;' });
+
+    var $addDetail = $('<a>', {
+        href: '#',
+        style: 'margin: 14px;display: inline-block;'
+    }).append($('<i>', { 'class': 'fa fa-plus-circle', 'aria-hidden': 'true' }))
+      .append(' Add New Phone Detail')
+      .on('click', function(e){
+          e.preventDefault();
+          onClickAddPhoneDetail(id);
+      });
+
+    var $detailDiv = $('<div>', { id: 'detailDivForPhone-' + id });
+
+    $content.append($addDetail, $detailDiv);
+
+    $phoneDiv.append($collapsible, $content);
+
+    $('#phonesDivForLoc-' + loc).prepend($phoneDiv);
+
+    setupCollapsible2OnClick(document.getElementById('phoneCollapsibleDiv-' + id));
+}
   
   function onClickDeletePhone(id){
     var id = parseInt(id);
@@ -1769,36 +2206,97 @@ function phonesSetup(){
     });
   }
   
-  function addEmptyPhoneDetail(data, phone_id){
-    $('#detailDivForPhone-'+ phone_id ).prepend(' \
-    <div id="phoneDetailDiv-'+ data +'">\
-        <div class="row" style="padding-top: 8px; padding-bottom: 8px;">\
-            <div class="col-md-12 " >\
-            <div class="col-md-4" > \
-                <input type="text" class="col-md-12 sc-input-text"  \
-                    placeholder="Unit" name="phoneUnit" maxlength="100" data="'+ data +'" onchange="onChangePhoneUnit(this);">\
-            </div>\
-            <div class="col-md-4" >\
-                <input type="text" class="col-md-12 sc-input-text" \
-                    placeholder="Note" name="phoneNote" maxlength="100" data="'+ data +'" onchange="onChangePhoneNote(this);">\
-            </div>\
-            <div class="col-md-3" >\
-                <input type="text" class="col-md-12 sc-input-text" \
-                    placeholder="Internal comm." name="phoneInternal" maxlength="100" data="'+ data +'" onchange="onChangePhoneInternal(this);">\
-            </div>\
-            <div class="col-md-1" style="text-align: right;">\
-                <div class="dropdown">\
-                    <a style="text-decoration: none; color:#636b6f;padding-left: 18px; padding-right: 18px;" class="fa fa-ellipsis-v fa-2x dropdown-toggle" aria-hidden="true" type="button" data-toggle="dropdown"></a>\
-                    <ul class="dropdown-menu">\
-                        <li><a class="remove" href="javascript:onClickDeletePhoneDetail('+ data +');"><b>Delete</b></a></li>\
-                    </ul>\
-                    </div>\
-                </div>\
-            </div>\
-        </div>\
-    </div> \
-    ')
-  }
+function addEmptyPhoneDetail(data, phone_id){
+    // ✅ allowlist: sadece integer ID
+    var id = parseInt(data, 10);
+    if (isNaN(id)) return;
+
+    var phone = parseInt(phone_id, 10);
+    if (isNaN(phone)) return;
+
+    var $wrap = $('<div>', { id: 'phoneDetailDiv-' + id });
+
+    var $row = $('<div>', {
+        'class': 'row',
+        style: 'padding-top: 8px; padding-bottom: 8px;'
+    });
+
+    var $col12 = $('<div>', { 'class': 'col-md-12' });
+
+    // Unit
+    var $col4a = $('<div>', { 'class': 'col-md-4' });
+    var $unit = $('<input>', {
+        type: 'text',
+        'class': 'col-md-12 sc-input-text',
+        placeholder: 'Unit',
+        name: 'phoneUnit',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangePhoneUnit(this);
+    });
+    $col4a.append($unit);
+
+    // Note
+    var $col4b = $('<div>', { 'class': 'col-md-4' });
+    var $note = $('<input>', {
+        type: 'text',
+        'class': 'col-md-12 sc-input-text',
+        placeholder: 'Note',
+        name: 'phoneNote',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangePhoneNote(this);
+    });
+    $col4b.append($note);
+
+    // Internal comm.
+    var $col3 = $('<div>', { 'class': 'col-md-3' });
+    var $internal = $('<input>', {
+        type: 'text',
+        'class': 'col-md-12 sc-input-text',
+        placeholder: 'Internal comm.',
+        name: 'phoneInternal',
+        maxlength: 100
+    }).attr('data', id).on('change', function(){
+        onChangePhoneInternal(this);
+    });
+    $col3.append($internal);
+
+    // Dropdown delete (javascript: href yerine click handler)
+    var $col1 = $('<div>', { 'class': 'col-md-1', style: 'text-align: right;' });
+    var $dropdown = $('<div>', { 'class': 'dropdown' });
+
+    var $toggle = $('<a>', {
+        href: '#',
+        style: 'text-decoration: none; color:#636b6f; padding-left: 18px; padding-right: 18px;',
+        'class': 'fa fa-ellipsis-v fa-2x dropdown-toggle',
+        'aria-hidden': 'true',
+        type: 'button',
+        'data-toggle': 'dropdown'
+    }).on('click', function(e){ e.preventDefault(); });
+
+    var $menu = $('<ul>', { 'class': 'dropdown-menu' });
+    var $li = $('<li>');
+    var $del = $('<a>', { 'class': 'remove', href: '#' })
+        .append($('<b>').text('Delete'))
+        .on('click', function(e){
+            e.preventDefault();
+            onClickDeletePhoneDetail(id);
+        });
+
+    $li.append($del);
+    $menu.append($li);
+
+    $dropdown.append($toggle, $menu);
+    $col1.append($dropdown);
+
+    $col12.append($col4a, $col4b, $col3, $col1);
+    $row.append($col12);
+    $wrap.append($row);
+
+    $('#detailDivForPhone-' + phone).prepend($wrap);
+}
+
   function onClickDeletePhoneDetail(id){
     var id = parseInt(id);
     $.ajax({
@@ -1843,12 +2341,28 @@ function onClickLoadMore(){
                 $("#loadmore").hide()
             } 
             for (var a = 0; a < data.length; a++) {
-                $("#feedbackDiv").append('<div class="col-md-12 eventdiv passive">\
-                <label>Posted by : </label> <label>'+data[a].user+' </label> \
-                <label style="float:right">Date : '+data[a].created_at+'</label>\
-                <br>\
-                <label>'+data[a].text+'</label>\
-                <br>')
+
+                var $item = $('<div>', { 'class': 'col-md-12 eventdiv passive' });
+
+                $item.append($('<label>').text('Posted by : '));
+                $item.append($('<label>').text(data[a].user == null ? '' : String(data[a].user)));
+
+                $item.append(
+                $('<label>')
+                    .css('float', 'right')
+                    .text('Date : ' + (data[a].created_at == null ? '' : String(data[a].created_at)))
+                );
+
+                $item.append('<br>');
+
+                $item.append(
+                $('<label>').text(data[a].text == null ? '' : String(data[a].text))
+                );
+
+                $item.append('<br>');
+
+                $("#feedbackDiv").append($item);
+
             }
             offsetVal+=data.length
         },

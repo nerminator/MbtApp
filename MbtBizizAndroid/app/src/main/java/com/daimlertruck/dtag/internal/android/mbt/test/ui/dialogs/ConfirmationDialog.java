@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.DialogConfirmationBinding;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.DialogConfirmationBinding;
 
 
 public class ConfirmationDialog extends DialogFragment {

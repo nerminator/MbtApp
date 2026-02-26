@@ -4,11 +4,11 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.MultiTypeDataBoundAdapter;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemFoodHeaderBinding;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemFoodMenuBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemFoodHeaderBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemFoodMenuBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.DetailList;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodInfo;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodList;

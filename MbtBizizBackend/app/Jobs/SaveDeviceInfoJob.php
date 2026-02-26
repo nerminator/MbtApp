@@ -55,28 +55,30 @@ class SaveDeviceInfoJob extends Job
     private function _saveUserDeviceInfo()
     {
         // check if user exists
-        $userInfo = $this->_getFirstItemFromDb("select id from users where id = ?",[$this->userId]);
-
-        if ($userInfo == null) return;
+        $userExists = DB::table('users')->where('id', $this->userId)->exists();
+        if (!$userExists) return;
 
         // check if user device token exists
-        $userDeviceInfo = $this->_getFirstItemFromDb("select id from user_devices
-                                                                where user_id = ? and os_type = ?
-                                                                order by updated_at desc
-                                                                limit 1", [$this->userId, $this->osType]);
+        $userDeviceInfoId = DB::table('user_devices')
+                ->where('user_id', $this->userId)
+                ->where('os_type', $this->osType)
+                ->orderByDesc('updated_at')
+                ->value('id'); 
 
-        if ($userDeviceInfo == null) {
+        if (!$userDeviceInfoId) {
+        // insert
             DB::table('user_devices')->insert([
                 'user_id' => $this->userId, 'device_token' => $this->deviceToken,
                 'os_type' => $this->osType, 'language_code' => $this->languageCode,
                 'created_at' => $this->currentTime, 'updated_at' => $this->currentTime
             ]);
         } else {
-            DB::table('user_devices')->where('id', $userDeviceInfo->id)->update([
+            DB::table('user_devices')->where('id', $userDeviceInfoId)->update([
                 'device_token' => $this->deviceToken,
                 'language_code' => $this->languageCode,
                 'updated_at' => $this->currentTime
             ]);
         }
+
     }
 }

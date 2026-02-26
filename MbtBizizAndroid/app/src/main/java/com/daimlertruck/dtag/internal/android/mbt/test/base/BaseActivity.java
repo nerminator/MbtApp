@@ -15,7 +15,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.receiver.LogOutReceiver;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.BizizProgressDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.MessageDialog;
@@ -62,7 +63,13 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(logOutReceiver, new IntentFilter("com.daimler.biziz.intent.LOG_OUT"));
+        registerReceiver(
+                logOutReceiver,
+                new IntentFilter("com.daimler.biziz.intent.LOG_OUT"),
+                BuildConfig.APPLICATION_ID + ".permission.INTERNAL_BROADCAST",
+                null
+        );
+
     }
 
     @Override

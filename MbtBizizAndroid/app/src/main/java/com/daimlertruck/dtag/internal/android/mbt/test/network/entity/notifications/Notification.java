@@ -1,6 +1,6 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

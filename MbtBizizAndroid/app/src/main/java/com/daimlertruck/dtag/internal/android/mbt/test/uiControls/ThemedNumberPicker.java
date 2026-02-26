@@ -7,7 +7,7 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import android.util.AttributeSet;
 import android.widget.NumberPicker;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 
 import java.lang.reflect.Field;
 

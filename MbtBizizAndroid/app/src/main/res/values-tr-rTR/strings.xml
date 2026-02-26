@@ -35,7 +35,7 @@ MBT, Aksaray Fabrika Direktörü &amp; İcra Kurulu Üyesi, Ulf Raese
 Ticari Kayıt Numarası: 94468
 VAT Kimlik Numarası: 7-9159-7212-1615130
 
-Telif Hakkı 2018-2025 Mercedes-Benz Türk A.Ş.
+Telif Hakkı 2018-2026 Mercedes-Benz Türk A.Ş.
 Tüm Hakları Saklıdır."</string>
 
     <string name="TXT_ABOUT_MAIN_APP_DESCRIPTION">Uygulama Açıklaması</string>
@@ -68,9 +68,36 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_PROFILE_PROFILE_1ST_BUTTON_WHITE">Esnek Çalışma Bilgilerim</string>
     <string name="TXT_PROFILE_PROFILE_1ST_BUTTON_BLUE">Artı Mesai Saati</string>
     <string name="TXT_PROFILE_PROFILE_2ND_BUTTON">Çalışma Takvimim</string>
+    <string name="TXT_PROFILE_PROFILE_3RD_BUTTON">Bordro</string>
 
     <!--Flexible Working-->
     <string name="TXT_PROFILE_FLEXIBLE_WORK_YEAR">Yıl</string>
+
+    <string name="TXT_OTP_TITLE">Bordro SMS Doğrulama</string>
+    <string name="TXT_OTP_TEXT">Telefonunuza gelen doğrulama kodunu giriniz:</string>
+    <string name="TXT_OTP_HINT">6 Haneli SMS Kodu</string>
+    <string name="TXT_OTP_VERIFY">Doğrula</string>
+    <string name="TXT_OTP_RESEND">Yeniden Gönder</string>
+    <string name="TXT_OTP_TIME">Kalan Süre</string>
+    <string name="TXT_OTP_EXPIRED">Süre doldu</string>
+
+
+    <string name="TXT_OTP_TOAST2">Kod gönderilemedi</string>
+    <string name="TXT_OTP_TOAST3">Ağ Hatası</string>
+    <string name="TXT_OTP_TOAST5">Doğrulama kodu hatalı</string>
+
+    <string name="TXT_PAYSLIP_PERIOD_TOAST1">Bordro bulunamadı!</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST2">PDF görüntülenemedi</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST3">Oturum süresi doldu.</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST4">"Bordro bulunamadı"</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST5">"Ağ hatası"</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST6">PDF açılamadı</string>
+
+    <string name="TXT_PAYSLIP_PERIOD">Bordro Dönemi</string>
+    <string name="TXT_PAYSLIP_PERIOD_MONTH">Ay :</string>
+    <string name="TXT_PAYSLIP_PERIOD_YEAR">Yıl:</string>
+    <string name="TXT_PAYSLIP_PERIOD_BUTTON">Bordro Göster</string>
+    <string name="TXT_PAYSLIP_PERIOD_PAYSLIP">bordro</string>
 
     <!--Login-->
     <string name="TXT_LOGIN_WELCOME_HEADER">Hoş geldiniz</string>
@@ -243,6 +270,7 @@ Tüm Hakları Saklıdır."</string>
     <string name="qrCodeScreenTitle">QR Kodunu Tara</string>
     <string name="captchaHintText">Soldaki yazıyı giriniz</string>
     <string name="TXT_MEAL_SERVICE_HOURS">Cafeteria Service Times</string>
+    <string name="TXT_MEAL_TIMES_FOOTER_NOTE">*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir.</string>
 
     <string name="TXT_DISCOUNT_CODE_LABEL">İNDİRİM KODU</string>
     <string name="TXT_GET_DISCOUNT_CODE_LABEL">İndirim Kodu Al</string>
@@ -268,4 +296,22 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_FEEDBACK_CHARACTER_ERROR">Geri bildiriminiz 3 karakterden az olamaz.</string>
 
     <string name="TXT_APP_SOCIAL_MEDIA">Sosyal Medya Hesapları</string>
+
+    <string name="TXT_KVKK_CONFIRM">Onaylıyorum</string>
+    <string name="TXT_KVKK_DECLINE">Onaylamıyorum</string>
+    <string name="TXT_DIGITAL_CARD">Kartvizitim</string>
+    <string name="TXT_KVKK_TITLE">Veri İşleme Onayı</string>
+
+    <string name="TXT_CARD_MENU_SHOW">Kartvizitimi Göster</string>
+    <string name="TXT_CARD_MENU_SHARE">Kartvizitimi Paylaş</string>
+    <string name="TXT_CARD_MENU_CANCEL">Kartvizitimi İptal Et</string>
+
+
+    <string name="TXT_CARD_DEACTIVATE_MESSAGE">Dijital kartvizitinizi devre dışı bırakmak istediğinizden emin misiniz?</string>
+    <string name="TXT_CARD_DEACTIVATE_TOAST">Kartvizitiniz devre dışı bırakıldı.</string>
+    <string name="TXT_CARD_SHARE_PREFIX">Dijital kartvizitim:</string>
+
+    <string name="TXT_COMMON_CANCEL">İptal</string>
+    <string name="TXT_COMMON_YES">Evet</string>
+
 </resources>

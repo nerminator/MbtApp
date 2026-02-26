@@ -22,6 +22,13 @@ class InitController
     private const BUTTON_TYPE_CONTINUE = 1;
     private const BUTTON_TYPE_DOWNLOAD = 2;
 
+    public function test()
+    {
+        return response()->json([
+            "test" => true
+        ], 200);
+    }
+
     public function init(Request $request)
     {
         //region Controls
@@ -100,6 +107,18 @@ class InitController
                     ]
                 ];
             }
+        } else {
+            $versionPopup = [
+                'title' => Lang::get("lang.TXT_VERSION_POPUP_MAJOR_UPDATE_TITLE"),
+                'message' => Lang::get("lang.TXT_VERSION_POPUP_MAJOR_UPDATE_MESSAGE"),
+                'buttonList' => [
+                    [
+                        'type' => self::BUTTON_TYPE_DOWNLOAD,
+                        'text' => Lang::get("lang.TXT_VERSION_POPUP_DOWNLOAD_BUTTON"),
+                        'url' => env('DOWNLOAD_URL')
+                    ]
+                ]
+            ];
         }
 
         // Add fallback support contact info if versionPopup is still empty

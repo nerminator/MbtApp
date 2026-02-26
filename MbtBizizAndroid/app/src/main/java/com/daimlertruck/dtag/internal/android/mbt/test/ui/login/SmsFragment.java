@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentSmsBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentSmsBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.main.MainActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
 import com.daimlertruck.dtag.internal.android.mbt.test.uiControls.PinView;

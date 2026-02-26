@@ -68,6 +68,19 @@
                 tools:listitem="@layout/item_shuttle"
                 />
 
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+                android:id="@+id/footer_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="24dp"
+                android:text="@string/TXT_MEAL_TIMES_FOOTER_NOTE"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2dp"
+                tools:text="*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir." />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

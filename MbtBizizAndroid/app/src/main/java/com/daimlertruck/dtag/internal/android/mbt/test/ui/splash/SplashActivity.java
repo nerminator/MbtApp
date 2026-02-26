@@ -9,7 +9,7 @@ import android.os.Bundle;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;

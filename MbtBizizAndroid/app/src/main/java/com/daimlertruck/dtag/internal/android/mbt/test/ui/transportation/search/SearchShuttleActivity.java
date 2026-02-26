@@ -8,12 +8,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.RecentSearchsAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.ShuttleSearchAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivitySearchShuttleBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivitySearchShuttleBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.model.ShuttleAdapterModel;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.CompanyListEntity;

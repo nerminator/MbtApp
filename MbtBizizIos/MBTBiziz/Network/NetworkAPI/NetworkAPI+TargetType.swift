@@ -57,7 +57,14 @@ extension NetworkAPI : TargetType {
         case .getMedias : return "/medias"
         case .submitFeedback: return "/submitFeedback"
         case .appStartup: return "/appStartup"
-        case .fetchPayslip: return "/payslip/fetch"
+        case .payslipRequestOtp:      return "/payslip/request-otp"
+        case .payslipVerifyOtp:       return "/payslip/verify-otp"
+        case .payslipFetch:           return "/payslip/fetch"
+            
+        case .getUserBusinessCardState: return "/getUserBusinessCardState"
+        case .activateDigitalCard:      return "/activateDigitalCard"
+        case .deactivateDigitalCard:      return "/deactivateDigitalCard"
+        case .menuIncrement: return "menuIncrement"
         }
     }
     
@@ -103,9 +110,16 @@ extension NetworkAPI : TargetType {
             return .requestParameters(parameters: ["phoneNumber":phoneNumber], encoding: JSONEncoding.default)
         case .submitFeedback(let text):
             return .requestParameters(parameters: ["text":text], encoding: JSONEncoding.default)
-        case .fetchPayslip(let year, let month):
+   
+        case .payslipRequestOtp:
+            return .requestPlain
+        case .payslipVerifyOtp(let code):
+            return .requestParameters(parameters: ["otp": code], encoding: JSONEncoding.default)
+        case .payslipFetch(let year, let month):
             return .requestParameters(parameters: ["year": year, "month": month], encoding: JSONEncoding.default)
-            
+
+        case .menuIncrement(let keyName):
+            return .requestParameters(parameters: ["menu_key": keyName], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
@@ -123,7 +137,7 @@ extension NetworkAPI : TargetType {
         switch self {
         case .getNewsDetail(_),.getDiscountCode(_),.getBirthdayList,.getFoodMenu,.getLocations,.getProfile,.getYearlyWorkHours(_),
                 .getMonthlyWorkHours(_),.getWorkCalendar(_),.getShuttleOptions,.getNotificationSettings,.getNotificationBadgeCount,.signOut, .getCaptcha, .getUserConfig, .getClubs(_), .getClubLocs, .getMedias,
-                    .getPhones(_),.getPhoneLocs:
+                .getPhones(_),.getPhoneLocs, .activateDigitalCard, .deactivateDigitalCard, .getUserBusinessCardState:
             return .get
         default:
             return .post

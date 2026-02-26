@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityFullscreenImageBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityFullscreenImageBinding;
 import com.squareup.picasso.Picasso;
 
 public class FullscreenImageActivity extends BaseActivity<ActivityFullscreenImageBinding> {

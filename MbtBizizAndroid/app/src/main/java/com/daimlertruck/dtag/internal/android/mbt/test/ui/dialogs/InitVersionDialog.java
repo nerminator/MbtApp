@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.DialogInitVersionBinding;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.DialogInitVersionBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.splash.InitUpdateDialogType;
 
 

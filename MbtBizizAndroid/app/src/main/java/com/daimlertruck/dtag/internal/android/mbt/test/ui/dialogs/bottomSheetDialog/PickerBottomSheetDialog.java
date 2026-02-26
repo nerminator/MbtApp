@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.DialogYearPickerBinding;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.DialogYearPickerBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.utils.BottomSheelHelper;
 
 import java.lang.annotation.Retention;

@@ -19,11 +19,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.PageAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.TransportationAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentTransportationBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentTransportationBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.CompanyListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.CompanyLocationListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.ShuttleListEntity;

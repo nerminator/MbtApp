@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.PageAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityNewsBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityNewsBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
 
 import java.util.ArrayList;

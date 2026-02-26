@@ -60,3 +60,4 @@ class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore
     }
   
 }
+

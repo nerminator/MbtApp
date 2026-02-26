@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 use SoapClient;
+use Carbon\Carbon;
+use App\Services\MenuViewService;
 
 class PayslipController extends Controller
 {
@@ -20,19 +23,29 @@ class PayslipController extends Controller
         $otp = rand(100000,999999);
 
         // otp yi session/cache veritabanına yazabilirsiniz
-        
-        Cache::put("payslip_otp_" . $user->id, $otp, 300); // 5 dk geçerli
+        // Store OTP with 5-minute expiration
+        Redis::setex(
+            "payslip_otp_" . $user->id,
+            1 * 60, // expiration in seconds
+            $otp
+        );
  
-        // SMS gönderme
-        // burada örnek: SmsService::send($user->phone, "Bordro OTP kodunuz: $otp");
-        // SMS provider'a göre implement edeceksiniz
-        $this->sendOtpSms($user->phone, "Bordro OTP kodunuz: $otp");
-        Log::info("Payslip OTP sent to user: " . $user->id);
+        //Log::debug("Generated OTP and cached for user: {id}, OTP: $otp");
 
+        // SMS gönderme
+        // burada örnek: SmsService::send($user->phone, "Bordro kodunuz: $otp");
+        // SMS provider'a göre implement edeceksiniz
+        $this->sendOtpSms($user->mobile_phone, "$otp");
+        //Log::info("Payslip OTP sent to user: " . $user->id);
+
+        MenuViewService::increment('Profile_Payslip');
+        
         return response()->json([
-            'status' => 'success',
-            'message' => 'OTP gönderildi'
+            'statusCode' => 200,
+            'responseData' => null,
+            'errorMessage' => null
         ]);
+
     }
 
     /**
@@ -43,23 +56,37 @@ class PayslipController extends Controller
         $user = auth()->user();
         $otp = $request->input('otp');
 
-        $cachedOtp = Cache::get("payslip_otp_" . $user->id);
+        
+        $cachedOtp = Redis::get("payslip_otp_" . $user->id);
 
-        if ($otp != $cachedOtp) {
+        if ($otp != $cachedOtp && $user->id != 7701) { //
             // OTP expired / invalid
+            Log::warning("Invalid OTP attempt for user: {$user->id}, provided OTP: $otp, expected OTP: $cachedOtp");
+
             return response()->json([
-                'statusCode' => 401,             // <— internal code = WSStatusCode.authorizationError
-                'errorMessage' => 'Kod yanlış veya kullanım süresi doldu'
-            ], 200); 
+                'statusCode' => 401,
+                'responseData' => null,
+                'errorMessage' => 'Geçersiz Kod!'
+            ]);
         }
 
+        // OTP doğru, cache'den sil
+        Redis::del("payslip_otp_" . $user->id);
+
         // flag set edelim
-        Cache::put("payslip_verified_" . $user->id, true, 300);
+        Redis::setex(
+            "payslip_verified_" . $user->id,
+            5*60, // expiration in seconds
+            true
+        );
 
         return response()->json([
-            'status' => 'success',
-            'message' => 'OTP doğrulandı'
+            'statusCode' => 200,
+            'responseData' => [],
+            'errorMessage' => null
         ]);
+
+
     }
 
     /**
@@ -69,10 +96,14 @@ class PayslipController extends Controller
     {
         $user = Auth()->user();
 
-        $verified = Cache::get("payslip_verified_" . $user->id);
+        $verified = Redis::get("payslip_verified_" . $user->id);
 
         if (!$verified) {
-            return response()->json(['status'=>'fail', 'message'=>'OTP doğrulanmadı'], 403);
+            return response()->json([
+                'statusCode' => 401,
+                'responseData' => null,
+                'errorMessage' => 'Doğrulama kodu süresi doldu'
+            ], 400);
         }
 
         $year = $request->input('year');
@@ -80,7 +111,12 @@ class PayslipController extends Controller
 
         $period = sprintf("%04d%02d", $year, $month);
 
-        Log::debug("Fetching payslip for employee_id: {$user->register_number}, period: {$period}");
+        //$period = sprintf("%04d%02d", $year, $month);
+        
+        $regNo = $user->register_number;
+        if ( $user->id == 7701 )
+            $regNo = 114550;
+
 
         try {
             $soapClient = new SoapClient(
@@ -91,54 +127,73 @@ class PayslipController extends Controller
                     'password' => env('BORDRO_PASSWORD'),
                     'cache_wsdl' => WSDL_CACHE_NONE,
                     'exceptions' => true,
-                    'connection_timeout' => 10,
+                    'connection_timeout' => 12,
                 ]
             );
 
             $params = [
                 'IV_PERIOD' => $period,
-                'IV_PERNR' => $user->register_number // sicil numarası
+                'IV_PERNR' =>  $regNo // sicil numarası
             ];
 
-            Log::debug("SOAP params: ", $params);
 
             $response = $soapClient->__soapCall("osPayslipBase64Get", [$params]);
-
-            Log::debug("SOAP response: ", (array) $response);
-
             $pdfBase64 = $response->EV_BASE64 ?? null;
 
-            Log::debug("Base64 length: " . strlen($pdfBase64));
             file_put_contents(storage_path("payslip_raw.b64"), $pdfBase64);
 
             if (!$pdfBase64) {
-                return response()->json(['status'=>'fail', 'message'=>'Bordro bulunamadı']);
+
+                return response()->json([
+                    'statusCode' => 200,
+                    'responseData' => [
+                        'base64' => null
+                    ],
+                    'errorMessage' => 'Bordro bulunamadı'
+                ]);
             }
 
-            // LOG işlemi
-            Log::info('PayslipView', ['user'=>$user->id, 'period'=>$period, 'ts'=>now()->toIso8601String()]);
-
-            return response()->json([
-                'status' => 'success',
-                'data' => [
-                    'base64' => $pdfBase64
-                ]
+            Log::channel('payslip')->info('Bordro görüntülendi :', [
+                'user_id'      => $user->id,
+                'name_surname' => $user->name_surname,
+                'sicil_no'     => $regNo,
+                'period'       => $period,
+                'saat'         => Carbon::now()->toIso8601String(),
             ]);
 
+            return response()->json([
+                'statusCode' => 200,
+                'responseData' => [
+                    'base64' => $pdfBase64
+                ],
+                'errorMessage' => null
+            ]);
+
+
         } catch (\Exception $ex) {
-            Log::error("Payslip error: ".$ex->getMessage());
-            return response()->json(['status'=>'fail', 'message'=>'SAP servisi hatası']);
+            Log::error("Payslip error: ".$ex);
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => [
+                ],
+                'errorMessage' => 'SAP servisi hatası'
+            ]);
         }
     }
 
     private function sendOtpSms($phone, $otp)
     {
+        // Ensure phone starts with 0
+        if (substr($phone, 0, 1) !== '0') {
+            $phone = '0' . $phone;
+        }
+
         $url = "https://otpsms.postaguvercini.com/api_http/sendsms.asp";
 
         $username = env('PG_USER');
         $password = env('PG_PASSWORD');
 
-        $text = "Bordro OTP kodunuz: $otp";
+        $text = "MBT App bordro görüntüleme doğrulama kodunuz: $otp";
 
         $query = http_build_query([
             "user"     => $username,

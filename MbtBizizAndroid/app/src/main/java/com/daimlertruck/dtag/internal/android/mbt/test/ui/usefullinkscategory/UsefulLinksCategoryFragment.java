@@ -13,10 +13,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentUsefulLinksCategoryBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentUsefulLinksCategoryBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullinks.UsefulLinksCategoryLocation;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.news.NewsListingFragment;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks.UsefulLinksActivity;

@@ -15,20 +15,27 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentUsefulLinksPortalBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentUsefulLinksPortalBinding;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.MenuIncrementBody;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.network.AbstractApiUtils;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.birthday.BirthdayActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.portal.recycler.PortalSpacesItemDecoration;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.socialmedia.SocialMediaActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks.recycler.UsefulLinksPortalAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinkscategory.UsefulLinksCategoryFragment;
 
+import javax.inject.Inject;
+
 /**
  * x
  * A simple {@link Fragment} subclass.
  */
 public class UsefulLinksPortalFragment extends Fragment {
+
+    @Inject
+    AbstractApiUtils abstractApiUtils;
 
     private com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinks.VMUsefulLinksPortal vmUsefulLinksPortal;
     private FragmentUsefulLinksPortalBinding binding;
@@ -81,24 +88,30 @@ public class UsefulLinksPortalFragment extends Fragment {
                     break;
                 case INTERNAL_ADS:
                     redirectToUrl("https://performancemanager5.successfactors.eu/sf/careers/jobsearch?bplte_company=mercedesbe&_s.crb=McXCkAgE%252fh%252bQRsZU9VjG2iZj%252f4QF%252b%252bcAtBlOkPdHY4U%253d");
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("InternalAds"));
                     break;
                 case BIRTHDAYS:
                     BirthdayActivity.start(getContext());
                     break;
                 case SAP_CONCUR:
                     redirectToPlayStore(SAP_CONCUR_APP_PACKAGE_NAME);
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("SapConcur"));
                     break;
                 case MEALBOX:
                     redirectToUrl("https://mercedes-benz.rezervem.com.tr/");
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("YemegimEvimde"));
                     break;
                 case ORCHESTRA:
                     redirectToCloudOffixApp();
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("CloudOffix"));
                     break;
                 case IMPROVEMENT_SYSTEM:
-                    redirectToUrl("https://daimler-truck.ideas.cloud/app/");
+                    redirectToUrl("https://daimlertruck.crowdworx.com/ideas");
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("Ideas"));
                     break;
                 case ORACLE_HCM:
                     redirectToUrl("https://login-exdu-saasfaprod1.fa.ocs.oraclecloud.com");
+                    abstractApiUtils.menuIncrement( new MenuIncrementBody("OracleHcm"));
                     break;
                 case SOCIAL_MEDIA:
                     SocialMediaActivity.start(this.getContext());

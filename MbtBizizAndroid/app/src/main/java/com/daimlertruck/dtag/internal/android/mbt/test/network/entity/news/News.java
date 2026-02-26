@@ -1,6 +1,6 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.network.entity.news;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.bottomSheetDialog.DiscountTypeBottomSheet;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

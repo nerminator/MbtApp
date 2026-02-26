@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use App\Services\MenuViewService;
 
 class ProfileController extends Controller
 {
@@ -136,6 +137,8 @@ class ProfileController extends Controller
                                             where register_number = ? and year(info_date) = ?
                                             group by month(info_date)", [$regNo, $selectedYear]);
         }
+
+        MenuViewService::increment('Profile_WorkHours');
 
         return response()->json([
             'statusCode' => 200,
@@ -301,6 +304,8 @@ class ProfileController extends Controller
                 ];
             }
         }
+
+        MenuViewService::increment('Profile_WorkCalendar');
 
         return response()->json([
             'statusCode' => 200,

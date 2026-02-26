@@ -4,6 +4,7 @@ package com.daimlertruck.dtag.internal.android.mbt.test.network.network;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.about.AppStartUpEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.MenuIncrementBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.birthday.BirthdayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.captcha.CaptchaEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.feedback.SubmitFeedbackBody;
@@ -23,6 +24,9 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notificati
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notifications.NotificationPostBody;
 
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ProfileEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.SendQrCodePostBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.UserConfigEntity;
@@ -37,9 +41,12 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullink
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.usefullinks.UsefulLinksClubsEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.WorkCalendarEntity;
 
+import java.util.HashMap;
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.http.GET;
 
 interface ApiUtilsInterface {
     void getCustomTempData(NetworkCallback<String> callback);
@@ -103,10 +110,24 @@ interface ApiUtilsInterface {
     void getPhonesById(int id, NetworkCallback<BaseResponse<PhonesEntity>> callback);
 
     void sendFeedback(SubmitFeedbackBody submitFeedbackBody, NetworkCallback<BaseResponse> callback);
+    void menuIncrement(MenuIncrementBody body);
 
     void getSocialMedias(NetworkCallback<BaseResponse<SocialMediaEntity>> callback);
 
     public void sendCrashLog(CrashLogBody crashLogBody, NetworkCallback<BaseResponse> callback);
 
     void appStartUp(NetworkCallback<BaseResponse<AppStartUpEntity>> callback);
+
+    void requestPayslipOtp(NetworkCallback<BaseResponse> callback);
+
+    void verifyPayslipOtp(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback);
+
+    Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse<PayslipEntity>> callback);
+
+    public void getUserBusinessCardState(NetworkCallback<BaseResponse<BusinessCardStateResponse>> callback);
+
+    public void activateDigitalCard(NetworkCallback<BaseResponse<ActivateCardResponse>> callback);
+
+    public void deactivateDigitalCard(NetworkCallback<BaseResponse> callback);
+
 }

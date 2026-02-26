@@ -60,7 +60,7 @@ class ActivationCodeInteractor: ActivationCodeBusinessLogic, ActivationCodeDataS
     
     func sendData(request : ActivationCode.SendData.Request) {
 
-        worker.makeLogin(phoneNumber, otp: request.otp) { [weak self] (response, isExpired) in
+     /*   worker.makeLogin(phoneNumber, otp: request.otp) { [weak self] (response, isExpired) in
 
             guard let response = response, let token = response.token, !token.isEmpty else {
                 self?.presenter?.presentSendDataResult(response : ActivationCode.SendData.Response(isSuccess: false, isExpired: isExpired))
@@ -68,7 +68,7 @@ class ActivationCodeInteractor: ActivationCodeBusinessLogic, ActivationCodeDataS
             }
             TokenManager.sharedManager.handleLoginResponse(response)
             self?.presenter?.presentSendDataResult(response : ActivationCode.SendData.Response(isSuccess: true, isExpired: isExpired))
-        }
+        }*/
     }
     
     func startTimer(request: ActivationCode.Timer.Request) {

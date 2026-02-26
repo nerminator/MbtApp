@@ -18,6 +18,7 @@ class AppearenceHelper {
         UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: FontType.regular.fontName, size: 12)!,.foregroundColor:UIColor.white], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: FontType.regular.fontName, size: 12)!,.foregroundColor:UIColor.mbtBlue], for: .selected)
         UITabBar.appearance().tintColor = UIColor.mbtBlue
+        UITabBar.appearance().backgroundColor = UIColor.black
         UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "btnBack")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "btnBack")
     }

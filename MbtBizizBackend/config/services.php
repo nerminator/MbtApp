@@ -30,4 +30,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'dk' => [
+    'url' => env('DK_BASE_URL', 'https://bizizapp.com/dk'),
+],
 ];

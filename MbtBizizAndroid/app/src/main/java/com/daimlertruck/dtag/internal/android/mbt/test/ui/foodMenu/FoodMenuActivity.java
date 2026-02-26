@@ -14,10 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.PageAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityFoodMenuBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityFoodMenuBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.DensityInfo;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.bottomSheetDialog.PickerBottomSheetDialog;

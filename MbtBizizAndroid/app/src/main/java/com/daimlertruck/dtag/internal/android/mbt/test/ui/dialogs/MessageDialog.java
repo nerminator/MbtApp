@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.DialogMessageBinding;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.DialogMessageBinding;
 
 
 public class MessageDialog extends DialogFragment {

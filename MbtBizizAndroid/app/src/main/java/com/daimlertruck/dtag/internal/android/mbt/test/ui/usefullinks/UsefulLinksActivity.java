@@ -7,9 +7,9 @@ import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityUsefulLinksBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityUsefulLinksBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.usefullinkscategory.UsefulLinksCategoryFragment;
 

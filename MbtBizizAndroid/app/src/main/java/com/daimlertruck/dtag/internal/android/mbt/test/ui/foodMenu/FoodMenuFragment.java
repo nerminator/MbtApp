@@ -9,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.FoodMenuAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.ShuttleAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentFoodMenuBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentFoodMenuBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodInfo;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.ShuttleInfo;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.ShuttleList;

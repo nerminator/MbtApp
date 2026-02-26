@@ -51,7 +51,15 @@ enum NetworkAPI {
     case getMedias
     case submitFeedback(text: String)
     case appStartup
-    case fetchPayslip(year: Int, month: Int)
+    
+    case payslipRequestOtp              // POST /payslip/request-otp
+    case payslipVerifyOtp(code: String) // POST /payslip/verify-otp
+    case payslipFetch(year: Int, month: Int) // POST /payslip/fetch
+    
+    case getUserBusinessCardState
+    case activateDigitalCard
+    case deactivateDigitalCard
+    case menuIncrement(keyName: String)
 }
 
 enum ServiceUrl : String {

@@ -55,7 +55,7 @@ class SetUsers extends Command
             }
 
             $columns = explode("\t", $line);
-            if (count($columns) != 15) {
+            if (count($columns) != 16) {
                 continue;
             }
 
@@ -80,6 +80,7 @@ class SetUsers extends Command
             $email = trim($columns[12]); // EMAIL (-)
             $title = trim($columns[13]); // POZİSYON (YP Nakliye Sorumlusu)
             $companyCode = trim($columns[14]); // ŞİRKET KODU (1402)
+            $title_businesscard = trim($columns[15]); // POZİSYON TANIMI(KARTVİZİT)
 
             if (!empty($registerNumber)) {
                 $registerNumberList[] = $registerNumber;
@@ -100,6 +101,7 @@ class SetUsers extends Command
                         'mobile_phone' => !empty($mobilePhone) ? $mobilePhone : null,
                         'email' => !empty($email) ? $email : null,
                         'title' => $title,
+                        'title_businesscard' => $title_businesscard,
                         'company_code' => $companyCode,
                         'token' => $faker->uuid,
                         'status' => 1,
@@ -119,6 +121,7 @@ class SetUsers extends Command
                     $user->mobile_phone = !empty($mobilePhone) ? $mobilePhone : null;
                     $user->email = !empty($email) ? $email : null;
                     $user->title = $title;
+                    $user->title_businesscard = $title_businesscard;
                     $user->company_code = $companyCode;
                     $user->status = 1;
                     $user->updated_at = $now;
@@ -128,9 +131,9 @@ class SetUsers extends Command
         }
 
         if (is_array($registerNumberList) && count($registerNumberList) > 0) {
-            $testMobilePhoneList = [5551234561, 5551234562, 5551234563, 5551234564, 5551234565, 5551234566];
-	                DB::table('users')->whereNotIn('register_number', $registerNumberList)->where('status', 1)->update(['status' => 0, 'updated_at' => $now]);
-            DB::table('users')->whereIn('mobile_phone', $testMobilePhoneList)->where('status', 0)->update(['status' => 1, 'updated_at' => $now]);
+            $testUserIdList = [7697, 7701];
+	        DB::table('users')->whereNotIn('register_number', $registerNumberList)->where('status', 1)->update(['status' => 0, 'updated_at' => $now]);
+            DB::table('users')->whereIn('id', $testUserIdList)->where('status', 0)->update(['status' => 1, 'updated_at' => $now]);
 
 	    Queue::push(new DeleteUsersJob());
 

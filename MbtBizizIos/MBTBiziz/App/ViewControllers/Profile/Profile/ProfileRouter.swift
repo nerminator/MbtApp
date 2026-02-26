@@ -26,8 +26,8 @@ class ProfileRouter: NSObject, ProfileRoutingLogic, ProfileDataPassing
     //MARK : Routing
     
     func routeToPayslip() {
-            let storyboard = UIStoryboard(name: "Payslip", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier: "PayslipViewController") as? PayslipViewController {
+            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "PayslipOTPViewController") as? PayslipOTPViewController {
                 viewController?.navigationController?.pushViewController(vc, animated: true)
             }
         }

@@ -15,7 +15,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseR
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.CrashLogBody;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.network.AbstractApiUtils;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.network.NetworkCallback;
-import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
 
 import org.json.JSONObject;
 

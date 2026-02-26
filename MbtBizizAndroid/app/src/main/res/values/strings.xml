@@ -35,7 +35,7 @@ Stefan Karrenbauer, Managing Director of Mercedes Benz Finansman Türk A.Ş.
 Commercial Register Number: 94468
 VAT Identification Number: 7-9159-7212-1615130
 
-Copyright 2018-2025 Mercedes-Benz Türk A.Ş.
+Copyright 2018-2026 Mercedes-Benz Türk A.Ş.
 All Rights Reserved."</string>
     <string name="TXT_ABOUT_MAIN_APP_DESCRIPTION">App Description</string>
     <string name="TXT_ABOUT_MAIN_TERMS_OF_USE">Terms Of Use</string>
@@ -62,7 +62,37 @@ All Rights Reserved."</string>
     <string name="TXT_PROFILE_PROFILE_1ST_BUTTON_WHITE">Flexible Working Hours</string>
     <string name="TXT_PROFILE_PROFILE_1ST_BUTTON_BLUE">Additional Work</string>
     <string name="TXT_PROFILE_PROFILE_2ND_BUTTON">Work Calendar</string>
+    <string name="TXT_PROFILE_PROFILE_3RD_BUTTON">Payslip</string>
     <string name="TXT_PROFILE_FLEXIBLE_WORK_YEAR">Year</string>
+    <string name="TXT_OTP_TITLE">Payslip Code Verification</string>
+    <string name="TXT_OTP_TEXT">Enter the code you received via SMS:</string>
+    <string name="TXT_OTP_HINT">6 Digit SMS Code</string>
+    <string name="TXT_OTP_TIME">Remaining Time</string>
+    <string name="TXT_OTP_ELAPSED">Code expired</string>
+    <string name="TXT_OTP_EXPIRED">Code expired</string>
+
+    <string name="TXT_OTP_TOAST2">Connection error</string>
+    <string name="TXT_OTP_TOAST3">Network Error</string>
+    <string name="TXT_OTP_TOAST5">Verification Code is not correct</string>
+
+    <string name="TXT_PAYSLIP_PERIOD_TOAST1">No payslip for this month!</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST2">PDF display error</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST3">The session has expired.</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST4">"No payslip for this month"</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST5">"Network Error"</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST6">Error opening PDF</string>
+
+
+
+    <string name="TXT_PAYSLIP_PERIOD">Payslip Period</string>
+    <string name="TXT_PAYSLIP_PERIOD_MONTH">Month:</string>
+    <string name="TXT_PAYSLIP_PERIOD_YEAR">Year  :</string>
+    <string name="TXT_PAYSLIP_PERIOD_BUTTON">View Payslip</string>
+    <string name="TXT_PAYSLIP_PERIOD_PAYSLIP">payslip</string>
+
+
+    <string name="TXT_OTP_VERIFY">Verify</string>
+    <string name="TXT_OTP_RESEND">Resend</string>
     <string name="TXT_LOGIN_WELCOME_HEADER">Welcome</string>
     <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Please click on Sign In button and continue with authentication steps.</string>
     <string name="TXT_LOGIN_TERMS_WELCOME_TITLE">Terms Of Use</string>
@@ -241,6 +271,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas fau
     <string name="qrCodeScreenTitle">Scan QR Code</string>
     <string name="captchaHintText">Enter the text</string>
     <string name="TXT_MEAL_SERVICE_HOURS">Yemekhane Servis Saatleri</string>
+    <string name="TXT_MEAL_TIMES_FOOTER_NOTE">*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir.</string>
 
     <string name="TXT_DISCOUNT_CODE_LABEL">DISCOUNT CODE</string>
     <string name="TXT_GET_DISCOUNT_CODE_LABEL">Get Discount Code</string>
@@ -251,9 +282,9 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas fau
     <string name="TXT_LINKS_TITLE2">Internal Ads</string>
     <string name="TXT_LINKS_TITLE3">Birthdays</string>
     <string name="TXT_LINKS_TITLE4">SAP Concur</string>
-    <string name="TXT_LINKS_TITLE5">Meal Box</string>
+    <string name="TXT_LINKS_TITLE5">Yemeğim Evimde</string>
     <string name="TXT_LINKS_TITLE6">CloudOffix</string>
-    <string name="TXT_LINKS_TITLE7">Improvement System</string>
+    <string name="TXT_LINKS_TITLE7">Idea Management</string>
     <string name="TXT_LINKS_TITLE8">Oracle HCM</string>
     <string name="TXT_LINKS_TITLE9">MBT Social Media</string>
 
@@ -266,5 +297,22 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas fau
     <string name="TXT_FEEDBACK_CHARACTER_ERROR">Your feedback text cannot be less than 3 characters.</string>
 
     <string name="TXT_APP_SOCIAL_MEDIA">Social Media</string>
+
+    <string name="TXT_KVKK_CONFIRM">Agree</string>
+    <string name="TXT_KVKK_DECLINE">Decline</string>
+    <string name="TXT_DIGITAL_CARD">Business Card</string>
+    <string name="TXT_KVKK_TITLE">Data Processing Approval</string>
+
+    <string name="TXT_CARD_MENU_SHOW">Show my business card</string>
+    <string name="TXT_CARD_MENU_SHARE">Share my business card</string>
+    <string name="TXT_CARD_MENU_CANCEL">Deactivate my business card</string>
+
+
+    <string name="TXT_CARD_DEACTIVATE_MESSAGE">Are you sure you want to deactivate your digital business card?</string>
+    <string name="TXT_CARD_DEACTIVATE_TOAST">Your business card is deactivated.</string>
+    <string name="TXT_CARD_SHARE_PREFIX">My digital business card:</string>
+
+    <string name="TXT_COMMON_CANCEL">Cancel</string>
+    <string name="TXT_COMMON_YES">Yes</string>
 </resources>
 

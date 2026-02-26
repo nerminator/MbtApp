@@ -9,10 +9,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.SocialMediaAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivitySocialMediaBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivitySocialMediaBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
 
 public class SocialMediaActivity extends BaseActivity<ActivitySocialMediaBinding> {

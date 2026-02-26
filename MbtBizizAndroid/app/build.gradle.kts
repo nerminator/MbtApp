@@ -21,20 +21,48 @@ android {
             storeFile = file("signKey")
         }
     }
-    namespace = "com.daimlertruck.dtag.internal.android.mbt.test"
     compileSdk = 34
 
+    namespace = "com.daimlertruck.dtag.internal.android.mbt"
+
+
     defaultConfig {
-        applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
         minSdk = 24
         targetSdk = 33
-        versionCode = 34
-        versionName = "1.2.0"
+        versionCode = 44
+        versionName = "1.4.0"
         dataBinding.enable = true
         multiDexEnabled = false
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         signingConfig = signingConfigs.getByName("enterprise")
+    }
+
+    flavorDimensions += "env"
+
+    productFlavors {
+        create("prod") {
+            dimension = "env"
+            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
+
+            // Örnek ortam değişkenleri:
+            buildConfigField(
+                    "String",
+                    "BASE_URL",
+                    "\"https://bizizapp.com/bizizBackend/public/index.php/api/v1/\""
+            )
+        }
+
+        create("env_test2") {
+            dimension = "env"
+            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test2"
+            resValue("string", "app_name", "TEST MBT APP")
+            buildConfigField(
+                    "String",
+                    "BASE_URL",
+                    "\"http://95.214.97.107/bizizBackend/public/index.php/api/v1/\""
+            )
+        }
     }
 
     packaging {
@@ -103,9 +131,9 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0")
 
     //Google
-    implementation("com.google.firebase:firebase-core:21.1.1")
-    implementation("com.google.firebase:firebase-messaging:24.0.1")
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+    implementation("com.google.firebase:firebase-analytics")   // firebase-core yerine
+    implementation("com.google.firebase:firebase-messaging")
 
     annotationProcessor("androidx.databinding:databinding-compiler:8.2.0")
 

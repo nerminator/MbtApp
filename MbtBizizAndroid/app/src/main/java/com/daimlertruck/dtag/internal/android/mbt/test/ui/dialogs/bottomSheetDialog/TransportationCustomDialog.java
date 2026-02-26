@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.BottomSheetTransportationBinding;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.BottomSheetTransportationBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.ShuttleListEntity;
 
 public class TransportationCustomDialog extends BottomSheetDialog {

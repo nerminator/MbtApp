@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.TransportationAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentChildShuttleBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentChildShuttleBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.CompanyListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.ShuttleListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.bottomSheetDialog.TransportationCustomDialog;

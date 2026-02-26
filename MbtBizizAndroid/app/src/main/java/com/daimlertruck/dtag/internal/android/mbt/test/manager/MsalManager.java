@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.BuildConfig;
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
 import com.microsoft.identity.client.AcquireTokenParameters;
 import com.microsoft.identity.client.AcquireTokenSilentParameters;

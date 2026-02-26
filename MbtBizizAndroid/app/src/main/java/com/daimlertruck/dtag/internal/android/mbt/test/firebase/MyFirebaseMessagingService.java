@@ -11,7 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.main.MainActivity;
 
 import com.google.firebase.messaging.FirebaseMessagingService;

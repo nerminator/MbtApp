@@ -42,7 +42,4 @@ extension MBTSingleton {
         UserDefaults.standard.set(true, forKey: MBTConstants.UserPreference.TermsOfUseShown)
     }
     
-    func setPasswordNeedsChange(_ value:Bool) {
-        UserDefaults.standard.set(value, forKey: MBTConstants.UserPreference.PasswordNeedsChange)
-    }
 }

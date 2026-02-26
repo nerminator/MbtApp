@@ -32,9 +32,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityNewsDetailBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityNewsDetailBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.about.AboutActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;

@@ -1,9 +1,9 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.adapters;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemRecentShuttleSearchBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemRecentShuttleSearchBinding;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -18,8 +18,13 @@ extension Array where Element == MBTTransportationSearchItem {
     }
     
     func save() {
-        let data = NSKeyedArchiver.archivedData(withRootObject: self)
-        UserDefaults.standard.set(data, forKey: MBTConstants.UserPreference.TransportationSearchIdentifier)
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: true)
+            UserDefaults.standard.set(data, forKey: MBTConstants.UserPreference.TransportationSearchIdentifier)
+        } catch {
+            // İstersen logla
+            // print("Archive error:", error)
+        }
     }
     
     func hasItem(_ item : MBTTransportationSearchItem) -> Bool {
@@ -43,11 +48,18 @@ extension MBTTransportationSearchItem {
     }
     
     class func load() -> [MBTTransportationSearchItem]  {
-        if let data = UserDefaults.standard.object(forKey: MBTConstants.UserPreference.TransportationSearchIdentifier) as? Data {
-            if let items = NSKeyedUnarchiver.unarchiveObject(with: data) as? [MBTTransportationSearchItem] {
+        guard let data = UserDefaults.standard.object(forKey: MBTConstants.UserPreference.TransportationSearchIdentifier) as? Data else {
+            return []
+        }
+
+        do {
+            if let items = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: MBTTransportationSearchItem.self, from: data) {
                 return items
             }
+        } catch {
+            // print("Unarchive error:", error)
         }
+
         return []
     }
 }
@@ -78,7 +90,7 @@ extension MBTTransportationListStopList : Equatable {
     }
 }
 
-public final class MBTTransportationSearchItem: NSObject, Unmarshaling, NSCoding {
+public final class MBTTransportationSearchItem: NSObject, Unmarshaling, NSSecureCoding {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
     private struct SerializationKeys {
@@ -93,6 +105,8 @@ public final class MBTTransportationSearchItem: NSObject, Unmarshaling, NSCoding
     public var id: Int?
     public var shuttleName: String?
     public var shuttleId: Int?
+    
+    public static var supportsSecureCoding: Bool { true }
     
     // MARK: Marshal Initializers
     
@@ -119,11 +133,20 @@ public final class MBTTransportationSearchItem: NSObject, Unmarshaling, NSCoding
     }
     
     // MARK: NSCoding Protocol
-    required public init(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObject(forKey: SerializationKeys.name) as? String
-        self.id = aDecoder.decodeObject(forKey: SerializationKeys.id) as? Int
-        self.shuttleName = aDecoder.decodeObject(forKey: SerializationKeys.shuttleName) as? String
-        self.shuttleId = aDecoder.decodeObject(forKey: SerializationKeys.shuttleId) as? Int
+    required public init?(coder aDecoder: NSCoder) {
+        super.init()
+
+        self.name = aDecoder.decodeObject(of: NSString.self, forKey: SerializationKeys.name) as String?
+        self.shuttleName = aDecoder.decodeObject(of: NSString.self, forKey: SerializationKeys.shuttleName) as String?
+
+        // Int için ya decodeInteger + containsValue kontrolü,
+        // ya da NSNumber allowlist:
+        if aDecoder.containsValue(forKey: SerializationKeys.id) {
+            self.id = aDecoder.decodeInteger(forKey: SerializationKeys.id)
+        }
+        if aDecoder.containsValue(forKey: SerializationKeys.shuttleId) {
+            self.shuttleId = aDecoder.decodeInteger(forKey: SerializationKeys.shuttleId)
+        }
     }
     
     public func encode(with aCoder: NSCoder) {

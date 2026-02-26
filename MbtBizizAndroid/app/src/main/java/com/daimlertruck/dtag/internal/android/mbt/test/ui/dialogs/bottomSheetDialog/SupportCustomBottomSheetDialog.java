@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.BottomSheetSupportBinding;
+import com.daimlertruck.dtag.internal.android.mbt.R;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.BottomSheetSupportBinding;
 
 public class SupportCustomBottomSheetDialog extends BottomSheetDialog {
     BottomSheetBehavior<FrameLayout> sheetBehavior;

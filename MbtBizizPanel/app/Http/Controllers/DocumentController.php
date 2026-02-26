@@ -77,7 +77,7 @@ class DocumentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'newsId' => 'required|integer|min:1',
-            'pdfFile' => 'file|mimes:pdf|max:40000',
+            'pdfFile' => 'file|mimes:pdf|max:10000',
         ]);
         if ($validator->fails()) // missing parameters
         {
@@ -85,7 +85,7 @@ class DocumentController extends Controller
         }
 
 
-	$newsId =  $request->Input('newsId');
+	    $newsId =  $request->Input('newsId');
 
         $currentTime = Carbon::now()->toDateTimeString();
 

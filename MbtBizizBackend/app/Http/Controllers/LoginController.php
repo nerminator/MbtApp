@@ -234,6 +234,13 @@ class LoginController extends Controller
         $validator = Validator::make($request->all(), [
             'phoneNumber' => 'required|string|min:10|max:10'
         ]);
+
+        return response()->json([
+                'statusCode' => 401,
+                'responseData' => null,
+                'errorMessage' => Lang::get('Lütfen yeni uygulamayı indiriniz.')
+            ]);
+
         Log::warning("checkPhone called with phoneNumber: " . $request->input('phoneNumber'));
 
         if ($validator->fails()) // missing parameters
@@ -287,7 +294,7 @@ class LoginController extends Controller
             ]);
         }
 
-        $isTestPhone = in_array($request->input('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566"]);
+        $isTestPhone = in_array($request->input('phoneNumber'), ["5551234567", "5367967265", "5551234561", "5551234562", "5551234563", "5551234564", "5551234565", "5551234566", "5357283398"]);
 
         $pinCode = random_int(1000, 9999);
         DB::table('user_pin_codes')->insert([
@@ -441,6 +448,12 @@ class LoginController extends Controller
 
     public function appStartup(Request $request)
     {
+        if ($request->header('lang') == 'en') {
+            app('translator')->setLocale('en');
+            setlocale(LC_TIME, null);
+            Carbon::setLocale('en');
+        }
+
         if ($this->isLangEn()) {
             $aboutText = Redis::get('aboutEN');
             $appDescriptionText = Redis::get('appDescriptionEN');
@@ -448,7 +461,7 @@ class LoginController extends Controller
             $aboutText = Redis::get('aboutTR');
             $appDescriptionText = Redis::get('appDescriptionTR');
         }
-
+        
         return response()->json([
             'statusCode' => 200,
             'responseData' => [

@@ -10,8 +10,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Font Awesome FIRST -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- Styles -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/mbt-biziz.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/jquery.simplewizard.css') }}" rel="stylesheet">
@@ -148,5 +152,6 @@
 <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript" src="{{ asset('/js/splide.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

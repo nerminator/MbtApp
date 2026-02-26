@@ -105,7 +105,7 @@ public class VMSms extends AndroidViewModel {
     private CheckPhonePostBody createPostBody() {
         CheckPhonePostBody checkPhonePostBody = new CheckPhonePostBody();
         checkPhonePostBody.setPhoneNumber(phoneNumber.getValue());
-        checkPhonePostBody.setAppVersion("1.2.0");
+        checkPhonePostBody.setAppVersion("1.4.0");
         return checkPhonePostBody;
     }
 

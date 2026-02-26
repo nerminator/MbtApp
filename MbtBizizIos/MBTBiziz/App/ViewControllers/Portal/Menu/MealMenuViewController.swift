@@ -83,7 +83,7 @@ extension MealMenuViewController : UITableViewDelegate, UITableViewDataSource {
         else if section == 1 { return interactor?.foodInfo?.foodList?.count ?? 0 }
         else if section == 2 {
             guard let count = interactor?.shuttleInfo?.shuttleList?.count, count > 0 else { return 0 }
-            return count + 1
+            return count + 2
         }
         else { return 0 }
     }
@@ -99,6 +99,7 @@ extension MealMenuViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 2 {
             if indexPath.row == 0 { return tableView.dequeueReusableCell(withIdentifier: MealMenuServiceHeaderCell.className, for: indexPath) }
+            else if indexPath.row == (tableView.numberOfRows(inSection: 2) - 1)  { return tableView.dequeueReusableCell(withIdentifier: MealMenuServiceFooterCell.className, for: indexPath)}
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MealMenuServiceCell.className, for: indexPath) as! MealMenuServiceCell
                 cell.setup(interactor?.shuttleInfo?.shuttleList?[indexPath.row - 1])
@@ -116,6 +117,8 @@ extension MealMenuViewController : UITableViewDelegate, UITableViewDataSource {
         }
         else if indexPath.section == 2 {
             if indexPath.row == 0 { return 70 }
+            if indexPath.row == (tableView.numberOfRows(inSection: 2) - 1 ) { return 70 }
+            
             guard let item = interactor?.shuttleInfo?.shuttleList?[indexPath.row - 1].timeList else { return 0 }
             return 74 + CGFloat(2 * item.count - 1) * 20
         }

@@ -10173,6 +10173,22 @@ function shouldRedirectUsingNavigateOr(effects, url, or) {
     or();
   }
 }
+
+function isSafeRedirectUrl(u) {
+  if (typeof u !== 'string') return false;
+
+  // allow relative paths like "/dashboard"
+  if (u.startsWith('/')) return true;
+
+  // allow absolute only if same-origin
+  try {
+    const parsed = new URL(u, window.location.origin);
+    return parsed.origin === window.location.origin;
+  } catch (e) {
+    return false;
+  }
+}
+
 function shouldHideProgressBar() {
   if (!!document.querySelector("[data-no-progress-bar]"))
     return true;
@@ -10187,8 +10203,16 @@ on("effect", ({ effects }) => {
     return;
   let url = effects["redirect"];
   shouldRedirectUsingNavigateOr(effects, url, () => {
-    window.location.href = url;
+    if (isSafeRedirectUrl(url)) {
+      window.location.href = url;
+    } else {
+      // istersen tamamen iptal et:
+      console.warn('Blocked unsafe redirect:', url);
+      // veya güvenli bir default:
+      // window.location.href = '/';
+    }
   });
+
 });
 
 // js/directives/wire-transition.js

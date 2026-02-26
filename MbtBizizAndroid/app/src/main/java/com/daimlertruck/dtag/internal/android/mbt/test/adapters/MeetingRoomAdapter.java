@@ -1,9 +1,9 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.adapters;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemMeetingRoomBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemMeetingRoomBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.MeetingRoom;
 
 import java.util.List;

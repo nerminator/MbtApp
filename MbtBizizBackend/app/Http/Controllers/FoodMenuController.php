@@ -13,10 +13,13 @@ use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
+use App\Services\MenuViewService;
+
 class FoodMenuController extends Controller
 {
     public function foodMenu()
     {
+        MenuViewService::increment('FoodMenu');
         return response()->json([
             'statusCode' => 200,
             'responseData' => [
@@ -58,6 +61,7 @@ class FoodMenuController extends Controller
                 //Log::info("/var/www/html/bizizFiles/food/$fileName.xlsx");
                 $collection = (new FastExcel)->import("/var/www/html/bizizFiles/food/$fileName.xlsx");
                 foreach ($collection as $item) {
+                    //Log::debug("Processing food item: " . json_encode($item));
                     $itemCarbonDate = Carbon::createFromFormat('d.m.Y', $item['TARİH']->format('d.m.Y'));
                     $itemIndex = from($foodInfo)->findIndex(function ($foodInfoItem) use ($itemCarbonDate) {
                         return $foodInfoItem["dateText"] == $itemCarbonDate->format('d.m.Y');

@@ -1,6 +1,6 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.binding;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.BR;
+import com.daimlertruck.dtag.internal.android.mbt.BR;
 
 import java.util.ArrayList;
 import java.util.List;

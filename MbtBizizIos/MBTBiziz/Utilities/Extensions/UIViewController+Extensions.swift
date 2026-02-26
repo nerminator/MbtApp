@@ -63,6 +63,7 @@ enum Storyboard : String {
         case phonesLoc = "phonesLocVC"
         case phones = "phonesVC"
         case appDescription = "appDescriptionVC"
+        case kvkkVc = "kvkkVC"
         
         //Storyboards owning viewcontrollers
         var storyboardName : Storyboard {
@@ -81,7 +82,7 @@ enum Storyboard : String {
                 return .portalMenu
             case .transportation, .transportationSearch, .transportationOptions:
                 return .portalTransportation
-            case .profile, .workingCalendar, .flexibleWork, .flexibleWorkDetail, .settings:
+            case .profile, .workingCalendar, .flexibleWork, .flexibleWorkDetail, .settings, .kvkkVc:
                 return .profile
             case .location, .locationSearch, .locationResult:
                 return .portalLocation

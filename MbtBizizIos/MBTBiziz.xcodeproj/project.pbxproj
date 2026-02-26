@@ -17,8 +17,20 @@
 		4E1930482AEE994F00063E13 /* MBTGetDiscountCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */; };
 		4E1A75B02DB067B400DAEE56 /* CrashLoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */; };
 		4E1A75B12DB067B400DAEE56 /* CrashLoggerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */; };
-		4E1E0B112E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */; };
-		4E1E0B122E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */; };
+		4E1BC8FC2F1452B20028CCDB /* KvkkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC8FB2F1452B20028CCDB /* KvkkViewController.swift */; };
+		4E1BC8FD2F1452B20028CCDB /* KvkkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC8FB2F1452B20028CCDB /* KvkkViewController.swift */; };
+		4E1BC9022F1452CB0028CCDB /* PayslipPeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC8FF2F1452CB0028CCDB /* PayslipPeriodViewController.swift */; };
+		4E1BC9032F1452CB0028CCDB /* PayslipOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC8FE2F1452CB0028CCDB /* PayslipOTPViewController.swift */; };
+		4E1BC9042F1452CB0028CCDB /* PayslipPeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC8FF2F1452CB0028CCDB /* PayslipPeriodViewController.swift */; };
+		4E1BC9052F1452CB0028CCDB /* PayslipOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC8FE2F1452CB0028CCDB /* PayslipOTPViewController.swift */; };
+		4E1BC9092F1453100028CCDB /* MBTActivateBusinessCardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC9062F1453100028CCDB /* MBTActivateBusinessCardResponse.swift */; };
+		4E1BC90A2F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC9072F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift */; };
+		4E1BC90B2F1453100028CCDB /* MBTPayslipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC9082F1453100028CCDB /* MBTPayslipResponse.swift */; };
+		4E1BC90C2F1453100028CCDB /* MBTActivateBusinessCardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC9062F1453100028CCDB /* MBTActivateBusinessCardResponse.swift */; };
+		4E1BC90D2F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC9072F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift */; };
+		4E1BC90E2F1453100028CCDB /* MBTPayslipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC9082F1453100028CCDB /* MBTPayslipResponse.swift */; };
+		4E1BC9102F145BF20028CCDB /* MBTBasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC90F2F145BF20028CCDB /* MBTBasicResponse.swift */; };
+		4E1BC9112F145BF20028CCDB /* MBTBasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BC90F2F145BF20028CCDB /* MBTBasicResponse.swift */; };
 		4E212C922BDE578700C69288 /* AppFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */; };
 		4E212C932BDE57AA00C69288 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */; };
 		4E212C942BDE57B300C69288 /* PhoneLocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDEA992B3B22EF00EA31D8 /* PhoneLocsViewController.swift */; };
@@ -53,6 +65,8 @@
 		4E545ECA2C74F5E800958CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E022078357C0057FC69 /* Assets.xcassets */; };
 		4E545ECB2C74F5E800958CFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F62E022078357C0057FC69 /* Assets.xcassets */; };
 		4E7DCA752C749C7E0066EB7C /* OidcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8491D2C6CBD560055A918 /* OidcViewController.swift */; };
+		4E9929792F2EB305008FD362 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9929782F2EB305008FD362 /* KeychainHelper.swift */; };
+		4E99297A2F2EB305008FD362 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9929782F2EB305008FD362 /* KeychainHelper.swift */; };
 		4E9F0F29240BDF0800719A0A /* NewsContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9F0F28240BDF0800719A0A /* NewsContactCell.swift */; };
 		4E9F0F2A240BDF0800719A0A /* NewsContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9F0F28240BDF0800719A0A /* NewsContactCell.swift */; };
 		4EA170D62AE3D561009C6189 /* MBTNewsPdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA170D52AE3D561009C6189 /* MBTNewsPdf.swift */; };
@@ -60,6 +74,8 @@
 		4EA170DB2AE59873009C6189 /* aboutusTR.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EA170DA2AE59873009C6189 /* aboutusTR.html */; };
 		4EA170DD2AE59A07009C6189 /* aboutusEN.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EA170DC2AE59A07009C6189 /* aboutusEN.html */; };
 		4EA8491E2C6CBD560055A918 /* OidcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA8491D2C6CBD560055A918 /* OidcViewController.swift */; };
+		4EC9CFAA2E62F41000688EF0 /* MealMenuServiceFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9CFA92E62F40300688EF0 /* MealMenuServiceFooterCell.swift */; };
+		4EC9CFAB2E62F41000688EF0 /* MealMenuServiceFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9CFA92E62F40300688EF0 /* MealMenuServiceFooterCell.swift */; };
 		4ED58DDF23E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED58DDD23E0DB94005EBC12 /* MBTAnnotationEmergencyView.swift */; };
 		4ED58DE023E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED58DDD23E0DB94005EBC12 /* MBTAnnotationEmergencyView.swift */; };
 		4ED58DE123E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED58DDE23E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib */; };
@@ -775,12 +791,19 @@
 		4E14FF672B3D9E110006496D /* AppFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedbackViewController.swift; sourceTree = "<group>"; };
 		4E1930462AEE994A00063E13 /* MBTGetDiscountCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTGetDiscountCodeResponse.swift; sourceTree = "<group>"; };
 		4E1A75AF2DB067AC00DAEE56 /* CrashLoggerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLoggerHelper.swift; sourceTree = "<group>"; };
-		4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTPayslipResponse.swift; sourceTree = "<group>"; };
+		4E1BC8FB2F1452B20028CCDB /* KvkkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KvkkViewController.swift; sourceTree = "<group>"; };
+		4E1BC8FE2F1452CB0028CCDB /* PayslipOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipOTPViewController.swift; sourceTree = "<group>"; };
+		4E1BC8FF2F1452CB0028CCDB /* PayslipPeriodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayslipPeriodViewController.swift; sourceTree = "<group>"; };
+		4E1BC9062F1453100028CCDB /* MBTActivateBusinessCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTActivateBusinessCardResponse.swift; sourceTree = "<group>"; };
+		4E1BC9072F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTGetBusinessCardStateResponse.swift; sourceTree = "<group>"; };
+		4E1BC9082F1453100028CCDB /* MBTPayslipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTPayslipResponse.swift; sourceTree = "<group>"; };
+		4E1BC90F2F145BF20028CCDB /* MBTBasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTBasicResponse.swift; sourceTree = "<group>"; };
 		4E35938D2C550D2100A4CB83 /* BaseUIButtonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIButtonWithIcon.swift; sourceTree = "<group>"; };
 		4E3593902C58069700A4CB83 /* MBTAppStartupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTAppStartupResponse.swift; sourceTree = "<group>"; };
 		4E3593922C580E1100A4CB83 /* AppDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescriptionViewController.swift; sourceTree = "<group>"; };
 		4E39778E2B7EB2DF00BAF94C /* MBTButtonCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTButtonCardView.swift; sourceTree = "<group>"; };
 		4E39778F2B7EB2DF00BAF94C /* MBTButtonCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBTButtonCardView.xib; sourceTree = "<group>"; };
+		4E9929782F2EB305008FD362 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		4E9F0F28240BDF0800719A0A /* NewsContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContactCell.swift; sourceTree = "<group>"; };
 		4EA170D52AE3D561009C6189 /* MBTNewsPdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTNewsPdf.swift; sourceTree = "<group>"; };
 		4EA170D82AE56DF4009C6189 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -788,6 +811,7 @@
 		4EA170DC2AE59A07009C6189 /* aboutusEN.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = aboutusEN.html; sourceTree = "<group>"; };
 		4EA8491C2C5FC96A0055A918 /* MBTBiziz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBTBiziz.entitlements; sourceTree = "<group>"; };
 		4EA8491D2C6CBD560055A918 /* OidcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OidcViewController.swift; sourceTree = "<group>"; };
+		4EC9CFA92E62F40300688EF0 /* MealMenuServiceFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealMenuServiceFooterCell.swift; sourceTree = "<group>"; };
 		4ED58DDD23E0DB94005EBC12 /* MBTAnnotationEmergencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTAnnotationEmergencyView.swift; sourceTree = "<group>"; };
 		4ED58DDE23E0DB95005EBC12 /* MBTAnnotationEmergencyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBTAnnotationEmergencyView.xib; sourceTree = "<group>"; };
 		4EDAC2D52B0CC32F00542152 /* LinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksViewController.swift; sourceTree = "<group>"; };
@@ -1228,6 +1252,22 @@
 			path = SocialMediaResponse;
 			sourceTree = "<group>";
 		};
+		4E1BC9002F1452CB0028CCDB /* Bordro */ = {
+			isa = PBXGroup;
+			children = (
+				4E1BC8FE2F1452CB0028CCDB /* PayslipOTPViewController.swift */,
+				4E1BC8FF2F1452CB0028CCDB /* PayslipPeriodViewController.swift */,
+			);
+			path = Bordro;
+			sourceTree = "<group>";
+		};
+		4E1BC9012F1452CB0028CCDB /* BusinessCard1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessCard1;
+			sourceTree = "<group>";
+		};
 		4E39778D2B7EB26C00BAF94C /* ButtonCardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1333,6 +1373,7 @@
 		A101510720A64CD2004D2FCA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4EC9CFA92E62F40300688EF0 /* MealMenuServiceFooterCell.swift */,
 				A101510820A64CFE004D2FCA /* MealMenuHeaderCell.swift */,
 				A101510A20A64D0A004D2FCA /* MealMenuCell.swift */,
 				A101510C20A64D1C004D2FCA /* MealMenuServiceHeaderCell.swift */,
@@ -1880,7 +1921,6 @@
 		A152C534207BFA3E0053CD40 /* ResponseClasses */ = {
 			isa = PBXGroup;
 			children = (
-				4E1E0B102E2D8CCD005B81BA /* MBTPayslipResponse.swift */,
 				4E14FF642B3CF3FF0006496D /* SocialMediaResponse */,
 				4EEDEAA02B3B24EC00EA31D8 /* PhonesResponse */,
 				4EEDEA8E2B3ADFC700EA31D8 /* SocialClubsResponse */,
@@ -1897,6 +1937,7 @@
 				A1E1550520A237300099C579 /* BirthdayResponse */,
 				A16EE5EF209F7E60000B4464 /* NewsResponse */,
 				A16EE5EC209F67DB000B4464 /* LoginResponse */,
+				4E1BC90F2F145BF20028CCDB /* MBTBasicResponse.swift */,
 			);
 			path = ResponseClasses;
 			sourceTree = "<group>";
@@ -1904,6 +1945,7 @@
 		A152C535207BFA3E0053CD40 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4E9929782F2EB305008FD362 /* KeychainHelper.swift */,
 				A152C536207BFA3E0053CD40 /* NetworkActivityManager.swift */,
 				A152C537207BFA3E0053CD40 /* WSCodes.swift */,
 				A152C538207BFA3E0053CD40 /* Parsable.swift */,
@@ -2250,6 +2292,9 @@
 		A1B1823E2087EBB500D50B42 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				4E1BC9002F1452CB0028CCDB /* Bordro */,
+				4E1BC9012F1452CB0028CCDB /* BusinessCard1 */,
+				4E1BC8FB2F1452B20028CCDB /* KvkkViewController.swift */,
 				A1B1824B2087EBE200D50B42 /* ProfilePresenter.swift */,
 				A1B1824C2087EBE200D50B42 /* ProfileWorker.swift */,
 				A1B1824D2087EBE200D50B42 /* ProfileRouter.swift */,
@@ -2493,6 +2538,9 @@
 			isa = PBXGroup;
 			children = (
 				A1F8E51020D1BC0800F6E213 /* MBTProfileResponse.swift */,
+				4E1BC9062F1453100028CCDB /* MBTActivateBusinessCardResponse.swift */,
+				4E1BC9072F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift */,
+				4E1BC9082F1453100028CCDB /* MBTPayslipResponse.swift */,
 			);
 			path = ProfileResponse;
 			sourceTree = "<group>";
@@ -2684,7 +2732,6 @@
 				A18AFCD220FB70C400B3137B /* bizizapp.crt in Resources */,
 				A1B182322087E8D100D50B42 /* Notifications.storyboard in Resources */,
 				A1B182342087E8DC00D50B42 /* Profile.storyboard in Resources */,
-				4E1E0B122E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */,
 				A152C546207BFA3E0053CD40 /* thirdpartyEN.html in Resources */,
 				A152C543207BFA3E0053CD40 /* legalTR.html in Resources */,
 				A152C54C207BFA3E0053CD40 /* DaimlerCS-Demi.ttf in Resources */,
@@ -2721,7 +2768,6 @@
 				A1F96A7F20BF4727008EAD2B /* fossEN.html in Resources */,
 				A1F96A8020BF4727008EAD2B /* termsofuseTR.html in Resources */,
 				A1F96A8120BF4727008EAD2B /* Portal_Menu.storyboard in Resources */,
-				4E1E0B112E2D8CCD005B81BA /* MBTPayslipResponse.swift in Resources */,
 				A1F96A8220BF4727008EAD2B /* DensityView.xib in Resources */,
 				A1F96A8420BF4727008EAD2B /* MBTPagerView.xib in Resources */,
 				A1F96A8520BF4727008EAD2B /* Portal_Location.storyboard in Resources */,
@@ -2855,11 +2901,13 @@
 				A1E666602086960C00BB3218 /* WelcomePresenter.swift in Sources */,
 				A1E666612086960C00BB3218 /* WelcomeWorker.swift in Sources */,
 				A1E6667E2086A11400BB3218 /* OtpTextField.swift in Sources */,
+				4E1BC8FD2F1452B20028CCDB /* KvkkViewController.swift in Sources */,
 				A1A3984120A00E1E009EF08F /* TechnicalSupportViewController.swift in Sources */,
 				A152C568207BFA3E0053CD40 /* UIButton+Extensions.swift in Sources */,
 				A1CA970C20ACD2B9008B34B9 /* WorkCalendarRouter.swift in Sources */,
 				A1D9440A20C7423800FC51B7 /* LocationResultModels.swift in Sources */,
 				A1B182472087EBCC00D50B42 /* HomeRouter.swift in Sources */,
+				4E1BC9102F145BF20028CCDB /* MBTBasicResponse.swift in Sources */,
 				A101513520A8D5A4004D2FCA /* TransportationSearchPresenter.swift in Sources */,
 				4EEDEA9D2B3B22EF00EA31D8 /* PhonesTableCell.swift in Sources */,
 				A1B182482087EBCC00D50B42 /* HomeModels.swift in Sources */,
@@ -2872,6 +2920,7 @@
 				A1B1826A2087EC6900D50B42 /* NotificationsWorker.swift in Sources */,
 				A1B1826E2087EC6900D50B42 /* NotificationsInteractor.swift in Sources */,
 				4EEDEA962B3B102C00EA31D8 /* ClubsTableCell.swift in Sources */,
+				4EC9CFAA2E62F41000688EF0 /* MealMenuServiceFooterCell.swift in Sources */,
 				A1F0913120A24F1400969D97 /* MealMenuViewController.swift in Sources */,
 				A152C5E2207C06E90053CD40 /* TermOfUseModels.swift in Sources */,
 				A1CA96EB20ACD1A0008B34B9 /* FSCalendarExtensions.m in Sources */,
@@ -2909,6 +2958,9 @@
 				A13F7A4520A0E979005B8E3E /* NewsDetailModels.swift in Sources */,
 				A152C560207BFA3E0053CD40 /* BaseUIButtonDemi.swift in Sources */,
 				A1CA970E20ACD2B9008B34B9 /* WorkCalendarViewController.swift in Sources */,
+				4E1BC90C2F1453100028CCDB /* MBTActivateBusinessCardResponse.swift in Sources */,
+				4E1BC90D2F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift in Sources */,
+				4E1BC90E2F1453100028CCDB /* MBTPayslipResponse.swift in Sources */,
 				A152C59E207C02670053CD40 /* UINavigationItem+AGi18n.m in Sources */,
 				A1F8E50B20D152F000F6E213 /* MBTSettingsNotificationSettingList.swift in Sources */,
 				4E14FF662B3CF41D0006496D /* MBTSocialMediaResponse.swift in Sources */,
@@ -3033,6 +3085,9 @@
 				A1CA96EA20ACD1A0008B34B9 /* FSCalendarWeekdayView.m in Sources */,
 				4E14FF622B3CEE8D0006496D /* SocialMediaTableCell.swift in Sources */,
 				A101510920A64CFE004D2FCA /* MealMenuHeaderCell.swift in Sources */,
+				4E1BC9022F1452CB0028CCDB /* PayslipPeriodViewController.swift in Sources */,
+				4E1BC9032F1452CB0028CCDB /* PayslipOTPViewController.swift in Sources */,
+				4E99297A2F2EB305008FD362 /* KeychainHelper.swift in Sources */,
 				A152C5D5207C06DA0053CD40 /* AboutRouter.swift in Sources */,
 				A1CA96F020ACD1A0008B34B9 /* FSCalendarTransitionCoordinator.m in Sources */,
 				A10150FE20A63EF0004D2FCA /* MBTFoodMenuShuttleInfo.swift in Sources */,
@@ -3193,11 +3248,13 @@
 				A1F96ACA20BF4FF6008EAD2B /* SettingsTableCell.swift in Sources */,
 				A1C236AF20CBCC3A00CB78DC /* MBTTransportationOptionsCompanyLocationList.swift in Sources */,
 				A1F9696A20BF4727008EAD2B /* WelcomePresenter.swift in Sources */,
+				4E1BC8FC2F1452B20028CCDB /* KvkkViewController.swift in Sources */,
 				A1F9696B20BF4727008EAD2B /* WelcomeWorker.swift in Sources */,
 				A1F9696C20BF4727008EAD2B /* OtpTextField.swift in Sources */,
 				A1F9696D20BF4727008EAD2B /* TechnicalSupportViewController.swift in Sources */,
 				A1F9696F20BF4727008EAD2B /* UIButton+Extensions.swift in Sources */,
 				A1F9697020BF4727008EAD2B /* WorkCalendarRouter.swift in Sources */,
+				4E1BC9112F145BF20028CCDB /* MBTBasicResponse.swift in Sources */,
 				A1D9440B20C7423800FC51B7 /* LocationResultModels.swift in Sources */,
 				A1F9697220BF4727008EAD2B /* HomeRouter.swift in Sources */,
 				A1F9697320BF4727008EAD2B /* TransportationSearchPresenter.swift in Sources */,
@@ -3210,6 +3267,7 @@
 				4E212CA62BDE58CC00C69288 /* SocialMediaTableCell.swift in Sources */,
 				A1F9697A20BF4727008EAD2B /* WorkCalendarPresenter.swift in Sources */,
 				A1F9697B20BF4727008EAD2B /* MBTWorkCalendarResponse.swift in Sources */,
+				4EC9CFAB2E62F41000688EF0 /* MealMenuServiceFooterCell.swift in Sources */,
 				A1F9697C20BF4727008EAD2B /* NotificationsWorker.swift in Sources */,
 				A1F9697D20BF4727008EAD2B /* NotificationsInteractor.swift in Sources */,
 				A1F9697E20BF4727008EAD2B /* MealMenuViewController.swift in Sources */,
@@ -3247,6 +3305,9 @@
 				A1F9699820BF4727008EAD2B /* NewsDetailModels.swift in Sources */,
 				A1F9699920BF4727008EAD2B /* BaseUIButtonDemi.swift in Sources */,
 				A1F9699B20BF4727008EAD2B /* WorkCalendarViewController.swift in Sources */,
+				4E1BC9092F1453100028CCDB /* MBTActivateBusinessCardResponse.swift in Sources */,
+				4E1BC90A2F1453100028CCDB /* MBTGetBusinessCardStateResponse.swift in Sources */,
+				4E1BC90B2F1453100028CCDB /* MBTPayslipResponse.swift in Sources */,
 				A1F9699C20BF4727008EAD2B /* UINavigationItem+AGi18n.m in Sources */,
 				4E212C942BDE57B300C69288 /* PhoneLocsViewController.swift in Sources */,
 				A1F8E50C20D152F000F6E213 /* MBTSettingsNotificationSettingList.swift in Sources */,
@@ -3371,6 +3432,9 @@
 				A1F96A0220BF4727008EAD2B /* MealMenuHeaderCell.swift in Sources */,
 				A1F96A0320BF4727008EAD2B /* AboutRouter.swift in Sources */,
 				A1F96A0420BF4727008EAD2B /* FSCalendarTransitionCoordinator.m in Sources */,
+				4E1BC9042F1452CB0028CCDB /* PayslipPeriodViewController.swift in Sources */,
+				4E1BC9052F1452CB0028CCDB /* PayslipOTPViewController.swift in Sources */,
+				4E9929792F2EB305008FD362 /* KeychainHelper.swift in Sources */,
 				A1F96A0520BF4727008EAD2B /* MBTFoodMenuShuttleInfo.swift in Sources */,
 				4ED58DE023E0DB95005EBC12 /* MBTAnnotationEmergencyView.swift in Sources */,
 				A1C236BD20CBCCDB00CB78DC /* MBTTransportationListShuttleList.swift in Sources */,
@@ -3654,7 +3718,7 @@
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				INFOPLIST_FILE = MBTBiziz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3683,7 +3747,7 @@
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				INFOPLIST_FILE = MBTBiziz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3708,18 +3772,18 @@
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MBTBiziz/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.4.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-iquote",
@@ -3760,18 +3824,18 @@
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MBTBiziz/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MBT App";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.4.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-iquote",

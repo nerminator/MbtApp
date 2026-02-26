@@ -13,6 +13,7 @@ use App\Constants;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use App\Services\MenuViewService;
 
 class MapController extends Controller
 {
@@ -22,6 +23,7 @@ class MapController extends Controller
 
     public function maps()
     {
+        MenuViewService::increment('Location');
         return response()->json([
             'statusCode' => 200,
             'responseData' => $this->_getMapListFromCache(),

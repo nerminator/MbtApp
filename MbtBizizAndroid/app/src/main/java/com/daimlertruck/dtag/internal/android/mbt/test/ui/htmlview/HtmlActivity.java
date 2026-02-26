@@ -6,9 +6,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivityHtmlBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivityHtmlBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.socialmedia.SocialMediaActivity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar;
 

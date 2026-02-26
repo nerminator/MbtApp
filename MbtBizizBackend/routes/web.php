@@ -14,10 +14,14 @@
 $router->get('/', function () use ($router) {
 });
 
-
+$router->get('dc/{uuid}', 'DijitalKartvizit@show');
+$router->get('dc/{uuid}/downloadVcf', 'DijitalKartvizit@downloadVcf');
+$router->get('digitalCard/{uuid}', 'DijitalKartvizit@show');
+$router->get('digitalCard/{uuid}/downloadVcf', 'DijitalKartvizit@downloadVcf');
 
 $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], function () use ($router) {
     $router->post('init', 'InitController@init');
+    $router->get('test', 'InitController@test');
   //  $router->get('captcha', ['middleware' => 'throttle:60,1', 'uses' => 'LoginController@captcha']);
     $router->post('checkPhone', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhone']);
   //  $router->post('checkPhoneWithCaptcha', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhoneWithCaptcha']);
@@ -28,11 +32,13 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
     $router->post('appStartup', 'LoginController@appStartup');
 
     $router->post('sendCrashLog', 'CrashLogController@sendCrashLog');
+    
+    
 
     $router->group(['middleware' => 'auth'], function () use ($router) {
-        $router->post('newsList', 'NewsController@newsList');
+        $router->post('newsList', 'NewsController@newsList');  
         $router->get('newsDetail/{id}', 'NewsController@newsDetail');
-        $router->get('birthdayList', 'NewsController@birthdayList');
+        $router->get('birthdayList', 'NewsController@birthdayList'); 
 
         $router->post('saveDeviceInfo', 'DeviceInfoController@saveDeviceInfo');
         $router->post('deleteDeviceInfo', 'DeviceInfoController@deleteDeviceInfo');
@@ -41,7 +47,7 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
         $router->post('deleteNotification', 'NotificationController@deleteNotification');
         $router->get('notificationBadgeCount', 'NotificationController@notificationBadgeCount');
 
-        $router->get('foodMenu', 'FoodMenuController@foodMenu');
+        $router->get('foodMenu', 'FoodMenuController@foodMenu'); 
 
         $router->get('profile', 'ProfileController@profile');
         $router->get('workCalendar/{date}', 'ProfileController@workCalendar');
@@ -79,6 +85,15 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
 
         // Bordro listeleme
         $router->post('payslip/fetch', 'PayslipController@fetchPayslip');
+
+        // Dijital Kartvizit
+        $router->get('getUserBusinessCardState', 'DijitalKartvizit@getUserBusinessCardState');
+        $router->get('activateDigitalCard', 'DijitalKartvizit@activateDigitalCard');
+        $router->get('deactivateDigitalCard', 'DijitalKartvizit@deactivateDigitalCard');
+        
+
+        //Mobile → menu click counter
+        $router->post('menuIncrement', 'MenuViewController@increment');
     });
 });
 

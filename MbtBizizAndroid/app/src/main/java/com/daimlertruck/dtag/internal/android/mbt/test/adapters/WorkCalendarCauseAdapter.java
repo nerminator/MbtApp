@@ -5,10 +5,10 @@ import android.graphics.drawable.GradientDrawable;
 import androidx.core.content.ContextCompat;
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemCauseBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemCauseBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.model.Day;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.TypeEntity;
 

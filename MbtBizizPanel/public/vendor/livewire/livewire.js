@@ -9285,13 +9285,29 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     return false;
   }
 
+  function safeRedirect(url) {
+  try {
+    const u = new URL(url, document.baseURI);
+
+    // sadece same-origin izin ver
+    if (u.origin !== window.location.origin) {
+      console.warn("Blocked cross-origin redirect:", u.href);
+      return;
+    }
+
+    window.location.href = u.href;
+  } catch (e) {
+    console.warn("Blocked invalid redirect:", url);
+  }
+}
+
   // js/features/supportRedirects.js
   on2("effect", ({ effects }) => {
     if (!effects["redirect"])
       return;
     let url = effects["redirect"];
     shouldRedirectUsingNavigateOr(effects, url, () => {
-      window.location.href = url;
+      safeRedirect(url);  //updated to fix snyk finding
     });
   });
 

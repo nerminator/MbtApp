@@ -21,13 +21,14 @@ extension NetworkAPI : Authorization, Loading {
 
     var needAuthorization: Bool {
         switch self {
-        case .checkPhone, .checkPhone, .login, .initCall:
+        case .checkPhone, .checkPhone, .login, .initCall, .appStartup:
             return false
         default: return true
         }
     }
     var needToShowLoading: Bool {
         switch self {
+        
         case .getProfile,.getMonthlyWorkHours(_),
              .getWorkCalendar(_),.getNotificationSettings,.saveDeviceInfo(_),.deleteDeviceInfo(_),
              .getNotificationList(_),.deleteNotification(_),.getNotificationBadgeCount, .initCall, .getCaptcha, .getUserConfig, .appStartup :

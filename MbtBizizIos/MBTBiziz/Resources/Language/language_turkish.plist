@@ -182,6 +182,10 @@
 		<string>Artı Mesai Saati</string>
 		<key>TXT_PROFILE_PROFILE_2ND_BUTTON</key>
 		<string>Çalışma Takvimim</string>
+		<key>TXT_PROFILE_PROFILE_3RD_BUTTON</key>
+		<string>Bordro</string>
+		<key>TXT_PROFILE_PROFILE_4RD_BUTTON</key>
+		<string>Kartvizitim</string>
 		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_WHITE</key>
 		<string>Esnek Çalışma Bilgilerim</string>
 		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_BLUE</key>
@@ -224,25 +228,25 @@
 		<string>BİLDİRİM AYARLARI</string>
 		<key>TXT_ABOUT_MAIN_PROVIDER_INFO</key>
 		<string>Mercedes-Benz Türk A.Ş.
-Akçaburgaz Mahallesi,
-Süleyman Şah Caddesi, No:2
-34522 Esenyurt, İstanbul
-
-Telefon:0212 867 30 00 pbx
-mbt_app@daimlertruck.com
-
-İcra Kurulu
-
-MBT, İcra Kurulu Başkanı (CEO), Süer Sülün.
-MBT, Otobüs Üretiminden Sorumlu İcra Kurulu Üyesi, Bülent Acicbe.
-MBT, Finans ve Kontrol&apos;den Sorumlu İcra Kurulu Üyesi (CFO), Tülin Mede Esmer.
-MBT, Aksaray Fabrika Direktörü &amp; İcra Kurulu Üyesi, Ulf Raese.
-
-Ticari Kayıt Numarası: 94468
-VAT Kimlik Numarası: 7-9159-7212-1615130
-
-Telif Hakkı 2018-2023 Mercedes-Benz Türk A.Ş. 
-Tüm Hakları Saklıdır.</string>
+            Akçaburgaz Mahallesi,
+            Süleyman Şah Caddesi, No:2
+            34522 Esenyurt, İstanbul
+            
+            Telefon:0212 867 30 00 pbx
+            mbt_app@daimlertruck.com
+            
+            İcra Kurulu
+            
+            MBT, İcra Kurulu Başkanı (CEO), Süer Sülün.
+            MBT, Otobüs Üretiminden Sorumlu İcra Kurulu Üyesi, Bülent Acicbe.
+            MBT, Finans ve Kontrol&apos;den Sorumlu İcra Kurulu Üyesi (CFO), Tülin Mede Esmer.
+            MBT, Aksaray Fabrika Direktörü &amp; İcra Kurulu Üyesi, Ulf Raese.
+            
+            Ticari Kayıt Numarası: 94468
+            VAT Kimlik Numarası: 7-9159-7212-1615130
+            
+            Telif Hakkı 2018-2023 Mercedes-Benz Türk A.Ş. 
+            Tüm Hakları Saklıdır.</string>
 		<key>TXT_ABOUT_MAIN_APP_DESCRIPTION</key>
 		<string>Uygulama Açıklaması</string>
 		<key>TXT_ABOUT_MAIN_TERMS_OF_USE</key>
@@ -349,7 +353,7 @@ Tüm Hakları Saklıdır.</string>
 		<string>QR Kodunu Tara</string>
 		<key>TXT_QR_CODE_DESC</key>
 		<string>Toplantı odası rezervasyonu için masadaki
-QR kodunu tarayınız.</string>
+            QR kodunu tarayınız.</string>
 		<key>TXT_QR_CODE_POPUP_TITLE_SUCCESS</key>
 		<string>İşlem tamam!</string>
 		<key>TXT_QR_CODE_POPUP_TITLE_FAIL</key>
@@ -402,6 +406,51 @@ QR kodunu tarayınız.</string>
 		<string>Gönder</string>
 		<key>TXT_APP_FEEDBACK_PLACEHOLDER</key>
 		<string>Geri bildiriminiz...</string>
+		<key>TXT_YEMEKHANE_SERVIS_NOT</key>
+		<string>*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir.</string>
+		<key>TXT_PROFILE_OTP_VERIFY</key>
+		<string>Doğrula</string>
+		<key>TXT_OTP_TITLE</key>
+		<string>Bordro SMS Doğrulama</string>
+		<key>TXT_OTP_TEXT</key>
+		<string>Telefonunuza gelen doğrulama kodunu giriniz:</string>
+		<key>TXT_OTP_HINT</key>
+		<string>6 Haneli SMS Kodu</string>
+		<key>TXT_OTP_VERIFY</key>
+		<string>Doğrula</string>
+		<key>TXT_OTP_RESEND</key>
+		<string>Yeniden Gönder</string>
+		<key>TXT_OTP_TIME</key>
+		<string>Kalan Süre</string>
+		<key>TXT_OTP_EXPIRED</key>
+		<string>Süre doldu</string>
+		<key>TXT_PAYSLIP_PERIOD</key>
+		<string>Bordro Dönemi</string>
+		<key>TXT_PAYSLIP_PERIOD_BUTTON</key>
+		<string>Bordro Göster</string>
+		<key>TXT_CARD_MENU_SHOW</key>
+		<string>Kartvizitimi Göster</string>
+		<key>TXT_CARD_MENU_SHARE</key>
+		<string>Kartvizitimi Paylaş</string>
+		<key>TXT_CARD_MENU_CANCEL</key>
+		<string>Kartvizitimi İptal Et</string>
+		<key>TXT_CARD_MENU_TITLE</key>
+		<string>Dijital Kartvizit</string>
+		<key>TXT_KVKK_APPROVE_BUTTON</key>
+		<string>Onaylıyorum</string>
+		<key>TXT_KVKK_NO_APPROVAL_BUTTON</key>
+		<string>Onaylamıyorum</string>
+		<key>TXT_KVKK_TITLE</key>
+		<string>Veri İşleme Onayı</string>
+        
+        <key>TXT_CARD_DEACTIVATE_MESSAGE</key>
+        <string>Dijital kartvizitinizi devre dışı bırakmak istediğinizden emin misiniz?</string>
+        <key>TXT_CARD_DEACTIVATE_TOAST</key>
+        <string>Kartvizitiniz devre dışı bırakıldı.</string>
+        <key>TXT_CARD_SHARE_PREFIX</key>
+        <string>Dijital kartvizitim:</string>
+        
+        
 	</dict>
 </dict>
 </plist>

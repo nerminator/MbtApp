@@ -1,8 +1,8 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.adapters;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.BR;
+import com.daimlertruck.dtag.internal.android.mbt.BR;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.MultiTypeDataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.news.News;

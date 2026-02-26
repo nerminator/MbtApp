@@ -2,10 +2,10 @@ package com.daimlertruck.dtag.internal.android.mbt.test.adapters;
 
 import android.view.View;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemStopBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemStopBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.StopListEntity;
 
 import java.util.ArrayList;

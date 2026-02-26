@@ -11,9 +11,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentUsefulLinksCategoryDetailBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentUsefulLinksCategoryDetailBinding;
 
 import java.util.ArrayList;
 

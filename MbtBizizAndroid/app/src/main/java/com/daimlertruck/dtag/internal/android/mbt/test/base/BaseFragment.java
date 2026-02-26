@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.BizizProgressDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.MessageDialog;
 

@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseApplication;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentTermsandconBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentTermsandconBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.about.AboutDetailFragment;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.MessageDialog;

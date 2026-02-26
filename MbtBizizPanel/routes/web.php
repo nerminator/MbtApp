@@ -8,6 +8,7 @@ use App\Livewire\Phones;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Clubs;
 use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DBController;
 use App\Http\Controllers\DiscountCodesController;
 use App\Http\Controllers\DocumentController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\MediasController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PhoneNumbersController;
 use App\Http\Controllers\SocialClubsController;
+use App\Http\Controllers\DigitalCardSettings;
 use Livewire\Livewire;
 /*
 |--------------------------------------------------------------------------
@@ -152,11 +154,15 @@ Route::middleware('azure')->group(function () {
     Route::post('deleteDiscountCodes', [DiscountCodesController::class, 'deleteDiscountCodes']);
 
     //Dashboard
-    //Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     //ABOUT
     Route::get('/about', About::class)->name('about');
     Route::get('/appDescription', AppDescription::class)->name('appDescription');
+
+    //DIGITAL CARD
+    Route::get('/digitalcard',  [DigitalCardSettings::class, 'index']);
+    Route::post('/digitalcard/save', [DigitalCardSettings::class, 'save']);
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post( '/' . env('APP_SUBFOLDER') . '/livewire/update', $handle);

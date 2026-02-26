@@ -182,6 +182,10 @@
 		<string>Additional Work</string>
 		<key>TXT_PROFILE_PROFILE_2ND_BUTTON</key>
 		<string>Work Calendar</string>
+		<key>TXT_PROFILE_PROFILE_3RD_BUTTON</key>
+		<string>Payslip</string>
+		<key>TXT_PROFILE_PROFILE_4RD_BUTTON</key>
+		<string>Business Card</string>
 		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_WHITE</key>
 		<string>Flexible Working Hours</string>
 		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_BLUE</key>
@@ -318,32 +322,32 @@
 		<string>November</string>
 		<key>TXT_ABOUT_MAIN_PROVIDER_INFO</key>
 		<string>Mercedes-Benz Türk A.Ş.
-Akçaburgaz Mahallesi,
-Süleyman Şah Caddesi, No:2
-34522 Esenyurt, İstanbul
-
-Telephone:0212 867 30 00 pbx
-mbt_app@daimlertruck.com
-
-
-Board of Management
-
-MBT, Chief Executive Officer (CEO), Süer Sülün.
-MBT, Executive Vice President Production Bus, Bülent Acicbe.
-MBT, Chief Financial Officer (CFO), Tülin Mede Esmer.
-MBT, Aksaray Plant Head of Operations &amp; Member of the Board, Ulf Raese.     
-
-Commercial Register Number: 94468
-VAT Identification Number: 7-9159-7212-1615130
-
-Copyright 2018-2023 Mercedes-Benz Türk A.Ş. 
-All Rights Reserved.</string>
+                Akçaburgaz Mahallesi,
+                Süleyman Şah Caddesi, No:2
+                34522 Esenyurt, İstanbul
+                
+                Telephone:0212 867 30 00 pbx
+                mbt_app@daimlertruck.com
+                
+                
+                Board of Management
+                
+                MBT, Chief Executive Officer (CEO), Süer Sülün.
+                MBT, Executive Vice President Production Bus, Bülent Acicbe.
+                MBT, Chief Financial Officer (CFO), Tülin Mede Esmer.
+                MBT, Aksaray Plant Head of Operations &amp; Member of the Board, Ulf Raese.     
+                
+                Commercial Register Number: 94468
+                VAT Identification Number: 7-9159-7212-1615130
+                
+                Copyright 2018-2023 Mercedes-Benz Türk A.Ş. 
+                All Rights Reserved.</string>
 		<key>TXT_INFO_NOTIFICATION</key>
 		<string>Do you want this app to send push messages informing you about company news (such as events, discounts)? 
-You can deactivate or reactivate these push notifications at any time by:
-  MBT App-&gt; My Profile-&gt; Settings-&gt;Event Notifications or 
-  MBT App-&gt; My Profile-&gt; Settings-&gt;Discount Notifications.
-You can also activate/deactivate push notifications at any time by IOS Settings-&gt;Notifications-&gt;MBT App</string>
+                You can deactivate or reactivate these push notifications at any time by:
+                MBT App-&gt; My Profile-&gt; Settings-&gt;Event Notifications or 
+                MBT App-&gt; My Profile-&gt; Settings-&gt;Discount Notifications.
+                You can also activate/deactivate push notifications at any time by IOS Settings-&gt;Notifications-&gt;MBT App</string>
 		<key>TXT_SETTINGS_DEVICE_BUTTON</key>
 		<string>Go To Device Settings</string>
 		<key>TXT_SETTINGS_NOT_GRANTED_NOTIFICATIONS</key>
@@ -354,7 +358,7 @@ You can also activate/deactivate push notifications at any time by IOS Settings-
 		<string>Scan QR Code</string>
 		<key>TXT_QR_CODE_DESC</key>
 		<string>Scan QR Code for reservation
-of meeting room</string>
+                of meeting room</string>
 		<key>TXT_QR_CODE_POPUP_TITLE_SUCCESS</key>
 		<string>Success!</string>
 		<key>TXT_QR_CODE_POPUP_TITLE_FAIL</key>
@@ -382,11 +386,11 @@ of meeting room</string>
 		<key>TXT_LINKS_TITLE4</key>
 		<string>SAP Concur</string>
 		<key>TXT_LINKS_TITLE5</key>
-		<string>Meal Box</string>
+		<string>Yemeğim Evimde</string>
 		<key>TXT_LINKS_TITLE6</key>
 		<string>CloudOffix</string>
 		<key>TXT_LINKS_TITLE7</key>
-		<string>Improvement System</string>
+		<string>Idea Management</string>
 		<key>TXT_LINKS_TITLE8</key>
 		<string>Oracle HCM</string>
 		<key>TXT_LINKS_TITLE9</key>
@@ -407,6 +411,50 @@ of meeting room</string>
 		<string>Send</string>
 		<key>TXT_APP_FEEDBACK_PLACEHOLDER</key>
 		<string>Your feedback...</string>
+		<key>TXT_YEMEKHANE_SERVIS_NOT</key>
+		<string>*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir.</string>
+		<key>TXT_PROFILE_OTP_VERIFY</key>
+		<string>Verify</string>
+		<key>TXT_OTP_TITLE</key>
+		<string>Payslip Code Verification</string>
+		<key>TXT_OTP_TEXT</key>
+		<string>Enter the code you received via SMS:</string>
+		<key>TXT_OTP_HINT</key>
+		<string>6 Digit SMS Code</string>
+		<key>TXT_OTP_VERIFY</key>
+		<string>Verify</string>
+		<key>TXT_OTP_RESEND</key>
+		<string>Resend</string>
+		<key>TXT_OTP_TIME</key>
+		<string>Remaining Time</string>
+		<key>TXT_OTP_EXPIRED</key>
+		<string>Code expired</string>
+		<key>TXT_PAYSLIP_PERIOD</key>
+		<string>Payslip Period</string>
+		<key>TXT_PAYSLIP_PERIOD_BUTTON</key>
+		<string>View Payslip</string>
+		<key>TXT_KVKK_APPROVE_BUTTON</key>
+		<string>Agree</string>
+		<key>TXT_KVKK_NO_APPROVAL_BUTTON</key>
+		<string>Decline</string>
+		<key>TXT_KVKK_TITLE</key>
+		<string>Data Process Approval</string>
+        <key>TXT_CARD_MENU_SHOW</key>
+        <string>Show my Business Card</string>
+        <key>TXT_CARD_MENU_SHARE</key>
+        <string>Share my Business Card</string>
+        <key>TXT_CARD_MENU_CANCEL</key>
+        <string>Deactivate my Business Card</string>
+        <key>TXT_CARD_MENU_TITLE</key>
+        <string>Digital Business Card</string>
+        
+        <key>TXT_CARD_DEACTIVATE_MESSAGE</key>
+        <string>Are you sure you want to deactivate your digital business card?</string>
+        <key>TXT_CARD_DEACTIVATE_TOAST</key>
+        <string>Your business card is deactivated.</string>
+        <key>TXT_CARD_SHARE_PREFIX</key>
+        <string>My digital business card:</string>
+        
 	</dict>
 </dict>
 </plist>

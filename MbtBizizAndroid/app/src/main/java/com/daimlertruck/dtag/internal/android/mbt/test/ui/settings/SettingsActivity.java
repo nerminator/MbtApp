@@ -17,10 +17,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.SettingsAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ActivitySettingsBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ActivitySettingsBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.MsalManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.manager.SharedPreferenceManager;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.settings.ISettingsChange;
@@ -87,9 +88,9 @@ public class SettingsActivity extends BaseActivity<ActivitySettingsBinding> {
                 MsalManager.getSingleMsalManager().signOut(new MsalManager.ISignoutCallback() {
                     @Override
                     public void onSuccess() {
-                        Intent intent = new Intent();
-                        intent.setAction("com.daimler.biziz.intent.LOG_OUT");
-                        sendBroadcast(intent);
+                        Intent intent = new Intent("com.daimler.biziz.intent.LOG_OUT");
+                        intent.setPackage(getPackageName());   // veya BuildConfig.APPLICATION_ID
+                        sendBroadcast(intent, BuildConfig.APPLICATION_ID + ".permission.INTERNAL_BROADCAST");
                     }
 
                     @Override
@@ -128,9 +129,9 @@ public class SettingsActivity extends BaseActivity<ActivitySettingsBinding> {
                         MsalManager.getSingleMsalManager().signOut(new MsalManager.ISignoutCallback() {
                             @Override
                             public void onSuccess() {
-                                Intent intent = new Intent();
-                                intent.setAction("com.daimler.biziz.intent.LOG_OUT");
-                                sendBroadcast(intent);
+                                Intent intent = new Intent("com.daimler.biziz.intent.LOG_OUT");
+                                intent.setPackage(getPackageName());   // veya BuildConfig.APPLICATION_ID
+                                sendBroadcast(intent, BuildConfig.APPLICATION_ID + ".permission.INTERNAL_BROADCAST");
                             }
 
                             @Override

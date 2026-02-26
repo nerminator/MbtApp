@@ -11,6 +11,7 @@
     <color name="mainBg2">#1f2531</color>
     <color name="mainBg3">#2a344b</color>
 
+    <color name="black">#000000</color>
 
     <color name="fiftyPercentOpacityTextColor">#80ffffff</color>
     <color name="sixPercentOpacityTextColor">#06ffffff</color>
@@ -84,5 +85,8 @@
     <color name="calendar_header_view">#414141</color>
     <color name="discount_code_label_text_color">#717171</color>
     <color name="discount_code_active_text_color">#3478F6</color>
+    <color name="red_400">#EF5350</color>
+    <color name="blue_300">#64B5F6</color>
+    <color name="blue_200">#90CAF9</color>
 
 </resources>

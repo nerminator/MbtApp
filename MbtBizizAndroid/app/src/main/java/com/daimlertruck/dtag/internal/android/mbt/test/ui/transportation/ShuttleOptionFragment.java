@@ -14,9 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentShuttleOptionBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentShuttleOptionBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.CompanyLocationListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.TypeListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.bottomSheetDialog.PickerBottomSheetDialog;

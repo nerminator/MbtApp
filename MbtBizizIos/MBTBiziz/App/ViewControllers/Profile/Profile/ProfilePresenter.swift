@@ -37,3 +37,5 @@ class ProfilePresenter: ProfilePresentationLogic
         viewController?.displaySendDataResult(viewModel : Profile.SendData.ViewModel())
     }
 }
+
+

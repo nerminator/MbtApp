@@ -34,6 +34,10 @@ public class ProfileEntity {
     private Boolean workHoursAvailable;
 
     @Expose
+    @SerializedName("payslipText")
+    private String payslipText;
+
+    @Expose
     @SerializedName("yearlyWorkHoursText")
     private String yearlyWorkHoursText;
 

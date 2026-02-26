@@ -117,12 +117,23 @@ class NotificationController extends Controller
 
 
         $user = Auth::user();
-        $key = "user_todayLoggedIn_".$user->id;
 
-        if(!Redis::exists($key)) {
-            Redis::set($key , 1, 'EX', 3600); //expire the key after 60 seconds
+
+        // Record login once per day
+        $todayKey = "user_login_".$user->id."_".Carbon::today()->format('Ymd');
+
+        if (!Redis::exists($todayKey)) {
+
+            Redis::setex($todayKey, 86400, 1); // TTL: 24 hours
+
+            DB::table('user_logins')->insert([
+                'user_id' => $user->id,
+                'login_at' => Carbon::now(),
+            ]);
+
+            // Optional: keep the last login date for profile/frozen analytics
             $user->update([
-                'last_login_at' => Carbon::now()->toDateTimeString(),
+                'last_login_at' => Carbon::now(),
             ]);
         }
 

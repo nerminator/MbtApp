@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
+use App\Services\MenuViewService;
 
 class NewsController extends Controller
 {
@@ -116,11 +117,25 @@ class NewsController extends Controller
 
         //endregion
 
+        Log::info("Executing SQL Query: $sqlQuery");
         $newsListResult = DB::select($sqlQuery);
 
         $birthdayListCount = null;
         if ($rowOffset == 0) {
             $birthdayListCount = $this->_getBirthdayListCountFromCache();
+        }
+
+        // Category View Count Increase for the Panel Dashboard
+        switch ($type) {
+            case 2:
+                MenuViewService::increment('Events');
+                break;
+            case 3:
+                MenuViewService::increment('Discounts');
+                break;
+            case 7:
+                MenuViewService::increment('News');
+                break;
         }
 
         return response()->json([
@@ -275,6 +290,7 @@ class NewsController extends Controller
 
     public function birthdayList()
     {
+        MenuViewService::increment('Birthdays');
         return response()->json([
             'statusCode' => 200,
             'responseData' => [

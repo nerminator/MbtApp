@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use App\Services\MenuViewService;
 
 class MediasController extends Controller
 {
@@ -29,6 +30,7 @@ class MediasController extends Controller
               'details' => self::getMediaDetails($item->id)
           ];
       }
+      MenuViewService::increment('SocialMedia');
       return response()->json([
           'statusCode' => 200,
           'responseData' => [

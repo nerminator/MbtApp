@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.WorkCalendarCauseAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.adapters.WorkingScheduleAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.base.BaseFragment;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.FragmentWorkingScheduleBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.FragmentWorkingScheduleBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.model.Day;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.DayEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.TypeEntity;

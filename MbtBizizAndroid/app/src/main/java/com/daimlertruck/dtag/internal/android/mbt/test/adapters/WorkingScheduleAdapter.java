@@ -5,10 +5,10 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.daimlertruck.dtag.internal.android.mbt.test.R;
+import com.daimlertruck.dtag.internal.android.mbt.R;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundAdapter;
 import com.daimlertruck.dtag.internal.android.mbt.test.binding.DataBoundViewHolder;
-import com.daimlertruck.dtag.internal.android.mbt.test.databinding.ItemWorkingScheduleBinding;
+import com.daimlertruck.dtag.internal.android.mbt.databinding.ItemWorkingScheduleBinding;
 import com.daimlertruck.dtag.internal.android.mbt.test.model.Day;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.TypeEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.schedule.WorkingScheduleFragment;
