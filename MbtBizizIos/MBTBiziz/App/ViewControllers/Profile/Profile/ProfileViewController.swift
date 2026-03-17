@@ -92,6 +92,26 @@ class ProfileViewController: MBTBaseViewController, ProfileDisplayLogic
             
         }
     }
+
+    @IBAction func btnPayslipTapped(_ sender: Any) {
+        WSProvider.shared.wsRequest(.payslipIsActive, success: { [weak self] (_ response: WSResponse<MarshalResponse>) in
+            self?.router?.routeToPayslip()
+        }, failure: { [weak self] error in
+            guard let self = self else { return }
+
+            switch error {
+            case .internalError(_, let errorMessage):
+                let message = errorMessage?.trimmingCharacters(in: .whitespacesAndNewlines)
+                if let message = message, !message.isEmpty {
+                    self.showAlert(message: message)
+                } else {
+                    self.showAlert(message: "Bağlantı Hatası!")
+                }
+            default:
+                self.showAlert(message: "Bağlantı Hatası!")
+            }
+        })
+    }
 }
 
 extension ProfileViewController {

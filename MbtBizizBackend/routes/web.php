@@ -77,6 +77,9 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
         $router->get('medias', 'MediasController@getMedias');
         $router->post('submitFeedback', 'AppFeedbackController@submitFeedback');
 
+        // Bordro aktiflik kontrolü
+        $router->get('payslip/isActive', 'PayslipController@isActive');
+
         // Bordro OTP başlat
         $router->post('payslip/request-otp', 'PayslipController@requestOtp');
 

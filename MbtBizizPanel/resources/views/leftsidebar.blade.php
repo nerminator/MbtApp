@@ -32,6 +32,10 @@
             <a href="{{ url('digitalcard') }}" style="padding-left: 0px;">Digital Card</a>
         </li>
 
+        <li class="{{ request()->is('payslip') ? 'active' : '' }}">
+            <a href="{{ url('payslip') }}" style="padding-left: 0px;">Payslip</a>
+        </li>
+
         <li class="{{ request()->is('aboutus') ? 'active' : '' }}">
             <a href="{{ url('aboutus') }}" style="padding-left: 0px;">About Us</a>
         </li>

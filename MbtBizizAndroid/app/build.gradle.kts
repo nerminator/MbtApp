@@ -41,26 +41,64 @@ android {
     flavorDimensions += "env"
 
     productFlavors {
-        create("prod") {
+        create("dev") {
             dimension = "env"
-            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
+            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test2"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "MBT APP DEV")
+            manifestPlaceholders["usesCleartextTraffic"] = "true"
 
-            // Örnek ortam değişkenleri:
+            // Android emulator localhost mapping for the backend running on host machine.
             buildConfigField(
-                    "String",
-                    "BASE_URL",
-                    "\"https://bizizapp.com/bizizBackend/public/index.php/api/v1/\""
+                "String",
+                "BASE_URL",
+                "\"http://10.0.2.2:8000/api/v1/\""
+            )
+            buildConfigField("boolean", "OIDC_BYPASS_ENABLED", "true")
+            buildConfigField(
+                "String",
+                "OIDC_BYPASS_TOKEN",
+                "\"mbtbiziz-local-dev-bypass-token\""
+            )
+            buildConfigField("String", "OIDC_SCOPE", "\"\"")
+        }
+
+        create("staging") {
+            dimension = "env"
+            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test2"
+            resValue("string", "app_name", "MBT APP STAGING")
+            manifestPlaceholders["usesCleartextTraffic"] = "false"
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://biziapp-test.app.daimlertruck.com/bizizBackend/public/index.php/api/v1/\""
+            )
+            buildConfigField("boolean", "OIDC_BYPASS_ENABLED", "false")
+            buildConfigField("String", "OIDC_BYPASS_TOKEN", "\"\"")
+            buildConfigField(
+                "String",
+                "OIDC_SCOPE",
+                "\"api://48252d22-0987-4d84-b1d9-00468ec9d424/Read\""
             )
         }
 
-        create("env_test2") {
+        create("prod") {
             dimension = "env"
-            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test2"
-            resValue("string", "app_name", "TEST MBT APP")
+            applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
+            resValue("string", "app_name", "MBT APP")
+            manifestPlaceholders["usesCleartextTraffic"] = "false"
+
             buildConfigField(
-                    "String",
-                    "BASE_URL",
-                    "\"http://95.214.97.107/bizizBackend/public/index.php/api/v1/\""
+                "String",
+                "BASE_URL",
+                "\"https://bizizapp.com/bizizBackend/public/index.php/api/v1/\""
+            )
+            buildConfigField("boolean", "OIDC_BYPASS_ENABLED", "false")
+            buildConfigField("String", "OIDC_BYPASS_TOKEN", "\"\"")
+            buildConfigField(
+                "String",
+                "OIDC_SCOPE",
+                "\"api://48252d22-0987-4d84-b1d9-00468ec9d424/Read\""
             )
         }
     }

@@ -171,7 +171,7 @@ extension WSProvider {
             } else if statusCode == WSStatusCode.success.rawValue {
                 
                 let internalStatusCode = WSStatusCode(rawValue:code ?? 0) ?? .unknown
-                if internalStatusCode == .successWithMessage || internalStatusCode == .authorizationError || internalStatusCode == .errorWithMessage {
+                if shouldAutoShowMessage(target: target, statusCode: internalStatusCode) {
                     showMessageIfNeccesary(statusCode: internalStatusCode, errorMessage: errorMessage)
                 }
                 
@@ -218,6 +218,22 @@ extension WSProvider {
 }
 
 extension WSProvider {
+
+    fileprivate func shouldAutoShowMessage(target: NetworkAPI, statusCode: WSStatusCode) -> Bool {
+        switch statusCode {
+        case .successWithMessage, .errorWithMessage:
+            return true
+        case .authorizationError:
+            switch target {
+            case .payslipFetch:
+                return false
+            default:
+                return true
+            }
+        default:
+            return false
+        }
+    }
     
     // MARK: Utils
     

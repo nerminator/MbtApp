@@ -188,16 +188,28 @@ final class PayslipPeriodViewController: MBTBaseViewController, UIDocumentIntera
     private func fetchPayslip(year: Int, month: Int) {
         WSProvider.shared.wsRequest(.payslipFetch(year: year, month: month)) { (_ response: MBTPayslipResponse?) in
             if let b64 = response?.base64, let data = Data(base64Encoded: b64) {
-                self.presentPDF(data: data, title: String(format: "%02d/%d Bordro", month, year))
+                self.presentPDF(data: data, title: String(format: "TXT_PAYSLIP_FILE_TITLE".localized(), month, year))
             } else {
-                self.showAlert(title: "Bilgi", message: "Bordro bulunamadı.")
+                self.showAlert(title: "TXT_COMMON_INFO".localized(), message: "TXT_PAYSLIP_NOT_FOUND".localized())
             }
         } failure: { error in
-            
-            self.navigationController?.popViewController(animated: true)
-            self.navigationController?.popViewController(animated: true)
-            
-            self.showAlert(message: "Oturum Süresi Doldu!")
+            switch error {
+            case .internalError(let statusCode, let errorMessage):
+                let message = errorMessage?.trimmingCharacters(in: .whitespacesAndNewlines)
+                let fallbackMessage = "TXT_COMMON_CONNECTION_ERROR".localized()
+                let alertMessage = (message?.isEmpty == false) ? message! : fallbackMessage
+
+                if statusCode == .authorizationError {
+                    self.showAlert(title: "TXT_COMMON_ERROR".localized(), message: alertMessage) {
+                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    self.showAlert(title: "TXT_COMMON_ERROR".localized(), message: alertMessage)
+                }
+            default:
+                self.showAlert(title: "TXT_COMMON_ERROR".localized(), message: "TXT_COMMON_CONNECTION_ERROR".localized())
+            }
             
         }
     }
@@ -218,7 +230,10 @@ final class PayslipPeriodViewController: MBTBaseViewController, UIDocumentIntera
                 doc.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
             }
         } catch {
-            self.showAlert(title: "Hata", message: "PDF açılamadı: \(error.localizedDescription)")
+            self.showAlert(
+                title: "TXT_COMMON_ERROR".localized(),
+                message: String(format: "TXT_PAYSLIP_PDF_OPEN_ERROR".localized(), error.localizedDescription)
+            )
         }
     }
 
@@ -320,7 +335,7 @@ extension PayslipPeriodViewController: UIPickerViewDataSource, UIPickerViewDeleg
 extension UIViewController {
     func showAlert(title: String,
                    message: String,
-                   okTitle: String = "Tamam",
+                   okTitle: String = "TXT_COMMON_DONE".localized(),
                    onOK: (() -> Void)? = nil) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: okTitle, style: .default) { _ in onOK?() })

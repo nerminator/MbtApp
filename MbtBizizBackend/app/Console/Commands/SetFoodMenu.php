@@ -65,7 +65,7 @@ class SetFoodMenu extends Command
 	$filePath = "/var/www/html/bizizFiles/food/$fileName";
 	if (!$fileName) {
             Log::info("set:food_menu $lang file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için yemek menüsü $lang dili için güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için yemek menüsü $lang dili için güncellenemedi!");
             return;
 	}
 
@@ -117,7 +117,7 @@ class SetFoodMenu extends Command
             //Log::info("First 3 items of foodInfo array: " . json_encode(array_slice($foodInfo, 0, 3), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
                 $minutes = 6 * 60;
                 Cache::put("foodInfo_$fileName" . "_$lang", $foodInfo, $minutes);
-                TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak yemek menüsü $lang dili için başarıyla güncellendi.");
+                //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak yemek menüsü $lang dili için başarıyla güncellendi.");
         } else {
                 Log::info("Food array is empty, couldnt update the cache");
         }

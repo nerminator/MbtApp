@@ -41,7 +41,7 @@ class SetUsers extends Command
         $filePath = "/var/www/html/bizizFiles/users/$fileName.txt";
         if (!file_exists($filePath)) {
             Log::info("set:users file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için kullanıcılar güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için kullanıcılar güncellenemedi!");
             return;
         }
 
@@ -137,7 +137,7 @@ class SetUsers extends Command
 
 	    Queue::push(new DeleteUsersJob());
 
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak kullanıcılar başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak kullanıcılar başarıyla güncellendi.");
         }
     }
 

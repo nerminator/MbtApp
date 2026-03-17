@@ -42,6 +42,14 @@ public class MsalManager {
     private ISingleAccountPublicClientApplication mSingleAccountApp;
     private IAccount mAccount;
 
+    private boolean isOidcBypassed() {
+        return BuildConfig.OIDC_BYPASS_ENABLED;
+    }
+
+    private String getBypassAccessToken() {
+        return BuildConfig.OIDC_BYPASS_TOKEN;
+    }
+
     public interface ISignoutCallback {
         void onSuccess();
         void onFailure(Exception e);
@@ -61,10 +69,14 @@ public class MsalManager {
 
         this.sharedPreferenceManager = new SharedPreferenceManager(context);
 
-        int configFileResourceId = R.raw.auth_config_single_account;
-        if (BuildConfig.DEBUG) {
-            configFileResourceId = R.raw.auth_config_single_account_debug;
+        if (isOidcBypassed()) {
+            sharedPreferenceManager.setAccessToken(getBypassAccessToken());
+            sharedPreferenceManager.setIsLogin("1");
+            loadCallback.onSuccess(null);
+            return;
         }
+
+        int configFileResourceId = R.raw.auth_config_single_account;
 
         PublicClientApplication.createSingleAccountPublicClientApplication(context,
                 configFileResourceId,
@@ -156,6 +168,12 @@ public class MsalManager {
         });
     }
     public void getInteractiveToken(Activity activity, AuthenticationCallback parentCallback) {
+        if (isOidcBypassed()) {
+            sharedPreferenceManager.setAccessToken(getBypassAccessToken());
+            sharedPreferenceManager.setIsLogin("1");
+            return;
+        }
+
         if (mSingleAccountApp == null) {
             Log.e("MSAL", "getInteractiveToken() called but mSingleAccountApp is null!");
             return;
@@ -170,6 +188,12 @@ public class MsalManager {
     }
 
     private void loginSilent(Activity activity, SilentAuthenticationCallback parentSilentCallback, AuthenticationCallback parentInteractiveCallback) {
+        if (isOidcBypassed()) {
+            sharedPreferenceManager.setAccessToken(getBypassAccessToken());
+            sharedPreferenceManager.setIsLogin("1");
+            return;
+        }
+
         if (mSingleAccountApp == null) {
             Log.e("MSAL", "Silent login failed: mSingleAccountApp is null");
             parentSilentCallback.onError(new MsalClientException("null_app", "SingleAccountApp not initialized"));
@@ -254,7 +278,15 @@ public class MsalManager {
     }
 
     private List<String> getScopes() {
-        return Collections.singletonList("api://48252d22-0987-4d84-b1d9-00468ec9d424/Read");
+        if (isOidcBypassed()) {
+            return Collections.emptyList();
+        }
+
+        if (BuildConfig.OIDC_SCOPE == null || BuildConfig.OIDC_SCOPE.trim().isEmpty()) {
+            return Collections.singletonList("api://48252d22-0987-4d84-b1d9-00468ec9d424/Read");
+        }
+
+        return Collections.singletonList(BuildConfig.OIDC_SCOPE);
     }
 
     private AuthenticationCallback getAuthInteractiveCallback( AuthenticationCallback parentCallback) {
@@ -301,6 +333,13 @@ public class MsalManager {
         }
     }
     public void signOut(@NonNull final ISignoutCallback callback) {
+        if (isOidcBypassed()) {
+            mAccount = null;
+            sharedPreferenceManager.fullLogout();
+            callback.onSuccess();
+            return;
+        }
+
         if (mSingleAccountApp == null) {
             Log.w("MsalManager", "signOut() called but mSingleAccountApp is null");
             callback.onFailure(new IllegalStateException("MSAL not initialized"));
@@ -327,6 +366,16 @@ public class MsalManager {
     }
 
     public String acquireTokenBlocking() {
+        if (isOidcBypassed()) {
+            String token = getBypassAccessToken();
+            if (token == null || token.trim().isEmpty()) {
+                return null;
+            }
+            sharedPreferenceManager.setAccessToken(token);
+            sharedPreferenceManager.setIsLogin("1");
+            return token;
+        }
+
         final Object lock = new Object();
         final String[] tokenHolder = new String[1];
 

@@ -24,7 +24,7 @@ class SetBirthdayList extends Command
         Log::info("set:birthday_list started.");
         $this->_setBirthdayList();
         Log::info("set:birthday_list finished.");
-        TelegramChannelService::sendMessage("BİLGİLENDİRME: Doğum günü listesi başarılı bir şekilde ayarlandı!");
+        //TelegramChannelService::sendMessage("BİLGİLENDİRME: Doğum günü listesi başarılı bir şekilde ayarlandı!");
 
         return 'ok';
     }

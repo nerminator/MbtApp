@@ -16,3 +16,5 @@ resources/views/auth/register.blade.php
 composer.lock
 packages.txt
 public/js/mbt-biziz.js
+.env
+bootstrap/storage/

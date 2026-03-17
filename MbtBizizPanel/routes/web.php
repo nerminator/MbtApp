@@ -20,6 +20,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PhoneNumbersController;
 use App\Http\Controllers\SocialClubsController;
 use App\Http\Controllers\DigitalCardSettings;
+use App\Http\Controllers\PayslipController;
 use Livewire\Livewire;
 /*
 |--------------------------------------------------------------------------
@@ -163,6 +164,13 @@ Route::middleware('azure')->group(function () {
     //DIGITAL CARD
     Route::get('/digitalcard',  [DigitalCardSettings::class, 'index']);
     Route::post('/digitalcard/save', [DigitalCardSettings::class, 'save']);
+
+    //PAYSLIP
+    Route::get('/payslip', [PayslipController::class, 'index'])->name('payslip');
+    Route::post('/payslip/toggle', [PayslipController::class, 'toggle'])->name('payslip.toggle');
+    Route::post('/payslip/deactivation-message', [PayslipController::class, 'saveDeactivationMessage'])->name('payslip.deactivationMessage');
+    Route::post('/payslip/period-not-open-message', [PayslipController::class, 'savePeriodNotOpenMessage'])->name('payslip.periodNotOpenMessage');
+    Route::post('/payslip/import', [PayslipController::class, 'import'])->name('payslip.import');
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post( '/' . env('APP_SUBFOLDER') . '/livewire/update', $handle);

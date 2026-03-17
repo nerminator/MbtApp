@@ -12,7 +12,10 @@ import Moya
 extension NetworkAPI : TargetType {
     
     var baseURL: URL {
-        return URL(string: NetworkAPI.baseUrl.rawValue)!
+        let normalizedBaseUrl = NetworkAPI.resolvedBaseUrlString.hasSuffix("/")
+            ? String(NetworkAPI.resolvedBaseUrlString.dropLast())
+            : NetworkAPI.resolvedBaseUrlString
+        return URL(string: normalizedBaseUrl)!
     }
     
     /*case saveDeviceInfo(deviceToken:String)
@@ -58,6 +61,7 @@ extension NetworkAPI : TargetType {
         case .submitFeedback: return "/submitFeedback"
         case .appStartup: return "/appStartup"
         case .payslipRequestOtp:      return "/payslip/request-otp"
+        case .payslipIsActive:        return "/payslip/isActive"
         case .payslipVerifyOtp:       return "/payslip/verify-otp"
         case .payslipFetch:           return "/payslip/fetch"
             
@@ -111,7 +115,7 @@ extension NetworkAPI : TargetType {
         case .submitFeedback(let text):
             return .requestParameters(parameters: ["text":text], encoding: JSONEncoding.default)
    
-        case .payslipRequestOtp:
+        case .payslipRequestOtp, .payslipIsActive:
             return .requestPlain
         case .payslipVerifyOtp(let code):
             return .requestParameters(parameters: ["otp": code], encoding: JSONEncoding.default)
@@ -137,7 +141,7 @@ extension NetworkAPI : TargetType {
         switch self {
         case .getNewsDetail(_),.getDiscountCode(_),.getBirthdayList,.getFoodMenu,.getLocations,.getProfile,.getYearlyWorkHours(_),
                 .getMonthlyWorkHours(_),.getWorkCalendar(_),.getShuttleOptions,.getNotificationSettings,.getNotificationBadgeCount,.signOut, .getCaptcha, .getUserConfig, .getClubs(_), .getClubLocs, .getMedias,
-                .getPhones(_),.getPhoneLocs, .activateDigitalCard, .deactivateDigitalCard, .getUserBusinessCardState:
+            .getPhones(_),.getPhoneLocs, .activateDigitalCard, .deactivateDigitalCard, .getUserBusinessCardState, .payslipIsActive:
             return .get
         default:
             return .post

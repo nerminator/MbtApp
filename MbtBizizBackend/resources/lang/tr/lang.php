@@ -48,6 +48,14 @@ return [
 
     'TXT_SERVER_ERROR_CANNOT_CREATE_CAPTCHA' => 'Captcha oluşturulamadı.',
     'TXT_SERVER_ERROR_CAPTCHA_NOT_VALID' => 'Captcha geçerli değil.',
+    'TXT_SERVER_ERROR_PAYSLIP_NOT_FOUND' => 'Bordro bulunamadı',
+
+    'TXT_SERVER_ERROR_PAYSLIP_INACTIVE' => 'Bordro şu anda pasif.',
+    'TXT_SERVER_ERROR_PAYSLIP_INVALID_OTP' => 'Geçersiz Kod!',
+    'TXT_SERVER_ERROR_PAYSLIP_OTP_EXPIRED' => 'Doğrulama kodu süresi doldu',
+    'TXT_SERVER_ERROR_PAYSLIP_INVALID_PERIOD' => 'Geçersiz dönem bilgisi',
+    'TXT_SERVER_ERROR_PAYSLIP_PERIOD_NOT_OPEN' => 'Bordro henüz görüntülenemez.',
+    'TXT_SERVER_ERROR_PAYSLIP_SAP_ERROR' => 'SAP servisi hatası',
 
     'TXT_VERSION_POPUP_MAJOR_UPDATE_TITLE' => 'Önemli Güncelleme',
     'TXT_VERSION_POPUP_MAJOR_UPDATE_MESSAGE' => 'MBT App uygulamasını kullanmaya devam edebilmek için yeni versiyonu yüklemeniz gerekiyor.',

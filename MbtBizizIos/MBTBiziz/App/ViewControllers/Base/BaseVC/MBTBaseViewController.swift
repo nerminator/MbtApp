@@ -279,9 +279,9 @@ extension MBTBaseViewController {
 }
 
 extension UIViewController {
-    func showAlert(title: String = "Bilgi", message: String) {
+    func showAlert(title: String = "TXT_COMMON_INFO".localized(), message: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Tamam", style: .default))
+        ac.addAction(UIAlertAction(title: "TXT_COMMON_DONE".localized(), style: .default))
         present(ac, animated: true)
     }
 

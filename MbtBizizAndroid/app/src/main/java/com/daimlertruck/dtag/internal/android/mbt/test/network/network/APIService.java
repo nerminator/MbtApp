@@ -26,6 +26,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notificati
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipActiveResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipFetchRequest;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipOtpVerifyRequest;
@@ -163,6 +164,9 @@ public interface APIService {
 
     @POST("payslip/request-otp")
     Call<BaseResponse> requestPayslipOtp(@Body HashMap<String, Object> body);
+
+    @GET("payslip/isActive")
+    Call<BaseResponse<PayslipActiveResponse>> getPayslipIsActive();
 
     @POST("payslip/verify-otp")
     Call<BaseResponse> verifyPayslipOtp(@Body HashMap<String, Object> body);

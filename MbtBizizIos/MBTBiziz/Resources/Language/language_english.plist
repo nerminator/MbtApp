@@ -243,7 +243,7 @@
 		<key>TXT_COMMON_CANCEL2</key>
 		<string>Cancel</string>
 		<key>TXT_COMMON_DONE</key>
-		<string>Ok</string>
+		<string>OK</string>
 		<key>TXT_SHUTTLE_SHUTTLE_DESTINATION_SMALL</key>
 		<string>Destination</string>
 		<key>TXT_COMMON_ANNOUNCEMENT</key>
@@ -429,10 +429,24 @@
 		<string>Remaining Time</string>
 		<key>TXT_OTP_EXPIRED</key>
 		<string>Code expired</string>
+		<key>TXT_OTP_EXPIRED_MESSAGE</key>
+		<string>The verification code has expired. Please verify again.</string>
+		<key>TXT_OTP_INVALID_CODE</key>
+		<string>Invalid verification code</string>
+		<key>TXT_OTP_ENTER_CODE</key>
+		<string>Please enter the code.</string>
 		<key>TXT_PAYSLIP_PERIOD</key>
 		<string>Payslip Period</string>
 		<key>TXT_PAYSLIP_PERIOD_BUTTON</key>
 		<string>View Payslip</string>
+		<key>TXT_PAYSLIP_FILE_TITLE</key>
+		<string>%02d/%d Payslip</string>
+		<key>TXT_PAYSLIP_NOT_FOUND</key>
+		<string>Payslip not found.</string>
+		<key>TXT_COMMON_CONNECTION_ERROR</key>
+		<string>Connection Error!</string>
+		<key>TXT_PAYSLIP_PDF_OPEN_ERROR</key>
+		<string>Failed to open PDF: %@</string>
 		<key>TXT_KVKK_APPROVE_BUTTON</key>
 		<string>Agree</string>
 		<key>TXT_KVKK_NO_APPROVAL_BUTTON</key>

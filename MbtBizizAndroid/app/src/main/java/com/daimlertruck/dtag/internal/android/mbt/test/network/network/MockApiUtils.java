@@ -26,6 +26,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.notificati
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.place.Residential;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipActiveResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ProfileEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.qr.SendQrCodePostBody;
@@ -238,6 +239,12 @@ public class MockApiUtils extends AbstractApiUtils {
     public void requestPayslipOtp(NetworkCallback<BaseResponse> callback) {
         return;
     }
+
+    @Override
+    public void getPayslipIsActive(NetworkCallback<BaseResponse<PayslipActiveResponse>> callback) {
+        callback.onServiceFailure(501, "Not implemented");
+    }
+
     @Override
     public void getSocialMedias(NetworkCallback<BaseResponse<SocialMediaEntity>> callback) {
 

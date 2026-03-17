@@ -39,6 +39,7 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.base.BaseR
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodListEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.ActivateCardResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.BusinessCardStateResponse;
+import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipActiveResponse;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.profile.PayslipEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.workCalendar.WorkCalendarEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.network.network.APIService;
@@ -163,9 +164,9 @@ public class OrchestraFragment extends Fragment {
                         getAlertDialog();
                         break;
 
-                    /*case R.id.btnPayslip:
-                        com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.PayslipOtpActivity.start(getContext());
-                        break;*/
+                    case R.id.btnPayslip:
+                        checkPayslipActiveAndOpen();
+                        break;
 
                     case R.id.btnDigitalCard:
                         handleDigitalCardClick();
@@ -176,7 +177,7 @@ public class OrchestraFragment extends Fragment {
         binding.btnWorkInfo.setOnClickListener(clickListener);
         binding.imgInfo.setOnClickListener(clickListener);
         binding.imgSetting.setOnClickListener(clickListener);
-        //binding.btnPayslip.setOnClickListener(clickListener);
+        binding.btnPayslip.setOnClickListener(clickListener);
         binding.btnDigitalCard.setOnClickListener(clickListener);
     }
 
@@ -197,6 +198,46 @@ public class OrchestraFragment extends Fragment {
         });
         confirmationDialog.show(getChildFragmentManager(),"");
     }
+
+    private void checkPayslipActiveAndOpen() {
+        abstractApiUtils.getPayslipIsActive(new NetworkCallback<BaseResponse<PayslipActiveResponse>>() {
+            @Override
+            public void onSuccess(BaseResponse<PayslipActiveResponse> response) {
+                if (response != null && response.getStatuscode() != null && response.getStatuscode() == 200) {
+                    com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.PayslipOtpActivity.start(getContext());
+                    return;
+                }
+
+                String errorMessage = null;
+                if (response != null) {
+                    errorMessage = response.getErrormessage();
+                }
+                showPayslipMessage(errorMessage);
+            }
+
+            @Override
+            public void onServiceFailure(int httpResponseCode, String message) {
+                showPayslipMessage(message);
+            }
+
+            @Override
+            public void onNetworkFailure(Throwable message) {
+                showPayslipMessage(null);
+            }
+        });
+    }
+
+    private void showPayslipMessage(String message) {
+        String content = (message == null || message.trim().isEmpty())
+                ? getString(R.string.TXT_OTP_TOAST2)
+                : message;
+
+        new MaterialAlertDialogBuilder(requireContext())
+                .setMessage(content)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
+
     public void handleDigitalCardClick (){
 
          abstractApiUtils.getUserBusinessCardState( new NetworkCallback<BaseResponse<BusinessCardStateResponse>>() {

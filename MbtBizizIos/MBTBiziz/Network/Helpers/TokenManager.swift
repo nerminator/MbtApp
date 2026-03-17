@@ -9,11 +9,109 @@
 import UIKit
 import MSAL
 
+enum AuthEnvironment {
+    case dev
+    case test
+    case production
+
+    private static let devBypassToken = "mbtbiziz-local-dev-bypass-token"
+
+    static var current: AuthEnvironment {
+        let executableName = Bundle.main.object(forInfoDictionaryKey: "CFBundleExecutable") as? String
+        let bundleIdentifier = Bundle.main.bundleIdentifier
+
+        let isDevTarget = (executableName?.contains("-Dev") == true) || (bundleIdentifier?.hasSuffix(".dev") == true)
+        if isDevTarget {
+            return .dev
+        }
+
+        let isProdTarget = (executableName?.contains("-Prod") == true) || (executableName?.contains("-Production") == true) || (bundleIdentifier == "com.daimlertruck.dtag.internal.ios.mbt.test")
+        return isProdTarget ? .production : .test
+    }
+
+    var isOidcBypassed: Bool {
+        switch self {
+        case .dev:
+            return true
+        case .test, .production:
+            return false
+        }
+    }
+
+    var bypassAccessToken: String {
+        switch self {
+        case .dev:
+            return AuthEnvironment.devBypassToken
+        case .test, .production:
+            return ""
+        }
+    }
+
+    // ✅ Client IDs
+    var clientId: String {
+        switch self {
+        case .dev:
+            return ""
+        case .production:
+            return "41b14095-c137-4f5d-b300-accd37cbb4aa"
+        case .test:
+            return "e97a3881-d802-433b-8529-96e0e801e346"
+        }
+    }
+
+    var authority: String {
+        switch self {
+        case .dev:
+            return ""
+        case .production:
+            return "https://login.microsoftonline.com/505cca53-5750-4134-9501-8d52d5df3cd1"
+        case .test:
+            return "https://login.microsoftonline.com/505cca53-5750-4134-9501-8d52d5df3cd1"
+        }
+    }
+
+    // ✅ Redirect URIs based on your bundle ids
+    var redirectUri: String {
+        switch self {
+        case .dev:
+            return ""
+        case .production:
+            return "msauth.com.daimlertruck.dtag.internal.ios.mbt.test://auth"
+        case .test:
+            return "msauth.com.daimlertruck.dtag.internal.ios.mbt.test2://auth"
+        }
+    }
+
+    // ✅ Scopes
+    var scopes: [String] {
+        switch self {
+        case .dev:
+            return []
+        case .production:
+            return ["api://48252d22-0987-4d84-b1d9-00468ec9d424/Read"]
+        case .test:
+            return ["api://910155c2-0cc9-4d21-a48b-4c49c99f8128/Read"]
+        }
+    }
+
+    // ✅ Optional: keep Keychain tokens isolated per environment
+    var keychainService: String {
+        switch self {
+        case .dev: return "com.mbtbiziz.auth.dev"
+        case .production: return "com.mbtbiziz.auth"
+        case .test: return "com.mbtbiziz.auth.test2"
+        }
+    }
+}
+
 class TokenManager {
     
-    static let service = "com.mbtbiziz.auth"
     static let account = "access_token"
-    
+    private let environment = AuthEnvironment.current
+
+    static var service: String {
+        return AuthEnvironment.current.keychainService
+    }
     
     static func save(token: String) {
         KeychainHelper.save(token, service: service, account: account)
@@ -39,12 +137,13 @@ class TokenManager {
         }
         return _sharedManager
     }
-    let kClientID = "41b14095-c137-4f5d-b300-accd37cbb4aa"
+    
+    private var kClientID: String { environment.clientId }
+    private var kRedirectUri: String { environment.redirectUri }
+    private var kScopes: [String] { environment.scopes }
+    private var kAuthority: String { environment.authority } // base authority URL
     let kGraphEndpoint = "https://graph.microsoft.com/"
-    let kAuthority = "https://login.microsoftonline.com/505cca53-5750-4134-9501-8d52d5df3cd1/oauth2/v2.0/authorize"
-    let kRedirectUri = "msauth.com.daimlertruck.dtag.internal.ios.mbt.test://auth"
 
-    let kScopes: [String] = ["api://48252d22-0987-4d84-b1d9-00468ec9d424/Read"]
     
     var applicationContext : MSALPublicClientApplication?
     var webViewParamaters : MSALWebviewParameters?
@@ -109,23 +208,35 @@ class TokenManager {
     */
     
     func initMSAL() throws {
-        
-        guard let authorityURL = URL(string: kAuthority) else {
+        if environment.isOidcBypassed {
+            self._accessToken = environment.bypassAccessToken
             return
         }
+
+        guard let authorityURL = URL(string: kAuthority) else { return }
         let authority = try MSALAADAuthority(url: authorityURL)
-        let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID,
-                                                                  redirectUri: kRedirectUri,
-                                                                  authority: authority)
+
+        let msalConfiguration = MSALPublicClientApplicationConfig(
+            clientId: kClientID,
+            redirectUri: kRedirectUri,
+            authority: authority
+        )
+
         self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
         self.refreshDeviceMode()
     }
+    
     
     func initWebViewParams(_ parentVc:UIViewController) {
         self.webViewParamaters = MSALWebviewParameters(authPresentationViewController: parentVc)
     }
     
     func signinSilently(_ completion:@escaping (_ success : Bool)->()) {
+        if environment.isOidcBypassed {
+            self._accessToken = environment.bypassAccessToken
+            completion(true)
+            return
+        }
         
         self.loadCurrentAccount { (account) in
             if let currentAccount = account  {
@@ -144,11 +255,22 @@ class TokenManager {
     }
     
     func acquireTokenInteractively (_ vc:UIViewController ,_ completion:@escaping (_ success : Bool, _ errorText : String?)->()) {
+        if environment.isOidcBypassed {
+            self._accessToken = environment.bypassAccessToken
+            completion(true, nil)
+            return
+        }
         
-        guard let applicationContext = self.applicationContext else { return }
+        guard let applicationContext = self.applicationContext else {
+            completion(false, "OIDC not initialized. Restart the app and try again.")
+            return
+        }
         
         self.initWebViewParams(vc)
-        guard let webViewParameters = self.webViewParamaters else { return }
+        guard let webViewParameters = self.webViewParamaters else {
+            completion(false, "OIDC web view could not be initialized.")
+            return
+        }
 
         let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParameters: webViewParameters)
         parameters.promptType = .selectAccount
@@ -156,13 +278,19 @@ class TokenManager {
         applicationContext.acquireToken(with: parameters) { (result, error) in
             
             if let error = error {
-                //completion(false, "Could not acquire token: \(error)")
-                completion(false, "Could not sign in")
+                let nsError = error as NSError
+                let userInfoDetails = nsError.userInfo
+                    .map { "\($0.key)=\($0.value)" }
+                    .joined(separator: " | ")
+                let details = userInfoDetails.isEmpty
+                    ? "\(error.localizedDescription) [\(nsError.domain):\(nsError.code)]"
+                    : "\(error.localizedDescription) [\(nsError.domain):\(nsError.code)] | \(userInfoDetails)"
+                completion(false, details)
                 return
             }
             
             guard let result = result else {
-                completion(false,"Could not sign in!")
+                completion(false, "OIDC result is empty.")
                 return
             }
             
@@ -173,6 +301,11 @@ class TokenManager {
     }
     
     func acquireTokenSilently(_ account : MSALAccount!, _ completion:@escaping (_ success : Bool)->()) {
+        if environment.isOidcBypassed {
+            self._accessToken = environment.bypassAccessToken
+            completion(true)
+            return
+        }
         
         guard let applicationContext = self.applicationContext else { return }
         
@@ -242,6 +375,13 @@ class TokenManager {
     typealias AccountCompletion = (MSALAccount?) -> Void
 
     func loadCurrentAccount(completion: AccountCompletion? = nil) {
+        if environment.isOidcBypassed {
+            self._accessToken = environment.bypassAccessToken
+            if let completion = completion {
+                completion(nil)
+            }
+            return
+        }
         
         guard let applicationContext = self.applicationContext else { return }
         
@@ -298,6 +438,11 @@ class TokenManager {
      to sign out a user from this application.
      */
     func signOut(parentVC:UIViewController) {
+        if environment.isOidcBypassed {
+            self._accessToken = nil
+            self.updateCurrentAccount(account: nil)
+            return
+        }
         
         guard let applicationContext = self.applicationContext else { return }
         guard let account = self.currentAccount else { return }

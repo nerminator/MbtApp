@@ -54,7 +54,7 @@ class SetWorkingHoursInfo extends Command
         $filePath = "/var/www/html/bizizFiles/working_hours_info/$fileName.txt";
         if (!file_exists($filePath)) {
             Log::info("set:working_hours_info file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel çalışma saati verileri güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel çalışma saati verileri güncellenemedi!");
             return;
         }
 
@@ -108,7 +108,7 @@ class SetWorkingHoursInfo extends Command
                 	Log::error("Error inserting working hours: " . $e->getMessage());
 	      	  }
                 }
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel çalışma saati verileri başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel çalışma saati verileri başarıyla güncellendi.");
         }
     }
 

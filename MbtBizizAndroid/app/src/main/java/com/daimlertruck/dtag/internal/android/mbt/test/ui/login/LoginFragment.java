@@ -87,6 +87,17 @@ public class LoginFragment extends BaseFragment {
         binding.setVm(vmLogin);
 
         msalManager = MsalManager.getSingleMsalManager();
+
+        if (BuildConfig.OIDC_BYPASS_ENABLED) {
+            tokenManager.setAccessToken(BuildConfig.OIDC_BYPASS_TOKEN);
+            sharedPreferenceManager.setIsLogin("1");
+            vmLogin.isLoading.postValue(false);
+            observe();
+            callAppStartUp();
+            getNextScreen();
+            return binding.getRoot();
+        }
+
         vmLogin.isLoading.postValue(true);
 
         // ⏳ Safety timeout: hide spinner after 10 seconds if MSAL doesn't respond
@@ -279,6 +290,14 @@ public class LoginFragment extends BaseFragment {
     private void setOnClicks() {
         binding.imageView.setOnClickListener(v -> AboutActivity.start(getContext()));
         binding.btnLogin.setOnClickListener(v -> {
+            if (BuildConfig.OIDC_BYPASS_ENABLED) {
+                tokenManager.setAccessToken(BuildConfig.OIDC_BYPASS_TOKEN);
+                sharedPreferenceManager.setIsLogin("1");
+                vmLogin.isLoading.postValue(false);
+                getNextScreen();
+                return;
+            }
+
             vmLogin.isLoading.postValue(true); // show spinner immediately
             msalManager.signOut(new MsalManager.ISignoutCallback() {
                 @Override
@@ -332,6 +351,14 @@ public class LoginFragment extends BaseFragment {
         });
 
         vmLogin.getLoginPressed().observe(getViewLifecycleOwner(), (Boolean aBoolean) -> {
+            if (BuildConfig.OIDC_BYPASS_ENABLED) {
+                tokenManager.setAccessToken(BuildConfig.OIDC_BYPASS_TOKEN);
+                sharedPreferenceManager.setIsLogin("1");
+                vmLogin.isLoading.postValue(false);
+                getNextScreen();
+                return;
+            }
+
             msalManager.getInteractiveToken(getActivity(), getAuthInteractiveCallback(getActivity(), getParentCallback()));
         });
     }

@@ -40,7 +40,7 @@ class SetFoodShuttle extends Command
         $filePath = "/var/www/html/bizizFiles/food/Yemek_Servis.xlsx";
         if (!file_exists($filePath)) {
             Log::info("set:food_shuttle $lang file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için yemek servisleri $lang dili için güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için yemek servisleri $lang dili için güncellenemedi!");
             return;
         }
         $collection = (new FastExcel)->import($filePath);
@@ -55,6 +55,6 @@ class SetFoodShuttle extends Command
         }
 
         Cache::forever("diningHallShuttleInfo_$lang", $shuttleInfo);
-        TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak yemek servisleri $lang dili için başarıyla güncellendi.");
+        //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak yemek servisleri $lang dili için başarıyla güncellendi.");
     }
 }

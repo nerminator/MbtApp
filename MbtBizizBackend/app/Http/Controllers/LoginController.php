@@ -64,7 +64,7 @@ class LoginController extends Controller
             $imagePath = dirname(dirname(dirname(dirname(__FILE__)))) . "/storage/app/public/contents/captcha/$imageName";
             imagepng($image, $imagePath);
             $storageImagePath = "contents/captcha/" . $imageName;
-            $projectUrl = app()->environment() == "production" ? "https://bizizapp.com/bizizBackend/public" : "http://127.0.0.1:8002/";
+            $projectUrl = app()->environment() == "production" ? "https://biziapp-test.app.daimlertruck.com/bizizBackend/public" : "http://95.214.97.107/bizizBackend/public";
             $imageUrl = $projectUrl . "/storage/$storageImagePath";
 
             DB::table('captcha')->insert([
@@ -91,6 +91,7 @@ class LoginController extends Controller
                 'errorMessage' => Lang::get('lang.TXT_SERVER_ERROR_CANNOT_CREATE_CAPTCHA') . " " . $exception->getMessage()
             ]);
         }
+            
     }
 
     public function checkPhoneWithCaptcha(Request $request)

@@ -71,7 +71,7 @@ final class PayslipOTPViewController: MBTBaseViewController, UITextFieldDelegate
 
             if s.ttlSeconds == 0 {
                 s.timer?.invalidate()
-                s.showToast("Doğrulama kodu süresi doldu. Lütfen yeniden doğrulayın.")
+                s.showToast("TXT_OTP_EXPIRED_MESSAGE".localized())
                 s.btnResend.isEnabled = true
             }
         }
@@ -88,11 +88,16 @@ final class PayslipOTPViewController: MBTBaseViewController, UITextFieldDelegate
     private func requestOtp() {
         btnResend.isEnabled = false
         
-        WSProvider.shared.wsRequest(.payslipRequestOtp, map: {(_ response : MBTBasicResponse?) in
-            
-        })
-        
-        resetTimers()
+        WSProvider.shared.wsRequest(.payslipRequestOtp,
+            success: {(_ response : MBTBasicResponse?) in
+                self.resetTimers()
+            },
+            failure: { error in
+                self.navigationController?.popViewController(animated: true)
+                self.showAlert(title: "TXT_COMMON_ERROR".localized(), message: error.errorDescription)
+
+            }
+        )
     }
 
     private func verifyOtp(code: String) {
@@ -103,7 +108,7 @@ final class PayslipOTPViewController: MBTBaseViewController, UITextFieldDelegate
                 self.goToPeriod()
             
         } failure: { error in
-            self.showAlert(title: "Hata", message: "Doğrulama kodu hatalı")
+            self.showAlert(title: "TXT_COMMON_ERROR".localized(), message: "TXT_OTP_INVALID_CODE".localized())
         }
     }
 
@@ -123,7 +128,7 @@ final class PayslipOTPViewController: MBTBaseViewController, UITextFieldDelegate
 
     @IBAction func btnVerifyTapped(_ sender: UIButton) {
         guard let code = txtOtp.text?.trimmingCharacters(in: .whitespaces), code.count >= 4 else {
-            showToast("Lütfen kodu giriniz.")
+            showToast("TXT_OTP_ENTER_CODE".localized())
             return
         }
         verifyOtp(code: code)

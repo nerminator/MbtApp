@@ -34,7 +34,7 @@ class SetWorkingCalendar extends Command
         $filePath = "/var/www/html/bizizFiles/working_calendar/$fileName.txt";
         if (!file_exists($filePath)) {
             Log::info("set:working_calendar file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel takvim verileri güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel takvim verileri güncellenemedi!");
             return;
         }
 
@@ -87,7 +87,7 @@ class SetWorkingCalendar extends Command
                 }
             }
 
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel takvim verileri başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel takvim verileri başarıyla güncellendi.");
         }
     }
 

@@ -41,14 +41,16 @@ class NewsController extends Controller
         
         $type = $request->input('type');
         $discountType = $request->input('discountType');
-        $rowOffset = 10 * $request->input('pageNumber');
+        $rowOffset = 10 * intval($request->input('pageNumber'));
 
         $userType = Auth::user()->type;
         $userCompanyLocationId = Auth::user()->company_location_id;
         $userEmployeeLocationId = Auth::user()->employee_location_id;
+        $bindings = [];
         $userTypeStr = "";
         if ($userType!= null){
-            $userTypeStr = "and (n.employee_type is null or n.employee_type = $userType)";
+            $userTypeStr = "and (n.employee_type is null or n.employee_type = ?)";
+            $bindings[] = $userType;
         }
 
         //region Setting SQL Query
@@ -66,14 +68,16 @@ class NewsController extends Controller
                                 and (
                                       (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
                                       or
-                                      ($userCompanyLocationId in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
+                                      (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
                                     )
                                 and (
                                       (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
                                       or
-                                      ($userEmployeeLocationId in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
+                                      (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
                                     )
                                 ";
+            $bindings[] = $userCompanyLocationId;
+            $bindings[] = $userEmployeeLocationId;
         } else {
             $sqlQuery = "select n.id, n.title, n.type, n.discount_type, n.start_time, n.url, n.phone,
                                 (
@@ -88,37 +92,44 @@ class NewsController extends Controller
                                 and (
                                       (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
                                       or
-                                      ($userCompanyLocationId in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
+                                      (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
                                     )
                                 and (
                                       (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
                                       or
-                                      ($userEmployeeLocationId in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
+                                      (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
                                     )
                                 ";
+            $bindings[] = $userCompanyLocationId;
+            $bindings[] = $userEmployeeLocationId;
         }
 
         if ($type != 1) {
-            $sqlQuery .= " and n.type = $type ";
+            $sqlQuery .= " and n.type = ? ";
+            $bindings[] = $type;
         } else {
             $sqlQuery .= " and n.type != 8 and n.type != 9 and n.type != 10 ";
         }
 
         if ($discountType != null && $discountType != 1) {
-            $sqlQuery .= " and n.discount_type = $discountType ";
+            $sqlQuery .= " and n.discount_type = ? ";
+            $bindings[] = $discountType;
         }
 
         if ($type == 10) {
             $loc = $request->input('locId');
-            $sqlQuery .= " and loc_id = $loc order by n.order limit 10 offset $rowOffset ";
+            $sqlQuery .= " and loc_id = ? order by n.order limit 10 offset ? ";
+            $bindings[] = $loc;
+            $bindings[] = $rowOffset;
         } else {
-            $sqlQuery .= " order by n.start_time desc limit 10 offset $rowOffset";
+            $sqlQuery .= " order by n.start_time desc limit 10 offset ?";
+            $bindings[] = $rowOffset;
         }
 
         //endregion
 
-        Log::info("Executing SQL Query: $sqlQuery");
-        $newsListResult = DB::select($sqlQuery);
+        Log::info("Executing SQL Query: $sqlQuery", ['bindings' => $bindings]);
+        $newsListResult = DB::select($sqlQuery, $bindings);
 
         $birthdayListCount = null;
         if ($rowOffset == 0) {

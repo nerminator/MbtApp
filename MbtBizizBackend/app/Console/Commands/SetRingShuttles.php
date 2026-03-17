@@ -41,13 +41,13 @@ class SetRingShuttles extends Command
         //region Check File
         $filePath = "/var/www/html/bizizFiles/shuttle/$name - Ring Servisleri.xlsx";
         if (!file_exists($filePath)) {
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için ring servisleri güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için ring servisleri güncellenemedi!");
             return;
         }
 
         $modificationTime = Carbon::createFromTimestamp(filemtime($filePath));
         if (Carbon::now()->diffInDays($modificationTime) > 1) {
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için ring servisleri tekrar güncellenmedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için ring servisleri tekrar güncellenmedi!");
             return;
         }
         //endregion

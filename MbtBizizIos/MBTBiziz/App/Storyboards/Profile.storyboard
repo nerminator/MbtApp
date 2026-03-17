@@ -195,33 +195,33 @@
                                     <constraint firstItem="nQ8-mK-iWG" firstAttribute="centerY" secondItem="XN5-DG-cly" secondAttribute="centerY" id="xz3-QG-ndz"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8b-qA-ldf" userLabel="View Bordro">
-                                <rect key="frame" x="14" y="374.5" width="347" height="0.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8b-qA-ldf" userLabel="View Bordro">
+                                <rect key="frame" x="14" y="374.5" width="347" height="72"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="arrowRightGray" translatesAutoresizingMaskIntoConstraints="NO" id="l3I-ee-GV7">
-                                        <rect key="frame" x="323" y="-6" width="8" height="13"/>
+                                        <rect key="frame" x="323" y="29.5" width="8" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="8" id="AMN-8h-KJM"/>
                                             <constraint firstAttribute="height" constant="13" id="AaG-TU-Tml"/>
                                         </constraints>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="icnPayslip" translatesAutoresizingMaskIntoConstraints="NO" id="2qt-gV-w6v">
-                                        <rect key="frame" x="20" y="-9" width="16" height="19"/>
+                                        <rect key="frame" x="20" y="26.5" width="16" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="qDP-PB-e5H"/>
                                             <constraint firstAttribute="width" constant="16" id="vUQ-iM-4zv"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_PROFILE_PROFILE_3RD_BUTTON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMR-pU-AgA" customClass="BaseUILabel" customModule="MBTBiziz" customModuleProvider="target">
-                                        <rect key="frame" x="58" y="-10.5" width="253" height="21.5"/>
+                                        <rect key="frame" x="58" y="25" width="253" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPk-wa-Vl6">
-                                        <rect key="frame" x="0.0" y="0.0" width="347" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="347" height="72"/>
                                         <connections>
-                                            <segue destination="44g-8p-62U" kind="show" id="L8D-vh-bsE"/>
+                                            <action selector="btnPayslipTapped:" destination="FeH-28-NQ0" eventType="touchUpInside" id="4Yd-RU-Bm3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -241,17 +241,17 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbp-NZ-hA4" userLabel="View BusinessCard">
-                                <rect key="frame" x="14" y="375" width="347" height="72"/>
+                                <rect key="frame" x="14" y="446.5" width="347" height="71.5"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="arrowRightGray" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-8N-jxy">
-                                        <rect key="frame" x="323" y="29.5" width="8" height="13"/>
+                                        <rect key="frame" x="323" y="29" width="8" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="1bp-AV-gYx"/>
                                             <constraint firstAttribute="width" constant="8" id="USn-B8-87M"/>
                                         </constraints>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icnBusinessCard" translatesAutoresizingMaskIntoConstraints="NO" id="r60-PV-L0G" userLabel="icnBusinessCard">
-                                        <rect key="frame" x="14" y="21" width="30" height="30"/>
+                                        <rect key="frame" x="14" y="20.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="NSp-Yo-2GB"/>
                                             <constraint firstAttribute="width" constant="30" id="caU-4j-WCg"/>
@@ -264,7 +264,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUM-wE-f9R">
-                                        <rect key="frame" x="0.0" y="0.0" width="347" height="72"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="347" height="71.5"/>
                                         <connections>
                                             <action selector="btnBusinessCardTapped:" destination="FeH-28-NQ0" eventType="touchUpInside" id="Dqh-OL-aFu"/>
                                         </connections>
@@ -286,7 +286,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTJ-x5-AR4">
-                                <rect key="frame" x="14" y="447" width="347" height="71.5"/>
+                                <rect key="frame" x="14" y="518" width="347" height="71.5"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="arrowRightGray" translatesAutoresizingMaskIntoConstraints="NO" id="uDQ-bg-zBS">
                                         <rect key="frame" x="323" y="29" width="8" height="13"/>
@@ -357,7 +357,7 @@
                             <constraint firstItem="36H-yE-SB0" firstAttribute="trailing" secondItem="KTJ-x5-AR4" secondAttribute="trailing" constant="14" id="Xzi-Z8-9LP"/>
                             <constraint firstItem="36H-yE-SB0" firstAttribute="trailing" secondItem="XN5-DG-cly" secondAttribute="trailing" constant="14" id="Ynz-Ci-Sc8"/>
                             <constraint firstItem="XN5-DG-cly" firstAttribute="top" secondItem="m2h-4k-Set" secondAttribute="bottom" id="hBk-bV-aCQ"/>
-                            <constraint firstItem="F8b-qA-ldf" firstAttribute="height" secondItem="l0Y-mG-tKE" secondAttribute="height" multiplier="0.001" id="ljN-7b-d2s"/>
+                            <constraint firstItem="F8b-qA-ldf" firstAttribute="height" secondItem="l0Y-mG-tKE" secondAttribute="height" multiplier="0.14" id="ljN-7b-d2s"/>
                             <constraint firstItem="F8b-qA-ldf" firstAttribute="trailing" secondItem="36H-yE-SB0" secondAttribute="trailing" constant="-14" id="nCI-WL-s36"/>
                             <constraint firstItem="F8b-qA-ldf" firstAttribute="top" secondItem="XN5-DG-cly" secondAttribute="bottom" id="ohn-s8-tDo"/>
                             <constraint firstItem="m2h-4k-Set" firstAttribute="leading" secondItem="36H-yE-SB0" secondAttribute="leading" id="rgA-6H-oTO"/>

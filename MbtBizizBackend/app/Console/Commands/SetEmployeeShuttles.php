@@ -40,14 +40,14 @@ class SetEmployeeShuttles extends Command
         $filePath = "/var/www/html/bizizFiles/shuttle/$name - Personel Servisleri.xlsx";
         if (!file_exists($filePath)) {
             Log::info("set:employee_shuttles file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel servisleri güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel servisleri güncellenemedi!");
             return;
         }
 
         $modificationTime = Carbon::createFromTimestamp(filemtime($filePath));
         if (Carbon::now()->diffInDays($modificationTime) > 1) {
             Log::info("No file update.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için personel servisleri tekrar güncellenmedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için personel servisleri tekrar güncellenmedi!");
             return;
         }
         //endregion
@@ -238,7 +238,7 @@ class SetEmployeeShuttles extends Command
             $toKey = "shuttles_to_company_" . $this->shuttleType . "_" . $companyLocationId;
             Cache::forget($toKey);
 
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel servisleri başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel servisleri başarıyla güncellendi.");
             //endregion
         } catch (\Exception $e) {
             DB::rollBack();
@@ -252,14 +252,14 @@ class SetEmployeeShuttles extends Command
         $filePath = "/var/www/html/bizizFiles/shuttle/$name - Personel Servisleri.xlsx";
         if (!file_exists($filePath)) {
             Log::info("set:employee_shuttles file not found.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel servisleri güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için personel servisleri güncellenemedi!");
             return;
         }
 
         $modificationTime = Carbon::createFromTimestamp(filemtime($filePath));
         if (Carbon::now()->diffInDays($modificationTime) > 1) {
             Log::info("No file update.");
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için personel servisleri tekrar güncellenmedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için personel servisleri tekrar güncellenmedi!");
             return;
         }
         //endregion
@@ -419,7 +419,7 @@ class SetEmployeeShuttles extends Command
             $toKey = "shuttles_to_company_" . $this->shuttleType . "_" . $companyLocationId;
             Cache::forget($toKey);
 
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel servisleri başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak personel servisleri başarıyla güncellendi.");
             //endregion
         } catch (\Exception $e) {
             DB::rollBack();

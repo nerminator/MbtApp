@@ -424,10 +424,24 @@
 		<string>Kalan Süre</string>
 		<key>TXT_OTP_EXPIRED</key>
 		<string>Süre doldu</string>
+		<key>TXT_OTP_EXPIRED_MESSAGE</key>
+		<string>Doğrulama kodu süresi doldu. Lütfen yeniden doğrulayın.</string>
+		<key>TXT_OTP_INVALID_CODE</key>
+		<string>Doğrulama kodu hatalı</string>
+		<key>TXT_OTP_ENTER_CODE</key>
+		<string>Lütfen kodu giriniz.</string>
 		<key>TXT_PAYSLIP_PERIOD</key>
 		<string>Bordro Dönemi</string>
 		<key>TXT_PAYSLIP_PERIOD_BUTTON</key>
 		<string>Bordro Göster</string>
+		<key>TXT_PAYSLIP_FILE_TITLE</key>
+		<string>%02d/%d Bordro</string>
+		<key>TXT_PAYSLIP_NOT_FOUND</key>
+		<string>Bordro bulunamadı.</string>
+		<key>TXT_COMMON_CONNECTION_ERROR</key>
+		<string>Bağlantı Hatası!</string>
+		<key>TXT_PAYSLIP_PDF_OPEN_ERROR</key>
+		<string>PDF açılamadı: %@</string>
 		<key>TXT_CARD_MENU_SHOW</key>
 		<string>Kartvizitimi Göster</string>
 		<key>TXT_CARD_MENU_SHARE</key>

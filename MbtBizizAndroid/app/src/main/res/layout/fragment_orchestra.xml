@@ -171,14 +171,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintBottom_toTopOf="@+id/btnDigitalCard"/>
+            app:layout_constraintBottom_toTopOf="@+id/btnPayslip"/>
 
-        <!-- PAYSLIP
+        <!-- PAYSLIP -->
         <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnPayslip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minHeight="0dp"
+            android:minHeight="70dp"
             android:layout_marginTop="14dp"
             android:background="@color/sixPercentWhite"
             android:text="@string/TXT_PROFILE_PROFILE_3RD_BUTTON"
@@ -197,7 +197,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/btnDigitalCard"/>
-        -->
+
         <!-- NEW: DIGITAL CARD BUTTON -->
         <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
             android:id="@+id/btnDigitalCard"
@@ -216,7 +216,7 @@
             android:paddingEnd="16dp"
             android:drawablePadding="20dp"
             android:textAlignment="textStart"
-            app:layout_constraintTop_toBottomOf="@+id/btnWorkCalender"
+            app:layout_constraintTop_toBottomOf="@+id/btnPayslip"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/btnWorkInfo"

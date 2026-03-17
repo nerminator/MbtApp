@@ -15,9 +15,9 @@ class SecurityHeaders
         $response = $next($request);
  
         if (app()->environment() == "production") {
-            $response->headers->set('X-Frame-Options', 'allow-from https://bizizapp.com/');
+            $response->headers->set('X-Frame-Options', 'allow-from https://biziapp-test.app.daimlertruck.com/');
         }else{
-            $response->headers->set('X-Frame-Options', 'allow-from http://localhost:8002/');
+            $response->headers->set('X-Frame-Options', 'allow-from http://95.214.97.107/');
         }
         $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 

@@ -8,6 +8,27 @@
 
 import Moya
 
+enum AppEnvironment {
+    case dev
+    case staging
+    case production
+
+    static var current: AppEnvironment {
+        let executableName = Bundle.main.object(forInfoDictionaryKey: "CFBundleExecutable") as? String ?? ""
+        let bundleIdentifier = Bundle.main.bundleIdentifier ?? ""
+
+        if executableName.contains("-Dev") {
+            return .dev
+        }
+
+        if executableName.contains("-Production") || executableName.contains("-Prod") || bundleIdentifier == "com.daimlertruck.dtag.internal.ios.mbt.test" {
+            return .production
+        }
+
+        return .staging
+    }
+}
+
 enum NetworkAPI {
 
     #if DEBUG
@@ -15,6 +36,17 @@ enum NetworkAPI {
     #else
         static var baseUrl : ServiceUrl = .live
     #endif
+
+    static var resolvedBaseUrlString: String {
+        switch AppEnvironment.current {
+        case .dev:
+            return "http://localhost:8000/api/v1/"
+        case .staging:
+            return "https://biziapp-test.app.daimlertruck.com/bizizBackend/public/index.php/api/v1/"
+        case .production:
+            return "https://bizizapp.com/bizizBackend/public/index.php/api/v1/"
+        }
+    }
     
     case initCall(versionNumber: String)
     case checkPhone(phoneNumber:String)
@@ -53,6 +85,7 @@ enum NetworkAPI {
     case appStartup
     
     case payslipRequestOtp              // POST /payslip/request-otp
+    case payslipIsActive                // GET /payslip/isActive
     case payslipVerifyOtp(code: String) // POST /payslip/verify-otp
     case payslipFetch(year: Int, month: Int) // POST /payslip/fetch
     

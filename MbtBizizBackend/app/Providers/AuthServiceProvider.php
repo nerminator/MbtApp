@@ -14,6 +14,57 @@ use Illuminate\Support\Facades\Log;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    private function boolEnv(string $key, bool $default = false): bool
+    {
+        $value = env($key, $default);
+
+        if (is_bool($value)) {
+            return $value;
+        }
+
+        if (is_numeric($value)) {
+            return (int)$value === 1;
+        }
+
+        return in_array(strtolower((string)$value), ['1', 'true', 'yes', 'on'], true);
+    }
+
+    private function resolveBypassedUser($request)
+    {
+        $isBypassEnabled = $this->boolEnv('OIDC_DEV_BYPASS_ENABLED', false);
+        $appEnv = strtolower((string) env('APP_ENV', 'production'));
+        $isNonProdEnv = !in_array($appEnv, ['production', 'prod', 'staging'], true);
+
+        if (!$isBypassEnabled || !$isNonProdEnv) {
+            return null;
+        }
+
+        $authorizationHeader = (string) $request->header('Authorization', '');
+        if ($authorizationHeader === '' || stripos($authorizationHeader, 'Bearer ') !== 0) {
+            return null;
+        }
+
+        $incomingToken = trim(substr($authorizationHeader, 7));
+        $expectedToken = (string) env('OIDC_DEV_BYPASS_TOKEN', '');
+
+        if ($incomingToken === '' || $expectedToken === '' || !hash_equals($expectedToken, $incomingToken)) {
+            return null;
+        }
+
+        $username = (string) env('OIDC_DEV_BYPASS_USERNAME', '');
+
+        if ($username !== '') {
+            $user = User::where('user_name', $username)->where('status', 1)->first();
+            if ($user) {
+                return $user;
+            }
+
+            Log::warning('OIDC development bypass enabled but configured user not found/inactive: ' . $username);
+        }
+
+        return User::where('status', 1)->first();
+    }
+
     /**
      * Register any application services.
      *
@@ -49,6 +100,17 @@ class AuthServiceProvider extends ServiceProvider
                 //            ->where('status', 1)->first();
 
             } elseif ($request->header('Authorization')) {
+                $bypassedUser = $this->resolveBypassedUser($request);
+                if ($bypassedUser) {
+                    if ($request->header('lang') == 'en') {
+                        app('translator')->setLocale('en');
+                        setlocale(LC_TIME, null);
+                        \Carbon\Carbon::setLocale('en');
+                    }
+
+                    return $bypassedUser;
+                }
+
                 $token = str_replace('Bearer ', '', $request->header('Authorization'));
 
                 //Log::info('Token: ' . $token);
@@ -90,6 +152,7 @@ class AuthServiceProvider extends ServiceProvider
                     return null;
                 }
 
+                Log::info('Decoded Token: ' . json_encode($decoded));
                 $oidcUser = strtok($decoded->upn, '@');  // upn    nsarifa@tbdir.net
                 
                 $user = User::where('user_name', $oidcUser)->where('status', 1)->first();

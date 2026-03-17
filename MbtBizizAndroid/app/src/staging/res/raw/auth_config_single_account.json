@@ -1,0 +1,16 @@
+{
+  "client_id": "e3c3c45a-36e7-4f4e-9b5e-18fc695099f2",
+  "authorization_user_agent": "WEBVIEW",
+  "redirect_uri": "msauth://com.daimlertruck.dtag.internal.android.mbt.test2/hhwqvvLcN8brgkk7%2F4rLmhYKCxY%3D",
+  "broker_redirect_uri_registered": true,
+  "account_mode": "SINGLE",
+  "authorities": [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADandPersonalMicrosoftAccount",
+        "tenant_id": "505cca53-5750-4134-9501-8d52d5df3cd1"
+      }
+    }
+  ]
+}

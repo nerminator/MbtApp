@@ -6,12 +6,39 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\DB;
 use SoapClient;
 use Carbon\Carbon;
+use App\Constants;
 use App\Services\MenuViewService;
 
 class PayslipController extends Controller
 {
+    public function isActive(Request $request)
+    {
+        $isActive = Redis::get('payslip_active') === '1';
+
+        if (!$isActive) {
+            $deactivationMessage = Redis::get('payslip_deactivation_error_message') ?: __('lang.TXT_SERVER_ERROR_PAYSLIP_INACTIVE');
+
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => [
+                    'isActive' => false
+                ],
+                'errorMessage' => $deactivationMessage
+            ]);
+        }
+
+        return response()->json([
+            'statusCode' => 200,
+            'responseData' => [
+                'isActive' => true
+            ],
+            'errorMessage' => null
+        ]);
+    }
+
     /**
      * Kullanıcıya OTP gönderir
      */
@@ -45,7 +72,6 @@ class PayslipController extends Controller
             'responseData' => null,
             'errorMessage' => null
         ]);
-
     }
 
     /**
@@ -66,7 +92,7 @@ class PayslipController extends Controller
             return response()->json([
                 'statusCode' => 401,
                 'responseData' => null,
-                'errorMessage' => 'Geçersiz Kod!'
+                'errorMessage' => __('lang.TXT_SERVER_ERROR_PAYSLIP_INVALID_OTP')
             ]);
         }
 
@@ -102,12 +128,42 @@ class PayslipController extends Controller
             return response()->json([
                 'statusCode' => 401,
                 'responseData' => null,
-                'errorMessage' => 'Doğrulama kodu süresi doldu'
-            ], 400);
+                'errorMessage' => __('lang.TXT_SERVER_ERROR_PAYSLIP_OTP_EXPIRED')
+            ]);
         }
 
         $year = $request->input('year');
         $month = $request->input('month');
+
+        if (!is_numeric($year) || !is_numeric($month) || (int)$month < 1 || (int)$month > 12) {
+            return response()->json([
+                'statusCode' => 400,
+                'responseData' => null,
+                'errorMessage' => __('lang.TXT_SERVER_ERROR_PAYSLIP_INVALID_PERIOD')
+            ]);
+        }
+
+        $requestedDate = Carbon::createFromDate((int)$year, (int)$month, 1)->startOfMonth();
+        $yakaTuru = ((int)$user->type === Constants::EMPLOYEE_TYPE_BLUE_COLLAR) ? 'Mavi' : 'Beyaz';
+
+        $payslipMonth = DB::table('payslip_months')
+            ->select('baslangic_tarihi')
+            ->whereDate('donem', $requestedDate->toDateString())
+            ->where('yaka_turu', $yakaTuru)
+            ->first();
+
+        if ($payslipMonth) {
+            $availableFrom = Carbon::parse($payslipMonth->baslangic_tarihi)->startOfDay();
+            if (Carbon::now()->lt($availableFrom)) {
+                $periodNotOpenMessage = Redis::get('payslip_period_not_open_error_message') ?: __('lang.TXT_SERVER_ERROR_PAYSLIP_PERIOD_NOT_OPEN');
+
+                return response()->json([
+                    'statusCode' => 400,
+                    'responseData' => null,
+                    'errorMessage' => $periodNotOpenMessage
+                ]);
+            }
+        }
 
         $period = sprintf("%04d%02d", $year, $month);
 
@@ -145,11 +201,9 @@ class PayslipController extends Controller
             if (!$pdfBase64) {
 
                 return response()->json([
-                    'statusCode' => 200,
-                    'responseData' => [
-                        'base64' => null
-                    ],
-                    'errorMessage' => 'Bordro bulunamadı'
+                    'statusCode' => 400,
+                    'responseData' => null,
+                    'errorMessage' => __('lang.TXT_SERVER_ERROR_PAYSLIP_NOT_FOUND')
                 ]);
             }
 
@@ -176,7 +230,7 @@ class PayslipController extends Controller
                 'statusCode' => 400,
                 'responseData' => [
                 ],
-                'errorMessage' => 'SAP servisi hatası'
+                'errorMessage' => __('lang.TXT_SERVER_ERROR_PAYSLIP_SAP_ERROR')
             ]);
         }
     }

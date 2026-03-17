@@ -41,13 +41,13 @@ class SetOtherShuttles extends Command
         //region Check File
         $filePath = "/var/www/html/bizizFiles/shuttle/$name - Diger Servisleri.xlsx";
         if (!file_exists($filePath)) {
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için diğer servisler güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için diğer servisler güncellenemedi!");
             return;
         }
 
         $modificationTime = Carbon::createFromTimestamp(filemtime($filePath));
         if (Carbon::now()->diffInDays($modificationTime) > 1) {
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için diğer servisler tekrar güncellenmedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için diğer servisler tekrar güncellenmedi!");
             return;
         }
         //endregion
@@ -205,7 +205,7 @@ class SetOtherShuttles extends Command
             $toKey = "shuttles_to_company_" . $this->shuttleType . "_" . $companyLocationId;
             Cache::forget($toKey);
 
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak diğer servisler başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak diğer servisler başarıyla güncellendi.");
             //endregion
         } catch (\Exception $e) {
             DB::rollBack();

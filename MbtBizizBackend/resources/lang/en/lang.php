@@ -48,6 +48,14 @@ return [
 
     'TXT_SERVER_ERROR_CANNOT_CREATE_CAPTCHA' => 'Cannot create captcha.',
     'TXT_SERVER_ERROR_CAPTCHA_NOT_VALID' => 'Captcha is not valid.',
+    'TXT_SERVER_ERROR_PAYSLIP_NOT_FOUND' => 'Payslip not found',
+
+    'TXT_SERVER_ERROR_PAYSLIP_INACTIVE' => 'Payslip is currently inactive.',
+    'TXT_SERVER_ERROR_PAYSLIP_INVALID_OTP' => 'Invalid Code!',
+    'TXT_SERVER_ERROR_PAYSLIP_OTP_EXPIRED' => 'Verification code has expired',
+    'TXT_SERVER_ERROR_PAYSLIP_INVALID_PERIOD' => 'Invalid period information',
+    'TXT_SERVER_ERROR_PAYSLIP_PERIOD_NOT_OPEN' => 'Payslip is not available yet.',
+    'TXT_SERVER_ERROR_PAYSLIP_SAP_ERROR' => 'SAP service error',
 
     'TXT_VERSION_POPUP_MAJOR_UPDATE_TITLE' => 'Major Update',
     'TXT_VERSION_POPUP_MAJOR_UPDATE_MESSAGE' => 'Major version update found. Please download the new version in order to continue.',

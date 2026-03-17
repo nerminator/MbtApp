@@ -17,12 +17,14 @@ class OidcViewController: MBTBaseViewController, URLSessionDelegate
 
     @IBAction func signInClicked(_ sender: Any) {
         TokenManager.sharedManager.acquireTokenInteractively(self, { (success, errorText) in
-            if (success) {
-                NavigationHelper().showHomeScreen()
-            } else {
-                self.showBasicAlert( message: errorText)
+            DispatchQueue.main.async {
+                if success {
+                    NavigationHelper().showHomeScreen()
+                } else {
+                    self.showBasicAlert(message: errorText ?? "OIDC sign in failed. Please try again.")
+                }
             }
-                
+
         })
     }
     

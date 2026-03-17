@@ -41,13 +41,13 @@ class SetInterlocationShuttles extends Command
         //region Check File
         $filePath = "/var/www/html/bizizFiles/shuttle/$name - Lokasyonlar Arasi Servisleri.xlsx";
         if (!file_exists($filePath)) {
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için lokasyonlar arası servisler güncellenemedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya bulunamadığı için lokasyonlar arası servisler güncellenemedi!");
             return;
         }
 
         $modificationTime = Carbon::createFromTimestamp(filemtime($filePath));
         if (Carbon::now()->diffInDays($modificationTime) > 1) {
-            TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için lokasyonlar arası servisler tekrar güncellenmedi!");
+            //TelegramChannelService::sendMessage("UYARI: " . $filePath . " isimli dosya 1 günden eski bir dosya olduğu için lokasyonlar arası servisler tekrar güncellenmedi!");
             return;
         }
         //endregion
@@ -238,7 +238,7 @@ class SetInterlocationShuttles extends Command
             $toKey = "shuttles_to_company_" . $this->shuttleType . "_" . $companyLocationId;
             Cache::forget($toKey);
 
-            TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak lokasyonlar arası servisler başarıyla güncellendi.");
+            //TelegramChannelService::sendMessage("BİLGİLENDİRME: " . $filePath . " isimli dosya kullanılarak lokasyonlar arası servisler başarıyla güncellendi.");
             //endregion
         } catch (\Exception $e) {
             DB::rollBack();

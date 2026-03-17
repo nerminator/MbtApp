@@ -21,6 +21,7 @@
         "livewire/livewire": "^3.5",
         "predis/predis": ">=1.0",
         "rootinc/laravel-azure-middleware": "^0.9.10",
+        "shuchkin/simplexlsx": "^1.1",
         "twbs/bootstrap": ">=4.1"
     },
     "require-dev": {
