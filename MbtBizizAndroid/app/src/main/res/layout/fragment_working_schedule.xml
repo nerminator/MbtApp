@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra.schedule.VMWorkingScheduleFragment" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/gradient_background"
+        tools:context=".ui.main.orchestra.schedule.WorkingScheduleFragment">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintDatePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+                android:id="@+id/tvMonthAndYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="23dp"
+                android:paddingStart="23dp"
+                android:text="@={viewmodel.pickerDateString}"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:onClick="@{viewmodel::performClickArrowLeft}"
+                android:padding="16dp"
+                android:src="@drawable/ic_arrow_left_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvMonthAndYear"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:onClick="@{viewmodel::performClickArrowRight}"
+                android:padding="16dp"
+                android:src="@drawable/ic_arrow_right_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/tvMonthAndYear"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvMonthAndYear"
+                android:background="@color/calendar_header_view"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedWorkCalendar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintDatePicker">
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline1"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.14285" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY1"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline1"
+                        android:layout_height="30dp" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.28571" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="@+id/guideline1"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY2"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline2"
+                        android:layout_height="30dp" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline3"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.428571" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY3"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline3"
+                        android:layout_height="30dp" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline4"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.57142" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="@+id/guideline3"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY4"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline4"
+                        android:layout_height="30dp" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline5"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.71428" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="@+id/guideline4"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY5"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline5"
+                        android:layout_height="30dp" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline6"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.85714" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="@+id/guideline5"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY6"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline6"
+                        android:layout_height="30dp" />
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="0dp"
+                        app:layout_constraintStart_toStartOf="@+id/guideline6"
+                        android:gravity="center"
+                        android:text="@string/TXT_PROFILE_CALENDAR_DAY7"
+                        android:textColor="@color/fiftyPercentOpacityTextColor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_height="30dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.GridRecyclerView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/recyclerCalendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layoutAnimation="@anim/grid_layout_animation_from_bottom" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerCause"
+                    android:layout_width="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="30dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Meal Menu View Controller-->
+        <scene sceneID="ie0-B3-0VU">
+            <objects>
+                <viewController storyboardIdentifier="mealMenuVC" id="Pdc-bN-M0U" customClass="MealMenuViewController" customModule="MBTBiziz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C5r-tv-LxX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4iE-Wf-cV6">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealMenuHeaderCell" rowHeight="70" id="7ij-eb-c1p" customClass="MealMenuHeaderCell" customModule="MBTBiziz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7ij-eb-c1p" id="US6-vC-lmh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16.04.2018 (BUGÜN)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpV-ib-4x6" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="26.5" width="135.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_MENU_MENU_CALORIE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQZ-XD-CeO" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
+                                                    <rect key="frame" x="167.5" y="26.5" width="187.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bQZ-XD-CeO" secondAttribute="trailing" constant="20" id="0kX-Pq-sMx"/>
+                                                <constraint firstItem="KpV-ib-4x6" firstAttribute="leading" secondItem="US6-vC-lmh" secondAttribute="leading" constant="20" id="5lR-bv-nwq"/>
+                                                <constraint firstItem="KpV-ib-4x6" firstAttribute="centerY" secondItem="US6-vC-lmh" secondAttribute="centerY" id="8G1-j6-Bvc"/>
+                                                <constraint firstItem="bQZ-XD-CeO" firstAttribute="centerY" secondItem="US6-vC-lmh" secondAttribute="centerY" id="ADg-l3-YOl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="lblDate" destination="KpV-ib-4x6" id="xtA-io-jgf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealMenuCell" rowHeight="200" id="PEq-LZ-MWZ" customClass="MealMenuCell" customModule="MBTBiziz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="120" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PEq-LZ-MWZ" id="e3n-nJ-eUw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCc-XJ-Jzo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="arrowDownGray" translatesAutoresizingMaskIntoConstraints="NO" id="FbI-ZB-N9m">
+                                                            <rect key="frame" x="24" y="31" width="13" height="8"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="13" id="Ya5-CK-rEW"/>
+                                                                <constraint firstAttribute="height" constant="8" id="lUi-q1-smo"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tavuk Izgara asdas das d as d as d as d as d as dad as  d sa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWy-j5-bCX" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
+                                                            <rect key="frame" x="55" y="13.5" width="243.5" height="43"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="252" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa2-ji-ZGY" customClass="BaseUILabelLight" customModule="MBTBiziz" customModuleProvider="target">
+                                                            <rect key="frame" x="323" y="24.5" width="32" height="21.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="rWy-j5-bCX" firstAttribute="leading" secondItem="FbI-ZB-N9m" secondAttribute="trailing" constant="18" id="2pK-VN-kli"/>
+                                                        <constraint firstItem="Pa2-ji-ZGY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rWy-j5-bCX" secondAttribute="trailing" constant="12" id="BWr-Ba-KJT"/>
+                                                        <constraint firstItem="FbI-ZB-N9m" firstAttribute="leading" secondItem="xCc-XJ-Jzo" secondAttribute="leading" constant="24" id="Rod-Vs-efj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Pa2-ji-ZGY" secondAttribute="trailing" constant="20" id="WDy-et-fl7"/>
+                                                        <constraint firstAttribute="height" constant="70" id="b3d-TL-oJi"/>
+                                                        <constraint firstItem="Pa2-ji-ZGY" firstAttribute="centerY" secondItem="xCc-XJ-Jzo" secondAttribute="centerY" id="fkS-gn-DZc"/>
+                                                        <constraint firstItem="rWy-j5-bCX" firstAttribute="centerY" secondItem="xCc-XJ-Jzo" secondAttribute="centerY" id="kAX-wB-h3E"/>
+                                                        <constraint firstItem="FbI-ZB-N9m" firstAttribute="centerY" secondItem="xCc-XJ-Jzo" secondAttribute="centerY" id="yb4-aO-7tf"/>
+                                                    </constraints>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="95.5" placeholderIntrinsicHeight="infinite" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Phk-1g-Zjv">
+                                                    <rect key="frame" x="50" y="70" width="315" height="52"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="52" id="OeR-4g-V82"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Alerjen olarak kereviz ve süt içermektedir." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-6t-GEN" customClass="BaseUILabel" customModule="MBTBiziz" customModuleProvider="target">
+                                                    <rect key="frame" x="50" y="140" width="313" height="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="2Ca-6t-GEN" secondAttribute="trailing" constant="12" id="CT8-gx-o3d"/>
+                                                <constraint firstAttribute="trailing" secondItem="Phk-1g-Zjv" secondAttribute="trailing" constant="10" id="EkF-BI-ke3"/>
+                                                <constraint firstItem="2Ca-6t-GEN" firstAttribute="top" secondItem="Phk-1g-Zjv" secondAttribute="bottom" constant="18" id="GU7-eU-h3P"/>
+                                                <constraint firstAttribute="bottom" secondItem="2Ca-6t-GEN" secondAttribute="bottom" priority="900" constant="18" id="K9Q-1M-3iR"/>
+                                                <constraint firstItem="2Ca-6t-GEN" firstAttribute="leading" secondItem="e3n-nJ-eUw" secondAttribute="leading" constant="50" id="KBE-9I-wHx"/>
+                                                <constraint firstItem="Phk-1g-Zjv" firstAttribute="leading" secondItem="e3n-nJ-eUw" secondAttribute="leading" constant="50" id="KNH-h1-Qf9"/>
+                                                <constraint firstAttribute="trailing" secondItem="xCc-XJ-Jzo" secondAttribute="trailing" id="ZCo-JI-82G"/>
+                                                <constraint firstItem="xCc-XJ-Jzo" firstAttribute="top" secondItem="e3n-nJ-eUw" secondAttribute="top" id="dDn-LP-tya"/>
+                                                <constraint firstItem="Phk-1g-Zjv" firstAttribute="top" secondItem="xCc-XJ-Jzo" secondAttribute="bottom" id="f8y-B3-afN"/>
+                                                <constraint firstItem="xCc-XJ-Jzo" firstAttribute="leading" secondItem="e3n-nJ-eUw" secondAttribute="leading" id="r6I-OP-gwa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="imgViewArrow" destination="FbI-ZB-N9m" id="dOX-vZ-5fi"/>
+                                            <outlet property="lblCalori" destination="Pa2-ji-ZGY" id="oTh-8S-VI8"/>
+                                            <outlet property="lblInfo" destination="2Ca-6t-GEN" id="Qrc-AP-Eb6"/>
+                                            <outlet property="lblMeal" destination="rWy-j5-bCX" id="ggL-65-bpa"/>
+                                            <outlet property="stackView" destination="Phk-1g-Zjv" id="LiT-EF-WmX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealMenuServiceHeaderCell" rowHeight="70" id="xy3-V4-6pm" customClass="MealMenuServiceHeaderCell" customModule="MBTBiziz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="320" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xy3-V4-6pm" id="b6T-5G-iLl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_MENU_MENU_TIMES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gj-WV-899" customClass="BaseUILabelCARegular" customModule="MBTBiziz" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="31.5" width="345" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="0gj-WV-899" secondAttribute="bottom" constant="12" id="2U3-mK-7GD"/>
+                                                <constraint firstAttribute="trailing" secondItem="0gj-WV-899" secondAttribute="trailing" constant="10" id="M7c-3b-iYW"/>
+                                                <constraint firstItem="0gj-WV-899" firstAttribute="leading" secondItem="b6T-5G-iLl" secondAttribute="leading" constant="20" id="TP3-35-VMz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealMenuServiceCell" rowHeight="135" id="7eb-Z1-Ml6" customClass="MealMenuServiceCell" customModule="MBTBiziz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="390" width="375" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7eb-Z1-Ml6" id="mNg-qO-3tF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İSTANBUL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsg-Xx-Ioe" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="10" width="67" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stq-wL-ta2">
+                                                    <rect key="frame" x="14" y="134" width="347" height="1"/>
+                                                    <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="ldz-B9-FYV"/>
+                                                    </constraints>
+                                                </view>
+                                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VJo-Xn-vFQ">
+                                                    <rect key="frame" x="0.0" y="47" width="375" height="61"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Stq-wL-ta2" firstAttribute="leading" secondItem="mNg-qO-3tF" secondAttribute="leading" constant="14" id="0Md-Kt-CWX"/>
+                                                <constraint firstItem="gsg-Xx-Ioe" firstAttribute="top" secondItem="mNg-qO-3tF" secondAttribute="top" constant="10" id="2Kf-L1-DUb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Stq-wL-ta2" secondAttribute="trailing" constant="14" id="69z-4u-UXX"/>
+                                                <constraint firstItem="VJo-Xn-vFQ" firstAttribute="leading" secondItem="mNg-qO-3tF" secondAttribute="leading" id="Ugr-j0-e6M"/>
+                                                <constraint firstItem="gsg-Xx-Ioe" firstAttribute="leading" secondItem="mNg-qO-3tF" secondAttribute="leading" constant="20" id="ViD-ki-4L9"/>
+                                                <constraint firstAttribute="trailing" secondItem="VJo-Xn-vFQ" secondAttribute="trailing" id="Voe-pK-FL0"/>
+                                                <constraint firstAttribute="bottom" secondItem="Stq-wL-ta2" secondAttribute="bottom" id="uFq-9Y-9DP"/>
+                                                <constraint firstItem="Stq-wL-ta2" firstAttribute="top" secondItem="VJo-Xn-vFQ" secondAttribute="bottom" constant="26" id="wYY-HD-gOf"/>
+                                                <constraint firstItem="VJo-Xn-vFQ" firstAttribute="top" secondItem="gsg-Xx-Ioe" secondAttribute="bottom" constant="20" id="xhL-Vv-zt0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="lblCity" destination="gsg-Xx-Ioe" id="rcN-8b-tGx"/>
+                                            <outlet property="stackView" destination="VJo-Xn-vFQ" id="dhs-R5-Uhb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealMenuServiceFooterCell" rowHeight="60" id="8Rv-CS-esy" customClass="MealMenuServiceFooterCell" customModule="MBTBiziz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="525" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Rv-CS-esy" id="ma0-O3-LRV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXT_YEMEKHANE_SERVIS_NOT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyQ-R3-noX" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="0.0" width="345" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="CyQ-R3-noX" secondAttribute="bottom" constant="10" id="0Ln-rN-bvG"/>
+                                                <constraint firstItem="CyQ-R3-noX" firstAttribute="top" secondItem="ma0-O3-LRV" secondAttribute="top" id="G1X-4P-tow"/>
+                                                <constraint firstItem="CyQ-R3-noX" firstAttribute="leading" secondItem="ma0-O3-LRV" secondAttribute="leading" constant="20" id="Won-fc-12h"/>
+                                                <constraint firstAttribute="trailing" secondItem="CyQ-R3-noX" secondAttribute="trailing" constant="10" id="shV-65-L4p"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Pdc-bN-M0U" id="zr6-2e-l2a"/>
+                                    <outlet property="delegate" destination="Pdc-bN-M0U" id="pZP-i3-ob9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8jd-4S-FcK"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4iE-Wf-cV6" firstAttribute="top" secondItem="8jd-4S-FcK" secondAttribute="top" id="R4P-lS-LKA"/>
+                            <constraint firstItem="8jd-4S-FcK" firstAttribute="trailing" secondItem="4iE-Wf-cV6" secondAttribute="trailing" id="SVo-0p-dVm"/>
+                            <constraint firstItem="4iE-Wf-cV6" firstAttribute="leading" secondItem="8jd-4S-FcK" secondAttribute="leading" id="bQR-zG-hsd"/>
+                            <constraint firstItem="8jd-4S-FcK" firstAttribute="bottom" secondItem="4iE-Wf-cV6" secondAttribute="bottom" id="oza-EC-shg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="4iE-Wf-cV6" id="NxW-ci-fog"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aOZ-VS-Kag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48.799999999999997" y="162.3688155922039"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowDownGray" width="13" height="7.5"/>
+    </resources>
+</document>

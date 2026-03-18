@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape android:padding="10dp" android:shape="oval">
+            <solid android:color="@color/speakerBackgroundColor" />
+        </shape>
+    </item>
+    <item android:state_enabled="true" android:state_focused="true">
+        <shape android:padding="10dp" android:shape="oval">
+            <stroke android:width="2dp" android:color="@color/tabSelectedColor" />
+            <solid android:color="@color/appBackground" />
+        </shape>
+    </item>
+    <item>
+        <shape android:padding="10dp" android:shape="oval">
+            <stroke android:width="2dp" android:color="@android:color/white" />
+            <solid android:color="@color/appBackground" />
+        </shape>
+    </item>
+</selector>

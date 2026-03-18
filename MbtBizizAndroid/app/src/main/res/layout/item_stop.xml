@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.StopListEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp">
+
+        <ImageView
+            android:id="@+id/imageStopDot"
+            android:layout_width="8dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/txtStopName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+            android:id="@+id/txtStopName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="@{data.name}"
+            android:includeFontPadding="false"
+            android:textColor="@{data.targetStop ? @android:color/white : @color/stop_text_color}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/imageStopDot"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dividerStop"
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:alpha="0.2"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/divider_stoplist"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageStopDot" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

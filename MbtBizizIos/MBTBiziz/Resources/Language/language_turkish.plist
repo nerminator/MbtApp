@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>language</key>
+	<dict>
+		<key>TXT_LOGIN_TERMS_WELCOME_ACCEPT</key>
+		<string>Kabul Et</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_REJECT</key>
+		<string>Reddet</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TITLE</key>
+		<string>EULA</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TEXT</key>
+		<string>Uygulamayı kullanmaya başlamak için kullanıcı şartlarını kabul etmeniz gerekmektedir. Kabul etmek istemiyorsanız uygulamayı kapatabilirsiniz.</string>
+		<key>TXT_LOGIN_WELCOME_HEADER</key>
+		<string>Hoş geldiniz</string>
+		<key>TXT_LOGIN_WELCOME_DESCRIPTION</key>
+		<string>Giriş yap butonuna tıklayıp kimlik doğrulama adımları ile devam edebilirsiniz.</string>
+		<key>TXT_LOGIN_WELCOME_BUTTON</key>
+		<string>Giriş Yap</string>
+		<key>TXT_LOGIN_PIN_TITLE</key>
+		<string>PIN Kodu</string>
+		<key>TXT_LOGIN_PIN_DESCRIPTION</key>
+		<string>Telefonunuza gelen 4 haneli PIN kodunu giriniz.</string>
+		<key>TXT_LOGIN_PIN_RESEND</key>
+		<string>Tekrar Gönder</string>
+		<key>TXT_LOGIN_PIN_BUTTON</key>
+		<string>Onayla</string>
+		<key>TXT_LOGIN_HOME_ABOUT</key>
+		<string>Hakkımızda</string>
+		<key>TXT_LOGIN_HOME_NEWS</key>
+		<string>Haberler</string>
+		<key>TXT_LOGIN_HOME_EVENTS</key>
+		<string>Etkinlikler</string>
+		<key>TXT_LOGIN_HOME_MAP</key>
+		<string>Yerleşim</string>
+		<key>TXT_LOGIN_HOME_SHUTTLE</key>
+		<string>Ulaşım</string>
+		<key>TXT_LOGIN_HOME_MENU</key>
+		<string>Yemek Menüsü</string>
+		<key>TXT_LOGIN_HOME_DISCOUNTS</key>
+		<string>Şirket İndirimleri</string>
+		<key>TXT_LOGIN_HOME_LINKS</key>
+		<string>Faydalı Bağlantılar</string>
+		<key>TXT_LOGIN_HOME_PHONES</key>
+		<string>Önemli Numaralar</string>
+		<key>TXT_LOGIN_HOME_TAB1</key>
+		<string>Portal</string>
+		<key>TXT_LOGIN_HOME_TAB2</key>
+		<string>Bildirimler</string>
+		<key>TXT_LOGIN_HOME_TAB3</key>
+		<string>Profilim</string>
+		<key>TXT_LOGIN_SUPPORT_TITLE</key>
+		<string>Teknik Destek</string>
+		<key>TXT_LOGIN_SUPPORT_DESCRIPTION</key>
+		<string>SİSTEM SORUNLARI İÇİN</string>
+		<key>TXT_LOGIN_SUPPORT_LABEL1</key>
+		<string>Telefon</string>
+		<key>TXT_LOGIN_SUPPORT_LABEL2</key>
+		<string>Dahili</string>
+		<key>TXT_LOGIN_SUPPORT_LABEL3</key>
+		<string></string>
+		<key>TXT_LOGIN_SUPPORT_PHONE1</key>
+		<string>0 212 400 20 44</string>
+		<key>TXT_LOGIN_SUPPORT_PHONE2</key>
+		<string>-</string>
+		<key>TXT_LOGIN_SUPPORT_BUTTON</key>
+		<string>Ara</string>
+		<key>TXT_LOGIN_SUPPORT_CLOSE</key>
+		<string>Kapat</string>
+		<key>TXT_LOGIN_NEWS_TITLE</key>
+		<string>Mercedes&apos;ten Haberler</string>
+		<key>TXT_LOGIN_NEWS_TYPE1</key>
+		<string>Hepsi</string>
+		<key>TXT_LOGIN_NEWS_TYPE2</key>
+		<string>Etkinlik</string>
+		<key>TXT_LOGIN_NEWS_TYPE3</key>
+		<string>İndirimler</string>
+		<key>TXT_LOGIN_NEWS_TYPE4</key>
+		<string>Veda</string>
+		<key>TXT_LOGIN_NEWS_TYPE5</key>
+		<string>Vefat</string>
+		<key>TXT_LOGIN_NEWS_TYPE6</key>
+		<string>Diğer</string>
+		<key>TXT_LOGIN_NEWS_TYPE7</key>
+		<string>Haberler</string>
+		<key>TXT_LOGIN_NEWS_TYPE8</key>
+		<string>Linkler</string>
+		<key>TXT_LOGIN_NEWS_TYPE9</key>
+		<string>Bağlantılar</string>
+		<key>TXT_LOGIN_NEWS_TYPE10</key>
+		<string>Sosyal Kulüpler</string>
+		<key>TXT_LOGIN_NEWS_BIRTHDAY</key>
+		<string>Bugün Doğanlar</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE1</key>
+		<string>Kategoriler</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE2</key>
+		<string>Eğitim ve Kişisel Gelişim</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE3</key>
+		<string>Etkinlik ve Eğlence</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE4</key>
+		<string>Ev ve Yaşam</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE5</key>
+		<string>Gastronomi ve Gıda</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE6</key>
+		<string>Gayrimenkul</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE7</key>
+		<string>Giyim ve Moda</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE8</key>
+		<string>Otomotiv</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE9</key>
+		<string>Sağlık ve Spor</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE10</key>
+		<string>Spor ve Yaşam Merkezleri</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE11</key>
+		<string>Temizlik ve Bakıcı Hizmetleri</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE12</key>
+		<string>Turizm ve Araç Kiralama</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE13</key>
+		<string>Diğer</string>
+		<key>TXT_LOGIN_NEWS_DISCOUNT_TYPE14</key>
+		<string>Teknoloji ve Telekom</string>
+		<key>TXT_ABOUTUS_TITLE</key>
+		<string>Hakkımızda</string>
+		<key>TXT_MENU_MENU_TITLE</key>
+		<string>Yemek Menüsü</string>
+		<key>TXT_MENU_MENU_CALORIE</key>
+		<string>KALORİ</string>
+		<key>TXT_MENU_MENU_OK</key>
+		<string>Tamam</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TITLE</key>
+		<string>Ulaşım</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TAB1</key>
+		<string>Personel</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TAB2</key>
+		<string>Ring Servis</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TAB3</key>
+		<string>Diğer</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DEST_PLCH</key>
+		<string>Kalkış Noktası...</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DESTINATION</key>
+		<string>KALKIŞ NOKTASI</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TIME</key>
+		<string>H. SAATİ</string>
+		<key>TXT_SHUTTLE_SHUTTLE_PATH</key>
+		<string>GÜZERGAH</string>
+		<key>TXT_SHUTTLE_SHUTTLE_ARRIVAL_PLCH</key>
+		<string>Varış Noktası...</string>
+		<key>TXT_SHUTTLE_SHUTTLE_ARRIVAL</key>
+		<string>VARIŞ NOKTASI</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DRIVER_INFO</key>
+		<string>Sürücü Bilgileri</string>
+		<key>TXT_SHUTTLE_SHUTTLE_CALL</key>
+		<string>Ara</string>
+		<key>TXT_SHUTTLE_SHUTTLE_CLOSE</key>
+		<string>Kapat</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DRIVER</key>
+		<string>Sürücü</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TEL</key>
+		<string>Telefon</string>
+		<key>TXT_NOTIFICATIONS_NOTIFICATIONS_TITLE</key>
+		<string>Bildirimler</string>
+		<key>TXT_LOCATIONS_LOCATIONS_TITLE</key>
+		<string>Yerleşim</string>
+		<key>TXT_LOCATIONS_LOCATIONS_PLACEHOLDER</key>
+		<string>Lokasyon ara...</string>
+		<key>TXT_LOCATIONS_SEARCH_TITLE</key>
+		<string>ARAMA SONUCU</string>
+		<key>TXT_LOCATIONS_SEARCH_RESULTS_TITLE</key>
+		<string>Arama Sonucu</string>
+		<key>TXT_PROFILE_PROFILE_TITLE</key>
+		<string>Profilim</string>
+		<key>TXT_PROFILE_PROFILE_1ST_SUBTITLE</key>
+		<string>ŞUBE / LOKASYON</string>
+		<key>TXT_PROFILE_PROFILE_2ND_SUBTITLE</key>
+		<string>MSF. YERİ / ORG. BİRİMİ / ŞİRKET KODU</string>
+		<key>TXT_PROFILE_PROFILE_3RD_SUBTITLE</key>
+		<string>YÖNETİCİ</string>
+		<key>TXT_PROFILE_PROFILE_1ST_BUTTON_WHITE</key>
+		<string>Esnek Çalışma Bilgilerim</string>
+		<key>TXT_PROFILE_PROFILE_1ST_BUTTON_BLUE</key>
+		<string>Artı Mesai Saati</string>
+		<key>TXT_PROFILE_PROFILE_2ND_BUTTON</key>
+		<string>Çalışma Takvimim</string>
+		<key>TXT_PROFILE_PROFILE_3RD_BUTTON</key>
+		<string>Bordro</string>
+		<key>TXT_PROFILE_PROFILE_4RD_BUTTON</key>
+		<string>Kartvizitim</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_WHITE</key>
+		<string>Esnek Çalışma Bilgilerim</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_TITLE_BLUE</key>
+		<string>Artı Mesai Saati</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_YEAR</key>
+		<string>Yıl</string>
+		<key>TXT_PROFILE_FLEXIBLE_WORK_OK</key>
+		<string>Tamam</string>
+		<key>TXT_PROFILE_SETTINGS_TITLE</key>
+		<string>Ayarlar</string>
+		<key>TXT_PROFILE_SETTINGS_SUBTITLE</key>
+		<string>BİLDİRİM AYARLARI</string>
+		<key>TXT_PROFILE_SETTINGS_BUTTON</key>
+		<string>Çıkış Yap</string>
+		<key>TXT_PROFILE_CALENDAR_TITLE</key>
+		<string>Çalışma Takvimim</string>
+		<key>TXT_PROFILE_CALENDAR_DAY1</key>
+		<string>PT</string>
+		<key>TXT_PROFILE_CALENDAR_DAY2</key>
+		<string>SA</string>
+		<key>TXT_PROFILE_CALENDAR_DAY3</key>
+		<string>ÇA</string>
+		<key>TXT_PROFILE_CALENDAR_DAY4</key>
+		<string>PE</string>
+		<key>TXT_PROFILE_CALENDAR_DAY5</key>
+		<string>CU</string>
+		<key>TXT_PROFILE_CALENDAR_DAY6</key>
+		<string>CT</string>
+		<key>TXT_PROFILE_CALENDAR_DAY7</key>
+		<string>PA</string>
+		<key>TXT_LOGIN_TERMS_WELCOME_TITLE</key>
+		<string>Kullanım Şartları</string>
+		<key>TXT_ABOUT_NAV</key>
+		<string>Hakkında</string>
+		<key>TXT_ABOUT_HEADER</key>
+		<string>SAĞLAYICI</string>
+		<key>TXT_SETTINGS_NAV</key>
+		<string>Ayarlar</string>
+		<key>TXT_SETTINGS_HEADER</key>
+		<string>BİLDİRİM AYARLARI</string>
+		<key>TXT_ABOUT_MAIN_PROVIDER_INFO</key>
+		<string>Mercedes-Benz Türk A.Ş.
+            Akçaburgaz Mahallesi,
+            Süleyman Şah Caddesi, No:2
+            34522 Esenyurt, İstanbul
+            
+            Telefon:0212 867 30 00 pbx
+            mbt_app@daimlertruck.com
+            
+            İcra Kurulu
+            
+            MBT, İcra Kurulu Başkanı (CEO), Süer Sülün.
+            MBT, Otobüs Üretiminden Sorumlu İcra Kurulu Üyesi, Bülent Acicbe.
+            MBT, Finans ve Kontrol&apos;den Sorumlu İcra Kurulu Üyesi (CFO), Tülin Mede Esmer.
+            MBT, Aksaray Fabrika Direktörü &amp; İcra Kurulu Üyesi, Ulf Raese.
+            
+            Ticari Kayıt Numarası: 94468
+            VAT Kimlik Numarası: 7-9159-7212-1615130
+            
+            Telif Hakkı 2018-2023 Mercedes-Benz Türk A.Ş. 
+            Tüm Hakları Saklıdır.</string>
+		<key>TXT_ABOUT_MAIN_APP_DESCRIPTION</key>
+		<string>Uygulama Açıklaması</string>
+		<key>TXT_ABOUT_MAIN_TERMS_OF_USE</key>
+		<string>Kullanım Koşulları</string>
+		<key>TXT_ABOUT_MAIN_DATA_PROTECTION</key>
+		<string>Veri Koruma</string>
+		<key>TXT_ABOUT_MAIN_FOSS</key>
+		<string>Ücretsiz veya Açık Kaynaklı Yazılım</string>
+		<key>TXT_ABOUT_MAIN_3RD_PARTY_CONTENT</key>
+		<string>Üçüncü Taraf İçeriği</string>
+		<key>TXT_ABOUT_MAIN_LEGAL_NOTICES</key>
+		<string>Yasal Uyarılar</string>
+		<key>TXT_ABOUT_MAIN_APP_SUPPORT</key>
+		<string>Uygulama Desteği</string>
+		<key>TXT_NO_INTERNET</key>
+		<string>İnternet bağlantınızı kontrol edip tekrar deneyiniz.</string>
+		<key>TXT_COMMON_WARNING</key>
+		<string>Uyarı</string>
+		<key>TXT_COMMON_JAILBREAK</key>
+		<string>Bu uygulama jailbrek yapılmış cihazlarda kullanılamaz.</string>
+		<key>TXT_COMMON_ERROR</key>
+		<string>Hata</string>
+		<key>TXT_COMMON_DONE</key>
+		<string>Tamam</string>
+		<key>TXT_COMMON_CANCEL</key>
+		<string>Vazgeç</string>
+		<key>TXT_COMMON_CANCEL2</key>
+		<string>İptal</string>
+		<key>TXT_COMMON_INFO</key>
+		<string>Bilgilendirme</string>
+		<key>TXT_COMMON_YES</key>
+		<string>Evet</string>
+		<key>TXT_COMMON_NO</key>
+		<string>Hayır</string>
+		<key>TXT_COMMON_ANNOUNCEMENT</key>
+		<string>Duyuru</string>
+		<key>TXT_COMMON_DELETE</key>
+		<string>Sil</string>
+		<key>TXT_COMMON_UPDATING</key>
+		<string>Güncelleniyor...</string>
+		<key>TXT_COMMON_CLOSE</key>
+		<string>Kapat</string>
+		<key>TXT_COMMON_JANUARY</key>
+		<string>Ocak</string>
+		<key>TXT_COMMON_FEBRUARY</key>
+		<string>Şubat</string>
+		<key>TXT_COMMON_MARCH</key>
+		<string>Mart</string>
+		<key>TXT_COMMON_APRIL</key>
+		<string>Nisan</string>
+		<key>TXT_COMMON_MAY</key>
+		<string>Mayıs</string>
+		<key>TXT_COMMON_JUNE</key>
+		<string>Haziran</string>
+		<key>TXT_COMMON_JULY</key>
+		<string>Temmuz</string>
+		<key>TXT_COMMON_AUGUST</key>
+		<string>Ağustos</string>
+		<key>TXT_COMMON_SEPTEMBER</key>
+		<string>Eylül</string>
+		<key>TXT_COMMON_OCTOBER</key>
+		<string>Ekim</string>
+		<key>TXT_COMMON_NOVEMBER</key>
+		<string>Kasım</string>
+		<key>TXT_COMMON_DECEMBER</key>
+		<string>Aralık</string>
+		<key>TXT_LOCATIONS_LOCATIONS_MEETING_ROOM</key>
+		<string>Toplantı Odası</string>
+		<key>TXT_MENU_MENU_TIMES</key>
+		<string>Yemekhane Servis Saatleri</string>
+		<key>TXT_MENU_MENU_DENSITY</key>
+		<string>Anlık Yemekhane Yoğunluğu</string>
+		<key>TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION</key>
+		<string>ŞİRKET LOKASYONU</string>
+		<key>TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION_PLACEHOLDER</key>
+		<string>Şirket Lokasyonu Seç</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TYPE</key>
+		<string>SERVİS TÜRÜ</string>
+		<key>TXT_SHUTTLE_SHUTTLE_TYPE_PLACEHOLDER</key>
+		<string>Servis Türü Seç</string>
+		<key>TXT_SHUTTLE_SHUTTLE_GO_ON</key>
+		<string>Devam Et</string>
+		<key>TXT_SHUTTLE_SHUTTLE_DESTINATION_SMALL</key>
+		<string>Kalkış</string>
+		<key>TXT_SHUTTLE_SHUTTLE_ARRIVAL_SMALL</key>
+		<string>Varış</string>
+		<key>TXT_SHUTTLE_SEARCH_RESULT</key>
+		<string>ARAMA SONUCU</string>
+		<key>TXT_SHUTTLE_SEARCH_LATEST_SEARCH</key>
+		<string>SON ARANANLAR</string>
+		<key>TXT_PROFILE_CALENDAR_TODAY</key>
+		<string>Bugün</string>
+		<key>TXT_PROFILE_SETTINGS_QUIT_WARNING</key>
+		<string>Çıkış yapmak istediğinize emin misiniz?</string>
+		<key>TXT_INFO_NOTIFICATION</key>
+		<string>Bu uygulamanın şirket haberleri (etkinlikler, bildirimler) ile ilgili size bildirimler göndermesini ister misiniz? Bu anlık mesajlar her zaman MBT App-&gt;Profilim-&gt;Ayarlar-&gt;Etkinlik Bildirimleri  ve MBT App-&gt;Profilim-&gt;Ayarlar-&gt;İndirim Bildirimleri ile aktif veya pasif hale getirilebilir. </string>
+		<key>TXT_SETTINGS_DEVICE_BUTTON</key>
+		<string>Cihaz Ayarları&apos;na Git</string>
+		<key>TXT_SETTINGS_NOT_GRANTED_NOTIFICATIONS</key>
+		<string>Cihaz ayarlarında bildirimler kapalı. IOS Ayarlar-&gt;MBT App-&gt;Bildirimler sayfasından bildirimleri açabilirsiniz.</string>
+		<key>TXT_COMMON_TODAY</key>
+		<string>BUGÜN</string>
+		<key>TXT_QR_CODE_TITLE</key>
+		<string>QR Kodunu Tara</string>
+		<key>TXT_QR_CODE_DESC</key>
+		<string>Toplantı odası rezervasyonu için masadaki
+            QR kodunu tarayınız.</string>
+		<key>TXT_QR_CODE_POPUP_TITLE_SUCCESS</key>
+		<string>İşlem tamam!</string>
+		<key>TXT_QR_CODE_POPUP_TITLE_FAIL</key>
+		<string>İşlem başarısız!</string>
+		<key>TXT_QR_CODE_POPUP_DESC_SUCCESS</key>
+		<string>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</string>
+		<key>TXT_QR_CODE_POPUP_DESC_FAIL</key>
+		<string>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</string>
+		<key>TXT_QR_CODE_POPUP_BUTTON_RETRY</key>
+		<string>Tekrar Dene</string>
+		<key>TXT_QR_CODE_POPUP_BUTTON_RETURN</key>
+		<string>Portal’a Dön</string>
+		<key>TXT_DISCOUNT_CODE_GET</key>
+		<string>İndirim Kodu Al</string>
+		<key>TXT_DISCOUNT_CODE_TITLE</key>
+		<string>İNDİRİM KODU</string>
+		<key>TXT_NO_DISCOUNT_CODE</key>
+		<string>İndirim Kodu Kalmadı</string>
+		<key>TXT_LINKS_TITLE1</key>
+		<string>Sosyal Kulüpler</string>
+		<key>TXT_LINKS_TITLE2</key>
+		<string>Dahili İlanlar</string>
+		<key>TXT_LINKS_TITLE3</key>
+		<string>Bugün Doğanlar</string>
+		<key>TXT_LINKS_TITLE4</key>
+		<string>SAP Concur</string>
+		<key>TXT_LINKS_TITLE5</key>
+		<string>Yemeğim Evimde</string>
+		<key>TXT_LINKS_TITLE6</key>
+		<string>CloudOffix</string>
+		<key>TXT_LINKS_TITLE7</key>
+		<string>Öneri Sistemi</string>
+		<key>TXT_LINKS_TITLE8</key>
+		<string>Oracle HCM</string>
+		<key>TXT_LINKS_TITLE9</key>
+		<string>MBT Sosyal Medya</string>
+		<key>TXT_COPY</key>
+		<string>Kopyala</string>
+		<key>TXT_COPIED</key>
+		<string>Kopyalandı</string>
+		<key>TXT_CLUBS_ISTANBUL</key>
+		<string>İSTANBUL SOSYAL KULÜPLER</string>
+		<key>TXT_CLUBS_AKSARAY</key>
+		<string>AKSARAY SOSYAL KULÜPLER</string>
+		<key>TXT_SOCIAL_MEDIA_BUTTON</key>
+		<string>Sosyal Medya Hesapları</string>
+		<key>TXT_APP_FEEDBACK_BUTTON</key>
+		<string>Uygulama Geri Bildirim</string>
+		<key>TXT_SUBMIT_BUTTON</key>
+		<string>Gönder</string>
+		<key>TXT_APP_FEEDBACK_PLACEHOLDER</key>
+		<string>Geri bildiriminiz...</string>
+		<key>TXT_YEMEKHANE_SERVIS_NOT</key>
+		<string>*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir.</string>
+		<key>TXT_PROFILE_OTP_VERIFY</key>
+		<string>Doğrula</string>
+		<key>TXT_OTP_TITLE</key>
+		<string>Bordro SMS Doğrulama</string>
+		<key>TXT_OTP_TEXT</key>
+		<string>Telefonunuza gelen doğrulama kodunu giriniz:</string>
+		<key>TXT_OTP_HINT</key>
+		<string>6 Haneli SMS Kodu</string>
+		<key>TXT_OTP_VERIFY</key>
+		<string>Doğrula</string>
+		<key>TXT_OTP_RESEND</key>
+		<string>Yeniden Gönder</string>
+		<key>TXT_OTP_TIME</key>
+		<string>Kalan Süre</string>
+		<key>TXT_OTP_EXPIRED</key>
+		<string>Süre doldu</string>
+		<key>TXT_OTP_EXPIRED_MESSAGE</key>
+		<string>Doğrulama kodu süresi doldu. Lütfen yeniden doğrulayın.</string>
+		<key>TXT_OTP_INVALID_CODE</key>
+		<string>Doğrulama kodu hatalı</string>
+		<key>TXT_OTP_ENTER_CODE</key>
+		<string>Lütfen kodu giriniz.</string>
+		<key>TXT_PAYSLIP_PERIOD</key>
+		<string>Bordro Dönemi</string>
+		<key>TXT_PAYSLIP_PERIOD_BUTTON</key>
+		<string>Bordro Göster</string>
+		<key>TXT_PAYSLIP_FILE_TITLE</key>
+		<string>%02d/%d Bordro</string>
+		<key>TXT_PAYSLIP_NOT_FOUND</key>
+		<string>Bordro bulunamadı.</string>
+		<key>TXT_COMMON_CONNECTION_ERROR</key>
+		<string>Bağlantı Hatası!</string>
+		<key>TXT_PAYSLIP_PDF_OPEN_ERROR</key>
+		<string>PDF açılamadı: %@</string>
+		<key>TXT_CARD_MENU_SHOW</key>
+		<string>Kartvizitimi Göster</string>
+		<key>TXT_CARD_MENU_SHARE</key>
+		<string>Kartvizitimi Paylaş</string>
+		<key>TXT_CARD_MENU_CANCEL</key>
+		<string>Kartvizitimi İptal Et</string>
+		<key>TXT_CARD_MENU_TITLE</key>
+		<string>Dijital Kartvizit</string>
+		<key>TXT_KVKK_APPROVE_BUTTON</key>
+		<string>Onaylıyorum</string>
+		<key>TXT_KVKK_NO_APPROVAL_BUTTON</key>
+		<string>Onaylamıyorum</string>
+		<key>TXT_KVKK_TITLE</key>
+		<string>Veri İşleme Onayı</string>
+        
+        <key>TXT_CARD_DEACTIVATE_MESSAGE</key>
+        <string>Dijital kartvizitinizi devre dışı bırakmak istediğinizden emin misiniz?</string>
+        <key>TXT_CARD_DEACTIVATE_TOAST</key>
+        <string>Kartvizitiniz devre dışı bırakıldı.</string>
+        <key>TXT_CARD_SHARE_PREFIX</key>
+        <string>Dijital kartvizitim:</string>
+        
+        
+	</dict>
+</dict>
+</plist>

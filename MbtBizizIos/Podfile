@@ -1,0 +1,40 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+inhibit_all_warnings!
+use_frameworks!
+
+
+def shared_pods
+    # Pods for TurkcellSaha
+    pod 'PureLayout'
+    pod 'EZSwiftExtensions'
+    pod 'Moya', '~> 10.0'
+    pod 'Marshal'
+    pod 'AlamofireImage', '~> 3.3'
+    pod 'AnyFormatKit', '~> 0.1.2'
+    pod 'ImageSlideshow', '~> 1.9.0'
+    pod "ImageSlideshow/Kingfisher"
+    pod 'MSAL'
+end
+
+post_install do |installer|
+    installer.generated_projects.each do |project|
+        project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+            end
+        end
+    end
+end
+
+target 'MBTBiziz-Dev' do
+  shared_pods
+end
+
+target 'MBTBiziz-Staging' do
+        shared_pods
+end
+
+target 'MBTBiziz-Production' do
+    shared_pods
+end

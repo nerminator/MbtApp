@@ -1,0 +1,54 @@
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".ui.about.AboutDetailFragment">
+
+   <!--     <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarAboutDetail"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />-->
+
+        <include
+            android:id="@+id/toolbarAboutDetail"
+            layout="@layout/toolbar" />
+
+        <!--<ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbarAboutDetail">
+
+            <com.daimler.mbtevents.interval.android.common.uiConrolls.TextViewRegularCS
+                android:id="@+id/tvAboutDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp"
+                android:textColor="@android:color/white"
+                android:lineSpacingExtra="3sp"
+                android:paddingEnd="21.7dp"
+                android:paddingStart="21.7dp"
+                android:paddingTop="10dp" />
+        </ScrollView>-->
+        <WebView
+            android:visibility="gone"
+            android:id="@+id/webViewAbout"
+            android:layout_below="@id/toolbarAboutDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+            android:visibility="gone"
+            android:id="@+id/textViewAbout"
+            android:paddingHorizontal="20dp"
+            android:textColor="@android:color/white"
+            android:layout_below="@id/toolbarAboutDetail"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</layout>

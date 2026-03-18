@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background">
+
+        <include
+            android:id="@+id/toolbarHtml"
+            layout="@layout/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayoutSocialMedia"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarHtml" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutSocialMedia"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/btnActiveButtonBgColor"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="22dp">
+
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+                android:id="@+id/textViewSocialMedia"
+                android:layout_width="405dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/TXT_APP_SOCIAL_MEDIA"
+                android:textColor="@android:color/white"
+                android:textSize="17sp" />
+
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.login.VMSms" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".ui.login.SmsFragment">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+            android:id="@+id/txtSmsEnterPin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:lineSpacingExtra="7sp"
+            android:text="@string/TXT_LOGIN_PIN_DESCRIPTION"
+            android:textColor="@android:color/white"
+            android:textSize="17.3sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:text="@string/TXT_LOGIN_PIN_DESCRIPTION" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.PinView
+            android:id="@+id/pinView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:focusable="true"
+            app:cursorVisible="false"
+            app:forceKeyboard="true"
+            app:inputType="number"
+            app:layout_constraintTop_toBottomOf="@+id/txtSmsEnterPin"
+            app:password="false"
+            app:pinHeight="40dp"
+            app:pinLength="4"
+            app:pinWidth="40dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+            android:id="@+id/txtTimeCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            android:text="@={viewmodel.timer}"
+            android:textColor="@android:color/white"
+            android:textSize="17.3sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pinView"
+            tools:text="01:20" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
+            android:id="@+id/buttonDemiCS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:enabled="@{viewmodel.isSendAgainEnabled,default=false}"
+            android:text="@string/TXT_LOGIN_PIN_RESEND"
+            android:textColor="@drawable/text_color_state_active_sms"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTimeCounter" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="19dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="39dp"
+            android:background="@drawable/button_bg_active_deactive"
+            android:enabled="@{viewmodel.isLoginButtonEnabled,default=false}"
+            android:onClick="@{viewmodel::performClickLogIn}"
+            android:text="@string/TXT_LOGIN_WELCOME_BUTTON"
+            android:textAllCaps="false"
+            android:textColor="@drawable/button_text_color_state"
+            android:textSize="17.3sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonDemiCS"
+            tools:text="Giriş Yap" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_background"
+        tools:context="com.daimler.mbtevents.internal.android.activity.SettingsActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/nestedViewSettings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnSignOutSetting">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--<com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+                    android:id="@+id/tvTitleSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:letterSpacing="0.2"
+                    android:lineSpacingExtra="5.3sp"
+                    android:text="@string/TXT_PROFILE_SETTINGS_SUBTITLE"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="12sp" />-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!--<com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+                    android:id="@+id/tvTitlePermission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recyclerSettings"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:letterSpacing="0.2"
+                    android:lineSpacingExtra="5.3sp"
+                    android:text="@string/TXT_SETTINGS_SETTINGS_PERMISSION_TITLE"
+                    android:textColor="@color/descriptionColor"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:id="@+id/relPermissionSettingsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTitlePermission"
+                    android:background="@android:color/transparent"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/switchSettingValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="17.3dp"
+                        android:src="@drawable/ic_arrow_right_gray" />
+
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:id="@+id/tvSettingName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/switchSettingValue"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/TXT_SETTINGS_SETTINGS_PERMISSION_TEXT"
+                        android:textColor="@android:color/white"
+                        android:textSize="17.3dp" />
+                </RelativeLayout>-->
+
+
+            </RelativeLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
+            android:id="@+id/btnSignOutSetting"
+            android:layout_width="match_parent"
+            android:layout_height="51.3dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/btnActiveButtonBgColor"
+            android:text="@string/TXT_PROFILE_SETTINGS_BUTTON"
+            android:textColor="@android:color/white"
+            android:textSize="17.3sp" />
+
+    </RelativeLayout>
+</layout>

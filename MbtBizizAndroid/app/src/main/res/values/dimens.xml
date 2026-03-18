@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Text Sizes-->
+    <dimen name="page_title_text_size">20sp</dimen>
+
+    <!--TABS-->
+    <dimen name="tab_indicator_height">5dp</dimen>
+    <dimen name="toolbar_height">55dp</dimen>
+
+    <dimen name="grid_layout_manager_spacing">14dp</dimen>
+
+    <!--Margins-->
+
+    <!--Paddings-->
+
+
+</resources>

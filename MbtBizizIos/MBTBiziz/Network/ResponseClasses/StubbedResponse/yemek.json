@@ -1,0 +1,1300 @@
+{
+   "statusCode":200,
+   "responseData":{
+      "foodInfo":[
+         {
+            "dateTitle":"Pzt",
+            "dateText":"16 Nisan BilmemNe",
+            "isToday":false,
+            "foodList":[
+               {
+                  "name":"Kaşarlı Domates Çorba",
+                  "calorie":223,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Ayvalı Mercimek Çorba",
+                  "calorie":166,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"İnegöl Köfte",
+                  "calorie":252,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Domatesli Bulgur Pilavı",
+                  "calorie":166,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Tava Yoğurt",
+                  "calorie":252,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Pancarlı Tabbule Salata",
+                  "calorie":166,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Kır Salata",
+                  "calorie":252,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Börülce Salata",
+                  "calorie":252,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               },
+               {
+                  "name":"Zy. Brokoli",
+                  "calorie":252,
+                  "calorieDetails":[
+                     {
+                        "name":"PROTEİN",
+                        "value":36
+                     },
+                     {
+                        "name":"YAĞ",
+                        "value":36
+                     },
+                     {
+                        "name":"K. HİDRAT",
+                        "value":36
+                     }
+                  ],
+                  "info":"* Alerjen olarak kereviz ve süt içermektedir."
+               }
+            ]
+         },
+                  {
+                  "dateTitle":"Sal",
+                  "dateText":"16 Nisan BilmemNe",
+                  "isToday":false,
+                  "foodList":[
+                              {
+                              "name":"Kaşarlı Domates Çorba",
+                              "calorie":223,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Ayvalı Mercimek Çorba",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"İnegöl Köfte",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Domatesli Bulgur Pilavı",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Tava Yoğurt",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Pancarlı Tabbule Salata",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Kır Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Börülce Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Zy. Brokoli",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              }
+                              ]
+                  },
+                  {
+                  "dateTitle":"Çar",
+                  "dateText":"16 Nisan BilmemNe",
+                  "isToday":false,
+                  "foodList":[
+                              {
+                              "name":"Kaşarlı Domates Çorba",
+                              "calorie":223,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Ayvalı Mercimek Çorba",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"İnegöl Köfte",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Domatesli Bulgur Pilavı",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Tava Yoğurt",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Pancarlı Tabbule Salata",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Kır Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Börülce Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Zy. Brokoli",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              }
+                              ]
+                  },
+                  {
+                  "dateTitle":"Per",
+                  "dateText":"16 Nisan BilmemNe",
+                  "isToday":false,
+                  "foodList":[
+                              {
+                              "name":"Kaşarlı Domates Çorba",
+                              "calorie":223,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Ayvalı Mercimek Çorba",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"İnegöl Köfte",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Domatesli Bulgur Pilavı",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Tava Yoğurt",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Pancarlı Tabbule Salata",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Kır Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Börülce Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Zy. Brokoli",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              }
+                              ]
+                  },
+                  {
+                  "dateTitle":"Cum",
+                  "dateText":"16 Nisan BilmemNe",
+                  "isToday":false,
+                  "foodList":[
+                              {
+                              "name":"Kaşarlı Domates Çorba",
+                              "calorie":223,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Ayvalı Mercimek Çorba",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"İnegöl Köfte",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Domatesli Bulgur Pilavı",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Tava Yoğurt",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Pancarlı Tabbule Salata",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Kır Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Börülce Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Zy. Brokoli",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              }
+                              ]
+                  },
+                  {
+                  "dateTitle":"Cts",
+                  "dateText":"16 Nisan BilmemNe",
+                  "isToday":true,
+                  "foodList":[
+                              {
+                              "name":"Kaşarlı Domates Çorba",
+                              "calorie":223,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Ayvalı Mercimek Çorba",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"İnegöl Köfte",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Domatesli Bulgur Pilavı",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Tava Yoğurt",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Pancarlı Tabbule Salata",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Kır Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Börülce Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Zy. Brokoli",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              }
+                              ]
+                  },
+                  {
+                  "dateTitle":"Paz",
+                  "dateText":"16 Nisan BilmemNe",
+                  "isToday":false,
+                  "foodList":[
+                              {
+                              "name":"Kaşarlı Domates Çorba",
+                              "calorie":223,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Ayvalı Mercimek Çorba",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"İnegöl Köfte",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Domatesli Bulgur Pilavı",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Tava Yoğurt",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Pancarlı Tabbule Salata",
+                              "calorie":166,
+                              "calorieDetails":[
+                                            {
+                                            "name":"PROTEİN",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"YAĞ",
+                                            "value":36
+                                            },
+                                            {
+                                            "name":"K. HİDRAT",
+                                            "value":36
+                                            }
+                                            ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Kır Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Börülce Salata",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              },
+                              {
+                              "name":"Zy. Brokoli",
+                              "calorie":252,
+                              "calorieDetails":[
+                                                {
+                                                "name":"PROTEİN",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"YAĞ",
+                                                "value":36
+                                                },
+                                                {
+                                                "name":"K. HİDRAT",
+                                                "value":36
+                                                }
+                                                ],
+                              "info":"* Alerjen olarak kereviz ve süt içermektedir."
+                              }
+                              ]
+                  },
+      ],
+      "shuttleInfo":{
+         "header":"Yemekhane Servis Saatleri",
+         "shuttleList":[
+            {
+               "location":"İSTANBUL",
+               "timeList":[
+                  {
+                     "name":"Öğle Yemeği",
+                     "timeText":"11:00 - 14:00"
+                  },
+                  {
+                     "name":"Akşam Yemeği",
+                     "timeText":"18:30 - 20:00"
+                  }
+               ]
+            },
+            {
+               "location":"AKSARAY",
+               "timeList":[
+                  {
+                     "name":"Öğle Yemeği",
+                     "timeText":"11:00 - 13:00"
+                  },
+                  {
+                     "name":"Akşam Yemeği",
+                     "timeText":"20:00 - 22:00"
+                  }
+               ]
+            }
+         ]
+      },
+      "densityInfo":[
+         {
+            "locationNumber":1,
+            "locationName":"Hoşdere",
+            "text":"Anlık yemekhane yoğunluğu",
+            "percent":30
+         },
+         {
+            "locationNumber":2,
+            "locationName":"Genel Müdürlük",
+            "text":"Anlık yemekhane yoğunluğu",
+            "percent":75
+         }
+      ],
+
+   },
+   "errorMessage":null
+}

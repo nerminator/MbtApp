@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "915703309320",
+    "project_id": "mbt-app-eb79d",
+    "storage_bucket": "mbt-app-eb79d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915703309320:android:e5a3e9036c1f20101eddbd",
+        "android_client_info": {
+          "package_name": "com.daimlertruck.dtag.internal.android.mbt.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZt9LtwKxhuRpURJ0mJSPGDj_DH8Q2IA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

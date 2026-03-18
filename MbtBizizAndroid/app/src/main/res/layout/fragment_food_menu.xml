@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.FoodInfo"/>
+
+        <variable
+            name="dataShuttle"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.food.ShuttleInfo"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            tools:context=".ui.foodMenu.FoodMenuFragment">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyclerFoodMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate"
+                tools:listitem="@layout/item_food_menu" />
+
+
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+                android:id="@+id/tvTitleShuttle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:paddingStart="20dp"
+                android:paddingBottom="5dp"
+                android:textColor="#ffffff"
+                android:textSize="22sp"
+                android:text="@{dataShuttle.header}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rcyclerFoodMenu"
+                tools:text="Cafeteria Service Times" />
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyclerShuttle"
+                android:nestedScrollingEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleShuttle"
+                tools:listitem="@layout/item_shuttle"
+                />
+
+            <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+                android:id="@+id/footer_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="24dp"
+                android:text="@string/TXT_MEAL_TIMES_FOOTER_NOTE"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2dp"
+                tools:text="*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir." />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

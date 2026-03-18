@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.network.entity.transportation.ShuttleListEntity"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2e3542"
+        >
+
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:text="@string/TXT_SHUTTLE_SHUTTLE_DRIVER_INFO"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:lineSpacingExtra="0sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+            android:id="@+id/tvShuttleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="@{data.name}"
+            android:textSize="18sp"
+            android:textColor="@color/fiftyPercentOpacityTextColor"
+            android:lineSpacingExtra="0sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            />
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTitle"
+            app:srcCompat="@drawable/icn_bus"
+            />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+            android:id="@+id/tvSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:textColor="#80ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="SubTitle" />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+            android:id="@+id/tvunderIconText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{data.driverInfo.licensePlate}"
+            android:textSize="16sp"
+            android:textColor="#80ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgIcon"
+            />
+
+        <LinearLayout
+            android:id="@+id/middleContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#08ffffff"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideLine"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/tvunderIconText">
+            <!--First Row-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+                    android:id="@+id/tvFirstDescTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/TXT_SHUTTLE_SHUTTLE_DRIVER"
+                    android:layout_weight="1"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    />
+
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewLightCS
+                    android:id="@+id/tvFirstDescValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.driverInfo.name}"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#80ffffff"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <!--Second Row-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewDemiCS
+                    android:id="@+id/tvSecondDescTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/TXT_SHUTTLE_SHUTTLE_TEL"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    />
+
+                <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewLightCS
+                    android:id="@+id/tvSecondDescValie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.driverInfo.telephone}"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#80ffffff"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.93" />
+
+
+
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
+            android:id="@+id/btnAra"
+            android:layout_width="160dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/radius_bg_blue"
+            android:text="@string/TXT_LOGIN_SUPPORT_BUTTON"
+            android:textSize="18sp"
+            android:drawablePadding="-17dp"
+            android:textAlignment="center"
+            android:paddingStart="17dp"
+            android:paddingEnd="17dp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:drawableLeft="@drawable/ic_phone"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/leftGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/middleContainer"
+            />
+
+        <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.ButtonDemiCS
+            android:id="@+id/button2"
+            android:layout_width="160dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#00adef"
+            android:textAllCaps="false"
+            android:background="@null"
+            android:textSize="18sp"
+            android:text="@string/TXT_LOGIN_SUPPORT_CLOSE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAra"
+            app:layout_constraintVertical_bias="0.0"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

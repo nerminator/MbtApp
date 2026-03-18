@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="CaloryView" customModule="MBTBiziz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="224" height="52"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROTEİN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usu-2j-4Fo" customClass="BaseUILabelDemi" customModule="MBTBiziz" customModuleProvider="target">
+                    <rect key="frame" x="4" y="3" width="216" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="Bvv-6Z-c4z"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6f-Sj-gDx" customClass="BaseUILabel" customModule="MBTBiziz" customModuleProvider="target">
+                    <rect key="frame" x="4" y="28" width="216" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.029999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="E6f-Sj-gDx" secondAttribute="trailing" constant="4" id="4UI-yl-Vvy"/>
+                <constraint firstItem="E6f-Sj-gDx" firstAttribute="top" secondItem="usu-2j-4Fo" secondAttribute="bottom" constant="3" id="87e-Pc-GeR"/>
+                <constraint firstItem="usu-2j-4Fo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="3" id="Hut-Pr-wuz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="usu-2j-4Fo" secondAttribute="trailing" constant="4" id="LwX-CS-Nsc"/>
+                <constraint firstItem="usu-2j-4Fo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="agA-zT-IhG"/>
+                <constraint firstItem="E6f-Sj-gDx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="hzF-fF-NTu"/>
+                <constraint firstItem="usu-2j-4Fo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qy7-6U-mP7"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="lblSubtitle" destination="E6f-Sj-gDx" id="rnM-wJ-S13"/>
+                <outlet property="lblTitle" destination="usu-2j-4Fo" id="aEv-og-uNF"/>
+            </connections>
+            <point key="canvasLocation" x="-42" y="-233"/>
+        </view>
+    </objects>
+</document>

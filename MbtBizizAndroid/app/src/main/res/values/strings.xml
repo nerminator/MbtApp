@@ -1,0 +1,318 @@
+<resources>
+    <string name="app_name">MBT App</string>
+    <string name="TXT_COMMON_WARNING">Warning</string>
+    <string name="TXT_LOGIN_WELCOME_BUTTON">Sign in</string>
+    <string name="TXT_LOGIN_PIN_TITLE">PIN Code</string>
+    <string name="TXT_LOGIN_PIN_DESCRIPTION">Enter 4 digit PIN code that you received via SMS</string>
+    <string name="TXT_LOGIN_PIN_RESEND">Resend</string>
+    <string name="TXT_ABOUT_NAV">About</string>
+    <string name="TXT_ABOUT_HEADER">PROVIDER</string>
+    <string name="TXT_ABOUT_MAIN_PROVIDER_INFO">"Mercedes-Benz Türk A.Ş.
+Akçaburgaz Mahallesi,
+Süleyman Şah Caddesi, No:2
+34522 Esenyurt, İstanbul
+
+Telephone: 0212 867 30 00 pbx
+mbt_app@daimlertruck.com
+
+Board of Management
+
+MBT, Head of Board of Management (CEO), Süer Sülün
+MBT, Board Member, Production Bus, Bülent Acicbe
+MBT, Board Member, CFO MBT, Tülin Mede Esmer
+MBT, Board Member, Executive Vice President Production Trucks, Ulf Raese
+
+Süer Sülün, Head of Board of Management, CEO Mercedes Benz Türk A.Ş.
+Bülent Acicbe,  Board Member, Production Bus
+Andreas Bachhofer,  Board Member, Production Truck
+Tülin Mede Esmer,   Board Member, CFO MBT
+Şükrü Bekdikhan,    Head of Board of Management, MB Cars
+Tufan Akdeniz,  Board Member, Vans
+Manfred Ausweger,   Board Member, CFO MBO
+Özlem Vidin Engindeniz, Board Member, Global IT Solution Delivery Center
+Stefan Karrenbauer, Managing Director of Mercedes Benz Finansman Türk A.Ş.
+
+Commercial Register Number: 94468
+VAT Identification Number: 7-9159-7212-1615130
+
+Copyright 2018-2026 Mercedes-Benz Türk A.Ş.
+All Rights Reserved."</string>
+    <string name="TXT_ABOUT_MAIN_APP_DESCRIPTION">App Description</string>
+    <string name="TXT_ABOUT_MAIN_TERMS_OF_USE">Terms Of Use</string>
+    <string name="TXT_ABOUT_MAIN_DATA_PROTECTION">Data Protection</string>
+    <string name="TXT_ABOUT_MAIN_FOSS">Free &amp; Open Source Software</string>
+    <string name="TXT_ABOUT_MAIN_3RD_PARTY_CONTENT">Third Party Content</string>
+    <string name="TXT_ABOUT_MAIN_LEGAL_NOTICES">Legal Notices</string>
+    <string name="TXT_ABOUT_MAIN_APP_SUPPORT">App Support</string>
+    <string name="TXT_LOGIN_HOME_TAB1">Portal</string>
+    <string name="TXT_LOGIN_HOME_TAB2">Notifications</string>
+    <string name="TXT_LOGIN_HOME_TAB3">My Profile</string>
+    <string name="TXT_LOGIN_HOME_NEWS">News</string>
+    <string name="TXT_LOGIN_HOME_ABOUT_US">About Us</string>
+    <string name="TXT_LOGIN_HOME_EVENTS">Events</string>
+    <string name="TXT_LOGIN_HOME_DISCOUNTS">Discounts</string>
+    <string name="TXT_LOGIN_HOME_USEFUL_LINKS">Useful Links</string>
+    <string name="TXT_LOGIN_HOME_EMERGENCY_NUMBERS">Emergency Numbers</string>
+    <string name="TXT_LOGIN_HOME_MAP">Location</string>
+    <string name="TXT_LOGIN_HOME_SHUTTLE">Shuttle</string>
+    <string name="TXT_LOGIN_HOME_MENU">Meal Menu</string>
+    <string name="TXT_PROFILE_PROFILE_1ST_SUBTITLE">LOCATION / BRANCH</string>
+    <string name="TXT_PROFILE_PROFILE_2ND_SUBTITLE">COST CENTER / ORG. UNIT / COMPANY CODE</string>
+    <string name="TXT_PROFILE_PROFILE_3RD_SUBTITLE">MANAGER</string>
+    <string name="TXT_PROFILE_PROFILE_1ST_BUTTON_WHITE">Flexible Working Hours</string>
+    <string name="TXT_PROFILE_PROFILE_1ST_BUTTON_BLUE">Additional Work</string>
+    <string name="TXT_PROFILE_PROFILE_2ND_BUTTON">Work Calendar</string>
+    <string name="TXT_PROFILE_PROFILE_3RD_BUTTON">Payslip</string>
+    <string name="TXT_PROFILE_FLEXIBLE_WORK_YEAR">Year</string>
+    <string name="TXT_OTP_TITLE">Payslip Code Verification</string>
+    <string name="TXT_OTP_TEXT">Enter the code you received via SMS:</string>
+    <string name="TXT_OTP_HINT">6 Digit SMS Code</string>
+    <string name="TXT_OTP_TIME">Remaining Time</string>
+    <string name="TXT_OTP_ELAPSED">Code expired</string>
+    <string name="TXT_OTP_EXPIRED">Code expired</string>
+
+    <string name="TXT_OTP_TOAST2">Connection error</string>
+    <string name="TXT_OTP_TOAST3">Network Error</string>
+    <string name="TXT_OTP_TOAST5">Verification Code is not correct</string>
+
+    <string name="TXT_PAYSLIP_PERIOD_TOAST1">No payslip for this month!</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST2">PDF display error</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST3">The session has expired.</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST4">"No payslip for this month"</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST5">"Network Error"</string>
+    <string name="TXT_PAYSLIP_PERIOD_TOAST6">Error opening PDF</string>
+
+
+
+    <string name="TXT_PAYSLIP_PERIOD">Payslip Period</string>
+    <string name="TXT_PAYSLIP_PERIOD_MONTH">Month:</string>
+    <string name="TXT_PAYSLIP_PERIOD_YEAR">Year  :</string>
+    <string name="TXT_PAYSLIP_PERIOD_BUTTON">View Payslip</string>
+    <string name="TXT_PAYSLIP_PERIOD_PAYSLIP">payslip</string>
+
+
+    <string name="TXT_OTP_VERIFY">Verify</string>
+    <string name="TXT_OTP_RESEND">Resend</string>
+    <string name="TXT_LOGIN_WELCOME_HEADER">Welcome</string>
+    <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Please click on Sign In button and continue with authentication steps.</string>
+    <string name="TXT_LOGIN_TERMS_WELCOME_TITLE">Terms Of Use</string>
+    <string name="TXT_LOGIN_TERMS_WELCOME_ACCEPT">Accept</string>
+    <string name="TXT_LOGIN_TERMS_WELCOME_REJECT">Reject</string>
+    <string name="TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TEXT">You should accept the terms of use in order to continue otherwise you can close the app if you do not want to accept.</string>
+    <string name="TXT_LOGIN_TERMS_WELCOME_REJECT_ALERT_TITLE">EULA</string>
+    <string name="TXT_LOGIN_NEWS_TYPE1">All</string>
+    <string name="TXT_LOGIN_NEWS_TYPE2">Events</string>
+    <string name="TXT_LOGIN_NEWS_TYPE3">Discounts</string>
+    <string name="TXT_LOGIN_NEWS_TYPE4">Farewell</string>
+    <string name="TXT_LOGIN_NEWS_TYPE5">Decease</string>
+    <string name="TXT_LOGIN_NEWS_TYPE6">Other</string>
+    <string name="TXT_LOGIN_NEWS_TYPE7">News</string>
+    <string name="TXT_LOGIN_NEWS_TYPE8">Links</string>
+    <string name="TXT_LOGIN_NEWS_TYPE9">Contacts</string>
+    <string name="TXT_LOGIN_NEWS_BIRTHDAY">Born Today</string>
+    <string name="TXT_LOGIN_SUPPORT_TITLE">Technical Support</string>
+    <string name="TXT_LOGIN_SUPPORT_DESCRIPTION">For system problems</string>
+    <string name="TXT_LOGIN_SUPPORT_LABEL1">Phone</string>
+    <string name="TXT_LOGIN_SUPPORT_LABEL2">Int</string>
+    <string name="TXT_LOGIN_SUPPORT_BUTTON">Call</string>
+    <string name="TXT_LOGIN_SUPPORT_CLOSE">Close</string>
+    <string name="TXT_MENU_MENU_TITLE">Meal Menu</string>
+    <string name="TXT_MENU_MENU_CALORIE">CALORIE</string>
+    <string name="TXT_MENU_MENU_DENSITY">Real time cafeteria density</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY1">MO</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY2">TU</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY3">WE</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY4">TH</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY5">FR</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY6">SA</string>
+    <string name="TXT_PROFILE_CALENDAR_DAY7">SU</string>
+    <string name="TXT_COMMON_JANUARY">January</string>
+    <string name="TXT_COMMON_FEBRUARY">February</string>
+    <string name="TXT_COMMON_MARCH">March</string>
+    <string name="TXT_COMMON_APRIL">April</string>
+    <string name="TXT_COMMON_MAY">May</string>
+    <string name="TXT_COMMON_JUNE">June</string>
+    <string name="TXT_COMMON_JULY">July</string>
+    <string name="TXT_COMMON_AUGUST">August</string>
+    <string name="TXT_COMMON_SEPTEMBER">September</string>
+    <string name="TXT_COMMON_OCTOBER">October</string>
+    <string name="TXT_COMMON_NOVEMBER">November</string>
+    <string name="TXT_COMMON_DECEMBER">December</string>
+    <string name="TXT_COMMON_ANNOUNCEMENT">News</string>
+    <string name="TXT_LOGIN_NEWS_DISCOUNT_TYPE1">Categories</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_DEST_PLCH">Departure…</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_DESTINATION">DEPARTURE</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_ARRIVAL_PLCH">Arrival…</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_DESTINATION_SMALL">(Deperture)</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_ARRIVAL_SMALL">(Arrival)</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_TIME">D.TIME</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_PATH">ROUTE</string>
+    <string name="TXT_PROFILE_CALENDAR_TODAY">Today</string>
+    <string name="TXT_PROFILE_SETTINGS_TITLE">Settings</string>
+    <string name="TXT_PROFILE_SETTINGS_SUBTITLE">NOTIFICATION SETTINGS</string>
+    <string name="TXT_PROFILE_SETTINGS_BUTTON">Sign out</string>
+    <string name="TXT_PROFILE_SETTINGS_QUIT_WARNING"><font color="#FFFFFF">Are you sure you want to sign out?</font></string>
+    <string name="TXT_LOCATIONS_LOCATIONS_PLACEHOLDER">Search Location…</string>
+    <string name="TXT_LOCATIONS_LOCATIONS_TITLE">Location</string>
+    <string name="TXT_LOCATIONS_LOCATIONS_MEETING_ROOM">Meeting Room</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_DRIVER_INFO">Driver Info</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_DRIVER">Driver</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_TEL">Phone</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION">COMPANY LOCATION</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_TYPE">SHUTTLE TYPE</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_COMPANY_LOCATION_PLACEHOLDER">Select Company Location</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_TYPE_PLACEHOLDER">Select Shuttle Type</string>
+    <string name="TXT_SHUTTLE_SHUTTLE_GO_ON">Continue</string>
+    <string name="TXT_SHUTTLE_SEARCH_LATEST_SEARCH">LATEST SEARCHS</string>
+    <string name="title_categories">Categories</string>
+    <string name="TXT_SETTINGS_ALERT_DIALOG_TITLE"><font color="#FFFFFF">Sign Out</font></string>
+    <string name="TXT_LOCATIONS_SEARCH_TITLE">SEARCH RESULT</string>
+    <string name="TXT_LOCATIONS_SEARCH_RESULTS_TITLE">Search Result</string>
+    <string name="TXT_LOGIN_SPLASH_ROOTED_DEVICE">You have to remove root from your device for execute this app.</string>
+    <string name="option_cannot_be_empty">Company location and Shuttle Type parameters cannot be empty.</string>
+    <string name="TXT_NOTIFICATION_ALERT_MESSAGE">Push notifications are activated for this app in the system settings. Push services are used for informing you about company news (such as events, discounts). Please decide whether you want to keep this setting for this app or change them in the Android system settings.</string>
+    <string name="TXT_NOTIFICATION_ALERT_MESSAGE_KEEP_SETTINGS">Keep settings</string>
+    <string name="TXT_NOTIFICATION_ALERT_MESSAGE_CHANGE_SETTINGS">Change system settings</string>
+
+    <string-array name="custom_months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string name="TXT_MB" translatable="false">Mercedes-Benz Türk</string>
+    <string name="TXT_VERSION_INFO" translatable="false">Version: </string>
+    <string name="allowed_chars" translatable="false">1234567890</string>
+    <string name="phone_mask" translatable="false">5XX-XXX-XX-XX</string>
+    <string name="char_representation" translatable="false">X</string>
+    <string name="phone_hint" translatable="false">XXXXXXXXX</string>
+    <string name="TXT_LOGIN_SIGNIN_TERMS_DESC" translatable="false">Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla.
+
+Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Curabitur blandit tempus porttitor.
+
+
+    Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla.
+
+Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Curabitur blandit tempus porttitor.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla.
+
+Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Curabitur blandit tempus porttitor.
+
+
+    Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla.
+
+Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Curabitur bl</string>
+    <string name="TXT_LOGIN_SUPPORT_PHONE1" translatable="false">0212 8673399</string>
+    <string name="TXT_LOGIN_SUPPORT_PHONE_FOR_CALL" translatable="false">02128673399</string>
+    <string name="TXT_LOGIN_SUPPORT_PHONE2" translatable="false">2222</string>
+    <string name="map_api_key" translatable="false">AIzaSyCs48Meyy09Z9fgqgUO_70dgpR6iny4lOE</string>
+    <string name="default_notification_channel_id" translatable="false">30231</string>
+
+    <string-array name="categoryNames">
+        <item>@string/categoryNameEducation</item>
+        <item>@string/categoryNameEventAndEntertainment</item>
+        <item>@string/categoryNameHomeAndLife</item>
+        <item>@string/categoryNameGastronomy</item>
+        <item>@string/categoryNameRealEstate</item>
+        <item>@string/categoryNameClothing</item>
+        <item>@string/categoryNameAutomotive</item>
+        <item>@string/categoryNameHealth</item>
+        <item>@string/categoryNameTourism</item>
+        <item>@string/categoryNameTechnology</item>
+        <item>@string/categoryNameOther</item>
+    </string-array>
+
+
+    <string name="categoryNameEducation">Education and Personel Development</string>
+    <string name="categoryNameEventAndEntertainment">Event and Entertainment</string>
+    <string name="categoryNameHomeAndLife">Home and Life</string>
+    <string name="categoryNameGastronomy">Gastronomy and Food</string>
+    <string name="categoryNameRealEstate">Real Estate</string>
+    <string name="categoryNameClothing">Clothing and Fashion</string>
+    <string name="categoryNameAutomotive">Automotive</string>
+    <string name="categoryNameHealth">Health and Sports</string>
+    <string name="categoryNameTourism">Tourism and Car Rental</string>
+    <string name="categoryNameTechnology">Technology and Telecom</string>
+    <string name="categoryNameOther">Other</string>
+
+    <string name="qrBottomSheetBackPortal">Back</string>
+    <string name="qrBottomSheetTryAgain">Try Again</string>
+
+    <string name="qrBottomSheetSuccessTitle">SUCCESS</string>
+    <string name="qrBottomSheetSuccessDescription">It has been done successfully</string>
+
+    <string name="qrBottomSheetFailTitle">FAILED</string>
+    <string name="qrBottomSheetFailDescription">It has been done unsuccessfully</string>
+
+    <string name="qrCodeScreenTitle">Scan QR Code</string>
+    <string name="captchaHintText">Enter the text</string>
+    <string name="TXT_MEAL_SERVICE_HOURS">Yemekhane Servis Saatleri</string>
+    <string name="TXT_MEAL_TIMES_FOOTER_NOTE">*İstanbul ve Aksaray lokasyonlarında vardiya sistemine göre değişiklik gösterebilir.</string>
+
+    <string name="TXT_DISCOUNT_CODE_LABEL">DISCOUNT CODE</string>
+    <string name="TXT_GET_DISCOUNT_CODE_LABEL">Get Discount Code</string>
+    <string name="TXT_NO_DISCOUNT_CODE_LABEL">No Discounts Code Left</string>
+    <string name="TXT_CODE_COPIED">Code copied to clipboard!</string>
+
+    <string name="TXT_LINKS_TITLE1">Social Clubs</string>
+    <string name="TXT_LINKS_TITLE2">Internal Ads</string>
+    <string name="TXT_LINKS_TITLE3">Birthdays</string>
+    <string name="TXT_LINKS_TITLE4">SAP Concur</string>
+    <string name="TXT_LINKS_TITLE5">Yemeğim Evimde</string>
+    <string name="TXT_LINKS_TITLE6">CloudOffix</string>
+    <string name="TXT_LINKS_TITLE7">Idea Management</string>
+    <string name="TXT_LINKS_TITLE8">Oracle HCM</string>
+    <string name="TXT_LINKS_TITLE9">MBT Social Media</string>
+
+    <string name="TXT_APP_FEEDBACK">App Feedback</string>
+    <string name="TXT_FEEDBACK_HINT">Your Feedback…</string>
+    <string name="TXT_FEEDBACK_SEND">SEND</string>
+    <string name="TXT_FEEDBACK_DIALOG_TITLE">Information</string>
+    <string name="TXT_FEEDBACK_SUCCESS">Your feedback has been sent!</string>
+    <string name="TXT_FEEDBACK_ERROR">Login first to submit feedback.</string>
+    <string name="TXT_FEEDBACK_CHARACTER_ERROR">Your feedback text cannot be less than 3 characters.</string>
+
+    <string name="TXT_APP_SOCIAL_MEDIA">Social Media</string>
+
+    <string name="TXT_KVKK_CONFIRM">Agree</string>
+    <string name="TXT_KVKK_DECLINE">Decline</string>
+    <string name="TXT_DIGITAL_CARD">Business Card</string>
+    <string name="TXT_KVKK_TITLE">Data Processing Approval</string>
+
+    <string name="TXT_CARD_MENU_SHOW">Show my business card</string>
+    <string name="TXT_CARD_MENU_SHARE">Share my business card</string>
+    <string name="TXT_CARD_MENU_CANCEL">Deactivate my business card</string>
+
+
+    <string name="TXT_CARD_DEACTIVATE_MESSAGE">Are you sure you want to deactivate your digital business card?</string>
+    <string name="TXT_CARD_DEACTIVATE_TOAST">Your business card is deactivated.</string>
+    <string name="TXT_CARD_SHARE_PREFIX">My digital business card:</string>
+
+    <string name="TXT_COMMON_CANCEL">Cancel</string>
+    <string name="TXT_COMMON_YES">Yes</string>
+</resources>
+

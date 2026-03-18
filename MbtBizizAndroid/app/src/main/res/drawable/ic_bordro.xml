@@ -1,0 +1,48 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+android:width="24dp"
+android:height="24dp"
+android:viewportWidth="128"
+android:viewportHeight="128">
+
+<!-- Banknote (arkadaki kağıt) -->
+<path
+    android:fillColor="#00000000"
+    android:strokeColor="#FFFFFFFF"
+    android:strokeWidth="8"
+    android:strokeLineJoin="round"
+    android:strokeLineCap="round"
+    android:pathData="M44,18 H92 V70 H44 Z" />
+
+<!-- Banknote üzerindeki yatay çizgi -->
+<path
+    android:fillColor="#00000000"
+    android:strokeColor="#FFFFFFFF"
+    android:strokeWidth="8"
+    android:strokeLineCap="round"
+    android:pathData="M56,30 H80" />
+
+<!-- Banknote üzerindeki daire (para simgesi) -->
+<path
+    android:fillColor="#00000000"
+    android:strokeColor="#FFFFFFFF"
+    android:strokeWidth="8"
+    android:pathData="M68,44 m-12,0 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0" />
+
+<!-- Zarf gövdesi -->
+<path
+    android:fillColor="#00000000"
+    android:strokeColor="#FFFFFFFF"
+    android:strokeWidth="8"
+    android:strokeLineJoin="round"
+    android:strokeLineCap="round"
+    android:pathData="M12,44 H116 V108 H12 Z" />
+
+<!-- Zarfın kapağı (içteki V şekli) -->
+<path
+    android:fillColor="#00000000"
+    android:strokeColor="#FFFFFFFF"
+    android:strokeWidth="8"
+    android:strokeLineJoin="round"
+    android:strokeLineCap="round"
+    android:pathData="M16,48 L64,88 L112,48" />
+</vector>

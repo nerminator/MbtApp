@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@android:color/transparent"
+    android:paddingTop="0dp"
+    tools:background="@color/colorPrimaryDark">
+
+
+    <ImageView
+        android:id="@+id/imgTab"
+        android:layout_width="22.1dp"
+        android:layout_height="22.1dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        tools:src="@drawable/tab_notification" />
+
+
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+        android:id="@+id/tvTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgTab"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:paddingBottom="5dp"
+        android:textColor="@drawable/text_color_state_selected"
+        android:textSize="12sp" />
+
+    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+        android:visibility="gone"
+        android:id="@+id/badge"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignBottom="@+id/imgTab"
+        android:layout_alignStart="@+id/imgTab"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/bg_place_circle"
+        android:gravity="center"
+        android:maxLength="2"
+        android:maxLines="1"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        tools:text="13" />
+</RelativeLayout>
+

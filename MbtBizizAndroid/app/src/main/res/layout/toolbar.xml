@@ -1,0 +1,126 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.daimlertruck.dtag.internal.android.mbt.test.ui.toolbar.VMToolbar" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+        <!-- android:paddingTop="24dp"-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarrrr"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:contentInsetStart="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imgIconToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="11.7dp"
+                        android:layout_marginEnd="12dp"
+                        android:onClick="@{vm::performBack}"
+                        android:padding="5dp"
+                        android:src="@drawable/btn_back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCA
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@{vm.title}"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:visibility="@{TextUtils.isEmpty(vm.title)?View.GONE:View.VISIBLE,default=visible}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imgvInfoToolbar"
+                        app:layout_constraintStart_toEndOf="@+id/imgIconToolbar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Title" />
+
+                    <ImageView
+                        android:id="@+id/imgvInfoToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="11.7dp"
+                        android:onClick="@{vm::performNotification}"
+                        android:padding="5dp"
+                        android:src="@drawable/icn_info"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--deneme-->
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:onClick="@{vm::performBack}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:padding="16dp"
+                        android:src="@drawable/icon_btn_back" />
+
+                    <com.daimlertruck.dtag.internal.android.mbt.test.uiControls.TextViewRegularCS
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.title}"
+                        android:textSize="@dimen/page_title_text_size"
+                        android:textColor="@android:color/white"
+                        android:visibility="@{TextUtils.isEmpty(vm.title)?View.GONE:View.VISIBLE,default=visible}"
+                        tools:text="Title" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:onClick="@{vm::performNotification}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:padding="16dp"
+                        android:visibility="@{vm.isVisible ? View.VISIBLE : View.GONE}"
+                        android:src="@drawable/icn_info" />
+
+                </LinearLayout>-->
+            </androidx.appcompat.widget.Toolbar>
+        </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

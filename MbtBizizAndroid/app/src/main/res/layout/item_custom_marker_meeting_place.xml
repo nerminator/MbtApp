@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:layout="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imgMeetingPlaceIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_emergency_meeting_place2"
+        />
+
+    <TextView
+        android:layout_below="@id/imgMeetingPlaceIcon"
+        android:id="@+id/tvOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/sixtyPercentBlack"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        layout:text="Meeting"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+
+</RelativeLayout>
