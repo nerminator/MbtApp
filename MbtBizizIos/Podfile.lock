@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
-  - AnyFormatKit (0.1.7)
+  - AnyFormatKit (2.5.2)
   - EZSwiftExtensions (2.0)
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
@@ -25,7 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.3)
-  - AnyFormatKit (~> 0.1.2)
+  - AnyFormatKit (~> 2.5)
   - EZSwiftExtensions
   - ImageSlideshow (~> 1.9.0)
   - ImageSlideshow/Kingfisher
@@ -51,7 +51,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
-  AnyFormatKit: e602d6414a2fcd1a54aa9d8739ab29ad5124d292
+  AnyFormatKit: b0dbb2a5f2fe7a0fc97f401f8a219a47ee63a335
   EZSwiftExtensions: f73648a591e529a1dbd83c22b19fd3e57df6fb7d
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
@@ -61,6 +61,6 @@ SPEC CHECKSUMS:
   PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
 
-PODFILE CHECKSUM: 3edc07611096a364dc9d08818c1f1a344ef1645a
+PODFILE CHECKSUM: e1f29bc6c6e5f90e8a0f9ed6f10ddf2e352f37af
 
 COCOAPODS: 1.16.2

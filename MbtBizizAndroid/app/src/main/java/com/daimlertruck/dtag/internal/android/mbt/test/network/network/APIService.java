@@ -172,7 +172,7 @@ public interface APIService {
     Call<BaseResponse> verifyPayslipOtp(@Body HashMap<String, Object> body);
 
     @POST("payslip/fetch")
-    Call<BaseResponse<PayslipEntity>> fetchPayslip(@Body HashMap<String, Object> body);
+    Call<BaseResponse> fetchPayslip(@Body HashMap<String, Object> body);
 
     @GET("getUserBusinessCardState")
     Call<BaseResponse<BusinessCardStateResponse>> getUserBusinessCardState();

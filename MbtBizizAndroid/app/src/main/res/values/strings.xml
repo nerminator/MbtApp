@@ -93,6 +93,17 @@ All Rights Reserved."</string>
 
     <string name="TXT_OTP_VERIFY">Verify</string>
     <string name="TXT_OTP_RESEND">Resend</string>
+    <string name="TXT_OTP_ENTER_CODE">Please enter the code.</string>
+    <string name="TXT_OTP_EXPIRED_MESSAGE">The verification code has expired. Please verify again.</string>
+    <string name="TXT_OTP_INVALID_CODE">Invalid verification code</string>
+
+    <string name="TXT_COMMON_ERROR">Error</string>
+    <string name="TXT_COMMON_INFO">Info</string>
+    <string name="TXT_COMMON_DONE">OK</string>
+    <string name="TXT_COMMON_CONNECTION_ERROR">Connection Error!</string>
+    <string name="TXT_PAYSLIP_NOT_FOUND">Payslip not found.</string>
+    <string name="TXT_PAYSLIP_FILE_TITLE">%1$02d/%2$d Payslip</string>
+    <string name="TXT_PAYSLIP_PDF_OPEN_ERROR">Failed to open PDF: %1$s</string>
     <string name="TXT_LOGIN_WELCOME_HEADER">Welcome</string>
     <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Please click on Sign In button and continue with authentication steps.</string>
     <string name="TXT_LOGIN_TERMS_WELCOME_TITLE">Terms Of Use</string>

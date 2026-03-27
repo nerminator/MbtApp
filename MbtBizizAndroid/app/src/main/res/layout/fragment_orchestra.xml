@@ -183,7 +183,7 @@
             android:background="@color/sixPercentWhite"
             android:text="@string/TXT_PROFILE_PROFILE_3RD_BUTTON"
             app:layout_goneMarginTop="0dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textColor="@android:color/white"
             android:textSize="17.3sp"
             android:textAllCaps="false"

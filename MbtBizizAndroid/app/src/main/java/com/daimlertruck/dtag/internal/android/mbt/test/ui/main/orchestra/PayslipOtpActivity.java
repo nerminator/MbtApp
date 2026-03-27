@@ -26,6 +26,7 @@ import javax.inject.Inject;
 public class PayslipOtpActivity extends BaseActivity<ActivityPayslipOtpBinding> {
 
     private static final long OTP_TIMEOUT_MS =  60 * 1000; // 60 seconds
+    private static final long RESEND_COOLDOWN_MS = 30 * 1000; // 30 seconds (match iOS)
     private CountDownTimer countDownTimer;
 
     private EditText etOtp;
@@ -80,23 +81,29 @@ public class PayslipOtpActivity extends BaseActivity<ActivityPayslipOtpBinding> 
     private void startTimer() {
         if (countDownTimer != null) countDownTimer.cancel();
 
-        btnResend.setEnabled(false); // başta kapalı
+        btnResend.setEnabled(false);
         countDownTimer = new CountDownTimer(OTP_TIMEOUT_MS, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long minutes = (millisUntilFinished / 1000) / 60;
                 long seconds = (millisUntilFinished / 1000) % 60;
                 tvTimer.setText(String.format("%s: %02d:%02d", getString(R.string.TXT_OTP_TIME), minutes, seconds));
+
+                // Enable resend after cooldown (30s), matching iOS behavior
+                long elapsed = OTP_TIMEOUT_MS - millisUntilFinished;
+                if (!btnResend.isEnabled() && elapsed >= RESEND_COOLDOWN_MS) {
+                    btnResend.setEnabled(true);
+                }
             }
 
             @Override
             public void onFinish() {
                 btnResend.setEnabled(true);
                 tvTimer.setText(R.string.TXT_OTP_EXPIRED);
+                Toast.makeText(PayslipOtpActivity.this, R.string.TXT_OTP_EXPIRED_MESSAGE, Toast.LENGTH_LONG).show();
             }
         };
         countDownTimer.start();
-        btnResend.setEnabled(false);
     }
 
     private void requestOtp() {
@@ -132,7 +139,7 @@ public class PayslipOtpActivity extends BaseActivity<ActivityPayslipOtpBinding> 
     private void verifyOtp() {
         String code = etOtp.getText().toString().trim();
         if (code.isEmpty()) {
-            Toast.makeText(this, "Lütfen kodu giriniz", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.TXT_OTP_ENTER_CODE, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -155,19 +162,19 @@ public class PayslipOtpActivity extends BaseActivity<ActivityPayslipOtpBinding> 
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(PayslipOtpActivity.this, R.string.TXT_OTP_TOAST5, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PayslipOtpActivity.this, R.string.TXT_OTP_INVALID_CODE, Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
 
             @Override
             public void onServiceFailure(int code, String message) {
-                Toast.makeText(PayslipOtpActivity.this, R.string.TXT_OTP_TOAST3, Toast.LENGTH_SHORT).show();
+                Toast.makeText(PayslipOtpActivity.this, R.string.TXT_COMMON_CONNECTION_ERROR, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNetworkFailure(Throwable t) {
-                Toast.makeText(PayslipOtpActivity.this, R.string.TXT_OTP_TOAST3, Toast.LENGTH_SHORT).show();
+                Toast.makeText(PayslipOtpActivity.this, R.string.TXT_COMMON_CONNECTION_ERROR, Toast.LENGTH_SHORT).show();
             }
 
             @Override

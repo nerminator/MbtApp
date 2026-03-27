@@ -99,6 +99,18 @@ Tüm Hakları Saklıdır."</string>
     <string name="TXT_PAYSLIP_PERIOD_BUTTON">Bordro Göster</string>
     <string name="TXT_PAYSLIP_PERIOD_PAYSLIP">bordro</string>
 
+    <string name="TXT_OTP_ENTER_CODE">Lütfen kodu giriniz.</string>
+    <string name="TXT_OTP_EXPIRED_MESSAGE">Doğrulama kodu süresi doldu. Lütfen yeniden doğrulayın.</string>
+    <string name="TXT_OTP_INVALID_CODE">Doğrulama kodu hatalı</string>
+
+    <string name="TXT_COMMON_ERROR">Hata</string>
+    <string name="TXT_COMMON_INFO">Bilgi</string>
+    <string name="TXT_COMMON_DONE">Tamam</string>
+    <string name="TXT_COMMON_CONNECTION_ERROR">Bağlantı Hatası!</string>
+    <string name="TXT_PAYSLIP_NOT_FOUND">Bordro bulunamadı.</string>
+    <string name="TXT_PAYSLIP_FILE_TITLE">%1$02d/%2$d Bordro</string>
+    <string name="TXT_PAYSLIP_PDF_OPEN_ERROR">PDF açılamadı: %1$s</string>
+
     <!--Login-->
     <string name="TXT_LOGIN_WELCOME_HEADER">Hoş geldiniz</string>
     <string name="TXT_LOGIN_WELCOME_DESCRIPTION">Giriş yap butonuna tıklayıp kimlik doğrulama adımları ile devam edebilirsiniz.</string>

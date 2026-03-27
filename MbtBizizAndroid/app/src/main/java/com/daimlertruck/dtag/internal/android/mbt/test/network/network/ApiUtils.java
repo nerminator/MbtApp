@@ -261,7 +261,7 @@ public class ApiUtils extends AbstractApiUtils {
     }
 
     @Override
-    public Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse<PayslipEntity>> callback) {
+    public Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback) {
         return sendRequest(APIService.fetchPayslip(body), callback);
     }
 
@@ -276,7 +276,15 @@ public class ApiUtils extends AbstractApiUtils {
                     }
                 } else {
                     if (callBack != null) {
-                        callBack.onServiceFailure(response.code(), "");
+                        String errorMessage = "";
+                        try {
+                            String errorBody = response.errorBody() != null ? response.errorBody().string() : "";
+                            if (!errorBody.isEmpty()) {
+                                org.json.JSONObject json = new org.json.JSONObject(errorBody);
+                                errorMessage = json.optString("errorMessage", "");
+                            }
+                        } catch (Exception ignored) {}
+                        callBack.onServiceFailure(response.code(), errorMessage);
                     }
                 }
 

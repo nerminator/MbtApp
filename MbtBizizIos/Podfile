@@ -11,7 +11,7 @@ def shared_pods
     pod 'Moya', '~> 10.0'
     pod 'Marshal'
     pod 'AlamofireImage', '~> 3.3'
-    pod 'AnyFormatKit', '~> 0.1.2'
+    pod 'AnyFormatKit', '~> 2.5'
     pod 'ImageSlideshow', '~> 1.9.0'
     pod "ImageSlideshow/Kingfisher"
     pod 'MSAL'

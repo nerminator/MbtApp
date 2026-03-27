@@ -23,12 +23,13 @@ class WelcomeViewController: MBTBaseViewController, WelcomeDisplayLogic
 {
     
     @IBOutlet weak var btnLogin: BaseUIButtonDemi!
-    @IBOutlet weak var textFieldPhoneNumber: TextInputField!
+    @IBOutlet weak var textFieldPhoneNumber: UITextField!
     @IBOutlet weak var constButtonBottom: NSLayoutConstraint!
 
-    fileprivate let textInputController = TextInputController()
+    fileprivate let textFieldController = TextFieldInputController()
+    fileprivate let phoneFormatter = DefaultTextInputFormatter(textPattern: "###-###-##-##")
     fileprivate var phoneNumber : String {
-        return textInputController.unformattedText() ?? ""
+        return phoneFormatter.unformat(textFieldPhoneNumber?.text) ?? ""
     }
     
     // MARK: VIP Protocols
@@ -55,15 +56,12 @@ class WelcomeViewController: MBTBaseViewController, WelcomeDisplayLogic
         super.viewDidLoad()
         
         textFieldPhoneNumber.font = UIFont.mbtRegular(18)
-        textInputController.textInput = textFieldPhoneNumber // setting textInput
-        textFieldPhoneNumber.inputDelegate = self
-        let formatter = TextInputFormatter(textPattern: "###-###-##-##", prefix: "")
-        formatter.allowedSymbolsRegex = "[0-9]"
-        textInputController.formatter = formatter // setting formatter
+        textFieldController.formatter = phoneFormatter
+        textFieldPhoneNumber.delegate = textFieldController
         
         #if DEBUG
-        textFieldPhoneNumber.content = "555-123-45-61"
-        //textFieldPhoneNumber.content = "536-796-72-65"
+        textFieldPhoneNumber.text = phoneFormatter.format("5551234561")
+        //textFieldPhoneNumber.text = phoneFormatter.format("5367967265")
         #endif
 
         interactor?.reloadPage(request: Welcome.Reload.Request())
@@ -117,27 +115,4 @@ extension WelcomeViewController {
 
 }
 
-extension WelcomeViewController: UITextInputDelegate {
-    @available(iOS 18.4, *)
-    func conversationContext(_ context: UIConversationContext?, didChange textInput: (any UITextInput)?) {
-        
-    }
-    
 
-    func selectionWillChange(_ textInput: UITextInput?) {
-
-    }
-
-    func selectionDidChange(_ textInput: UITextInput?) {
-
-    }
-
-    func textWillChange(_ textInput: UITextInput?) {
-
-    }
-
-    func textDidChange(_ textInput: UITextInput?) {
-
-        interactor?.validateInputs(request: Welcome.Validate.Request(phoneNumber: phoneNumber))
-    }
-}

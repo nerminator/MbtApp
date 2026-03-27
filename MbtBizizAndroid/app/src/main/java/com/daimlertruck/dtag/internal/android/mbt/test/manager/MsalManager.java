@@ -371,9 +371,16 @@ public class MsalManager {
             if (token == null || token.trim().isEmpty()) {
                 return null;
             }
-            sharedPreferenceManager.setAccessToken(token);
-            sharedPreferenceManager.setIsLogin("1");
+            if (sharedPreferenceManager != null) {
+                sharedPreferenceManager.setAccessToken(token);
+                sharedPreferenceManager.setIsLogin("1");
+            }
             return token;
+        }
+
+        if (sharedPreferenceManager == null) {
+            Log.w("MsalManager", "acquireTokenBlocking: sharedPreferenceManager not initialized.");
+            return null;
         }
 
         final Object lock = new Object();

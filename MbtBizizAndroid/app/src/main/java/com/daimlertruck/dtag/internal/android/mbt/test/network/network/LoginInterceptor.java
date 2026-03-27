@@ -31,14 +31,15 @@ public class LoginInterceptor implements Interceptor {
         Request requestToProceed = originalRequest;
 
         boolean isLoginRequest = originalRequest.url().encodedPath().contains("/login");
+        boolean isCrashLogRequest = originalRequest.url().encodedPath().contains("/sendCrashLog");
 
         // Determine language
         String lang = Locale.getDefault().getLanguage().equals("tr") ? "tr" : "en";
 
         String accessToken = tokenManager.getAccesToken();
 
-        // Attempt token refresh if token is missing
-        if (!isLoginRequest && TextUtils.isEmpty(accessToken)) {
+        // Attempt token refresh if token is missing (skip for login and crash-log requests)
+        if (!isLoginRequest && !isCrashLogRequest && TextUtils.isEmpty(accessToken)) {
             Log.d("LoginInterceptor", "Access token empty. Attempting silent refresh.");
             accessToken = msalManager.acquireTokenBlocking(); // Blocking call
 
@@ -57,8 +58,8 @@ public class LoginInterceptor implements Interceptor {
 
         Response response = chain.proceed(requestToProceed);
 
-        // Retry once if unauthorized
-        if (response.code() == 401 && !isLoginRequest) {
+        // Retry once if unauthorized (skip for crash-log requests)
+        if (response.code() == 401 && !isLoginRequest && !isCrashLogRequest) {
             Log.w("LoginInterceptor", "Received 401. Retrying with fresh token.");
             response.close();
 

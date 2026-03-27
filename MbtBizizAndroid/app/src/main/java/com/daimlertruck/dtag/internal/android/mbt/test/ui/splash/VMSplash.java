@@ -36,21 +36,25 @@ public class VMSplash extends AndroidViewModel {
             @Override
             public void onSuccess(BaseResponse<InitEntity> response) {
                 if (response.getStatuscode() == BaseResponseCodes.success) {
-                    if (response.getResponseData().getButtonList() != null && !response.getResponseData().getButtonList().isEmpty()) {
+                    if (response.getResponseData() != null && response.getResponseData().getButtonList() != null && !response.getResponseData().getButtonList().isEmpty()) {
                         InitEntity initModel = response.getResponseData();
                         showDialog.postValue(initModel);
                     } else {
                         continueToApp.postValue(true);
                     }
+                } else {
+                    continueToApp.postValue(true);
                 }
             }
 
             @Override
             public void onServiceFailure(int httpResponseCode, String message) {
+                continueToApp.postValue(true);
             }
 
             @Override
             public void onNetworkFailure(Throwable message) {
+                continueToApp.postValue(true);
             }
         }, new InitPostBody(versionName));
     }

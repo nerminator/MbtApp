@@ -125,7 +125,7 @@ interface ApiUtilsInterface {
 
     void verifyPayslipOtp(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback);
 
-    Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse<PayslipEntity>> callback);
+    Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback);
 
     public void getUserBusinessCardState(NetworkCallback<BaseResponse<BusinessCardStateResponse>> callback);
 

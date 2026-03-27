@@ -229,7 +229,7 @@ public class MockApiUtils extends AbstractApiUtils {
 
     }
 
-    public Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse<PayslipEntity>> callback) {
+    public Callback fetchPayslip(HashMap<String, Object> body, NetworkCallback<BaseResponse> callback) {
         return null;
     }
 

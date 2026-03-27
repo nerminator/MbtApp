@@ -229,12 +229,13 @@ public class OrchestraFragment extends Fragment {
 
     private void showPayslipMessage(String message) {
         String content = (message == null || message.trim().isEmpty())
-                ? getString(R.string.TXT_OTP_TOAST2)
+                ? getString(R.string.TXT_COMMON_CONNECTION_ERROR)
                 : message;
 
-        new MaterialAlertDialogBuilder(requireContext())
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.TXT_COMMON_ERROR)
                 .setMessage(content)
-                .setPositiveButton(android.R.string.ok, null)
+                .setPositiveButton(R.string.TXT_COMMON_DONE, null)
                 .show();
     }
 

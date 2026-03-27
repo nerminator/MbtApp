@@ -82,7 +82,12 @@ public class SplashActivity extends BaseActivity {
     private String getVersionName() {
         try {
             PackageInfo pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
-            return pInfo.versionName;
+            String version = pInfo.versionName;
+            // Strip flavor suffix (e.g. "-dev") so backend regex accepts it
+            if (version != null && version.contains("-")) {
+                version = version.substring(0, version.indexOf("-"));
+            }
+            return version != null ? version : "";
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return "";

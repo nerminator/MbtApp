@@ -780,6 +780,7 @@
 		A1FE539320CFF71900962604 /* TransportationSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE539120CFF71900962604 /* TransportationSearchResultCell.swift */; };
 		A1FE539520CFF72800962604 /* TransportationPreviousSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE539420CFF72800962604 /* TransportationPreviousSearchCell.swift */; };
 		A1FE539620CFF72800962604 /* TransportationPreviousSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE539420CFF72800962604 /* TransportationPreviousSearchCell.swift */; };
+		AC075A7F51C7C6B33B199076 /* Pods_MBTBiziz_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DA99650F13A2EEEF5624F6 /* Pods_MBTBiziz_Dev.framework */; };
 		FE18FE234B82802FBD5BC146 /* Pods_MBTBiziz_Production.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD0720216127BDED8201D5C /* Pods_MBTBiziz_Production.framework */; };
 /* End PBXBuildFile section */
 
@@ -834,6 +835,7 @@
 		4EEDEAA12B3B256C00EA31D8 /* MBTPhoneLocsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTPhoneLocsResponse.swift; sourceTree = "<group>"; };
 		4EEDEAA22B3B256C00EA31D8 /* MBTPhonesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTPhonesResponse.swift; sourceTree = "<group>"; };
 		5E122AC02502D8F906665642 /* Pods_MBTBiziz_Staging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTBiziz_Staging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69DA99650F13A2EEEF5624F6 /* Pods_MBTBiziz_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTBiziz_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E87A8EE3D2DDAE3FDA085F2 /* Pods-MBTBiziz-Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTBiziz-Staging.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBTBiziz-Staging/Pods-MBTBiziz-Staging.release.xcconfig"; sourceTree = "<group>"; };
 		A100F6F821205684000D7BBA /* MBTWorkCalendarInitialDayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTWorkCalendarInitialDayList.swift; sourceTree = "<group>"; };
 		A10150F320A63EEF004D2FCA /* MBTFoodMenuShuttleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBTFoodMenuShuttleInfo.swift; sourceTree = "<group>"; };
@@ -1237,6 +1239,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CACA1D2F16B23BE775011D0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC075A7F51C7C6B33B199076 /* Pods_MBTBiziz_Dev.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1348,6 +1358,7 @@
 			children = (
 				FFD0720216127BDED8201D5C /* Pods_MBTBiziz_Production.framework */,
 				5E122AC02502D8F906665642 /* Pods_MBTBiziz_Staging.framework */,
+				69DA99650F13A2EEEF5624F6 /* Pods_MBTBiziz_Dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2660,6 +2671,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1B4A0152F00000100AA0001 /* Build configuration list for PBXNativeTarget "MBTBiziz-Dev" */;
 			buildPhases = (
+				68835EDF7179B9A386049C5B /* [CP] Check Pods Manifest.lock */,
+				CACA1D2F16B23BE775011D0D /* Frameworks */,
+				7D0786A5B18D3A75EDC2F048 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2829,6 +2843,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		68835EDF7179B9A386049C5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MBTBiziz-Dev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D0786A5B18D3A75EDC2F048 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Dev/Pods-MBTBiziz-Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Dev/Pods-MBTBiziz-Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Dev/Pods-MBTBiziz-Dev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7D4F1000D62276D9C042D064 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2837,13 +2890,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Staging/Pods-MBTBiziz-Staging-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Staging/Pods-MBTBiziz-Staging-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2876,13 +2925,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Production/Pods-MBTBiziz-Production-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Production/Pods-MBTBiziz-Production-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

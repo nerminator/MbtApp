@@ -1,15 +1,22 @@
 package com.daimlertruck.dtag.internal.android.mbt.test.ui.main.orchestra;
 
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.pdf.PdfRenderer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.util.Base64;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import com.daimlertruck.dtag.internal.android.mbt.R;
@@ -97,68 +104,146 @@ public class PayslipPeriodActivity extends BaseActivity<ActivityPayslipPeriodBin
         body.put("month", selectedMonth);
 
         showProgressDialog();
-        apiUtils.fetchPayslip(body, new NetworkCallback<BaseResponse<PayslipEntity>>() {
+        apiUtils.fetchPayslip(body, new NetworkCallback<BaseResponse>() {
             @Override
             public void onSuccess(BaseResponse response) {
                 dismissProgressDialog();
+
+                // Check for non-success status and show backend error message
+                if (response.getStatuscode() == null || response.getStatuscode() != 200) {
+                    String errorMsg = response.getErrormessage();
+                    if (errorMsg == null || errorMsg.trim().isEmpty()) {
+                        errorMsg = getString(R.string.TXT_PAYSLIP_NOT_FOUND);
+                    }
+
+                    // Session expired (401) → show error and go back to profile
+                    if (response.getStatuscode() != null && response.getStatuscode() == 401) {
+                        new AlertDialog.Builder(PayslipPeriodActivity.this)
+                                .setTitle(R.string.TXT_COMMON_ERROR)
+                                .setMessage(errorMsg)
+                                .setPositiveButton(R.string.TXT_COMMON_DONE, (d, w) -> {
+                                    navigateBackToProfile();
+                                })
+                                .setCancelable(false)
+                                .show();
+                        return;
+                    }
+
+                    new AlertDialog.Builder(PayslipPeriodActivity.this)
+                            .setTitle(R.string.TXT_COMMON_ERROR)
+                            .setMessage(errorMsg)
+                            .setPositiveButton(R.string.TXT_COMMON_DONE, null)
+                            .show();
+                    return;
+                }
+
                 try {
                     JSONObject data = new JSONObject(new Gson().toJson(response.getResponseData()));
                     String base64 = data.optString("base64", "");
 
                     if (base64.isEmpty()) {
-                        Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_PAYSLIP_PERIOD_TOAST1, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_PAYSLIP_NOT_FOUND, Toast.LENGTH_SHORT).show();
                         return;
                     }
 
                     byte[] pdfAsBytes = Base64.decode(base64, Base64.DEFAULT);
 
-                    File file = new File(getCacheDir(),  getText(R.string.TXT_PAYSLIP_PERIOD_PAYSLIP)+"_"+selectedMonth+"_"+selectedYear+".pdf");
+                    String fileName = String.format("%02d_%d_payslip.pdf", selectedMonth, selectedYear);
+                    File file = new File(getCacheDir(), fileName);
                     try (FileOutputStream fos = new FileOutputStream(file)) {
                         fos.write(pdfAsBytes);
                     }
 
                     // Open PDF viewer
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(
-                            FileProvider.getUriForFile(
-                                    PayslipPeriodActivity.this,  // ✅ FIXED
-                                    getPackageName() + ".provider",
-                                    file
-                            ),
-                            "application/pdf"
+                    Uri pdfUri = FileProvider.getUriForFile(
+                            PayslipPeriodActivity.this,
+                            getPackageName() + ".provider",
+                            file
                     );
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(pdfUri, "application/pdf");
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    startActivity(intent);
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        // No external PDF viewer — render in-app
+                        showPdfInApp(file);
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_PAYSLIP_PERIOD_TOAST2, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PayslipPeriodActivity.this,
+                            String.format(getString(R.string.TXT_PAYSLIP_PDF_OPEN_ERROR), e.getLocalizedMessage()),
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onServiceFailure(int code, String message) {
                 dismissProgressDialog();
-                if (code == 400) {
-                    Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_PAYSLIP_PERIOD_TOAST3, Toast.LENGTH_SHORT).show();
-
-                    // Close both OTP and Period screens → return to OrchestraFragment
-                    Intent intent = new Intent(PayslipPeriodActivity.this, com.daimlertruck.dtag.internal.android.mbt.test.ui.main.main.MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intent);
-                    finish();
+                if (code == 400 || code == 401) {
+                    String errorMsg = (message != null && !message.trim().isEmpty())
+                            ? message
+                            : getString(R.string.TXT_PAYSLIP_PERIOD_TOAST3);
+                    new AlertDialog.Builder(PayslipPeriodActivity.this)
+                            .setTitle(R.string.TXT_COMMON_ERROR)
+                            .setMessage(errorMsg)
+                            .setPositiveButton(R.string.TXT_COMMON_DONE, (d, w) -> {
+                                navigateBackToProfile();
+                            })
+                            .setCancelable(false)
+                            .show();
                 } else {
-                    Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_PAYSLIP_PERIOD_TOAST4, Toast.LENGTH_SHORT).show();
+                    String errorMsg = (message != null && !message.trim().isEmpty())
+                            ? message
+                            : getString(R.string.TXT_COMMON_CONNECTION_ERROR);
+                    Toast.makeText(PayslipPeriodActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onNetworkFailure(Throwable t) {
                 dismissProgressDialog();
-                Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_PAYSLIP_PERIOD_TOAST5, Toast.LENGTH_SHORT).show();
+                Toast.makeText(PayslipPeriodActivity.this, R.string.TXT_COMMON_CONNECTION_ERROR, Toast.LENGTH_SHORT).show();
             }
         });
 
 
+    }
+
+    private void navigateBackToProfile() {
+        Intent intent = new Intent(this, com.daimlertruck.dtag.internal.android.mbt.test.ui.main.main.MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    private void showPdfInApp(File file) {
+        try {
+            ParcelFileDescriptor fd = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
+            PdfRenderer renderer = new PdfRenderer(fd);
+            PdfRenderer.Page page = renderer.openPage(0);
+
+            Bitmap bitmap = Bitmap.createBitmap(page.getWidth() * 2, page.getHeight() * 2, Bitmap.Config.ARGB_8888);
+            page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
+            page.close();
+            renderer.close();
+            fd.close();
+
+            ImageView imageView = new ImageView(this);
+            imageView.setImageBitmap(bitmap);
+            imageView.setPadding(0, 0, 0, 0);
+
+            new AlertDialog.Builder(this)
+                    .setTitle(file.getName().replace(".pdf", ""))
+                    .setView(imageView)
+                    .setPositiveButton(R.string.TXT_COMMON_DONE, null)
+                    .show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this,
+                    String.format(getString(R.string.TXT_PAYSLIP_PDF_OPEN_ERROR), e.getLocalizedMessage()),
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
