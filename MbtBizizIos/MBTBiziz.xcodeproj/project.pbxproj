@@ -2873,9 +2873,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Dev/Pods-MBTBiziz-Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Dev/Pods-MBTBiziz-Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2890,9 +2894,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Staging/Pods-MBTBiziz-Staging-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Staging/Pods-MBTBiziz-Staging-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2925,9 +2933,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Production/Pods-MBTBiziz-Production-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MBTBiziz-Production/Pods-MBTBiziz-Production-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3789,7 +3801,7 @@
 				CODE_SIGN_ENTITLEMENTS = MBTBiziz/MBTBiziz.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				INFOPLIST_FILE = MBTBiziz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MBT App Staging";
@@ -3819,7 +3831,7 @@
 				CODE_SIGN_ENTITLEMENTS = MBTBiziz/MBTBiziz.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				INFOPLIST_FILE = MBTBiziz/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MBT App Staging";
@@ -3849,7 +3861,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
 				ENABLE_TESTABILITY = YES;
@@ -3901,7 +3913,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MBTBiziz-Prod.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = J7U9JQP7Q6;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J7U9JQP7Q6;
 				ENABLE_TESTABILITY = YES;

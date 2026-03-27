@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">MBT App</string>
     <string name="TXT_COMMON_WARNING">Warning</string>
     <string name="TXT_LOGIN_WELCOME_BUTTON">Sign in</string>
     <string name="TXT_LOGIN_PIN_TITLE">PIN Code</string>

@@ -29,8 +29,8 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
-        versionCode = 45
-        versionName = "1.4.0"
+        versionCode = 46
+        versionName = "1.5.0"
         dataBinding.enable = true
         multiDexEnabled = false
 
@@ -45,7 +45,7 @@ android {
             dimension = "env"
             applicationId = "com.daimlertruck.dtag.internal.android.mbt.test2"
             versionNameSuffix = "-dev"
-            resValue("string", "app_name", "MBT APP DEV")
+            resValue("string", "app_name", "MBT App Dev")
             manifestPlaceholders["usesCleartextTraffic"] = "true"
 
             // Android emulator localhost mapping for the backend running on host machine.
@@ -66,7 +66,7 @@ android {
         create("staging") {
             dimension = "env"
             applicationId = "com.daimlertruck.dtag.internal.android.mbt.test2"
-            resValue("string", "app_name", "MBT APP STAGING")
+            resValue("string", "app_name", "MBT App Staging")
             manifestPlaceholders["usesCleartextTraffic"] = "false"
             buildConfigField(
                 "String",
@@ -85,7 +85,7 @@ android {
         create("prod") {
             dimension = "env"
             applicationId = "com.daimlertruck.dtag.internal.android.mbt.test"
-            resValue("string", "app_name", "MBT APP")
+            resValue("string", "app_name", "MBT App")
             manifestPlaceholders["usesCleartextTraffic"] = "false"
 
             buildConfigField(

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MBT App</string>
 
     <!--Show Message Global Text-->
     <string name="TXT_COMMON_WARNING">Uyarı</string>
