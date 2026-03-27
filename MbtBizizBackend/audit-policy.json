@@ -1,0 +1,13 @@
+{
+  "versions": {
+    "chalk@5.6.1": {
+      "severity": "critical"
+    },
+    "supports-color@10.2.1": {
+      "severity": "critical"
+    }
+  },
+  "actions": {
+    "install": "fail"
+  }
+}
