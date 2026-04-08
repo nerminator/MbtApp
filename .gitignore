@@ -1,0 +1,11 @@
+# Signing keys
+MbtBizizAndroid/private_key.pepk
+MbtBizizAndroid/signKey
+
+# Release scripts (contain credentials)
+release.sh
+release-bordro.sh
+
+# Build artifacts
+release_artifacts/
+release_artifacts_bordro/
