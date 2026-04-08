@@ -24,8 +24,10 @@ class ProfileViewController: MBTBaseViewController, ProfileDisplayLogic
     // MARK: IBOutlets
     
     @IBOutlet weak var constFlexibleHeight: NSLayoutConstraint!
+    @IBOutlet weak var constBordroHeight: NSLayoutConstraint!
     
     @IBOutlet weak var viewFlexible: UIView!
+    @IBOutlet weak var viewBordro: UIView!
     
     @IBOutlet weak var viewCalendar: UIView!
     @IBOutlet weak var lblFlexible: BaseUILabel!
@@ -57,8 +59,19 @@ class ProfileViewController: MBTBaseViewController, ProfileDisplayLogic
   
     // MARK: View lifecycle
   
+    static var isBordroApp: Bool {
+        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleExecutable") as? String)?.contains("Bordro") == true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if !ProfileViewController.isBordroApp {
+            viewBordro.isHidden = true
+            constBordroHeight.isActive = false
+            viewBordro.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+
         interactor?.initializeView(request: Profile.Initialize.Request())
     }
     

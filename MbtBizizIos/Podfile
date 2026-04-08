@@ -38,3 +38,11 @@ end
 target 'MBTBiziz-Production' do
     shared_pods
 end
+
+target 'MBTBordro-Staging' do
+    shared_pods
+end
+
+target 'MBTBordro-Production' do
+    shared_pods
+end

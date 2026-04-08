@@ -93,7 +93,7 @@ class LoginController extends Controller
         }
             
     }
-
+/*
     public function checkPhoneWithCaptcha(Request $request)
     {
         //region Controls
@@ -157,9 +157,9 @@ class LoginController extends Controller
                 ]);
             }
 
-        /*$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result
-                                                                  from user_pin_codes
-                                                                  where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);*/
+        //$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result
+        //                                                          from user_pin_codes
+        //                                                          where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
         $checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result
                                                                   from user_pin_codes
                                                                   where user_id = ? and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
@@ -226,10 +226,10 @@ class LoginController extends Controller
             'responseData' => null,
             'errorMessage' => null
         ]);
-    }
+    }*/
 
     // will be removed
-    public function checkPhone(Request $request)
+ /*   public function checkPhone(Request $request)
     {
         //region Controls
         $validator = Validator::make($request->all(), [
@@ -285,7 +285,7 @@ class LoginController extends Controller
 
         Log::warning("checkPhone step3");
 
-        /*$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);*/
+        //$checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and is_used = 0 and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
         $checkPinCodeResult = $this->getFirstItemFromDb("select count(id) as result from user_pin_codes where user_id = ? and created_at >= ?", [$userResult->id, $previousTime->toDateTimeString()]);
         if ($checkPinCodeResult != null && $checkPinCodeResult->result >= 10) {
             return response()->json([
@@ -348,7 +348,7 @@ class LoginController extends Controller
             'responseData' => null,
             'errorMessage' => null
         ]);
-    }
+    }*/
     
     public function oidcLogin(Request $request)
     {
