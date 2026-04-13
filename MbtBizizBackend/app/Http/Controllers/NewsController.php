@@ -128,7 +128,7 @@ class NewsController extends Controller
 
         //endregion
 
-        Log::info("Executing SQL Query: $sqlQuery", ['bindings' => $bindings]);
+        //Log::info("Executing SQL Query: $sqlQuery", ['bindings' => $bindings]);
         $newsListResult = DB::select($sqlQuery, $bindings);
 
         $birthdayListCount = null;
