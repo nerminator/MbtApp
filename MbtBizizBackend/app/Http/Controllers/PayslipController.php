@@ -148,14 +148,17 @@ class PayslipController extends Controller
         $yakaTuru = ((int)$user->type === Constants::EMPLOYEE_TYPE_BLUE_COLLAR) ? 'Mavi' : 'Beyaz';
 
         $payslipMonth = DB::table('payslip_months')
-            ->select('baslangic_tarihi')
+            ->select('baslangic_tarihi', 'bitis_tarihi')
             ->whereDate('donem', $requestedDate->toDateString())
             ->where('yaka_turu', $yakaTuru)
             ->first();
 
         if ($payslipMonth) {
+            $now = Carbon::now();
             $availableFrom = Carbon::parse($payslipMonth->baslangic_tarihi)->startOfDay();
-            if (Carbon::now()->lt($availableFrom)) {
+            $availableUntil = Carbon::parse($payslipMonth->bitis_tarihi)->startOfDay();
+
+            if ($now->lt($availableFrom) || !$now->gt($availableUntil)) {
                 $periodNotOpenMessage = Redis::get('payslip_period_not_open_error_message') ?: __('lang.TXT_SERVER_ERROR_PAYSLIP_PERIOD_NOT_OPEN');
 
                 return response()->json([
