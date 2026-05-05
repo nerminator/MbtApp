@@ -131,7 +131,7 @@ class SetUsers extends Command
         }
 
         if (is_array($registerNumberList) && count($registerNumberList) > 0) {
-            $testUserIdList = [7697, 7701];
+            $testUserIdList = [7697, 7701, 103559, 103560];
 	        DB::table('users')->whereNotIn('register_number', $registerNumberList)->where('status', 1)->update(['status' => 0, 'updated_at' => $now]);
             DB::table('users')->whereIn('id', $testUserIdList)->where('status', 0)->update(['status' => 1, 'updated_at' => $now]);
 

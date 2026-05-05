@@ -146,13 +146,14 @@ class AuthServiceProvider extends ServiceProvider
                     $decoded = JWT::decode($token, $publicKey);
                 } catch (\Firebase\JWT\ExpiredException $e) {
                     // Token expired → return null without ERROR log noise
+                    Log::error("Token expired: " . $e->getMessage());
                     return null;
                 } catch (\Exception $e) {
-                    //Log::error("Invalid token: " . $e->getMessage());
+                    Log::error("Invalid token: " . $e->getMessage());
                     return null;
                 }
 
-                Log::info('Decoded Token: ' . json_encode($decoded));
+                //Log::info('Decoded Token: ' . json_encode($decoded));
                 $oidcUser = strtok($decoded->upn, '@');  // upn    nsarifa@tbdir.net
                 
                 $user = User::where('user_name', $oidcUser)->where('status', 1)->first();
