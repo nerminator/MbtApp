@@ -153,7 +153,7 @@ class AuthServiceProvider extends ServiceProvider
                     return null;
                 }
 
-                Log::info('Decoded Token: ' . json_encode($decoded));
+                //Log::info('Decoded Token: ' . json_encode($decoded));
                 $oidcUser = strtok($decoded->upn, '@');  // upn    nsarifa@tbdir.net
                 
                 $user = User::where('user_name', $oidcUser)->where('status', 1)->first();
