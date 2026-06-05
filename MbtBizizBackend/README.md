@@ -18,8 +18,9 @@ This is the central REST API that serves both the iOS and Android mobile apps. I
 8. [Scheduled Jobs (Cron)](#8-scheduled-jobs-cron)
 9. [External Integrations](#9-external-integrations)
 10. [Database Schema Overview](#10-database-schema-overview)
-11. [Setup & Local Development](#11-setup--local-development)
-12. [Environment Variables](#12-environment-variables)
+11. [Server Topology](#11-server-topology)
+12. [Setup & Local Development](#12-setup--local-development)
+13. [Environment Variables](#13-environment-variables)
 
 ---
 
@@ -361,7 +362,33 @@ Key tables (from migration history):
 
 ---
 
-## 11. Setup & Local Development
+## 11. Server Topology
+
+The backend runs on two separate on-premises servers per environment. The database server is **not reachable from the public internet** — only from the app server over the internal private network.
+
+### Production
+
+| Role | IP / Host | Detail |
+|---|---|---|
+| **App Server** | `192.168.24.26` | Runs Laravel/Lumen, Admin Panel, Redis |
+| **Database Server** | `192.168.24.25:3306` | MySQL — internal LAN only |
+| **Redis** | `127.0.0.1:6379` | Localhost on app server |
+
+### Staging / Test
+
+| Role | IP / Host | Detail |
+|---|---|---|
+| **App Server** | `192.168.24.16` | Runs Laravel/Lumen, Admin Panel, Redis |
+| **Database Server** | `192.168.24.15:3306` | MySQL — internal LAN only |
+| **Redis** | `127.0.0.1:6379` | Localhost on app server |
+
+### Security Note
+
+The `DB_HOST` in each environment's `.env` points to the **database server IP**, not localhost. The database server firewall only allows MySQL connections from the paired app server. No public port is open.
+
+---
+
+## 12. Setup & Local Development
 
 ### Prerequisites
 
@@ -396,7 +423,7 @@ For Android emulator, the backend will be accessible at `http://10.0.2.2:8000/ap
 
 ---
 
-## 12. Environment Variables
+## 13. Environment Variables
 
 Key `.env` variables to configure:
 
@@ -405,11 +432,15 @@ APP_ENV=local|staging|production
 APP_KEY=...
 APP_TIMEZONE=Europe/Istanbul
 
-DB_HOST=...
+# DB_HOST points to the SEPARATE database server (not localhost)
+# Production:  192.168.24.25
+# Staging:     192.168.24.15
+DB_HOST=192.168.24.25
 DB_DATABASE=...
 DB_USERNAME=...
 DB_PASSWORD=...
 
+# Redis runs on the app server itself
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
 

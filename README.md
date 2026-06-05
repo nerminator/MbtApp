@@ -57,7 +57,6 @@ MbtAppRepo/
 ├── README.md                        ← You are here (top-level overview)
 ├── release.sh                       ← Build & deploy script for main app (Android + iOS)
 ├── release-bordro.sh                ← Build & deploy script for Bordro (payslip-only iOS app)
-├── generate_arch_doc.py             ← Generates architecture Word document for EPA security check
 ├── MBT_App_Architecture_Diagram.drawio  ← Editable architecture diagram
 │
 ├── MbtBizizBackend/                 ← Backend REST API (Laravel / Lumen)
@@ -124,54 +123,83 @@ MbtAppRepo/
 └────────┬──────────────────┬──────────────────┬───────────┘
          │ SFTP/files        │ HTTPS/SOAP       │ JWKS
          ▼                  ▼                  ▼
-┌─────────────────────────────────────────────────────────┐
-│               APPLICATION SERVER (on-prem)              │
-│                                                         │
-│  ┌───────────────────────┐   ┌─────────────────────┐   │
-│  │   Backend API         │   │    Admin Panel       │   │
-│  │   (Laravel/Lumen)     │   │   (Laravel 10 +      │   │
+┌──────────────────────────────────────────────────────────┐
+│         APPLICATION SERVER  (prod: 192.168.24.26)        │
+│              (staging: 192.168.24.16)                    │
+│                                                          │
+│  ┌───────────────────────┐   ┌──────────────────────┐   │
+│  │   Backend API         │   │    Admin Panel        │   │
+│  │   (Laravel/Lumen)     │   │   (Laravel 10 +       │   │
 │  │   /bizizBackend/      │   │    Livewire 3)        │   │
-│  └──────────┬────────────┘   └──────────┬──────────┘   │
-│             │                           │               │
-│             ▼                           ▼               │
-│       ┌──────────┐              ┌──────────────┐        │
-│       │  MySQL   │              │  Redis Cache │        │
-│       │ Database │              │  (localhost) │        │
-│       └──────────┘              └──────────────┘        │
-└───────────────────────────┬─────────────────────────────┘
-                            │ HTTPS REST API
-               ┌────────────┴────────────┐
-               ▼                         ▼
-    ┌──────────────────┐      ┌──────────────────────┐
-    │   iOS App        │      │   Android App         │
-    │   (Swift/ObjC)   │      │   (Java/Kotlin)       │
-    │   MSAL 1.2.5     │      │   MSAL 5.6.0          │
-    │   Enterprise     │      │   3 flavors           │
-    │   5 targets      │      │   (dev/staging/prod)  │
-    └──────────────────┘      └──────────────────────┘
+│  └──────────┬────────────┘   └──────────┬───────────┘   │
+│             │                           │                │
+│             ▼                           ▼                │
+│       ┌──────────────────────────────────────┐           │
+│       │         Redis Cache (localhost)       │           │
+│       │  OTP sessions, payslip flags,         │           │
+│       │  food menu cache, analytics           │           │
+│       └──────────────────────────────────────┘           │
+└──────────────────────────┬───────────────────────────────┘
+                           │ private network only
+                           ▼
+┌──────────────────────────────────────────────────────────┐
+│         DATABASE SERVER  (prod: 192.168.24.25:3306)      │
+│              (staging: 192.168.24.15:3306)               │
+│                                                          │
+│       MySQL — not exposed to public internet             │
+│       Accessible only from app server via LAN            │
+└──────────────────────────┬───────────────────────────────┘
+                           │
+         ┌─────────────────┴─────────────────┐
+         │         HTTPS REST API             │
+         ▼                                   ▼
+┌──────────────────┐              ┌──────────────────────┐
+│   iOS App        │              │   Android App        │
+│   (Swift/ObjC)   │              │   (Java/Kotlin)      │
+│   MSAL 1.2.5     │              │   MSAL 5.6.0         │
+│   Enterprise     │              │   3 flavors          │
+│   5 targets      │              │   (dev/staging/prod) │
+└──────────────────┘              └──────────────────────┘
 ```
 
 ### Component Summary
 
-| Component | Tech Stack | Role |
-|---|---|---|
-| **Backend API** | PHP 8.1, Laravel/Lumen 10 | REST API for mobile apps |
-| **Admin Panel** | PHP 8.1, Laravel 10, Livewire 3, Blade | Content & config management UI |
-| **MySQL DB** | MySQL (utf8mb4_unicode_ci) | Primary persistent data store |
-| **Redis** | Redis (via Predis) | Session cache, OTP, food menu, shuttle, payslip flags |
-| **iOS App** | Swift 4 / Obj-C, CocoaPods, MSAL 1.2.5 | Native iOS app (5 build targets) |
-| **Android App** | Java/Kotlin, Gradle, MSAL 5.6.0 | Native Android app (3 flavors) |
+| Component | Tech Stack | Host | Role |
+|---|---|---|---|
+| **Backend API** | PHP 8.1, Laravel/Lumen 10 | App server | REST API for mobile apps |
+| **Admin Panel** | PHP 8.1, Laravel 10, Livewire 3, Blade | App server | Content & config management UI |
+| **MySQL DB** | MySQL (utf8mb4_unicode_ci) | **Separate DB server** (not on app server) | Primary persistent data store |
+| **Redis** | Redis (via Predis) | App server (localhost) | Session cache, OTP, food menu, shuttle, payslip flags |
+| **iOS App** | Swift 4 / Obj-C, CocoaPods, MSAL 1.2.5 | Client device | Native iOS app (5 build targets) |
+| **Android App** | Java/Kotlin, Gradle, MSAL 5.6.0 | Client device | Native Android app (3 flavors) |
 
 ---
 
 ## 5. Environments & Servers
 
-| Environment | Server IP | Purpose |
+The infrastructure uses **two separate servers per environment** — an application server and a dedicated database server. The database server has **no public internet exposure** and is only reachable from the app server over the internal LAN.
+
+### Production
+
+| Role | IP | Notes |
 |---|---|---|
-| **Staging** | `192.168.24.16` | Test environment for QA and pre-release validation |
-| **Production** | `192.168.24.26` | Live environment serving real employees |
-| **Database** | `192.168.24.25:3306` | MySQL (no public internet access) |
-| **Redis** | `127.0.0.1:6379` | Localhost on each app server |
+| **App Server** | `192.168.24.26` | Runs Backend API, Admin Panel, Redis |
+| **Database Server** | `192.168.24.25:3306` | MySQL only — internal LAN access from app server |
+
+### Staging / Test
+
+| Role | IP | Notes |
+|---|---|---|
+| **App Server** | `192.168.24.16` | Runs Backend API, Admin Panel, Redis |
+| **Database Server** | `192.168.24.15:3306` | MySQL only — internal LAN access from app server |
+
+### Redis
+
+Redis runs **on each app server** (localhost `127.0.0.1:6379`). It is not shared between staging and production.
+
+### Network Security Note
+
+Neither database server (`192.168.24.25` / `192.168.24.15`) is reachable from the public internet. MySQL connections are accepted **only from the paired app server** over the private network. There is no direct database access from mobile clients or external systems.
 
 ### Backend URL Patterns
 
