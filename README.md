@@ -44,7 +44,6 @@
 | **Push Notifications** | Firebase (Android) & APNs (iOS) notification delivery |
 | **Settings** | Notification preferences per category |
 | **App Feedback** | In-app feedback submission routed to configured email addresses |
-| **QR Code** | QR-based internal feature |
 
 There is also a **separate "Bordro" (Payslip-only) app** for iOS — it shares the same codebase/targets but is distributed as a standalone app.
 
