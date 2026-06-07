@@ -91,7 +91,7 @@ class ProfileController extends Controller
         $selectedYear = intval($year);
 
         $regNo = Auth::user()->register_number; 
-        if ($regNo == 1234563) {
+        if ($regNo == 1234561) {
             $regNo = 100038;
         }
         //Log::info($regNo);
