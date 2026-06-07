@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,34 +48,26 @@ class NewsMediaController extends Controller
         }
 
         // Verify the authenticated user can access this news item.
-        // Reuse the same access rules as newsDetail.
+        // Raw SQL avoids Lumen query-builder closure issues with table aliases
+        // while enforcing the same rules as newsDetail.
         $user = Auth::user();
-        $newsExists = DB::table('news as n')
-            ->where('n.id', (int) $newsId)
-            ->where('n.status', 1)
-            ->where(function ($q) {
-                $q->whereNull('n.end_time')->orWhere('n.end_time', '>', now());
-            })
-            ->where(function ($q) use ($user) {
-                $q->whereNull('n.employee_type')->orWhere('n.employee_type', $user->type);
-            })
-            ->where(function ($q) use ($user) {
-                $q->whereRaw(
-                    '(select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0'
-                )->orWhereRaw(
-                    '? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id)',
-                    [$user->company_location_id]
-                );
-            })
-            ->where(function ($q) use ($user) {
-                $q->whereRaw(
-                    '(select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0'
-                )->orWhereRaw(
-                    '? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id)',
-                    [$user->employee_location_id]
-                );
-            })
-            ->exists();
+        $newsExists = DB::selectOne(
+            'SELECT 1 FROM news
+             WHERE id = ?
+               AND status = 1
+               AND (end_time IS NULL OR end_time > NOW())
+               AND (employee_type IS NULL OR employee_type = ?)
+               AND (
+                     (SELECT COUNT(id) FROM news_company_location WHERE news_id = news.id) = 0
+                     OR ? IN (SELECT company_location_id FROM news_company_location WHERE news_id = news.id)
+                   )
+               AND (
+                     (SELECT COUNT(id) FROM news_employee_location WHERE news_id = news.id) = 0
+                     OR ? IN (SELECT employee_location_id FROM news_employee_location WHERE news_id = news.id)
+                   )
+             LIMIT 1',
+            [(int) $newsId, $user->type, $user->company_location_id, $user->employee_location_id]
+        );
 
         if (!$newsExists) {
             abort(403);
@@ -91,6 +84,12 @@ class NewsMediaController extends Controller
         } elseif (Storage::disk('panel_news_public')->exists($relativePath)) {
             $disk = 'panel_news_public';
         } else {
+            Log::warning('NewsMediaController: file not found on either disk', [
+                'newsId'              => $newsId,
+                'relativePath'        => $relativePath,
+                'panel_news_root'     => config('filesystems.disks.panel_news.root'),
+                'panel_news_pub_root' => config('filesystems.disks.panel_news_public.root'),
+            ]);
             abort(404);
         }
 
