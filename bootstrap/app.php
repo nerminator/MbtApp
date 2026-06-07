@@ -89,6 +89,7 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 
 $app->configure('services');
+$app->configure('media');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
