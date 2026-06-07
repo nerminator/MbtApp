@@ -38,6 +38,31 @@ class NewsController extends Controller
         return strncmp($value, 'contents/news/', 14) === 0;
     }
 
+    private static function toDisplayUrl(?string $stored): ?string
+    {
+        if (empty($stored)) {
+            return null;
+        }
+
+        if (filter_var($stored, FILTER_VALIDATE_URL) !== false) {
+            return $stored;
+        }
+
+        if (strncmp($stored, 'contents/news/', 14) !== 0) {
+            return $stored;
+        }
+
+        if (app()->environment('production')) {
+            $baseUrl = rtrim(config('app.panel_production_base_url'), '/');
+        } elseif (app()->environment('local')) {
+            $baseUrl = rtrim(config('app.panel_local_base_url'), '/');
+        } else {
+            $baseUrl = rtrim(config('app.panel_staging_base_url'), '/');
+        }
+
+        return $baseUrl . '/storage/' . ltrim($stored, '/');
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -227,6 +252,12 @@ class NewsController extends Controller
             $newsList = DB::select($sqlQuery, [$rowOffset]);
         }
 
+        foreach ($newsList as $item) {
+            if (isset($item->image)) {
+                $item->image = self::toDisplayUrl($item->image);
+            }
+        }
+
         /*if ($request->Input('sortType') == Constants::SORT_TYPE_CREATED_AT) {
             if (!empty($searchText)) {
                 $searchValue = '%' . $searchText . '%';
@@ -303,7 +334,31 @@ class NewsController extends Controller
                                                           from news n
                                                           where id = ?", [$newsId]);
 
-        return $newsResult[0];
+        $news = $newsResult[0];
+
+        if (!empty($news->image)) {
+            $news->image = self::toDisplayUrl($news->image);
+        }
+
+        if (!empty($news->images)) {
+            $images = array_filter(explode(',', $news->images));
+            $images = array_map([self::class, 'toDisplayUrl'], $images);
+            $news->images = implode(',', $images);
+        }
+
+        if (!empty($news->pdfs)) {
+            $pdfs = json_decode($news->pdfs);
+            if (is_array($pdfs)) {
+                foreach ($pdfs as $pdf) {
+                    if (isset($pdf->pdf)) {
+                        $pdf->pdf = self::toDisplayUrl($pdf->pdf);
+                    }
+                }
+                $news->pdfs = json_encode($pdfs);
+            }
+        }
+
+        return $news;
     }
 
     public static function getEmployeeTypeList()
