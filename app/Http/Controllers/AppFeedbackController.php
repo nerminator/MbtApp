@@ -25,7 +25,16 @@ class AppFeedbackController extends Controller
     {
         //region Controls
         $validator = Validator::make($request->all(), [
-            'text' => 'required|string|min:3|max:500'
+            'text' => [
+                'required',
+                'string',
+                'min:3',
+                'max:500',
+                // Reject URLs to prevent SSRF via outbound request triggering (e.g. mail scanners fetching embedded URLs)
+                'not_regex:/\b(?:https?|ftp|file):\/\//i',
+                // Reject protocol-relative URLs (//example.com)
+                'not_regex:/(?<!\w)\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}/i',
+            ]
         ]);
         if ($validator->fails()) // missing parameters
         {
@@ -38,7 +47,9 @@ class AppFeedbackController extends Controller
         //endregion
 
         $user_id = Auth::user()->id;
-        $text = $request->input('text');
+        // Strip any remaining URL patterns as a defence-in-depth measure
+        $text = preg_replace('/\b(?:https?|ftp|file):\/\/\S+/i', '', $request->input('text'));
+        $text = trim($text);
         
         $newId = DB::table('app_feedback')->insertGetId(['user_id' => $user_id,
                                                         'text'=> $text]);

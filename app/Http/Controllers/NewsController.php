@@ -270,12 +270,25 @@ class NewsController extends Controller
             $imageUrl = $imageList[0];
         }
 
+        // Transform stored values (legacy full Panel URLs or new relative paths)
+        // into authenticated Backend proxy URLs.
+        $imageUrl   = $this->toProxyUrl($imageUrl);
+        $imageList  = array_map([$this, 'toProxyUrl'], $imageList);
+
+        $pdfs = null;
+        if ($newsObjectResult->pdfs) {
+            $pdfs = json_decode($newsObjectResult->pdfs);
+            foreach ($pdfs as $pdf) {
+                $pdf->pdf = $this->toProxyUrl($pdf->pdf);
+            }
+        }
+
         $newsObject = [
             'type' => $newsObjectResult->type,
             'discountType' => $newsObjectResult->discount_type,
             'image' =>  $imageUrl,
             'images' => $imageList, 
-            'pdfs' => $newsObjectResult->pdfs ? json_decode($newsObjectResult->pdfs) : null,            
+            'pdfs' => $pdfs,            
             'dateInfo' => $dateInfo,
             'title' => $newsObjectResult->title,
             'text' => $newsObjectResult->text,
@@ -351,7 +364,7 @@ class NewsController extends Controller
                 'listText' => $item->title,
                 'monthName' => $this->_getMonthName($item->start_time, $item->type),
                 'discountType' => $item->discount_type,
-                'image' => $item->image,
+                'image' => $this->toProxyUrl($item->image),
                 'url' => $item->url,
                 'phone' => $item->phone
             ];
@@ -380,6 +393,62 @@ class NewsController extends Controller
         return strtoupper($carbonStartDate->format('m.Y'));
     }
 
+    /**
+     * Convert a stored image/document value into an authenticated Backend proxy URL.
+     *
+     * Handles two formats:
+     *   Legacy  — full Panel public URL:   https://bizizapp.com/bizizPanel/public/storage/contents/news/5/documents/foo.pdf
+     *   New     — relative path:           contents/news/5/documents/foo.pdf
+     *
+     * Produces: {backendBaseUrl}/api/v1/news/media/{newsId}/{type}/{filename}
+     * where type ∈ {image, document, pdf}
+     */
+    private function toProxyUrl(?string $stored): ?string
+    {
+        if (empty($stored)) return null;
+
+        // If it's a full URL, extract the relative path after /storage/
+        if (filter_var($stored, FILTER_VALIDATE_URL) !== false) {
+            $urlPath = parse_url($stored, PHP_URL_PATH);
+            $marker  = '/storage/';
+            $pos     = strpos($urlPath, $marker);
+            if ($pos === false) {
+                // Not a Panel storage URL (e.g. an external news image) — return unchanged
+                return $stored;
+            }
+            $relativePath = substr($urlPath, $pos + strlen($marker));
+        } else {
+            $relativePath = $stored;
+        }
+
+        // Expected patterns:
+        //   contents/news/{newsId}/{filename}              → type = image
+        //   contents/news/{newsId}/documents/{filename}   → type = document
+        //   contents/news/{newsId}/pdf/{filename}         → type = pdf
+        $parts = explode('/', ltrim($relativePath, '/'));
+        if (count($parts) < 4 || $parts[0] !== 'contents' || $parts[1] !== 'news') {
+            return $stored; // unrecognised pattern — leave unchanged
+        }
+
+        $newsId = $parts[2];
+        if (!ctype_digit((string) $newsId)) return $stored;
+
+        if (count($parts) === 4) {
+            $type     = 'image';
+            $filename = $parts[3];
+        } elseif (count($parts) === 5 && in_array($parts[3], ['documents', 'pdf'], true)) {
+            $type     = $parts[3] === 'documents' ? 'document' : 'pdf';
+            $filename = $parts[4];
+        } else {
+            return $stored;
+        }
+
+        // Validate filename is safe before embedding in URL
+        if (!preg_match('/^[a-zA-Z0-9_\-\.]+$/', $filename)) return $stored;
+
+        $baseUrl = rtrim(url('/'), '/');
+        return "{$baseUrl}/api/v1/news/media/{$newsId}/{$type}/{$filename}";
+    }
 
     public function getDiscountCode($newsId)
     {

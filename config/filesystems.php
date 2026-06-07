@@ -59,6 +59,21 @@ return [
             'visibility' => 'public',
         ],
 
+        // Panel private storage — files are NOT web-accessible.
+        // Default assumes bizizPanel/ and bizizBackend/ are sibling directories.
+        // Override with PANEL_NEWS_STORAGE_PATH in .env if the layout differs.
+        'panel_news' => [
+            'driver' => 'local',
+            'root' => env('PANEL_NEWS_STORAGE_PATH', dirname(base_path()) . '/bizizPanel/storage/app'),
+        ],
+
+        // Legacy: Panel public storage (files uploaded before the fix).
+        // Used as a fallback during migration until old files are moved.
+        'panel_news_public' => [
+            'driver' => 'local',
+            'root' => env('PANEL_NEWS_PUBLIC_STORAGE_PATH', dirname(base_path()) . '/bizizPanel/storage/app/public'),
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',
