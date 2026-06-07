@@ -61,17 +61,24 @@ return [
 
         // Panel private storage — files are NOT web-accessible.
         // Default assumes bizizPanel/ and bizizBackend/ are sibling directories.
+        // realpath() resolves symlinks and '..' segments for a reliable absolute path.
         // Override with PANEL_NEWS_STORAGE_PATH in .env if the layout differs.
         'panel_news' => [
             'driver' => 'local',
-            'root' => env('PANEL_NEWS_STORAGE_PATH', dirname(base_path()) . '/bizizPanel/storage/app'),
+            'root' => env('PANEL_NEWS_STORAGE_PATH',
+                realpath(base_path() . '/../bizizPanel/storage/app')
+                    ?: dirname(base_path()) . '/bizizPanel/storage/app'
+            ),
         ],
 
         // Legacy: Panel public storage (files uploaded before the fix).
         // Used as a fallback during migration until old files are moved.
         'panel_news_public' => [
             'driver' => 'local',
-            'root' => env('PANEL_NEWS_PUBLIC_STORAGE_PATH', dirname(base_path()) . '/bizizPanel/storage/app/public'),
+            'root' => env('PANEL_NEWS_PUBLIC_STORAGE_PATH',
+                realpath(base_path() . '/../bizizPanel/storage/app/public')
+                    ?: dirname(base_path()) . '/bizizPanel/storage/app/public'
+            ),
         ],
 
         's3' => [
