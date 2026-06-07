@@ -125,6 +125,10 @@ class AuthServiceProvider extends ServiceProvider
                 
                 //Log::info('Decoded Header: ' . json_encode($decodedHeader));
 
+                if ($decodedHeader === null || !isset($decodedHeader->kid)) {
+                    return null;
+                }
+
                 // Find the corresponding key in JWKS
                 $jwk = null;
                 foreach ($jwks['keys'] as $key) {
