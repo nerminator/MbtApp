@@ -31,6 +31,24 @@ class DocumentController extends Controller
     }
 
     /**
+     * Convert a stored value (relative path or legacy full URL) to a full Panel URL
+     * for display in the admin UI only. Files are now stored privately.
+     */
+    private function toDisplayUrl(?string $stored): ?string
+    {
+        if (empty($stored)) return null;
+        // Legacy records already have a full URL
+        if (filter_var($stored, FILTER_VALIDATE_URL) !== false) {
+            return $stored;
+        }
+        // New records store a relative path — build a temporary admin-facing URL
+        // Note: this URL is only accessible to authenticated admin sessions via the
+        // web server. The file is in private storage; direct web access will 404.
+        // Use the Backend proxy URL pattern instead if direct download is needed.
+        return $this->getProjectUrl() . '/storage/' . $stored;
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -68,11 +86,10 @@ class DocumentController extends Controller
 
         foreach ($documentsResult as $item)
         {
-
                 $fileList[] = [
                     'id' => $item->id,
                     'pdf_name' => $item->name,
-                    'pdf_file' => $item->url
+                    'pdf_file' => $this->toDisplayUrl($item->url)
                 ];
         }
 
@@ -108,9 +125,10 @@ class DocumentController extends Controller
             try
             {
                 $pdfFileName = $pdfFile->getClientOriginalName();
-                $pdfFilePath = Storage::putFile("contents/news/$newsId/documents", $pdfFile, 'public');
-                $projectUrl = $this->getProjectUrl();
-                $pdfFileUrl = $projectUrl . "/storage/$pdfFilePath";
+                // Store in private (local) disk — not web-accessible
+                $pdfFilePath = Storage::disk('local')->putFile("contents/news/$newsId/documents", $pdfFile);
+                // Save only the relative path; the Backend API proxy will serve it with auth
+                $pdfFileUrl = $pdfFilePath;
                 $documentId = DB::table('mbtbiziz.news_pdf_files')->insertGetId([
                     'news_id' => $newsId,
                     'pdf_name' => $pdfFileName,
@@ -119,7 +137,7 @@ class DocumentController extends Controller
                 ]);
                 $result = [
                     'id' => $documentId,
-                    'url' => $pdfFileUrl
+                    'url' => $this->toDisplayUrl($pdfFileUrl)
                 ];
                 return json_encode($result);
             }

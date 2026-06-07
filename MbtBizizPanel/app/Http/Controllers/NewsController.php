@@ -33,6 +33,11 @@ class NewsController extends Controller
         return filter_var($value, FILTER_VALIDATE_URL) !== false;
     }
 
+    private function isStoredRelativePath(string $value): bool
+    {
+        return strncmp($value, 'contents/news/', 14) === 0;
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -84,20 +89,19 @@ class NewsController extends Controller
             $imageString = $request->Input('imageString'. $strImg);
             if (!empty($imageString)) {
            
-                    if ($this->isAbsoluteUrl($imageString)) { // already URL
+                    if ($this->isAbsoluteUrl($imageString) || $this->isStoredRelativePath($imageString)) { // already stored
                         $imageUrl = $imageString;
                     } else {
                         $base64Str = substr($imageString, strpos($imageString, ",") + 1);
                         if ($this->getBase64ImageSize($base64Str) > 1.5) {
                             return redirect($redirect)->with('status', ' File must be less than 1.5 megabytes!'); // file size error
-                            //return -2; // file size error
                         }
                         $image = base64_decode($base64Str);
     
                         $imagePath = "contents/news/$newsId/" . uniqid() . uniqid() . uniqid() . ".png";
-                        Storage::disk('public')->put($imagePath, $image);
-                        $projectUrl = $this->getProjectUrl();
-                        $imageUrl = $projectUrl . "/storage/$imagePath";
+                        // Store in private (local) disk — not web-accessible
+                        Storage::disk('local')->put($imagePath, $image);
+                        $imageUrl = $imagePath; // relative path stored in DB
                     }
 
                     if ($i==0) {
@@ -130,7 +134,7 @@ class NewsController extends Controller
             $pdfFile = $request->Input('pdfFile'. $str);
             if (!empty($pdfFile)) {
            
-                    if ($this->isAbsoluteUrl($pdfFile)) {
+                    if ($this->isAbsoluteUrl($pdfFile) || $this->isStoredRelativePath($pdfFile)) { // already stored
                         $url = $pdfFile;
                     } else {
                         if ($this->getFileSize($pdfFile) > 1.5) {
@@ -138,9 +142,9 @@ class NewsController extends Controller
                         }
 
                         $path = "contents/news/$newsId/pdf/" . uniqid() . uniqid() . uniqid() . ".png";
-                        Storage::disk('public')->put($path, $pdfFile);
-                        $projectUrl = $this->getProjectUrl();
-                        $url = $projectUrl . "/storage/$path";
+                        // Store in private (local) disk — not web-accessible
+                        Storage::disk('local')->put($path, $pdfFile);
+                        $url = $path; // relative path stored in DB
                     }
 
                     if ($i==0) {

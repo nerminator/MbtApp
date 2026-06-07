@@ -39,6 +39,8 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
         $router->post('newsList', 'NewsController@newsList');  
         $router->get('newsDetail/{id}', 'NewsController@newsDetail');
         $router->get('birthdayList', 'NewsController@birthdayList'); 
+        // Authenticated media proxy — replaces direct public Panel storage URLs
+        $router->get('news/media/{newsId}/{type}/{filename}', 'NewsMediaController@serve');
 
         $router->post('saveDeviceInfo', 'DeviceInfoController@saveDeviceInfo');
         $router->post('deleteDeviceInfo', 'DeviceInfoController@deleteDeviceInfo');
