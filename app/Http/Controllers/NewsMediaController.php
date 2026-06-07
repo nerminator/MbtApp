@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class NewsMediaController extends Controller
@@ -19,6 +18,15 @@ class NewsMediaController extends Controller
     ];
 
     private const ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'pdf'];
+
+    private const MIME_MAP = [
+        'png'  => 'image/png',
+        'jpg'  => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'gif'  => 'image/gif',
+        'webp' => 'image/webp',
+        'pdf'  => 'application/pdf',
+    ];
 
     public function serve(Request $request, $newsId, $type, $filename)
     {
@@ -77,28 +85,52 @@ class NewsMediaController extends Controller
         $subdir       = self::TYPE_MAP[$type];
         $relativePath = "contents/news/{$newsId}/{$subdir}{$filename}";
 
-        // Try private storage first (new files), then public storage (legacy files
-        // not yet migrated by the server admin).
-        if (Storage::disk('panel_news')->exists($relativePath)) {
-            $disk = 'panel_news';
-        } elseif (Storage::disk('panel_news_public')->exists($relativePath)) {
-            $disk = 'panel_news_public';
-        } else {
+        // Resolve disk roots directly from env — avoids the Storage facade which
+        // requires league/flysystem ^3.x (incompatible with irazasyed/larasupport).
+        $privateRoot = rtrim(
+            env('PANEL_NEWS_STORAGE_PATH', dirname(base_path()) . '/bizizPanel/storage/app'),
+            '/'
+        );
+        $publicRoot  = rtrim(
+            env('PANEL_NEWS_PUBLIC_STORAGE_PATH', dirname(base_path()) . '/bizizPanel/storage/app/public'),
+            '/'
+        );
+
+        // Try private storage first (new files), then public storage (legacy files).
+        $absolutePath = null;
+        foreach ([$privateRoot, $publicRoot] as $root) {
+            $candidate = $root . '/' . $relativePath;
+            // realpath() returns false on non-existent or traversal paths
+            $resolved  = realpath($candidate);
+            if ($resolved !== false && strpos($resolved, $root . '/') === 0 && is_file($resolved)) {
+                $absolutePath = $resolved;
+                break;
+            }
+        }
+
+        if ($absolutePath === null) {
             Log::warning('NewsMediaController: file not found on either disk', [
-                'newsId'              => $newsId,
-                'relativePath'        => $relativePath,
-                'panel_news_root'     => config('filesystems.disks.panel_news.root'),
-                'panel_news_pub_root' => config('filesystems.disks.panel_news_public.root'),
+                'newsId'       => $newsId,
+                'relativePath' => $relativePath,
+                'privateRoot'  => $privateRoot,
+                'publicRoot'   => $publicRoot,
             ]);
             abort(404);
         }
 
-        $mimeType    = Storage::disk($disk)->mimeType($relativePath) ?: 'application/octet-stream';
-        $fileContent = Storage::disk($disk)->get($relativePath);
+        $mimeType = self::MIME_MAP[$ext] ?? 'application/octet-stream';
 
-        return response($fileContent, 200)
-            ->header('Content-Type', $mimeType)
-            ->header('Cache-Control', 'private, max-age=3600')
-            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+        return response()->stream(function () use ($absolutePath) {
+            $handle = fopen($absolutePath, 'rb');
+            while (!feof($handle)) {
+                echo fread($handle, 8192);
+            }
+            fclose($handle);
+        }, 200, [
+            'Content-Type'        => $mimeType,
+            'Content-Length'      => filesize($absolutePath),
+            'Cache-Control'       => 'private, max-age=3600',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"',
+        ]);
     }
 }
