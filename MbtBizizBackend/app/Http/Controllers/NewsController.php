@@ -394,14 +394,16 @@ class NewsController extends Controller
     }
 
     /**
-     * Convert a stored image/document value into an authenticated Backend proxy URL.
+     * Convert a stored image/document value into a time-limited HMAC-signed
+     * Backend proxy URL. No Authorization header is required to fetch it —
+     * the embedded signature is the proof of authorization. This keeps
+     * backward compatibility with older app versions.
      *
-     * Handles two formats:
-     *   Legacy  — full Panel public URL:   https://bizizapp.com/bizizPanel/public/storage/contents/news/5/documents/foo.pdf
-     *   New     — relative path:           contents/news/5/documents/foo.pdf
+     * Handles two stored formats:
+     *   Legacy  — full Panel public URL:   https://bizizapp.com/.../storage/contents/news/5/foo.png
+     *   New     — relative path:           contents/news/5/foo.png
      *
-     * Produces: {backendBaseUrl}/api/v1/news/media/{newsId}/{type}/{filename}
-     * where type ∈ {image, document, pdf}
+     * Produces: {backendUrl}/api/v1/news/media/{newsId}/{type}/{filename}?sig={hmac}&exp={epoch}
      */
     private function toProxyUrl(?string $stored): ?string
     {
@@ -446,8 +448,14 @@ class NewsController extends Controller
         // Validate filename is safe before embedding in URL
         if (!preg_match('/^[a-zA-Z0-9_\-\.]+$/', $filename)) return $stored;
 
+        // Generate a time-limited HMAC signature
+        $expiry     = time() + config('media.url_expiry_seconds', 86400);
+        $signingKey = config('media.signing_key', '');
+        $payload    = "{$newsId}/{$type}/{$filename}/{$expiry}";
+        $sig        = hash_hmac('sha256', $payload, $signingKey);
+
         $baseUrl = rtrim(url('/'), '/');
-        return "{$baseUrl}/api/v1/news/media/{$newsId}/{$type}/{$filename}";
+        return "{$baseUrl}/api/v1/news/media/{$newsId}/{$type}/{$filename}?sig={$sig}&exp={$expiry}";
     }
 
     public function getDiscountCode($newsId)

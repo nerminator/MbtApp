@@ -22,6 +22,10 @@ $router->get('digitalCard/{uuid}/downloadVcf', 'DijitalKartvizit@downloadVcf');
 $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], function () use ($router) {
     $router->post('init', 'InitController@init');
     $router->get('test', 'InitController@test');
+
+    // Signed media proxy — no auth header required; the HMAC ?sig=&exp= params
+    // serve as proof of authorization. Compatible with all app versions.
+    $router->get('news/media/{newsId}/{type}/{filename}', ['middleware' => 'throttle:120,1', 'uses' => 'NewsMediaController@serve']);
   //  $router->get('captcha', ['middleware' => 'throttle:60,1', 'uses' => 'LoginController@captcha']);
     $router->post('checkPhone', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhone']);
   //  $router->post('checkPhoneWithCaptcha', ['middleware' => 'throttle:5,5', 'uses' => 'LoginController@checkPhoneWithCaptcha']);
@@ -39,8 +43,6 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
         $router->post('newsList', 'NewsController@newsList');  
         $router->get('newsDetail/{id}', 'NewsController@newsDetail');
         $router->get('birthdayList', 'NewsController@birthdayList'); 
-        // Authenticated media proxy — replaces direct public Panel storage URLs
-        $router->get('news/media/{newsId}/{type}/{filename}', 'NewsMediaController@serve');
 
         $router->post('saveDeviceInfo', 'DeviceInfoController@saveDeviceInfo');
         $router->post('deleteDeviceInfo', 'DeviceInfoController@deleteDeviceInfo');
