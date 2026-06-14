@@ -400,7 +400,7 @@ class NewsController extends Controller
      * backward compatibility with older app versions.
      *
      * Handles two stored formats:
-     *   Legacy  — full Panel public URL:   https://bizizapp.com/.../storage/contents/news/5/foo.png
+     *   Legacy  — full Panel public URL:   https://bizi....com/.../storage/contents/news/5/foo.png
      *   New     — relative path:           contents/news/5/foo.png
      *
      * Produces: {backendUrl}/api/v1/news/media/{newsId}/{type}/{filename}?sig={hmac}&exp={epoch}
@@ -454,7 +454,8 @@ class NewsController extends Controller
         $payload    = "{$newsId}/{$type}/{$filename}/{$expiry}";
         $sig        = hash_hmac('sha256', $payload, $signingKey);
 
-        $baseUrl = rtrim(url('/'), '/');
+        $configuredBaseUrl = rtrim((string) config('app.url', ''), '/');
+        $baseUrl = $configuredBaseUrl !== '' ? $configuredBaseUrl : rtrim(url('/'), '/');
         return "{$baseUrl}/api/v1/news/media/{$newsId}/{$type}/{$filename}?sig={$sig}&exp={$expiry}";
     }
 

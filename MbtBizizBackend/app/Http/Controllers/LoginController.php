@@ -22,6 +22,16 @@ use Illuminate\Support\Facades\Http;
 class LoginController extends Controller
 {
 
+    private function publicBackendUrl()
+    {
+        $configuredUrl = rtrim((string) config('app.url', ''), '/');
+        if ($configuredUrl !== '') {
+            return $configuredUrl;
+        }
+
+        return rtrim(url('/'), '/');
+    }
+
     public function captcha()
     {
         $width = 600;
@@ -64,7 +74,7 @@ class LoginController extends Controller
             $imagePath = dirname(dirname(dirname(dirname(__FILE__)))) . "/storage/app/public/contents/captcha/$imageName";
             imagepng($image, $imagePath);
             $storageImagePath = "contents/captcha/" . $imageName;
-            $projectUrl = app()->environment() == "production" ? "https://biziapp-test.app.daimlertruck.com/bizizBackend/public" : "http://95.214.97.107/bizizBackend/public";
+            $projectUrl = $this->publicBackendUrl();
             $imageUrl = $projectUrl . "/storage/$storageImagePath";
 
             DB::table('captcha')->insert([
