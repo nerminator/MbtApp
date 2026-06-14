@@ -17,7 +17,6 @@ import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.init.Butto
 import com.daimlertruck.dtag.internal.android.mbt.test.network.entity.init.InitEntity;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.InitVersionDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.login.LoginActivity;
-import com.daimlertruck.dtag.internal.android.mbt.test.utils.RootUtil;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.microsoft.identity.common.java.util.StringUtil;
 
@@ -49,14 +48,11 @@ public class SplashActivity extends BaseActivity {
 
         observe();
 
-        if (RootUtil.isDeviceRooted()) {
-            showMessageDialog("", getString(R.string.TXT_LOGIN_SPLASH_ROOTED_DEVICE), () -> {
-                finish();
-                System.exit(0);
-            });
-        } else {
-            vmSplash.checkVersion(getVersionName());
+        if (!enforceDeviceIntegrity()) {
+            return;
         }
+
+        vmSplash.checkVersion(getVersionName());
     }
 
     private void observe() {

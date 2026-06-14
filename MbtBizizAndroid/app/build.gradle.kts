@@ -136,6 +136,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //Support libraries
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")

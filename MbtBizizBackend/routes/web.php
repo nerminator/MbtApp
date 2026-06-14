@@ -41,7 +41,7 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
 
     $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->post('newsList', 'NewsController@newsList');  
-        $router->get('newsDetail/{id}', 'NewsController@newsDetail');
+      $router->get('newsDetail/{id}', ['middleware' => 'throttle:30,1', 'uses' => 'NewsController@newsDetail']);
         $router->get('birthdayList', 'NewsController@birthdayList'); 
 
         $router->post('saveDeviceInfo', 'DeviceInfoController@saveDeviceInfo');
@@ -70,7 +70,7 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'securityHeaders'], functi
 
         $router->get('userConfig', 'InitController@userConfig');
 
-        $router->get('getDiscountCode/{newsId}', 'NewsController@getDiscountCode');
+        $router->get('getDiscountCode/{newsId}', ['middleware' => 'throttle:10,1', 'uses' => 'NewsController@getDiscountCode']);
 
         $router->get('socialClubLocs', 'SocialClubsController@getSocialClubLocs');
         $router->get('phoneLocs', 'PhonesController@getPhoneLocs');

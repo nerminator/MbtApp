@@ -43,15 +43,9 @@ class NewsController extends Controller
         $discountType = $request->input('discountType');
         $rowOffset = 10 * intval($request->input('pageNumber'));
 
-        $userType = Auth::user()->type;
-        $userCompanyLocationId = Auth::user()->company_location_id;
-        $userEmployeeLocationId = Auth::user()->employee_location_id;
-        $bindings = [];
-        $userTypeStr = "";
-        if ($userType!= null){
-            $userTypeStr = "and (n.employee_type is null or n.employee_type = ?)";
-            $bindings[] = $userType;
-        }
+        $visibleNews = $this->buildVisibleNewsConstraint('n');
+        $visibilitySql = $visibleNews['sql'];
+        $bindings = $visibleNews['bindings'];
 
         //region Setting SQL Query
         if ($this->isLangEn()) {
@@ -63,21 +57,8 @@ class NewsController extends Controller
                                     LIMIT 1
                                 ) as image  
                           from news n
-                          where n.status = 1 and (n.end_time is null or n.end_time > now())
-                                $userTypeStr
-                                and (
-                                      (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
-                                      or
-                                      (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
-                                    )
-                                and (
-                                      (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
-                                      or
-                                      (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
-                                    )
+                          where {$visibilitySql}
                                 ";
-            $bindings[] = $userCompanyLocationId;
-            $bindings[] = $userEmployeeLocationId;
         } else {
             $sqlQuery = "select n.id, n.title, n.type, n.discount_type, n.start_time, n.url, n.phone,
                                 (
@@ -87,21 +68,8 @@ class NewsController extends Controller
                                     LIMIT 1
                                 ) as image  
                           from news n
-                          where n.status = 1 and (n.end_time is null or n.end_time > now())
-                                $userTypeStr
-                                and (
-                                      (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
-                                      or
-                                      (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
-                                    )
-                                and (
-                                      (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
-                                      or
-                                      (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
-                                    )
+                          where {$visibilitySql}
                                 ";
-            $bindings[] = $userCompanyLocationId;
-            $bindings[] = $userEmployeeLocationId;
         }
 
         if ($type != 1) {
@@ -175,7 +143,9 @@ class NewsController extends Controller
         }
         //endregion
 
-        $params = [$id, Auth::user()->type, Auth::user()->company_location_id, Auth::user()->employee_location_id];
+        $visibleNews = $this->buildVisibleNewsConstraint('n');
+        $visibilitySql = $visibleNews['sql'];
+        $params = array_merge([$id], $visibleNews['bindings']);
         if ($this->isLangEn()) {
             $newsObjectResult = $this->getFirstItemFromDb("select n.title_en as title, n.text_en as text, n.sub_title_en as sub_title, n.discount_code_type, n.discount_code_all,
                                                                             n.image, n.url, n.phone, n.type, n.discount_type, n.start_time, n.end_time,
@@ -190,18 +160,8 @@ class NewsController extends Controller
                                                                                 where np.news_id = n.id
                                                                               ) as pdfs
                                                                     from news n
-                                                                    where n.id = ? and (n.end_time is null or n.end_time > now())
-                                                                          and (n.employee_type is null or n.employee_type = ?)
-                                                                          and (
-                                                                                (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
-                                                                                or
-                                                                                (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
-                                                                              )
-                                                                          and (
-                                                                                  (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
-                                                                                  or
-                                                                                  (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
-                                                                              )", $params);
+                                                                                                                                        where n.id = ?
+                                                                                                                                                    and {$visibilitySql}", $params);
         } else {
             $newsObjectResult = $this->getFirstItemFromDb("select n.title, n.text, n.image, n.url, n.phone, n.type, n.discount_type, n.start_time, n.end_time, n.discount_code_type, n.discount_code_all,
                                                                     (
@@ -215,18 +175,8 @@ class NewsController extends Controller
                                                                         where np.news_id = n.id
                                                                       ) as pdfs
                                                                     from news n
-                                                                    where n.id = ? and (n.end_time is null or n.end_time > now())
-                                                                          and (n.employee_type is null or n.employee_type = ?)
-                                                                          and (
-                                                                                (select count(ncl.id) from news_company_location ncl where ncl.news_id = n.id) = 0
-                                                                                or
-                                                                                (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = n.id))
-                                                                              )
-                                                                          and (
-                                                                          (select count(nel.id) from news_employee_location nel where nel.news_id = n.id) = 0
-                                                                        or
-                                                                                  (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = n.id))
-                                                                              )", $params);
+                                                                                                                                        where n.id = ?
+                                                                                                                                                    and {$visibilitySql}", $params);
         }
         if ($newsObjectResult == null) {
             return response()->json([
@@ -393,6 +343,40 @@ class NewsController extends Controller
         return strtoupper($carbonStartDate->format('m.Y'));
     }
 
+    private function buildVisibleNewsConstraint($alias = 'n')
+    {
+        $user = Auth::user();
+        $bindings = [];
+        $clauses = [
+            "{$alias}.status = 1",
+            "({$alias}.end_time is null or {$alias}.end_time > now())",
+        ];
+
+        if ($user->type != null) {
+            $clauses[] = "({$alias}.employee_type is null or {$alias}.employee_type = ?)";
+            $bindings[] = $user->type;
+        }
+
+        $clauses[] = "(
+                            (select count(ncl.id) from news_company_location ncl where ncl.news_id = {$alias}.id) = 0
+                            or
+                            (? in (select ncl.company_location_id from news_company_location ncl where ncl.news_id = {$alias}.id))
+                        )";
+        $bindings[] = $user->company_location_id;
+
+        $clauses[] = "(
+                            (select count(nel.id) from news_employee_location nel where nel.news_id = {$alias}.id) = 0
+                            or
+                            (? in (select nel.employee_location_id from news_employee_location nel where nel.news_id = {$alias}.id))
+                        )";
+        $bindings[] = $user->employee_location_id;
+
+        return [
+            'sql' => implode("\n                                and ", $clauses),
+            'bindings' => $bindings,
+        ];
+    }
+
     /**
      * Convert a stored image/document value into a time-limited HMAC-signed
      * Backend proxy URL. No Authorization header is required to fetch it —
@@ -474,6 +458,25 @@ class NewsController extends Controller
             ]);
         }
         //endregion
+
+        $visibleNews = $this->buildVisibleNewsConstraint('n');
+        $visibilitySql = $visibleNews['sql'];
+        $accessibleDiscount = $this->getFirstItemFromDb(
+            "select n.id
+             from news n
+             where n.id = ?
+                   and n.type = 3
+                   and {$visibilitySql}",
+            array_merge([$newsId], $visibleNews['bindings'])
+        );
+
+        if ($accessibleDiscount == null) {
+            return response()->json([
+                'statusCode' => 401,
+                'responseData' => Lang::get('lang.TXT_SERVER_ERROR_NEWS_NOT_FOUND'),
+                'errorMessage' => null
+            ]);
+        }
 
         $userId = Auth::id();
         

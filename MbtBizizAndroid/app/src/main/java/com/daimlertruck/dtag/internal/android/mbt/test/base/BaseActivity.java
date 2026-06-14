@@ -21,11 +21,13 @@ import com.daimlertruck.dtag.internal.android.mbt.test.receiver.LogOutReceiver;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.BizizProgressDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.dialogs.MessageDialog;
 import com.daimlertruck.dtag.internal.android.mbt.test.ui.login.LoginActivity;
+import com.daimlertruck.dtag.internal.android.mbt.test.utils.RootUtil;
 
 public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompatActivity {
 
 
     private BizizProgressDialog progressDialog;
+    private boolean integrityDialogShown;
 
     public DB binding;
     private LogOutReceiver logOutReceiver = new LogOutReceiver() {
@@ -69,6 +71,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
                 BuildConfig.APPLICATION_ID + ".permission.INTERNAL_BROADCAST",
                 null
         );
+        enforceDeviceIntegrity();
 
     }
 
@@ -117,6 +120,22 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         );
         messageDialog.setListener(listener);
         messageDialog.show(getSupportFragmentManager(), "");
+    }
+
+    protected boolean enforceDeviceIntegrity() {
+        if (integrityDialogShown || isFinishing()) {
+            return false;
+        }
+        if (!RootUtil.isDeviceCompromised()) {
+            return true;
+        }
+
+        integrityDialogShown = true;
+        showMessageDialog("", getString(R.string.TXT_LOGIN_SPLASH_ROOTED_DEVICE), () -> {
+            finishAffinity();
+            System.exit(0);
+        });
+        return false;
     }
 
     //endregion

@@ -6,19 +6,15 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-import com.daimlertruck.dtag.internal.android.mbt.BuildConfig;
-import com.daimlertruck.dtag.internal.android.mbt.R;
-import com.microsoft.identity.client.IPublicClientApplication;
-import com.microsoft.identity.client.ISingleAccountPublicClientApplication;
-import com.microsoft.identity.client.PublicClientApplication;
-import com.microsoft.identity.client.exception.MsalException;
-
 import androidx.annotation.NonNull;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKey;
 
 
 public class SharedPreferenceManager {
 
     public static final String BIZIZ_PREF = "MBT_PREF";
+    private static final String SECURE_BIZIZ_PREF = "MBT_SECURE_PREF";
     public static final String KEY_REFRESH_TOKEN = "KEY_REFRESH_TOKEN";
     public static final String KEY_ACCESS_TOKEN = "KEY_ACCESS_TOKEN";
     public static final String KEY_REMEMBER_USERNAME = "KEY_REMEMBER_USERNAME";
@@ -30,21 +26,105 @@ public class SharedPreferenceManager {
     public final static String APP_DESCRIPTION_TEXT = "APP_DESCRIPTION_TEXT";
     private static final String KEY_IS_SHOWED_NOTIFICATION_POPUP = "KEY_IS_SHOWED_NOTIFICATION_POPUP" ;
 
-    private SharedPreferences preferences;
-    private Editor editor;
-
-    private ISingleAccountPublicClientApplication mSingleAccountApp;
+    private final SharedPreferences preferences;
+    private final Editor editor;
+    private SharedPreferences securePreferences;
+    private Editor secureEditor;
+    private String inMemoryAccessToken = "";
+    private String inMemoryRefreshToken = "";
 
     @SuppressLint("CommitPrefEdits")
     public SharedPreferenceManager(Context context) {
         preferences = context.getSharedPreferences(BIZIZ_PREF, 0);
         editor = preferences.edit();
+        initializeSecurePreferences(context);
+        migrateLegacySensitiveValues();
     }
 
+    private void initializeSecurePreferences(Context context) {
+        try {
+            MasterKey masterKey = new MasterKey.Builder(context)
+                    .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                    .build();
+            securePreferences = EncryptedSharedPreferences.create(
+                    context,
+                    SECURE_BIZIZ_PREF,
+                    masterKey,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+            secureEditor = securePreferences.edit();
+        } catch (Exception exception) {
+            Log.e("SharedPreferenceManager", "Encrypted token storage unavailable. Falling back to in-memory token storage.", exception);
+            securePreferences = null;
+            secureEditor = null;
+        }
+    }
+
+    private void migrateLegacySensitiveValues() {
+        String legacyAccessToken = preferences.getString(KEY_ACCESS_TOKEN, "");
+        String legacyRefreshToken = preferences.getString(KEY_REFRESH_TOKEN, "");
+
+        if (!legacyAccessToken.isEmpty() && getAccesToken().isEmpty()) {
+            saveSecureString(KEY_ACCESS_TOKEN, legacyAccessToken);
+        }
+
+        if (!legacyRefreshToken.isEmpty() && getRefreshToken().isEmpty()) {
+            saveSecureString(KEY_REFRESH_TOKEN, legacyRefreshToken);
+        }
+
+        if (!legacyAccessToken.isEmpty() || !legacyRefreshToken.isEmpty()) {
+            editor.remove(KEY_ACCESS_TOKEN);
+            editor.remove(KEY_REFRESH_TOKEN);
+            editor.commit();
+        }
+    }
+
+    private void saveSecureString(String key, String value) {
+        String sanitizedValue = value == null ? "" : value;
+        if (KEY_ACCESS_TOKEN.equals(key)) {
+            inMemoryAccessToken = sanitizedValue;
+        } else if (KEY_REFRESH_TOKEN.equals(key)) {
+            inMemoryRefreshToken = sanitizedValue;
+        }
+
+        if (secureEditor != null) {
+            secureEditor.putString(key, sanitizedValue);
+            secureEditor.commit();
+        }
+    }
+
+    private String getSecureString(String key) {
+        if (securePreferences != null) {
+            return securePreferences.getString(key, "");
+        }
+
+        if (KEY_ACCESS_TOKEN.equals(key)) {
+            return inMemoryAccessToken;
+        }
+
+        if (KEY_REFRESH_TOKEN.equals(key)) {
+            return inMemoryRefreshToken;
+        }
+
+        return "";
+    }
+
+    private void clearSecureTokens() {
+        inMemoryAccessToken = "";
+        inMemoryRefreshToken = "";
+
+        if (secureEditor != null) {
+            secureEditor.remove(KEY_ACCESS_TOKEN);
+            secureEditor.remove(KEY_REFRESH_TOKEN);
+            secureEditor.commit();
+        }
+    }
 
     public void setAccessToken(String accessToken) {
         try {
-            editor.putString(KEY_ACCESS_TOKEN, accessToken);
+            saveSecureString(KEY_ACCESS_TOKEN, accessToken);
+            editor.remove(KEY_ACCESS_TOKEN);
             editor.commit();
         } catch (Exception ignored) {
         }
@@ -57,6 +137,7 @@ public class SharedPreferenceManager {
 
             editor.clear();
             editor.commit();
+            clearSecureTokens();
 
             // Restore the terms acceptance flag
             editor.putString(KEY_IS_READED_TERMS, isReadedTerms);
@@ -70,15 +151,16 @@ public class SharedPreferenceManager {
     public void logout() {
         try {
             editor.putString(KEY_IS_LOGIN, "0");
-            editor.putString(KEY_ACCESS_TOKEN, "");
             editor.commit();
+            clearSecureTokens();
         } catch (Exception ignored) {
         }
     }
 
     public void setRefreshToken(String refreshToken) {
         try {
-            editor.putString(KEY_REFRESH_TOKEN,refreshToken);
+            saveSecureString(KEY_REFRESH_TOKEN, refreshToken);
+            editor.remove(KEY_REFRESH_TOKEN);
             editor.commit();
         } catch (Exception ignored) {
         }
@@ -87,12 +169,12 @@ public class SharedPreferenceManager {
 
     public String getRefreshToken() {
 
-        return preferences.getString(KEY_REFRESH_TOKEN, "");
+        return getSecureString(KEY_REFRESH_TOKEN);
 
     }
 
     public String getAccesToken() {
-        return preferences.getString(KEY_ACCESS_TOKEN, "");
+        return getSecureString(KEY_ACCESS_TOKEN);
 
     }
 
