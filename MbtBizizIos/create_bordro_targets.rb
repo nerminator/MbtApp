@@ -49,7 +49,7 @@ def duplicate_target(project, config)
   end
 
   puts "  Creating target: #{config[:name]} (from #{config[:source]})"
-
+    display_name: 'MBT App Staging',
   # Create the new native target
   new_target = project.new_target(
     :application,
@@ -105,7 +105,7 @@ def duplicate_target(project, config)
     end
 
     # Copy file references for Sources, Resources, Frameworks, Headers, CopyFiles
-    if phase.respond_to?(:files) && new_phase.respond_to?(:add_file_reference)
+      display_name: 'MBT App',
       phase.files.each do |build_file|
         next unless build_file.file_ref
         begin
