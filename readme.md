@@ -310,6 +310,8 @@ News push notifications are dispatched via a Laravel queue job.
 | `app/MbtApp.pem` | APNs PEM |
 
 > **Important:** APNs P12/PEM certificates expire. The `MbtAppPush22May2025.p12` name indicates it was created in May 2025 — verify its expiry date and renewal schedule.
+>
+> **Active code path:** the panel currently sends APNs using `app/MbtApp.pem` via `Constants::APN_CERTIFICATE_PATH`. See `APNS_CERTIFICATE_ROTATION.md` for renewal and rollout steps.
 
 Push notifications are sent when:
 1. Admin creates/edits news and clicks **Send Notification**
