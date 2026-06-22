@@ -17,35 +17,9 @@ use Illuminate\Support\Facades\Input;
 
 class DocumentController extends Controller
 {
-    private function getProjectUrl(): string
-    {
-        if (app()->environment('production')) {
-            return rtrim(config('app.panel_production_base_url'), '/');
-        }
-
-        if (app()->environment('local')) {
-            return rtrim(config('app.panel_local_base_url'), '/');
-        }
-
-        return rtrim(config('app.panel_staging_base_url'), '/');
-    }
-
-    /**
-     * Convert a stored value (relative path or legacy full URL) to a full Panel URL
-     * for display in the admin UI only. Files are now stored privately.
-     */
     private function toDisplayUrl(?string $stored): ?string
     {
-        if (empty($stored)) return null;
-        // Legacy records already have a full URL
-        if (filter_var($stored, FILTER_VALIDATE_URL) !== false) {
-            return $stored;
-        }
-        // New records store a relative path — build a temporary admin-facing URL
-        // Note: this URL is only accessible to authenticated admin sessions via the
-        // web server. The file is in private storage; direct web access will 404.
-        // Use the Backend proxy URL pattern instead if direct download is needed.
-        return $this->getProjectUrl() . '/storage/' . $stored;
+        return NewsController::toDisplayUrl($stored);
     }
 
     /**
@@ -125,9 +99,7 @@ class DocumentController extends Controller
             try
             {
                 $pdfFileName = $pdfFile->getClientOriginalName();
-                // Store in private (local) disk — not web-accessible
                 $pdfFilePath = Storage::disk('local')->putFile("contents/news/$newsId/documents", $pdfFile);
-                // Save only the relative path; the Backend API proxy will serve it with auth
                 $pdfFileUrl = $pdfFilePath;
                 $documentId = DB::table('mbtbiziz.news_pdf_files')->insertGetId([
                     'news_id' => $newsId,

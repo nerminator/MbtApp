@@ -15,6 +15,23 @@ use Illuminate\Support\Facades\Log;
 
 class NewsController extends Controller
 {
+    private const TYPE_MAP = [
+        'image' => '',
+        'document' => 'documents/',
+        'pdf' => 'pdf/',
+    ];
+
+    private const ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'pdf'];
+
+    private const MIME_MAP = [
+        'png' => 'image/png',
+        'jpg' => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'gif' => 'image/gif',
+        'webp' => 'image/webp',
+        'pdf' => 'application/pdf',
+    ];
+
     private function getProjectUrl(): string
     {
         if (app()->environment('production')) {
@@ -38,17 +55,83 @@ class NewsController extends Controller
         return strncmp($value, 'contents/news/', 14) === 0;
     }
 
-    private static function toDisplayUrl(?string $stored): ?string
+    private function toStoredRelativePath(string $value): string
+    {
+        if ($this->isStoredRelativePath($value)) {
+            return ltrim($value, '/');
+        }
+
+        if (!$this->isAbsoluteUrl($value)) {
+            return $value;
+        }
+
+        $urlPath = (string) parse_url($value, PHP_URL_PATH);
+        $storageMarker = '/storage/';
+        $storagePosition = strpos($urlPath, $storageMarker);
+        if ($storagePosition !== false) {
+            return ltrim(substr($urlPath, $storagePosition + strlen($storageMarker)), '/');
+        }
+
+        if (preg_match('#/(?:api/v1/)?news/media/(\d+)/(image|document|pdf)/([a-zA-Z0-9_\-.]+)$#', $urlPath, $matches) === 1) {
+            $subDirectory = $matches[2] === 'image' ? '' : ($matches[2] === 'document' ? 'documents/' : 'pdf/');
+            return 'contents/news/' . $matches[1] . '/' . $subDirectory . $matches[3];
+        }
+
+        return $value;
+    }
+
+    private static function parseStoredNewsMediaPath(string $stored): ?array
+    {
+        if (filter_var($stored, FILTER_VALIDATE_URL) !== false) {
+            $urlPath = parse_url($stored, PHP_URL_PATH);
+            $marker = '/storage/';
+            $position = strpos((string) $urlPath, $marker);
+            if ($position === false) {
+                return null;
+            }
+
+            $stored = substr($urlPath, $position + strlen($marker));
+        }
+
+        $parts = explode('/', ltrim($stored, '/'));
+        if (count($parts) < 4 || $parts[0] !== 'contents' || $parts[1] !== 'news') {
+            return null;
+        }
+
+        $newsId = $parts[2];
+        if (!ctype_digit((string) $newsId)) {
+            return null;
+        }
+
+        if (count($parts) === 4) {
+            $type = 'image';
+            $filename = $parts[3];
+        } elseif (count($parts) === 5 && in_array($parts[3], ['documents', 'pdf'], true)) {
+            $type = $parts[3] === 'documents' ? 'document' : 'pdf';
+            $filename = $parts[4];
+        } else {
+            return null;
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9_\-.]+$/', $filename)) {
+            return null;
+        }
+
+        return [
+            'newsId' => $newsId,
+            'type' => $type,
+            'filename' => $filename,
+        ];
+    }
+
+    public static function toDisplayUrl(?string $stored): ?string
     {
         if (empty($stored)) {
             return null;
         }
 
-        if (filter_var($stored, FILTER_VALIDATE_URL) !== false) {
-            return $stored;
-        }
-
-        if (strncmp($stored, 'contents/news/', 14) !== 0) {
+        $mediaParts = self::parseStoredNewsMediaPath($stored);
+        if ($mediaParts === null) {
             return $stored;
         }
 
@@ -60,7 +143,13 @@ class NewsController extends Controller
             $baseUrl = rtrim(config('app.panel_staging_base_url'), '/');
         }
 
-        return $baseUrl . '/storage/' . ltrim($stored, '/');
+        return sprintf(
+            '%s/news/media/%s/%s/%s',
+            $baseUrl,
+            $mediaParts['newsId'],
+            $mediaParts['type'],
+            $mediaParts['filename']
+        );
     }
 
     /**
@@ -100,6 +189,63 @@ class NewsController extends Controller
         $id = DB::table('news')->insertGetId(array('type' => 10, 'status' => 1,'loc_id'=> $loc_id));
         return redirect('editnews-'.$id);
     }
+
+    public function serveMedia(Request $request, $newsId, $type, $filename)
+    {
+        $validator = Validator::make(
+            ['newsId' => $newsId, 'type' => $type, 'filename' => $filename],
+            [
+                'newsId' => 'required|integer|min:1',
+                'type' => 'required|in:image,document,pdf',
+                'filename' => ['required', 'string', 'regex:/^[a-zA-Z0-9_\-.]+$/'],
+            ]
+        );
+
+        if ($validator->fails()) {
+            abort(400);
+        }
+
+        if (strpos($filename, '..') !== false || strpos($filename, '/') !== false || strpos($filename, "\0") !== false) {
+            abort(400);
+        }
+
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        if (!in_array($extension, self::ALLOWED_EXTENSIONS, true)) {
+            abort(400);
+        }
+
+        $relativePath = 'contents/news/' . $newsId . '/' . self::TYPE_MAP[$type] . $filename;
+
+        $disk = null;
+        foreach (['local', 'public'] as $diskName) {
+            if (Storage::disk($diskName)->exists($relativePath)) {
+                $disk = Storage::disk($diskName);
+                break;
+            }
+        }
+
+        if ($disk === null) {
+            abort(404);
+        }
+
+        $stream = $disk->readStream($relativePath);
+        if ($stream === false) {
+            abort(404);
+        }
+
+        $mimeType = self::MIME_MAP[$extension] ?? 'application/octet-stream';
+        $contentLength = $disk->size($relativePath);
+
+        return response()->stream(function () use ($stream) {
+            fpassthru($stream);
+            fclose($stream);
+        }, 200, [
+            'Content-Type' => $mimeType,
+            'Content-Length' => $contentLength,
+            'Cache-Control' => 'private, max-age=3600',
+            'Content-Disposition' => 'inline; filename="' . basename($filename) . '"',
+        ]);
+    }
     
 
     private function updateImages(Request $request, int $newsId, string $redirect  ){
@@ -115,7 +261,7 @@ class NewsController extends Controller
             if (!empty($imageString)) {
            
                     if ($this->isAbsoluteUrl($imageString) || $this->isStoredRelativePath($imageString)) { // already stored
-                        $imageUrl = $imageString;
+                        $imageUrl = $this->toStoredRelativePath($imageString);
                     } else {
                         $base64Str = substr($imageString, strpos($imageString, ",") + 1);
                         if ($this->getBase64ImageSize($base64Str) > 1.5) {
@@ -124,7 +270,6 @@ class NewsController extends Controller
                         $image = base64_decode($base64Str);
     
                         $imagePath = "contents/news/$newsId/" . uniqid() . uniqid() . uniqid() . ".png";
-                        // Store in private (local) disk — not web-accessible
                         Storage::disk('local')->put($imagePath, $image);
                         $imageUrl = $imagePath; // relative path stored in DB
                     }
@@ -160,14 +305,13 @@ class NewsController extends Controller
             if (!empty($pdfFile)) {
            
                     if ($this->isAbsoluteUrl($pdfFile) || $this->isStoredRelativePath($pdfFile)) { // already stored
-                        $url = $pdfFile;
+                        $url = $this->toStoredRelativePath($pdfFile);
                     } else {
                         if ($this->getFileSize($pdfFile) > 1.5) {
                             return redirect($redirect)->with('status', ' File must be less than 1.5 megabytes!'); // file size error
                         }
 
                         $path = "contents/news/$newsId/pdf/" . uniqid() . uniqid() . uniqid() . ".png";
-                        // Store in private (local) disk — not web-accessible
                         Storage::disk('local')->put($path, $pdfFile);
                         $url = $path; // relative path stored in DB
                     }
