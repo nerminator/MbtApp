@@ -61,6 +61,7 @@ Route::middleware('azure')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/addnewsEmpty', [NewsController::class, 'addnewsEmpty'])->name('addnewsEmpty');
+    Route::get('/news/media/{newsId}/{type}/{filename}', [NewsController::class, 'serveMedia'])->name('news.media');
 
     Route::get('/editnews-{id}', [EditNewsController::class, 'index'])->name('editnews');
 
