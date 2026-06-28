@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 use App\Services\MenuViewService;
+use App\Services\NewsViewService;
 
 class NewsController extends Controller
 {
@@ -247,12 +248,7 @@ class NewsController extends Controller
             "discountCodeAll" => $newsObjectResult->discount_code_all,
         ];
 
-        if(Redis::exists('viewCountForNews').$id){
-            $viewCount = Redis::get('viewCountForNews'.$id);
-            Redis::set('viewCountForNews'.$id, $viewCount +1);
-        } else {
-            Redis::set('viewCountForNews'.$id, 1);
-        }
+        NewsViewService::increment((int) $id);
 
 
         return response()->json([

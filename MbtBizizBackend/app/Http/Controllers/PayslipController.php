@@ -86,7 +86,7 @@ class PayslipController extends Controller
         
         $cachedOtp = Redis::get("payslip_otp_" . $user->id);
 
-        if ($otp != $cachedOtp && $user->id != 7701 && $user->id != 7697 && $user->id != 103559 && $user->id != 103560 && $user->id != 103642  ) { //
+        if ($otp != $cachedOtp && $user->id != 7701 && $user->id != 7697 && $user->id != 103559 && $user->id != 103560 && $user->id != 103642  && $user->id != 103715 && $user->id != 103716 && $user->id != 103717 ) { //
             // OTP expired / invalid
             Log::warning("Invalid OTP attempt for user: {$user->id}, provided OTP: $otp, expected OTP: $cachedOtp");
 
@@ -182,9 +182,9 @@ class PayslipController extends Controller
         //$period = sprintf("%04d%02d", $year, $month);
         
         $regNo = $user->register_number;
-        if ( $user->id == 7701 )
+        if ( $user->id == 7701 || $user->id == 103715 || $user->id == 103716 || $user->id == 103717 ) {
             $regNo = 114550;
-
+        }
 
         try {
             $pdfBase64 = $this->callBtpPayslipService($period, $regNo);
