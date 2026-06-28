@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Log\Logger;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
@@ -11,7 +11,164 @@ use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
-    public function index()
+    private function getNewsViewCounts(int $newsId): array
+    {
+        return [
+            'total' => (int) Redis::get('viewCountForNews' . $newsId),
+            'white' => (int) Redis::get('viewCountForNews:white:' . $newsId),
+            'blue' => (int) Redis::get('viewCountForNews:blue:' . $newsId),
+            'other' => (int) Redis::get('viewCountForNews:other:' . $newsId),
+        ];
+    }
+
+    private function deleteNewsViewKeys(int $newsId): void
+    {
+        Redis::del('viewCountForNews' . $newsId);
+        Redis::del('viewCountForNews:white:' . $newsId);
+        Redis::del('viewCountForNews:blue:' . $newsId);
+        Redis::del('viewCountForNews:other:' . $newsId);
+    }
+
+    private function resolveActiveUsersTypeFilter(Request $request): array
+    {
+        $type = $request->query('user_type', 'all');
+
+        if ($type === 'white') {
+            return [
+                'value' => 'white',
+                'title_suffix' => ' - White Collar',
+            ];
+        }
+
+        if ($type === 'blue') {
+            return [
+                'value' => 'blue',
+                'title_suffix' => ' - Blue Collar',
+            ];
+        }
+
+        if ($type === 'other') {
+            return [
+                'value' => 'other',
+                'title_suffix' => ' - Others',
+            ];
+        }
+
+        return [
+            'value' => 'all',
+            'title_suffix' => '',
+        ];
+    }
+
+    private function resolveActiveUsersRange(Request $request): array
+    {
+        $period = $request->query('period', '30d');
+        $today = Carbon::today();
+
+        if ($period === 'custom') {
+            $startInput = $request->query('start_date');
+            $endInput = $request->query('end_date');
+
+            if ($startInput && $endInput) {
+                try {
+                    $startDate = Carbon::parse($startInput)->startOfDay();
+                    $endDate = Carbon::parse($endInput)->endOfDay();
+
+                    if ($startDate->gt($endDate)) {
+                        [$startDate, $endDate] = [$endDate->copy()->startOfDay(), $startDate->copy()->endOfDay()];
+                    }
+
+                    return [
+                        'period' => 'custom',
+                        'start' => $startDate,
+                        'end' => $endDate,
+                        'title' => 'Active Users (Custom Interval)',
+                        'start_date' => $startDate->toDateString(),
+                        'end_date' => $endDate->toDateString(),
+                    ];
+                } catch (\Throwable $exception) {
+                    Log::warning('Invalid custom dashboard date range.', [
+                        'start_date' => $startInput,
+                        'end_date' => $endInput,
+                    ]);
+                }
+            }
+
+            $period = '30d';
+        }
+
+        if ($period === '1y') {
+            return [
+                'period' => '1y',
+                'start' => $today->copy()->subYear()->startOfDay(),
+                'end' => $today->copy()->endOfDay(),
+                'title' => 'Active Users (Last 1 Year)',
+                'start_date' => null,
+                'end_date' => null,
+            ];
+        }
+
+        if ($period === '3m') {
+            return [
+                'period' => '3m',
+                'start' => $today->copy()->subMonths(3)->startOfDay(),
+                'end' => $today->copy()->endOfDay(),
+                'title' => 'Active Users (Last 3 Months)',
+                'start_date' => null,
+                'end_date' => null,
+            ];
+        }
+
+        return [
+            'period' => '30d',
+            'start' => $today->copy()->subDays(30)->startOfDay(),
+            'end' => $today->copy()->endOfDay(),
+            'title' => 'Active Users (Last 30 Days)',
+            'start_date' => null,
+            'end_date' => null,
+        ];
+    }
+
+    private function buildActiveUsersChart(Carbon $startDate, Carbon $endDate, string $userType): array
+    {
+        $activeUsers = DB::table('user_logins')
+            ->join('users', 'users.id', '=', 'user_logins.user_id')
+            ->select(DB::raw('DATE(login_at) AS date'), DB::raw('COUNT(DISTINCT user_id) AS total'))
+            ->whereBetween('login_at', [$startDate, $endDate]);
+
+        if ($userType === 'white') {
+            $activeUsers->where('users.type', 1);
+        } elseif ($userType === 'blue') {
+            $activeUsers->where('users.type', 2);
+        } elseif ($userType === 'other') {
+            $activeUsers->whereNull('users.type');
+        }
+
+        $activeUsers = $activeUsers
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get()
+            ->pluck('total', 'date');
+
+        $labels = [];
+        $data = [];
+        $cursor = $startDate->copy()->startOfDay();
+        $lastDate = $endDate->copy()->startOfDay();
+
+        while ($cursor->lte($lastDate)) {
+            $dateKey = $cursor->toDateString();
+            $labels[] = $dateKey;
+            $data[] = (int) ($activeUsers[$dateKey] ?? 0);
+            $cursor->addDay();
+        }
+
+        return [
+            'labels' => $labels,
+            'data' => $data,
+        ];
+    }
+
+    public function index(Request $request)
     {
         // ----- KPI VALUES -----
 
@@ -62,20 +219,17 @@ class DashboardController extends Controller
             ->whereNull('type')
             ->count();
 
-                // ---------------------------
-        // 1. ACTIVE USERS (last login)
         // ---------------------------
-        $activeUsers = DB::table('user_logins')
-            ->select(DB::raw('DATE(login_at) AS date'), DB::raw('COUNT(DISTINCT user_id) AS total'))
-            ->where('login_at', '>=', Carbon::now()->subDays(30))
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
-
-        $activeUsersChart = [
-            'labels' => $activeUsers->pluck('date')->values()->all(),
-            'data'   => $activeUsers->pluck('total')->values()->all(),
-        ];
+        // 1. ACTIVE USERS (by interval)
+        // ---------------------------
+        $activeUsersFilter = $this->resolveActiveUsersRange($request);
+        $activeUsersTypeFilter = $this->resolveActiveUsersTypeFilter($request);
+        $activeUsersFilter['title'] .= $activeUsersTypeFilter['title_suffix'];
+        $activeUsersChart = $this->buildActiveUsersChart(
+            $activeUsersFilter['start'],
+            $activeUsersFilter['end'],
+            $activeUsersTypeFilter['value']
+        );
 
         //Log::info('Active Users Data: ', $activeUsersChart);
 
@@ -84,12 +238,15 @@ class DashboardController extends Controller
         // -------------------------------
         $newsViews = [];
 
-        $redisKeys = Redis::keys('viewCountForNews*');
+        $redisKeys = Redis::keys('viewCountForNews[0-9]*');
 
         foreach ($redisKeys as $key) {
+            if (!preg_match('/^viewCountForNews(\d+)$/', $key, $matches)) {
+                continue;
+            }
 
-            $newsId = str_replace('viewCountForNews', '', $key);
-            $views = Redis::get($key);
+            $newsId = (int) $matches[1];
+            $viewCounts = $this->getNewsViewCounts($newsId);
 
             // Fetch title from DB
             $news = DB::table('news')
@@ -102,7 +259,7 @@ class DashboardController extends Controller
 
                 Log::info("Deleting Redis key '$key' because title for News ID $newsId is null");
 
-                Redis::del($key); // <-- delete the key here
+                $this->deleteNewsViewKeys($newsId);
                 continue;
             }
 
@@ -110,7 +267,10 @@ class DashboardController extends Controller
             $newsViews[] = [
                 'news_id' => $news->id,
                 'title'   => $news->title,
-                'views'   => (int)$views,
+                'views'   => $viewCounts['total'],
+                'white'   => $viewCounts['white'],
+                'blue'    => $viewCounts['blue'],
+                'other'   => $viewCounts['other'],
             ];
         }
 
@@ -151,6 +311,8 @@ class DashboardController extends Controller
 
         return view('dashboard', [
             'activeUsersChart' => $activeUsersChart,
+            'activeUsersFilter' => $activeUsersFilter,
+            'activeUsersTypeFilter' => $activeUsersTypeFilter,
             'newsViews'        => $newsViews,
             'menuViews'        => $menuViews,
 

@@ -445,12 +445,12 @@ class NewsController extends Controller
     {
         $newsResult = DB::select("select n.*,
                                                               (
-                                                                select group_concat(ncl.id)
+                                                                                                                                select group_concat(ncl.company_location_id)
                                                                 from news_company_location ncl
                                                                 where ncl.news_id = n.id
                                                               ) as company_ids,
                                                               (
-                                                                select group_concat(nel.id)
+                                                                                                                                select group_concat(nel.employee_location_id)
                                                                 from news_employee_location nel
                                                                 where nel.news_id = n.id
                                                               ) as location_ids,
