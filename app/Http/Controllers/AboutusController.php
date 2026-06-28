@@ -8,27 +8,26 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Log;
 
 class AboutusController extends Controller
 {
-    private function getProjectUrl(): string
+    private function getAboutUsContent(string $fileName): string
     {
-        if (app()->environment('production')) {
-            return rtrim(config('app.panel_production_base_url'), '/');
+        $publicDisk = Storage::disk('public');
+
+        if ($publicDisk->exists($fileName)) {
+            return $publicDisk->get($fileName);
         }
 
-        if (app()->environment('local')) {
-            return rtrim(config('app.panel_local_base_url'), '/');
+        $fallbackPath = storage_path('app/deleted/' . $fileName);
+        if (is_file($fallbackPath)) {
+            return file_get_contents($fallbackPath);
         }
 
-        return rtrim(config('app.panel_staging_base_url'), '/');
+        return '';
     }
 
     /**
@@ -44,15 +43,16 @@ class AboutusController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+        * @return \Illuminate\Contracts\View\View|\Illuminate\View\View
      */
     public function index()
     {
-        $projectUrl = $this->getProjectUrl();
-        $aboutUsTRHtml = file_get_contents("$projectUrl/storage/aboutusTR.html");
-        $aboutUsENHtml = file_get_contents("$projectUrl/storage/aboutusEN.html");
+        $aboutUsTRHtml = $this->getAboutUsContent('aboutusTR.html');
+        $aboutUsENHtml = $this->getAboutUsContent('aboutusEN.html');
+
         return view('aboutus')->with('contentTR', $aboutUsTRHtml)->with('contentEN', $aboutUsENHtml);
     }
+
     public function updateAboutus(Request $request)
     {
         //region Controls
@@ -65,8 +65,8 @@ class AboutusController extends Controller
             return 'Beklenmedik bir hata oluştu. Hata kodu: 16';
         }
 
-        Storage::put("aboutusTR.html", $request->Input('aboutusTRHtml'), 'public');
-        Storage::put("aboutusEN.html", $request->Input('aboutusENHtml'), 'public');
+        Storage::disk('public')->put('aboutusTR.html', $request->input('aboutusTRHtml'));
+        Storage::disk('public')->put('aboutusEN.html', $request->input('aboutusENHtml'));
        
         return view('home');
     }

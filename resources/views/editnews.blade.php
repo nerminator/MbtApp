@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $selectedLocationIds = !empty($newsData->location_ids)
+            ? array_map('strval', array_filter(explode(',', $newsData->location_ids), 'strlen'))
+            : [];
+        $selectedCompanyIds = !empty($newsData->company_ids)
+            ? array_map('strval', array_filter(explode(',', $newsData->company_ids), 'strlen'))
+            : [];
+    @endphp
     <div class="container-fluid" style="margin-top: 25px;">
         <div class="row content">
             @include('leftsidebar')
-            <form id="newsForm" method="post" onsubmit="onClickSubmitForm();return false;">
+            <form id="newsForm" method="post" onsubmit="normalizeNewsFilters(); onClickSubmitForm();return false;">
                 {{ csrf_field() }}
                 <div class="col-md-9" style="margin-top: 15px;">
                     <div class="col-md-9"><h3 style="margin-top: 10px;">News <i class="fa fa-caret-right"
@@ -85,19 +93,31 @@
                                                 <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
                                             @endforeach
                                         </select>
+                                        <div class="col-md-12" style="padding: 0px; display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                                            <label class="translation_title" for="locationIdList" style="margin-bottom: 0px;">LOCATION</label>
+                                            <button type="button" class="btn btn-default btn-sm" onclick="clearLocationSelection()">Clear</button>
+                                        </div>
+                                        <select id="locationIdList" name="locationIdList[]" class="col-md-12 form-control selectpicker" style="height: 45px;" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count > 2" data-dropup-auto="false" data-size="8">
+                                            @foreach($compL as $item)
+                                                <option value="{{ $item['value'] }}" {{ in_array((string) $item['value'], $selectedLocationIds, true) ? 'selected' : '' }}>{{ $item['text'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="col-md-12" style="padding: 0px; margin-top: 6px; font-size: 12px; color: #777;">
+                                            If no location is selected, the news is shown without a location filter.
+                                        </div>
                                     @else<div hidden>
                                         <label class="col-md-12 translation_title" for="locationIdList">COMPANY LOCATION</label>
-                                        <select name="locationIdList[]" class="col-md-12 form-control"
-                                                style="height: 45px;" multiple>
+                                        <select name="locationIdList[]" class="col-md-12 form-control selectpicker"
+                                                style="height: 45px;" multiple data-dropup-auto="false" data-size="8">
                                             @foreach($compL as $item)
-                                                <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
+                                                <option value="{{ $item['value'] }}" {{ in_array((string) $item['value'], $selectedLocationIds, true) ? 'selected' : '' }}>{{ $item['text'] }}</option>
                                             @endforeach
                                         </select>
                                         <label class="col-md-12 translation_title" for="companyIdList">COMPANY CODE</label>
-                                        <select name="companyIdList[]" class="col-md-12 form-control"
-                                                style="height: 45px;" multiple>
+                                        <select name="companyIdList[]" class="col-md-12 form-control selectpicker"
+                                                style="height: 45px;" multiple data-dropup-auto="false" data-size="8">
                                             @foreach($compC as $item)
-                                                <option value="{{ $item['value'] }}">{{ $item['text'] }}</option>
+                                                <option value="{{ $item['value'] }}" {{ in_array((string) $item['value'], $selectedCompanyIds, true) ? 'selected' : '' }}>{{ $item['text'] }}</option>
                                             @endforeach
                                         </select>
                                         </div>
@@ -284,4 +304,25 @@
             </div>
         </div>
     </div>
+    <script>
+        function clearLocationSelection() {
+            var $locationSelect = $("[name='locationIdList[]']");
+
+            $locationSelect.find('option').prop('selected', false);
+
+            if ($locationSelect.data('selectpicker')) {
+                $locationSelect.selectpicker('deselectAll');
+                $locationSelect.selectpicker('refresh');
+            } else {
+                $locationSelect.val([]);
+            }
+        }
+
+        function normalizeNewsFilters() {
+            var $locationSelect = $("[name='locationIdList[]']");
+            if ($locationSelect.val() === null) {
+                $locationSelect.find('option').prop('selected', false);
+            }
+        }
+    </script>
 @endsection

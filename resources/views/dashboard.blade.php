@@ -30,6 +30,64 @@
                     font-family: "Font Awesome 6 Free" !important;
                     font-weight: 900 !important;
                 }
+                .dashboard-filter-tabs {
+                    display: inline-flex;
+                    gap: 6px;
+                    flex-wrap: wrap;
+                    margin: 16px 0 18px;
+                }
+                .dashboard-filter-tab {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px 16px;
+                    border: 1px solid #2f3b52;
+                    border-radius: 10px;
+                    color: #9fb3d1;
+                    background: #111827;
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: background-color .15s ease, color .15s ease;
+                }
+                .dashboard-filter-tab:hover,
+                .dashboard-filter-tab:focus {
+                    color: #ffffff;
+                    text-decoration: none;
+                    background: #162033;
+                }
+                .dashboard-filter-tab.active {
+                    color: #ffffff;
+                    background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%);
+                    box-shadow: inset 0 -2px 0 rgba(255,255,255,0.12);
+                }
+                .dashboard-filter-form {
+                    display: flex;
+                    gap: 12px;
+                    flex-wrap: wrap;
+                    align-items: end;
+                    margin: 0 0 14px;
+                    padding: 16px;
+                    border: 1px solid #243041;
+                    border-radius: 12px;
+                    background: #0b1220;
+                    max-width: 900px;
+                }
+                .dashboard-filter-form label {
+                    color: #c5d1e0;
+                    display: block;
+                    margin-bottom: 4px;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: .04em;
+                }
+                .dashboard-filter-form input {
+                    background: #0f172a;
+                    border: 1px solid #334155;
+                    color: #ffffff;
+                }
+                .dashboard-filter-form .btn {
+                    min-width: 110px;
+                }
             </style>
 
             <div class="row mb-4 text-center">
@@ -86,8 +144,119 @@
             </div>
 
             <!-- Active Users Chart -->
-            <div class="card mt-4 p-3" style="height: 350px;">
-                <h3>Active Users (Last 30 Days)</h3>
+            @php
+                $customStartDate = $activeUsersFilter['start_date'] ?? now()->subDays(30)->toDateString();
+                $customEndDate = $activeUsersFilter['end_date'] ?? now()->toDateString();
+                $selectedUserType = $activeUsersTypeFilter['value'];
+
+                $baseChartParams = ['user_type' => $selectedUserType];
+                $customChartParams = [
+                    'period' => 'custom',
+                    'start_date' => $customStartDate,
+                    'end_date' => $customEndDate,
+                    'user_type' => $selectedUserType,
+                ];
+
+                $typeParams = [
+                    'all' => [
+                        'period' => $activeUsersFilter['period'],
+                        'start_date' => $activeUsersFilter['period'] === 'custom' ? $customStartDate : null,
+                        'end_date' => $activeUsersFilter['period'] === 'custom' ? $customEndDate : null,
+                        'user_type' => 'all',
+                    ],
+                    'white' => [
+                        'period' => $activeUsersFilter['period'],
+                        'start_date' => $activeUsersFilter['period'] === 'custom' ? $customStartDate : null,
+                        'end_date' => $activeUsersFilter['period'] === 'custom' ? $customEndDate : null,
+                        'user_type' => 'white',
+                    ],
+                    'blue' => [
+                        'period' => $activeUsersFilter['period'],
+                        'start_date' => $activeUsersFilter['period'] === 'custom' ? $customStartDate : null,
+                        'end_date' => $activeUsersFilter['period'] === 'custom' ? $customEndDate : null,
+                        'user_type' => 'blue',
+                    ],
+                    'other' => [
+                        'period' => $activeUsersFilter['period'],
+                        'start_date' => $activeUsersFilter['period'] === 'custom' ? $customStartDate : null,
+                        'end_date' => $activeUsersFilter['period'] === 'custom' ? $customEndDate : null,
+                        'user_type' => 'other',
+                    ],
+                ];
+            @endphp
+
+            <div class="card mt-4 p-3" style="min-height: 520px;">
+                <h3>{{ $activeUsersFilter['title'] }}</h3>
+
+                <div class="dashboard-filter-tabs">
+                    <a href="{{ route('dashboard', array_merge($baseChartParams, ['period' => '30d'])) }}"
+                       class="dashboard-filter-tab {{ $activeUsersFilter['period'] === '30d' ? 'active' : '' }}">
+                        Last 30 Days
+                    </a>
+                    <a href="{{ route('dashboard', array_merge($baseChartParams, ['period' => '3m'])) }}"
+                       class="dashboard-filter-tab {{ $activeUsersFilter['period'] === '3m' ? 'active' : '' }}">
+                        Last 3 Months
+                    </a>
+                    <a href="{{ route('dashboard', array_merge($baseChartParams, ['period' => '1y'])) }}"
+                       class="dashboard-filter-tab {{ $activeUsersFilter['period'] === '1y' ? 'active' : '' }}">
+                        Last 1 Year
+                    </a>
+                    <a href="{{ route('dashboard', $customChartParams) }}"
+                       class="dashboard-filter-tab {{ $activeUsersFilter['period'] === 'custom' ? 'active' : '' }}">
+                        Custom Interval
+                    </a>
+                </div>
+
+                <div class="dashboard-filter-tabs" style="margin-top: -4px; margin-bottom: 18px;">
+                    <a href="{{ route('dashboard', array_filter($typeParams['all'], fn($value) => !is_null($value))) }}"
+                       class="dashboard-filter-tab {{ $selectedUserType === 'all' ? 'active' : '' }}">
+                        All
+                    </a>
+                    <a href="{{ route('dashboard', array_filter($typeParams['white'], fn($value) => !is_null($value))) }}"
+                       class="dashboard-filter-tab {{ $selectedUserType === 'white' ? 'active' : '' }}">
+                        White Collar
+                    </a>
+                    <a href="{{ route('dashboard', array_filter($typeParams['blue'], fn($value) => !is_null($value))) }}"
+                       class="dashboard-filter-tab {{ $selectedUserType === 'blue' ? 'active' : '' }}">
+                        Blue Collar
+                    </a>
+                    <a href="{{ route('dashboard', array_filter($typeParams['other'], fn($value) => !is_null($value))) }}"
+                       class="dashboard-filter-tab {{ $selectedUserType === 'other' ? 'active' : '' }}">
+                        Others
+                    </a>
+                </div>
+
+                @if ($activeUsersFilter['period'] === 'custom')
+                    <form method="GET" action="{{ route('dashboard') }}" class="dashboard-filter-form">
+                        <input type="hidden" name="period" value="custom">
+                        <input type="hidden" name="user_type" value="{{ $selectedUserType }}">
+                        <div>
+                            <label for="active-users-start-date">Start Date</label>
+                            <input
+                                id="active-users-start-date"
+                                type="date"
+                                name="start_date"
+                                class="form-control"
+                                value="{{ $customStartDate }}"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <label for="active-users-end-date">End Date</label>
+                            <input
+                                id="active-users-end-date"
+                                type="date"
+                                name="end_date"
+                                class="form-control"
+                                value="{{ $customEndDate }}"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                        </div>
+                    </form>
+                @endif
 
                 <div style="position: relative; height:300px; width:100%; max-width: 900px;">
                     <canvas id="activeUsersChart"></canvas>
@@ -102,21 +271,31 @@
                     <thead>
                         <tr>
                             <th>News Title</th>
-                            <th>Views</th>
+                            <th>Total Views</th>
+                            <th>White Collar Views</th>
+                            <th>Blue Collar Views</th>
+                            <th>Other Views</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($newsViews as $item)
-                        <tr>
-                            <td>
-                                <a href="{{ url('/editnews-' . $item['news_id']) }}"
-                                   style="color:#58a6ff; text-decoration: underline;">
-                                    {{ $item['title'] }}
-                                </a>
-                            </td>
-                            <td>{{ $item['views'] }}</td>
-                        </tr>
-                        @endforeach
+                        @forelse ($newsViews as $item)
+                            <tr>
+                                <td>
+                                    <a href="{{ url('/editnews-' . $item['news_id']) }}"
+                                       style="color:#58a6ff; text-decoration: underline;">
+                                        {{ $item['title'] }}
+                                    </a>
+                                </td>
+                                <td>{{ number_format($item['views']) }}</td>
+                                <td>{{ number_format($item['white']) }}</td>
+                                <td>{{ number_format($item['blue']) }}</td>
+                                <td>{{ number_format($item['other']) }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-muted">No announcement view data found.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -181,12 +360,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const labels = @json($activeUsersChart['labels']);
     const data = @json($activeUsersChart['data']);
 
-    console.log("Chart received:", labels, data); // <-- debug
-
     const canvas = document.getElementById('activeUsersChart');
 
     if (!canvas) {
-        console.error("Canvas #activeUsersChart not found!");
         return;
     }
 
@@ -198,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
             labels: labels,
             datasets: [{
                 label: 'Active Users',
-                data: @json($activeUsersChart['data']),
+                data: data,
                 borderWidth: 2,
                 fill: true,
                 borderColor: '#00AEEF',
