@@ -9,6 +9,7 @@
 import UIKit
 
 class MBTTabBarControllerDelegate: NSObject, UITabBarControllerDelegate {
+    var onSelectionChanged: ((UITabBarController) -> Void)?
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return MBTTabbarAnimator(tabBarController: tabBarController, lastIndex: tabBarController.selectedIndex)
@@ -22,6 +23,10 @@ class MBTTabBarControllerDelegate: NSObject, UITabBarControllerDelegate {
             }
         }
         return true
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        onSelectionChanged?(tabBarController)
     }
 }
 

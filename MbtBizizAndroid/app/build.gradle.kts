@@ -29,8 +29,8 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
-        versionCode = 46
-        versionName = "1.5.0"
+        versionCode = 48
+        versionName = "1.6.0"
         dataBinding.enable = true
         multiDexEnabled = false
 

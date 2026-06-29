@@ -24,7 +24,8 @@ final class PayslipOTPViewController: MBTBaseViewController, UITextFieldDelegate
         txtOtp.addTarget(self, action: #selector(otpTextChanged(_:)), for: .editingChanged)
 
         btnVerify.isEnabled = false
-        btnVerify.alpha = 0.5   // disabled görünümü
+        btnVerify.setTitleColor(.white, for: .normal)
+        btnVerify.setTitleColor(UIColor.white.withAlphaComponent(0.4), for: .disabled)
         
         lblTimer.text = ""
     }
@@ -34,10 +35,8 @@ final class PayslipOTPViewController: MBTBaseViewController, UITextFieldDelegate
         let count = textField.text?.count ?? 0
         if count == 6 {
             btnVerify.isEnabled = true
-            btnVerify.alpha = 1.0
         } else {
             btnVerify.isEnabled = false
-            btnVerify.alpha = 0.5
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

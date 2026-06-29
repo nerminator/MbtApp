@@ -56,6 +56,9 @@ class TermOfUseViewController: MBTBaseViewController, TermOfUseDisplayLogic
         super.viewDidLoad()
         navigationItem.title = htmlType.title
         constBottomHeight.constant = termsOfUseType == .firstOpen ? 68 : 0
+        webView.isOpaque = false
+        webView.backgroundColor = .clear
+        webView.scrollView.backgroundColor = .clear
         webView.scrollView.showsVerticalScrollIndicator = true
         webView.scrollView.showsHorizontalScrollIndicator = true
         
@@ -103,7 +106,38 @@ extension TermOfUseViewController {
     
     fileprivate func loadHtml() {
         guard let html = htmlType.htmlString else { return }
-        webView.loadHTMLString(html, baseURL: URL(string: "https://")!)
+        let wrappedHtml = injectVisibleHtmlStyle(into: html)
+        let baseURL = Bundle.main.bundleURL
+        webView.loadHTMLString(wrappedHtml, baseURL: baseURL)
+    }
+
+    private func injectVisibleHtmlStyle(into html: String) -> String {
+        let css = """
+        <style>
+        html, body {
+            background: transparent !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+        body, p, li, div, span, font, h1, h2, h3, h4, h5, h6, strong, b {
+            color: #FFFFFF !important;
+        }
+        p, li, div, span, font {
+            opacity: 0.88 !important;
+        }
+        a {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            opacity: 1 !important;
+        }
+        </style>
+        """
+
+        if html.contains("</head>") {
+            return html.replacingOccurrences(of: "</head>", with: css + "</head>")
+        }
+
+        return css + html
     }
 }
 

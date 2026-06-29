@@ -360,7 +360,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.08235294118" green="0.090196078430000007" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="0av-o3-HHx" kind="relationship" relationship="viewControllers" id="wzD-LC-WoO"/>

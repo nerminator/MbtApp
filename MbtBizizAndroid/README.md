@@ -118,8 +118,8 @@ MbtBizizAndroid/
 
 | Property | Value |
 |---|---|
-| Version Name | `1.5.0` |
-| Version Code | `46` |
+| Version Name | `1.6.0` |
+| Version Code | `48` |
 | Min SDK | 24 (Android 7.0 Nougat) |
 | Target SDK | 33 (Android 13) |
 | Compile SDK | 34 |

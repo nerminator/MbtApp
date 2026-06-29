@@ -309,7 +309,7 @@ Builds and uploads the standalone Bordro app for iOS only. Same syntax as `relea
 | Bordro Prod | SFTP (port 22) | `192.168.24.26` | `/var/www/html/app/bordro` |
 
 ### Android Build
-- Version: `1.5.0` (versionCode: 46)
+- Version: `1.6.0` (versionCode: 48)
 - Min SDK: 24 (Android 7.0), Target SDK: 33
 - Signed with enterprise keystore (`signKey`, alias `keyMbt`)
 - Built with Gradle
@@ -337,7 +337,7 @@ Builds and uploads the standalone Bordro app for iOS only. Same syntax as `relea
 | OTP Expiry | 1 minute (stored in Redis) |
 | Payslip Verified Session | 5 minutes (stored in Redis) |
 | Food Menu Cache | 6 hours (Laravel cache via Redis) |
-| Android Version | `1.5.0` (build 46) |
+| Android Version | `1.6.0` (build 48) |
 | iOS Platform Min | iOS 11.0 |
 | Android Min SDK | 24 (Android 7.0 Nougat) |
 
